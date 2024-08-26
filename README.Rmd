@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The database is publicly available for download from its website and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package interfaces with the project's [Figshare](https://portal.sds.ox.ac.uk/pandemicpact) repository to provide programmatic access to its publicly available tracker data along with other data products provided by the project.
@@ -66,3 +67,16 @@ To list available outputs/assets from the Pandemic PACT Figshare repository, iss
 pact_list()
 ```
 
+## Citation
+
+If you find the `pactr` package useful please cite using the suggested citation provided by a call to the `citation()` function as follows:
+
+```{r citation}
+citation("pactr")
+```
+
+## Community guidelines
+
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/OxfordIHTM/pactr/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://oxford-ihtm.io/pactr/CONTRIBUTING.html).
+
+This project is released with a [Contributor Code of Conduct](https://OxfordIHTM/pactr/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.

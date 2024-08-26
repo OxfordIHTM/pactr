@@ -10,6 +10,7 @@ has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses
@@ -180,3 +181,38 @@ pact_list()
 #> 6                                        
 #> 7 https://www.glopid-r.org/pandemic-pact/
 ```
+
+## Citation
+
+If you find the `pactr` package useful please cite using the suggested
+citation provided by a call to the `citation()` function as follows:
+
+``` r
+citation("pactr")
+#> To cite package 'pactr' in publications use:
+#> 
+#>   Guevarra E (2024). _pactr: An Interface to the Pandemic PACT
+#>   Database_. R package version 0.0.0.9000,
+#>   https://oxford-ihtm.io/pactr/, <https://github.com/OxfordIHTM/pactr>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {pactr: An Interface to the Pandemic PACT Database},
+#>     author = {Ernest Guevarra},
+#>     year = {2024},
+#>     note = {R package version 0.0.0.9000, https://oxford-ihtm.io/pactr/},
+#>     url = {https://github.com/OxfordIHTM/pactr},
+#>   }
+```
+
+## Community guidelines
+
+Feedback, bug reports and feature requests are welcome; file issues or
+seek support [here](https://github.com/OxfordIHTM/pactr/issues). If you
+would like to contribute to the package, please see our [contributing
+guidelines](https://oxford-ihtm.io/pactr/CONTRIBUTING.html).
+
+This project is released with a [Contributor Code of
+Conduct](https://OxfordIHTM/pactr/CODE_OF_CONDUCT.html). By
+participating in this project you agree to abide by its terms.

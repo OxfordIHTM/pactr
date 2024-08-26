@@ -1,0 +1,9 @@
+bibentry(
+  bibtype  = "Manual",
+  header   = "To cite pactr in publications use:",
+  title    = "pactr: An Interface to the Pandemic PACT Repository",
+  author   = person("Ernest Guevarra"),
+  year     = "2024",
+  note     = "R package version 0.0.9000",
+  url      = "https://oxford-ihtm.io/pactr/"
+)
