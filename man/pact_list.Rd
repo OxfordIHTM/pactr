@@ -5,9 +5,13 @@
 \alias{pact_list_data}
 \title{List all available outputs/assets from Pandemic PACT's Figshare repository}
 \usage{
-pact_list()
+pact_list(pact_client = pact_client_set())
 
-pact_list_data()
+pact_list_data(pact_client = pact_client_set())
+}
+\arguments{
+\item{pact_client}{An interface client to the Pandemic PACT Figshare
+repository. This is set through a call to \code{pact_client_set()}.}
 }
 \value{
 A data.frame of available outputs/assets from Pandemic PACT's

@@ -16,5 +16,7 @@
 #' @docType package
 #' @name pactr
 #' @keywords internal
+#' @importFrom deposits depositsClient
+#' @importFrom utils read.csv download.file
 #'
 "_PACKAGE"
