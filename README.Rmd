@@ -13,12 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# pactr: An Interface to the Pandemic PACT Repository
+# pactr: An Interface to the Pandemic PACT Repository <img src='man/figures/logo.png' width='200px' align='right' />
 
 <!-- badges: start -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml)
+[![test-coverage.yaml](https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 
 The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The database is publicly available for download from its website and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package interfaces with the project's [Figshare](https://portal.sds.ox.ac.uk/pandemicpact) repository to provide programmatic access to its publicly available tracker data along with other data products provided by the project.
