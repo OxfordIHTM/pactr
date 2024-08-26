@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# pactr: An Interface to the Pandemic PACT Repository <img src='man/figures/logo.png' width='200px' align='right' />
+# pactr: An Interface to the Pandemic PACT Data Repository <img src='man/figures/logo.png' width='200px' align='right' />
 
 <!-- badges: start -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
@@ -60,24 +60,82 @@ library(pactr)
 
 ## Usage
 
-### List outputs/assets
+### 1. List outputs/assets
 
 To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:
 
-```{r usage-1}
+```{r usage-1a, eval = FALSE}
 pact_list()
+```
+
+The output is a `data.frame` containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by [Figshare's application programming interface (API)](https://docs.figshare.com/) and are either set by the Pandemic PACT data team or by Figshare. The data.frame would have the following fields:
+
+```{r usage-1b, echo = FALSE}
+pact_list() |>
+  names()
+```
+
+This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.
+
+### 2. Download outputs/assets
+
+To download a specific output/asset - say the scoping review data - from the Pandemic PACT Figshare repository, issue the following commands:
+
+```{r usage-2a, eval = FALSE}
+## Get the unique identifier for the scoping review data from Figshare ----
+file_id <- pact_list() |>
+  subset(title == "Scoping Review Data", select = id) |>
+  unlist()
+
+pact_download(id = file_id, path = ".")
+```
+
+This will download the file `Scoping_Review-Data.xlsx` from the Pandemic PACT Figshare repository into the current working directory.
+
+### 3. Read the Pandemic PACT tracker dataset and data dictionary
+
+To read the Pandemic PACT tracker dataset into R, issue the following command:
+
+```{r usage-3a, eval = FALSE}
+pact_read_data_tracker()
+```
+
+which outputs the following:
+
+```{r usage-3b, echo = FALSE}
+pact_read_data_tracker() |>
+  head()
+```
+
+This reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
+
+```{r usage-3c, eval = FALSE}
+pact_read_data_tracker(tracker_type = "raw")
+```
+
+which outputs the following:
+
+```{r usage-3d, echo = FALSE}
+pact_read_data_tracker(tracker_type = "raw") |>
+  head()
 ```
 
 ## Citation
 
-If you find the `pactr` package useful please cite using the suggested citation provided by a call to the `citation()` function as follows:
+To cite the `pactr` package, please use the suggested citation provided by a call to the `citation()` function as follows:
 
-```{r citation}
+```{r citation-package}
 citation("pactr")
+```
+
+To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the `pact_cite()` function as follows:
+
+```{r citation-data}
+pact_cite(id = 24763548)
 ```
 
 ## Community guidelines
 
 Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/OxfordIHTM/pactr/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://oxford-ihtm.io/pactr/CONTRIBUTING.html).
 
-This project is released with a [Contributor Code of Conduct](https://OxfordIHTM/pactr/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](https://oxford-ihtm/pactr/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
