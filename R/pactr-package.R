@@ -17,6 +17,6 @@
 #' @name pactr
 #' @keywords internal
 #' @importFrom deposits depositsClient
-#' @importFrom utils read.csv download.file
+#' @importFrom utils read.csv download.file readCitationFile
 #'
 "_PACKAGE"
