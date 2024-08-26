@@ -7,7 +7,7 @@
 pact_client_set()
 }
 \value{
-A local client to the Figahre service.
+A local client to the Figshare service.
 }
 \description{
 Initiate a new Pandemic PACT Figshare client session

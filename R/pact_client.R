@@ -1,7 +1,7 @@
 #'
 #' Initiate a new Pandemic PACT Figshare client session
 #'
-#' @returns A local client to the Figahre service.
+#' @returns A local client to the Figshare service.
 #'
 #' @examples
 #' pact_client_set()
