@@ -25,6 +25,6 @@ A data.frame of the requested dataset.
 Read datasets from the Pandemic PACT Figshare repository
 }
 \examples{
-pact_read_data_tracker(tracker_type = "raw")
+pact_read_data_dictionary()
 
 }
