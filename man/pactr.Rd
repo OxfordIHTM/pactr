@@ -23,6 +23,7 @@ Useful links:
 \itemize{
   \item \url{https://github.com/OxfordIHTM/pactr}
   \item \url{https://oxford-ihtm.io/pactr/}
+  \item \url{http://oxford-ihtm.io/pactr/}
   \item Report bugs at \url{https://github.com/OxfordIHTM/pactr/issues}
 }
 

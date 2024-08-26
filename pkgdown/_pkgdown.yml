@@ -1,0 +1,68 @@
+title: pactr
+
+url: https://oxford-ihtm.io/pactr/
+
+development:
+  mode: auto
+
+template:
+  bootstrap: 5
+  bootswatch: litera
+  theme: haddock
+  ganalytics: #
+
+home:
+  links:
+  - text: Read more about the Pandemic PACT
+    href: https://www.pandemicpact.org/
+
+navbar:
+  bg: primary
+  type: light
+  structure:
+    left:  [home, intro, reference, articles, news]
+    right: [twitter, facebook, linkedin, github]
+
+  components:
+    # articles:
+    #   text: Articles
+    #   menu:
+    #   - text: "ICD-11 Foundation"
+    #     href: articles/icd11_foundation.html
+    twitter:
+      icon: "fab fa-twitter fa-lg"
+      href: http://twitter.com/OxIHTM
+    facebook:
+      icon: "fab fa-facebook fa-lg"
+      href: https://www.facebook.com/MSc-in-International-Health-and-Tropical-Medicine-University-of-Oxford-433056700228246/
+    linkedin:
+      icon: "fab fa-linkedin fa-lg"
+      href: https://www.linkedin.com/company/international-health-and-tropical-medicine
+
+
+reference:
+  - title: Client
+    contents:
+    - pact_client_set
+
+  - title: List
+    contents:
+    - pact_list
+
+  - title: Get
+    contents:
+    - pact_get_group_id
+    - pact_get_filename
+
+  - title: Read
+    contents:
+    - pact_read_data_tracker
+    - pact_read_data_dictionary
+
+  - title: Download
+    contents:
+    - pact_download
+
+  - title: Cite
+    contents:
+    - pact_cite
