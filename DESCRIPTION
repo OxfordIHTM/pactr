@@ -1,0 +1,29 @@
+Package: pactr
+Type: Package
+Title: An Interface to the Pandemic PACT Database
+Version: 0.0.0.9000
+Authors@R: person("Ernest", "Guevarra", 
+    comment = c(ORCID = "0000-0002-4887-4415"), 
+    email = "ernest@guevarra.io", role = c("aut", "cre"))
+Description: The Pandemic PACT <https://www.pandemicpact.org/> monitors and 
+    analyses global funding and research evidence related to diseases with 
+    pandemic potential, as well as broader research preparedness efforts, and is 
+    equipped to pivot in response to outbreaks. It collects, curates, codes, 
+    and analyses data in alignment with WHO priority diseases and other selected 
+    illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT 
+    aims to guide policy and decision-making for research funders, policymakers, 
+    researchers, multilateral agencies. The database is publicly available for
+    download from its website and from Figshare. This package interfaces with
+    the project's Figshare repository to provide programmatic access to the
+    database along with other data products provided by the project.
+License: GPL (>= 3)
+Imports: 
+    deposits (>= 0.2.1.60)
+Remotes:  
+    ropenscilabs/deposits
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+URL: https://github.com/OxfordIHTM/pactr, https://oxford-ihtm.io/pactr/
+BugReports: https://github.com/OxfordIHTM/pactr/issues

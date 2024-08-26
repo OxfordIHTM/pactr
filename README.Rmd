@@ -1,0 +1,68 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# pactr: An Interface to the Pandemic PACT Repository
+
+<!-- badges: start -->
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The database is publicly available for download from its website and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package interfaces with the project's [Figshare](https://portal.sds.ox.ac.uk/pandemicpact) repository to provide programmatic access to its publicly available tracker data along with other data products provided by the project.
+
+## What does `pactr` do?
+
+`pactr` provides functions to interface with Pandemic PACT's [Figshare](https://portal.sds.ox.ac.uk/pandemicpact) repository for programmatic access to its contents. These functions are wrappers to specific functions of the [`deposits` package](https://docs.ropensci.org/deposits/index.html) which provides the underlying universal interface to various online research data deposition services including Figshare. Current functionalities available in `pactr` are:
+
+1. Lists outputs/assets available from the Panedmic PACT Figshare repository;
+
+2. Downloads outputs/assets available from the Pandemic PACT Figshare repository; and,
+
+3. Reads dataset outputs/assets available from the Pandemic PACT Figshare repository.
+
+## Installation
+
+`pactr` is not yet on CRAN but can be installed through the [Oxford IHTM r-universe](https://oxfordihtm.r-universe.dev) with:
+
+```R
+install.packages(
+  "pactr",
+  repos = c("https://oxfordihtm.r-universe.dev", "https://cloud.r-project.org")
+)
+```
+
+Alternatively, `pactr` can be installed directly from [GitHub](https://github.com/OxfordIHTM/pactr) with the following command:
+
+```R
+if (!requireNamespace("remotes")) install.packages("remotes")
+remotes::install_github("OxfordIHTM/pactr")
+```
+
+`pactr` can then be loaded for use with:
+
+```{r load-package}
+library(pactr)
+```
+
+## Usage
+
+### List outputs/assets
+
+To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:
+
+```{r usage-1}
+pact_list()
+```
+
