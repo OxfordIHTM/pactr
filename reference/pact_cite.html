@@ -16,9 +16,9 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/OxIHTM"><span class="fa fab fa-twitter fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://www.facebook.com/MSc-in-International-Health-and-Tropical-Medicine-University-of-Oxford-433056700228246/"><span class="fa fab fa-facebook fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://www.linkedin.com/company/international-health-and-tropical-medicine"><span class="fa fab fa-linkedin fa-lg"></span></a></li>
+      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/OxIHTM" aria-label="Twitter"><span class="fa fab fa-twitter fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://www.facebook.com/MSc-in-International-Health-and-Tropical-Medicine-University-of-Oxford-433056700228246/" aria-label="Facebook"><span class="fa fab fa-facebook fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://www.linkedin.com/company/international-health-and-tropical-medicine" aria-label="LinkedIn"><span class="fa fab fa-linkedin fa-lg"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/OxfordIHTM/pactr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
@@ -64,10 +64,10 @@ Pandemic PACT output/asset in DateCite bibliographic style.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pact_client</span> <span class="op">&lt;-</span> <span class="fu"><a href="pact_client.html">pact_client_set</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> No token found for [figshare] service.</span>
-<span class="r-in"><span><span class="fu">pact_cite</span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="fl">24763548</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'pact_client' not found</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span>  <span class="va">pact_client</span> <span class="op">&lt;-</span> <span class="fu"><a href="pact_client.html">pact_client_set</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">pact_cite</span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="fl">24763548</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

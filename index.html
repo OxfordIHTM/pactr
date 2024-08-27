@@ -41,9 +41,9 @@
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/OxIHTM"><span class="fa fab fa-twitter fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://www.facebook.com/MSc-in-International-Health-and-Tropical-Medicine-University-of-Oxford-433056700228246/"><span class="fa fab fa-facebook fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://www.linkedin.com/company/international-health-and-tropical-medicine"><span class="fa fab fa-linkedin fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/OxIHTM" aria-label="Twitter"><span class="fa fab fa-twitter fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://www.facebook.com/MSc-in-International-Health-and-Tropical-Medicine-University-of-Oxford-433056700228246/" aria-label="Facebook"><span class="fa fab fa-facebook fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://www.linkedin.com/company/international-health-and-tropical-medicine" aria-label="LinkedIn"><span class="fa fab fa-linkedin fa-lg"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/OxfordIHTM/pactr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
@@ -59,27 +59,27 @@
 </div>
 <!-- badges: start -->
 
-<p>The <a href="https://www.pandemicpact.org/" class="external-link">Pandemic PACT</a> monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The database is publicly available for download from its website and from <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a>. This package interfaces with the project’s <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a> repository to provide programmatic access to its publicly available tracker data along with other data products provided by the project.</p>
+<p>The <a href="https://www.pandemicpact.org/" class="external-link">Pandemic PACT</a> monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its <a href="https://www.pandemicpact.org/" class="external-link">website</a> and from <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a>. This package provides an application programming interface (API) to the research programme’s <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a> repository to provide programmatic access to its publicly available tracker data along with it’s other data products.</p>
 <div class="section level2">
-<h2 id="what-does-pactr-do">What does <code>pactr</code> do?<a class="anchor" aria-label="anchor" href="#what-does-pactr-do"></a>
+<h2 id="what-does-pactr-do">What does <code>{pactr}</code> do?<a class="anchor" aria-label="anchor" href="#what-does-pactr-do"></a>
 </h2>
-<p><code>pactr</code> provides functions to interface with Pandemic PACT’s <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a> repository for programmatic access to its contents. These functions are wrappers to specific functions of the <a href="https://docs.ropensci.org/deposits/index.html" class="external-link"><code>deposits</code> package</a> which provides the underlying universal interface to various online research data deposition services including Figshare. Current functionalities available in <code>pactr</code> are:</p>
+<p><a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> provides functions to interface with Pandemic PACT’s <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a> repository for programmatic access to its contents. These functions are wrappers to specific functions of the <a href="https://docs.ropensci.org/deposits/index.html" class="external-link"><code>{deposits}</code> package</a> which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> are:</p>
 <ol style="list-style-type: decimal">
-<li><p>Lists outputs/assets available from the Panedmic PACT Figshare repository;</p></li>
-<li><p>Downloads outputs/assets available from the Pandemic PACT Figshare repository; and,</p></li>
-<li><p>Reads dataset outputs/assets available from the Pandemic PACT Figshare repository.</p></li>
+<li><p>Listing of outputs/assets available from the Panedmic PACT Figshare repository;</p></li>
+<li><p>Download of outputs/assets available from the Pandemic PACT Figshare repository; and,</p></li>
+<li><p>Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository.</p></li>
 </ol>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p><code>pactr</code> is not yet on CRAN but can be installed through the <a href="https://oxfordihtm.r-universe.dev" class="external-link">Oxford IHTM r-universe</a> with:</p>
+<p><a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> is not yet on CRAN but can be installed through the <a href="https://oxfordihtm.r-universe.dev" class="external-link">Oxford IHTM r-universe</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
 <span>  <span class="st">"pactr"</span>,</span>
 <span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://oxfordihtm.r-universe.dev"</span>, <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively, <code>pactr</code> can be installed directly from <a href="https://github.com/OxfordIHTM/pactr" class="external-link">GitHub</a> using the <a href="https://remotes.r-lib.org" class="external-link">remotes</a> package with the following command:</p>
+<p>Alternatively, <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> can be installed directly from <a href="https://github.com/OxfordIHTM/pactr" class="external-link">GitHub</a> using the <a href="https://remotes.r-lib.org" class="external-link">remotes</a> package with the following command:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"OxfordIHTM/pactr"</span><span class="op">)</span></span></code></pre></div>
@@ -336,7 +336,7 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>To cite the <code>pactr</code> package, please use the suggested citation provided by a call to the <code><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation()</a></code> function as follows:</p>
+<p>To cite the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package, please use the suggested citation provided by a call to the <code><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"pactr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite pactr in publications use:</span></span>
@@ -427,6 +427,7 @@
 <li><a href="https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml" class="external-link"><img src="https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml/badge.svg" alt="test-coverage.yaml"></a></li>
 <li><a href="https://app.codecov.io/gh/OxfordIHTM/pactr?branch=main" class="external-link"><img src="https://codecov.io/gh/OxfordIHTM/pactr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/OxfordIHTM/pactr" class="external-link"><img src="https://www.codefactor.io/repository/github/OxfordIHTM/pactr/badge" alt="CodeFactor"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/847474685" class="external-link"><img src="https://zenodo.org/badge/847474685.svg" alt="DOI"></a></li>
 </ul>
 </div>
 
