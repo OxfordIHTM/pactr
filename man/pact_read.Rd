@@ -5,16 +5,14 @@
 \alias{pact_read_data_dictionary}
 \title{Read datasets from the Pandemic PACT Figshare repository}
 \usage{
-pact_read_data_tracker(
-  pact_client = pact_client_set(),
-  tracker_type = c("labelled", "raw")
-)
+pact_read_data_tracker(pact_client, tracker_type = c("labelled", "raw"))
 
-pact_read_data_dictionary(pact_client = pact_client_set())
+pact_read_data_dictionary(pact_client)
 }
 \arguments{
 \item{pact_client}{An interface client to the Pandemic PACT Figshare
-repository. This is set through a call to \code{pact_client_set()}.}
+repository. This is usually set/created through a call to
+\code{pact_client_set()}.}
 
 \item{tracker_type}{Either "labelled" or "raw". Default is "labelled".}
 }
@@ -25,6 +23,7 @@ A data.frame of the requested dataset.
 Read datasets from the Pandemic PACT Figshare repository
 }
 \examples{
-pact_read_data_dictionary()
+pact_client <- pact_client_set()
+pact_read_data_dictionary(pact_client)
 
 }

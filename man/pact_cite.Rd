@@ -4,11 +4,12 @@
 \alias{pact_cite}
 \title{Cite an output/asset available from the Pandemic PACT Figshare repository}
 \usage{
-pact_cite(pact_client = pact_client_set(), id)
+pact_cite(pact_client, id)
 }
 \arguments{
 \item{pact_client}{An interface client to the Pandemic PACT Figshare
-repository. This is set through a call to \code{pact_client_set()}.}
+repository. This is usually set/created through a call to
+\code{pact_client_set()}.}
 
 \item{id}{A unique integer value identifying a specific file in the
 repository.}
@@ -21,6 +22,7 @@ Pandemic PACT output/asset in DateCite bibliographic style.
 Cite an output/asset available from the Pandemic PACT Figshare repository
 }
 \examples{
-pact_cite(id = 24763548)
+pact_client <- pact_client_set()
+pact_cite(pact_client, id = 24763548)
 
 }
