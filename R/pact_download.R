@@ -37,12 +37,12 @@ pact_download <- function(pact_client,
   ## Download file ----
   if (overwrite) {
     download.file(
-      url = download_url, destfile = file.path(path, filename), quiet = TRUE
+      url = download_url, destfile = file.path(path, filename), quiet = quiet
     )
   } else {
     if (!file_present) {
       download.file(
-        url = download_url, destfile = file.path(path, filename), quiet = TRUE
+        url = download_url, destfile = file.path(path, filename), quiet = quiet
       )
     }
   }
