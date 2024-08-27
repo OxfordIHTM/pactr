@@ -1,8 +1,6 @@
 # Tests for pact_download functdion --------------------------------------------
 
-## Set client ----
-pact_client <- pact_client_set()
-
+## Download file ----
 download_file <- pact_download(pact_client, id = 24763548, path = tempdir())
 
 ## Tests ----

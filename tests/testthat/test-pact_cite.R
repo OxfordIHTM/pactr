@@ -1,8 +1,6 @@
 # Tets for pact_cite function --------------------------------------------------
 
-## Create client ----
-pact_client <- pact_client_set()
-
+## Create citation ----
 pact_citation <- pact_cite(pact_client, id = 24763548)
 
 ## Tests ----
