@@ -15,6 +15,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Codecov test
 coverage](https://codecov.io/gh/OxfordIHTM/pactr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/pactr?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/OxfordIHTM/pactr/badge)](https://www.codefactor.io/repository/github/OxfordIHTM/pactr)
+[![DOI](https://zenodo.org/badge/847474685.svg)](https://zenodo.org/badge/latestdoi/847474685)
 <!-- badges: end -->
 
 The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses
