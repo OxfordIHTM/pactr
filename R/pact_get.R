@@ -11,9 +11,11 @@
 #'   identifier.
 #'
 #' @examples
-#' pact_client <- pact_client_set()
-#' pact_get_group_id(pact_client)
-#' pact_get_filename(pact_client, id = 24763548)
+#' \dontrun{
+#'   pact_client <- pact_client_set()
+#'   pact_get_group_id(pact_client)
+#'   pact_get_filename(pact_client, id = 24763548)
+#' }
 #'
 #' @rdname pact_get
 #' @export

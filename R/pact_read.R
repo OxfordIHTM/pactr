@@ -9,8 +9,10 @@
 #' @returns A data.frame of the requested dataset.
 #'
 #' @examples
-#' pact_client <- pact_client_set()
-#' pact_read_data_dictionary(pact_client)
+#' \dontrun{
+#'   pact_client <- pact_client_set()
+#'   pact_read_data_dictionary(pact_client)
+#' }
 #'
 #' @rdname pact_read
 #' @export

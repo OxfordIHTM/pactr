@@ -32,13 +32,15 @@ navbar:
     twitter:
       icon: "fab fa-twitter fa-lg"
       href: http://twitter.com/OxIHTM
+      aria-label: Twitter
     facebook:
       icon: "fab fa-facebook fa-lg"
       href: https://www.facebook.com/MSc-in-International-Health-and-Tropical-Medicine-University-of-Oxford-433056700228246/
+      aria-label: Facebook
     linkedin:
       icon: "fab fa-linkedin fa-lg"
       href: https://www.linkedin.com/company/international-health-and-tropical-medicine
-
+      aria-label: LinkedIn
 
 reference:
   - title: Client
