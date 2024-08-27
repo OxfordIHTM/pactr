@@ -13,7 +13,7 @@
 #'
 
 pact_client_set <- function() {
-  repeat {
+  for (i in seq_len(3)) {
     ## Initiate client ----
     pact_client <- try(
       deposits::depositsClient$new(service = "figshare")
