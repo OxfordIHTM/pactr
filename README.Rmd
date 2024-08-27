@@ -47,7 +47,7 @@ install.packages(
 )
 ```
 
-Alternatively, `pactr` can be installed directly from [GitHub](https://github.com/OxfordIHTM/pactr) with the following command:
+Alternatively, `pactr` can be installed directly from [GitHub](https://github.com/OxfordIHTM/pactr) using the `{remotes}` package with the following command:
 
 ```R
 if (!requireNamespace("remotes")) install.packages("remotes")
@@ -102,24 +102,24 @@ To read the Pandemic PACT tracker dataset into R, issue the following command:
 pact_read_data_tracker()
 ```
 
-which outputs the following:
+which outputs a data.frame with 4637 records and 860 fields. 
 
 ```{r usage-3b, echo = FALSE}
 pact_read_data_tracker() |>
-  head()
+  str()
 ```
 
-This reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
+This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
 
 ```{r usage-3c, eval = FALSE}
 pact_read_data_tracker(tracker_type = "raw")
 ```
 
-which outputs the following:
+which outputs a data.frame with 4638 records and 860 fields.
 
 ```{r usage-3d, echo = FALSE}
 pact_read_data_tracker(tracker_type = "raw") |>
-  head()
+  str()
 ```
 
 ## Citation
@@ -133,7 +133,7 @@ citation("pactr")
 To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the `pact_cite()` function as follows:
 
 ```{r citation-data}
-pact_cite(id = 24763548)
+pact_cite(id = 24763548)  ## cite the labelled version of the tracker dataset
 ```
 
 ## Community guidelines
