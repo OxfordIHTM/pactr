@@ -23,7 +23,9 @@ A data.frame of the requested dataset.
 Read datasets from the Pandemic PACT Figshare repository
 }
 \examples{
-pact_client <- pact_client_set()
-pact_read_data_dictionary(pact_client)
+\dontrun{
+  pact_client <- pact_client_set()
+  pact_read_data_dictionary(pact_client)
+}
 
 }

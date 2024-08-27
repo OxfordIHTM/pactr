@@ -13,6 +13,8 @@ A local client to the Figshare service.
 Initiate a new Pandemic PACT Figshare client session
 }
 \examples{
-pact_client_set()
+\dontrun{
+  pact_client_set()
+}
 
 }

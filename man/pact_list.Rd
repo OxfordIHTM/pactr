@@ -22,6 +22,8 @@ Figshare repository.
 List all available outputs/assets from Pandemic PACT's Figshare repository
 }
 \examples{
-pact_list(pact_client = pact_client_set())
+\dontrun{
+  pact_list(pact_client = pact_client_set())
+}
 
 }

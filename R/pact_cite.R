@@ -11,8 +11,10 @@
 #'   Pandemic PACT output/asset in DateCite bibliographic style.
 #'
 #' @examples
-#' pact_client <- pact_client_set()
-#' pact_cite(pact_client, id = 24763548)
+#' \dontrun{
+#'   pact_client <- pact_client_set()
+#'   pact_cite(pact_client, id = 24763548)
+#' }
 #'
 #' @rdname pact_cite
 #' @export

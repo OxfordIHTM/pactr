@@ -14,8 +14,10 @@
 #' @returns The full path of the downloaded file.
 #'
 #' @examples
-#' pact_client <- pact_client_set()
-#' pact_download(pact_client, id = 25827649, path = tempdir())
+#' \dontrun{
+#'   pact_client <- pact_client_set()
+#'   pact_download(pact_client, id = 25827649, path = tempdir())
+#' }
 #'
 #' @rdname pact_download
 #' @export

@@ -4,7 +4,9 @@
 #' @returns A local client to the Figshare service.
 #'
 #' @examples
-#' pact_client_set()
+#' \dontrun{
+#'   pact_client_set()
+#' }
 #'
 #' @rdname pact_client
 #' @export

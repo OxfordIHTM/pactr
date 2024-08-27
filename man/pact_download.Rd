@@ -28,7 +28,9 @@ The full path of the downloaded file.
 Download outputs/assets from Pandemic PACT Figshare repository
 }
 \examples{
-pact_client <- pact_client_set()
-pact_download(pact_client, id = 25827649, path = tempdir())
+\dontrun{
+  pact_client <- pact_client_set()
+  pact_download(pact_client, id = 25827649, path = tempdir())
+}
 
 }

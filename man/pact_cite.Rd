@@ -22,7 +22,9 @@ Pandemic PACT output/asset in DateCite bibliographic style.
 Cite an output/asset available from the Pandemic PACT Figshare repository
 }
 \examples{
-pact_client <- pact_client_set()
-pact_cite(pact_client, id = 24763548)
+\dontrun{
+  pact_client <- pact_client_set()
+  pact_cite(pact_client, id = 24763548)
+}
 
 }

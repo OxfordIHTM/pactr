@@ -9,7 +9,9 @@
 #'   Figshare repository.
 #'
 #' @examples
-#' pact_list(pact_client = pact_client_set())
+#' \dontrun{
+#'   pact_list(pact_client = pact_client_set())
+#' }
 #'
 #' @rdname pact_list
 #' @export
