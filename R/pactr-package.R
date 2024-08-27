@@ -18,5 +18,6 @@
 #' @keywords internal
 #' @importFrom deposits depositsClient
 #' @importFrom utils read.csv download.file readCitationFile
+#' @importFrom methods is
 #'
 "_PACKAGE"

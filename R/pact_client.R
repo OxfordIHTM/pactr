@@ -11,5 +11,19 @@
 #'
 
 pact_client_set <- function() {
-  deposits::depositsClient$new(service = "figshare")
+  repeat {
+    ## Initiate client ----
+    pact_client <- try(
+      deposits::depositsClient$new(service = "figshare")
+    )
+
+    ## Check if successful ----
+    if (is(pact_client, "depositsClient")) break
+
+    ## Wait for next attempt if unsuccessful ----
+    Sys.sleep(time = 65)
+  }
+
+  ## Return client ----
+  pact_client
 }
