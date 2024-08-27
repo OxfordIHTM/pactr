@@ -4,17 +4,12 @@
 \alias{pact_download}
 \title{Download outputs/assets from Pandemic PACT Figshare repository}
 \usage{
-pact_download(
-  pact_client = pact_client_set(),
-  id,
-  path,
-  overwrite = FALSE,
-  quiet = TRUE
-)
+pact_download(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
 }
 \arguments{
 \item{pact_client}{An interface client to the Pandemic PACT Figshare
-repository. This is set through a call to \code{pact_client_set()}.}
+repository. This is usually set/created through a call to
+\code{pact_client_set()}.}
 
 \item{id}{A unique integer value identifying a specific file in the
 repository.}
@@ -33,7 +28,7 @@ The full path of the downloaded file.
 Download outputs/assets from Pandemic PACT Figshare repository
 }
 \examples{
-# Get filename then download ----
-pact_download(id = 25827649, path = tempdir())
+pact_client <- pact_client_set()
+pact_download(pact_client, id = 25827649, path = tempdir())
 
 }

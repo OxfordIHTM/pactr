@@ -5,13 +5,14 @@
 \alias{pact_get_filename}
 \title{Get outputs/assets identifiers}
 \usage{
-pact_get_group_id(pact_client = pact_client_set())
+pact_get_group_id(pact_client)
 
-pact_get_filename(pact_client = pact_client_set(), id)
+pact_get_filename(pact_client, id)
 }
 \arguments{
 \item{pact_client}{An interface client to the Pandemic PACT Figshare
-repository. This is set through a call to \code{pact_client_set()}.}
+repository. This is usually set/created through a call to
+\code{pact_client_set()}.}
 
 \item{id}{A unique integer value identifying a specific file in the
 repository.}
@@ -24,8 +25,8 @@ identifier.
 Get outputs/assets identifiers
 }
 \examples{
-pact_get_group_id()
-file_id <- pact_list() |> (\(x) x$id[1])()
-pact_get_filename(id = file_id)
+pact_client <- pact_client_set()
+pact_get_group_id(pact_client)
+pact_get_filename(pact_client, id = 24763548)
 
 }
