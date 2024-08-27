@@ -8,7 +8,7 @@
 #' @returns A data.frame of the requested dataset.
 #'
 #' @examples
-#' pact_read_data_tracker(tracker_type = "raw")
+#' pact_read_data_dictionary()
 #'
 #' @rdname pact_read
 #' @export
