@@ -21,7 +21,7 @@ pact_client_set <- function() {
     if (is(pact_client, "depositsClient")) break
 
     ## Wait for next attempt if unsuccessful ----
-    Sys.sleep(time = 120)
+    Sys.sleep(time = 300)
   }
 
   ## Return client ----
