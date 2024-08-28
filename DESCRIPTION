@@ -19,7 +19,12 @@ Description: The Pandemic PACT <https://www.pandemicpact.org/> monitors and
 License: GPL (>= 3)
 Imports: 
     deposits (>= 0.2.1.60),
-    methods
+    dplyr,
+    methods,
+    rlang,
+    stringr,
+    tibble,
+    tidyr
 Suggests: 
     spelling,
     testthat (>= 3.0.0)
