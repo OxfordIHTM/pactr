@@ -9,5 +9,4 @@
 library(testthat)
 library(pactr)
 
-pact_client <- pact_client_set()
 test_check("pactr")
