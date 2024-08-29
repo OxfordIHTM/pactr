@@ -1,5 +1,7 @@
 # Tets for pact_cite function --------------------------------------------------
 
+skip_on_ci()
+
 ## Create citation ----
 pact_citation <- pact_cite(pact_client, id = 24763548)
 

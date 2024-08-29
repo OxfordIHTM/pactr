@@ -1,5 +1,7 @@
 # Tests for pact_list functions ------------------------------------------------
 
+skip_on_ci()
+
 ## Get lists ----
 list_all <- pact_list(pact_client)
 list_data <- pact_list_data(pact_client)

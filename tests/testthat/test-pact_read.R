@@ -1,5 +1,7 @@
 # Tests for pact_read functions ------------------------------------------------
 
+skip_on_ci()
+
 ## Read various data
 data_labelled <- pact_read_data_tracker(pact_client)
 data_raw <- pact_read_data_tracker(pact_client, tracker_type = "raw")

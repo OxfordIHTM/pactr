@@ -1,5 +1,7 @@
 # Tests for pact_get functions -------------------------------------------------
 
+skip_on_ci()
+
 ## Get group id ----
 group_id <- pact_get_group_id(pact_client)
 

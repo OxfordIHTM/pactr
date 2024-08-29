@@ -1,5 +1,7 @@
 # Tests for pact_download functdion --------------------------------------------
 
+skip_on_ci()
+
 ## Download file ----
 download_file <- pact_download(pact_client, id = 24763548, path = tempdir())
 
