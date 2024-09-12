@@ -2,16 +2,35 @@
 % Please edit documentation in R/pact_process.R
 \name{pact_process_data_tracker}
 \alias{pact_process_data_tracker}
+\alias{pact_process_category}
+\alias{pact_process_category_pathogen}
+\alias{pact_process_category_funder}
 \title{Process Pandemic PACT data}
 \usage{
 pact_process_data_tracker(df)
+
+pact_process_category(df, category, other = NULL, nest = FALSE)
+
+pact_process_category_pathogen(df)
+
+pact_process_category_funder(df)
 }
 \arguments{
 \item{df}{A data.frame of the Pandemic PACT dataset from the Figshare
 repository}
+
+\item{category}{A character value for the variable category to look for
+in the fields for \code{df} for collapsing multiple fields into one.}
+
+\item{other}{A character value for the name of the variable in \code{df} for
+values for other for fields that have an other option. Default to NULL to
+indicate that field \code{category} has no other option.}
+
+\item{nest}{Should the collapsed variable/field be nested? Default to FALSE.}
 }
 \value{
-A tibble
+A tibble of processed Pandemic PACT dataset with a field for the
+PactID and a field for the variable with the name the same as \code{category}.
 }
 \description{
 Process Pandemic PACT data
