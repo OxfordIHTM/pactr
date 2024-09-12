@@ -2,7 +2,7 @@
 
 ## Tests ----
 test_that("pact_download outputs as expected", {
-  skip_on_ci()
+  skip_if(Sys.getenv("FIGSHARE_TOKEN") == "")
 
   pact_client <- pact_client_set()
 
@@ -22,7 +22,7 @@ test_that("pact_download outputs as expected", {
 })
 
 test_that("overwrite works", {
-  skip_on_ci()
+  skip_if(Sys.getenv("FIGSHARE_TOKEN") == "")
 
   pact_client <- pact_client_set()
 

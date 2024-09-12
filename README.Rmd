@@ -33,9 +33,11 @@ The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global 
 
 1. Listing of outputs/assets available from the Panedmic PACT Figshare repository;
 
-2. Download of outputs/assets available from the Pandemic PACT Figshare repository; and,
+2. Download of outputs/assets available from the Pandemic PACT Figshare repository;
 
-3. Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository.
+3. Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository; and,
+
+4. Processing of Pandemic PACT data.
 
 ## Installation
 
@@ -63,30 +65,48 @@ library(pactr)
 
 ## Usage
 
-### 1. List outputs/assets
+### Set a Figshare client
+
+Usage of `{pactr}` always starts with the setting up of a Figshare client. This requires creating a Figshare account and then creating a personal access token [here](https://figshare.com/account/applications).
+
+Once a figshare token is created, it needs to be stored as a local environment vqariable. This can be done using the following command in R:
+
+```R
+Sys.setenv("FIGSHARE_TOKEN"="YOUR_TOKEN_HERE")
+```
+
+Once this token has been set as described above, the following command can be run to setup a Figshare client:
+
+```{r setup-client}
+pact_client <- pact_client_set()
+```
+
+Once a Figshare client has been setup, you can now perform the functionalities provided by the `{pactr}` package.
+
+### List outputs/assets
 
 To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:
 
 ```{r usage-1a, eval = FALSE}
-pact_list()
+pact_list(pact_client)
 ```
 
 The output is a `data.frame` containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by [Figshare's application programming interface (API)](https://docs.figshare.com/) and are either set by the Pandemic PACT data team or by Figshare. The data.frame would have the following fields:
 
 ```{r usage-1b, echo = FALSE}
-pact_list() |>
+pact_list(pact_client) |>
   names()
 ```
 
 This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.
 
-### 2. Download outputs/assets
+### Download outputs/assets
 
 To download a specific output/asset - say the scoping review data - from the Pandemic PACT Figshare repository, issue the following commands:
 
 ```{r usage-2a, eval = FALSE}
 ## Get the unique identifier for the scoping review data from Figshare ----
-file_id <- pact_list() |>
+file_id <- pact_list(pact_client) |>
   subset(title == "Scoping Review Data", select = id) |>
   unlist()
 
@@ -95,32 +115,39 @@ pact_download(id = file_id, path = ".")
 
 This will download the file `Scoping_Review-Data.xlsx` from the Pandemic PACT Figshare repository into the current working directory.
 
-### 3. Read the Pandemic PACT tracker dataset and data dictionary
+### Read the Pandemic PACT tracker dataset and data dictionary
 
 To read the Pandemic PACT tracker dataset into R, issue the following command:
 
 ```{r usage-3a, eval = FALSE}
-pact_read_data_tracker()
+pact_read_data_tracker(pact_client)
 ```
 
 which outputs a data.frame with 4637 records and 860 fields. 
 
 ```{r usage-3b, echo = FALSE}
-pact_read_data_tracker() |>
+pact_read_data_tracker(pact_client) |>
   str()
 ```
 
 This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
 
 ```{r usage-3c, eval = FALSE}
-pact_read_data_tracker(tracker_type = "raw")
+pact_read_data_tracker(pact_client, tracker_type = "raw")
 ```
 
 which outputs a data.frame with 4638 records and 860 fields.
 
 ```{r usage-3d, echo = FALSE}
-pact_read_data_tracker(tracker_type = "raw") |>
+pact_read_data_tracker(pact_client, tracker_type = "raw") |>
   str()
+```
+
+### Process the Pandemic PACT tracker dataset
+
+```{r useage-3e}
+pact_read_data_tracker(pact_client) |>
+  pact_process_data_tracker()
 ```
 
 ## Citation
@@ -134,7 +161,7 @@ citation("pactr")
 To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the `pact_cite()` function as follows:
 
 ```{r citation-data}
-pact_cite(id = 24763548)  ## cite the labelled version of the tracker dataset
+pact_cite(pact_client, id = 24763548)  ## cite the labelled version of the tracker dataset
 ```
 
 ## Community guidelines

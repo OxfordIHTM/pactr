@@ -49,10 +49,12 @@ functionalities available in `{pactr}` are:
     repository;
 
 2.  Download of outputs/assets available from the Pandemic PACT Figshare
-    repository; and,
+    repository;
 
 3.  Reading of dataset outputs/assets available from the Pandemic PACT
-    Figshare repository.
+    Figshare repository; and,
+
+4.  Processing of Pandemic PACT data.
 
 ## Installation
 
@@ -83,13 +85,37 @@ library(pactr)
 
 ## Usage
 
-### 1\. List outputs/assets
+### Set a Figshare client
+
+Usage of `{pactr}` always starts with the setting up of a Figshare
+client. This requires creating a Figshare account and then creating a
+personal access token [here](https://figshare.com/account/applications).
+
+Once a figshare token is created, it needs to be stored as a local
+environment vqariable. This can be done using the following command in
+R:
+
+``` r
+Sys.setenv("FIGSHARE_TOKEN"="YOUR_TOKEN_HERE")
+```
+
+Once this token has been set as described above, the following command
+can be run to setup a Figshare client:
+
+``` r
+pact_client <- pact_client_set()
+```
+
+Once a Figshare client has been setup, you can now perform the
+functionalities provided by the `{pactr}` package.
+
+### List outputs/assets
 
 To list available outputs/assets from the Pandemic PACT Figshare
 repository, issue the following command:
 
 ``` r
-pact_list()
+pact_list(pact_client)
 ```
 
 The output is a `data.frame` containing metadata regarding contents of
@@ -109,14 +135,14 @@ fields:
 This function is useful in getting an overview of what is currently
 available in the Pandemic PACT Figshare repository.
 
-### 2\. Download outputs/assets
+### Download outputs/assets
 
 To download a specific output/asset - say the scoping review data - from
 the Pandemic PACT Figshare repository, issue the following commands:
 
 ``` r
 ## Get the unique identifier for the scoping review data from Figshare ----
-file_id <- pact_list() |>
+file_id <- pact_list(pact_client) |>
   subset(title == "Scoping Review Data", select = id) |>
   unlist()
 
@@ -126,13 +152,13 @@ pact_download(id = file_id, path = ".")
 This will download the file `Scoping_Review-Data.xlsx` from the Pandemic
 PACT Figshare repository into the current working directory.
 
-### 3\. Read the Pandemic PACT tracker dataset and data dictionary
+### Read the Pandemic PACT tracker dataset and data dictionary
 
 To read the Pandemic PACT tracker dataset into R, issue the following
 command:
 
 ``` r
-pact_read_data_tracker()
+pact_read_data_tracker(pact_client)
 ```
 
 which outputs a data.frame with 4637 records and 860 fields.
@@ -243,7 +269,7 @@ This function reads the *labelled* tracker dataset by default. If the
 raw dataset is required, then issue the following command:
 
 ``` r
-pact_read_data_tracker(tracker_type = "raw")
+pact_read_data_tracker(pact_client, tracker_type = "raw")
 ```
 
 which outputs a data.frame with 4638 records and 860 fields.
@@ -350,6 +376,33 @@ which outputs a data.frame with 4638 records and 860 fields.
     #>  $ study_type_main___5                        : int  0 0 1 0 0 1 1 0 0 1 ...
     #>   [list output truncated]
 
+### Process the Pandemic PACT tracker dataset
+
+``` r
+pact_read_data_tracker(pact_client) |>
+  pact_process_data_tracker()
+#> # A tibble: 4,637 × 37
+#>    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng
+#>    <chr>  <chr>        <chr>                                     <chr>          
+#>  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…
+#>  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…
+#>  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…
+#>  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…
+#>  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…
+#>  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…
+#>  7 C00159 unknown      A comprehensive study of immunopathogene… ""             
+#>  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…
+#>  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…
+#> 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…
+#> # ℹ 4,627 more rows
+#> # ℹ 33 more variables: Award.Amount.Converted <dbl>, Abstract.Eng <chr>,
+#> #   Laysummary <chr>, ODA.funding.used <chr>, Grant.Type <chr>,
+#> #   Grant.Start.Year <int>, Study.Subject <list>, Ethnicity <list>,
+#> #   Age.Groups <list>, Rurality <list>, Vulnerable.Population <list>,
+#> #   Occupational.Groups <list>, Study.Type <list>, Clinical.Trial <list>,
+#> #   report <chr>, Pathogen <list>, Pathogen.Specific <list>, Disease <list>, …
+```
+
 ## Citation
 
 To cite the `{pactr}` package, please use the suggested citation
@@ -378,7 +431,7 @@ To cite the Pandemic PACT Tracker dataset, please use the suggested
 citation provided by a call to the `pact_cite()` function as follows:
 
 ``` r
-pact_cite(id = 24763548)  ## cite the labelled version of the tracker dataset
+pact_cite(pact_client, id = 24763548)  ## cite the labelled version of the tracker dataset
 #> To cite Pandemic PACT Grant Tracker (labelled) in publications use:
 #> 
 #>   Pandemic PACT team (2023). "Pandemic PACT Grant Tracker (labelled).
