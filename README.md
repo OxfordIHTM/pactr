@@ -30,16 +30,14 @@ PACT data is publicly available for download from its
 [website](https://www.pandemicpact.org/) and from
 [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package
 provides an application programming interface (API) to the research
-programme’s [Figshare](https://portal.sds.ox.ac.uk/pandemicpact)
-repository to provide programmatic access to its publicly available
-tracker data along with it’s other data products.
+programme’s Figshare repository to provide programmatic access to its
+publicly available tracker data along with it’s other data products.
 
 ## What does `{pactr}` do?
 
-`{pactr}` provides functions to interface with Pandemic PACT’s
-[Figshare](https://portal.sds.ox.ac.uk/pandemicpact) repository for
-programmatic access to its contents. These functions are wrappers to
-specific functions of the [`{deposits}`
+`{pactr}` provides functions to interface with Pandemic PACT’s Figshare
+repository for programmatic access to its contents. These functions are
+wrappers to specific functions of the [`{deposits}`
 package](https://docs.ropensci.org/deposits/index.html) which provides
 the underlying universal interface to various online research data
 deposition services including Figshare. Current Figshare-specific
@@ -77,7 +75,7 @@ if (!requireNamespace("remotes")) install.packages("remotes")
 remotes::install_github("OxfordIHTM/pactr")
 ```
 
-`pactr` can then be loaded for use with:
+`{pactr}` can then be loaded for use with:
 
 ``` r
 library(pactr)
@@ -91,9 +89,8 @@ Usage of `{pactr}` always starts with the setting up of a Figshare
 client. This requires creating a Figshare account and then creating a
 personal access token [here](https://figshare.com/account/applications).
 
-Once a figshare token is created, it needs to be stored as a local
-environment vqariable. This can be done using the following command in
-R:
+Once a Figshare token is created, it needs to be stored as a local
+environment variable. This can be done using the following command in R:
 
 ``` r
 Sys.setenv("FIGSHARE_TOKEN"="YOUR_TOKEN_HERE")
