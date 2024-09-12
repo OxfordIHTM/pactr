@@ -2,7 +2,7 @@
 
 ## Tests ----
 test_that("group id is as expected", {
-  skip_on_ci()
+  skip_if(Sys.getenv("FIGSHARE_TOKEN") == "")
 
   pact_client <- pact_client_set()
 
@@ -16,7 +16,7 @@ test_that("group id is as expected", {
 
 ## Tests ----
 test_that("filename is as expected", {
-  skip_on_ci()
+  skip_if(Sys.getenv("FIGSHARE_TOKEN") == "")
 
   pact_client <- pact_client_set()
 

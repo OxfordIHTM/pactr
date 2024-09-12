@@ -2,7 +2,7 @@
 
 ## Tests ----
 test_that("data output is as expected", {
-  skip_on_ci()
+  skip_if(Sys.getenv("FIGSHARE_TOKEN") == "")
 
   pact_client <- pact_client_set()
 
