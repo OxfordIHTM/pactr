@@ -8,7 +8,7 @@ test_that("group id is as expected", {
 
   ## Get group id ----
   group_id <- pact_get_group_id(pact_client)
-  expect_equivalent(group_id, 53043)
+  expect_equal(group_id, 53043, ignore_attr = TRUE)
   expect_type(group_id, "integer")
 })
 
@@ -23,6 +23,6 @@ test_that("filename is as expected", {
   ## Get filename ----
   filename <- pact_get_filename(pact_client, id = 24763548)
 
-  expect_equivalent(filename, "PandemicPACT-GloPIDRAndUKC_DemoData-Label_21-11-23.csv")
+  expect_equal(filename, "PandemicPACT-GloPIDRAndUKC_DemoData-Label_21-11-23.csv")
   expect_type(filename, "character")
 })
