@@ -63,7 +63,8 @@ reference:
 
   - title: Download
     contents:
-    - pact_download
+    - pact_download_figshare
+    - pact_download_website
 
   - title: Process
     contents:
