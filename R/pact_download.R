@@ -16,22 +16,54 @@
 #' @examples
 #' \dontrun{
 #'   pact_client <- pact_client_set()
-#'   pact_download(pact_client, id = 25827649, path = tempdir())
+#'   pact_download_figshare(pact_client, id = 25827649, path = tempdir())
 #' }
+#' 
+#' pact_download_website(path = tempdir())
 #'
 #' @rdname pact_download
 #' @export
 #'
 
-pact_download <- function(pact_client,
-                          id, path,
-                          overwrite = FALSE, quiet = TRUE) {
+pact_download_figshare <- function(pact_client,
+                                   id, path,
+                                   overwrite = FALSE, quiet = TRUE) {
   ## Retrieve specified file ----
   pact_client$deposit_retrieve(deposit_id = id)
 
   ## Get download URL and filename of specified file ----
   download_url <- pact_client$hostdata$files$download_url
   filename <- pact_client$hostdata$files$name
+
+  ## Check if download file is already present in path
+  file_present <- filename %in% list.files(path)
+
+  ## Download file ----
+  if (overwrite) {
+    download.file(
+      url = download_url, destfile = file.path(path, filename), quiet = quiet
+    )
+  } else {
+    if (!file_present) {
+      download.file(
+        url = download_url, destfile = file.path(path, filename), quiet = quiet
+      )
+    }
+  }
+
+  ## Return path to downloaded file ----
+  file.path(path, filename)
+}
+
+#'
+#' @rdname pact_download
+#' @export
+#' 
+
+pact_download_website <- function(path, overwrite = FALSE, quiet = TRUE) {
+  ## Get filename of specified file ----
+  download_url <- "https://pandemicpact.org/export/pandemic-pact-grants.csv"
+  filename <- basename(download_url)
 
   ## Check if download file is already present in path
   file_present <- filename %in% list.files(path)

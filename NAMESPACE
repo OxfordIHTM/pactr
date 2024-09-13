@@ -2,7 +2,8 @@
 
 export(pact_cite)
 export(pact_client_set)
-export(pact_download)
+export(pact_download_figshare)
+export(pact_download_website)
 export(pact_get_filename)
 export(pact_get_group_id)
 export(pact_list)
