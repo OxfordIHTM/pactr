@@ -8,10 +8,10 @@
 #' @param other A character value for the name of the variable in `df` for
 #'   values for other for fields that have an other option. Default to NULL to
 #'   indicate that field `category` has no other option.
-#' @param nest Should the collapsed variable/field be nested? Default to FALSE.
+#' @param nest Logical. Should variable/fields with multiple values be nested? 
+#'   Default to FALSE.
 #'
-#' @returns A tibble of processed Pandemic PACT dataset with a field for the
-#'   PactID and a field for the variable with the name the same as `category`.
+#' @returns A tibble of processed Pandemic PACT dataset.
 #'
 #' @examples
 #' \dontrun{
@@ -346,4 +346,69 @@ pact_process_category_funder <- function(df) {
     dplyr::distinct() |>
     dplyr::ungroup() |>
     dplyr::select(c(.data$PactID, .data$Funder.Name))
+}
+
+#'
+#' @rdname pact_process
+#' @export
+#' 
+
+pact_process_disease <- function(df,
+                                 group = FALSE,
+                                 group_type = c("funder", "funder_location",
+                                                "institution", 
+                                                "institution_location",
+                                                "research_location",
+                                                "year")) {
+  ## Get agg_type ----
+  group_type <- match.arg(group_type)
+
+  ## Unnest disease ----
+  unnest_df <- df |>
+    tidyr::unnest(cols = Disease)
+
+  if (group) {
+    if (group_type == "funder") {
+      tidy_df <- unnest_df |>
+        tidyr::unnest(FundingOrgName) |>
+        dplyr::count(FundingOrgName, name = "n_grant") |>
+        dplyr::right_join(
+          unnest_df |>
+            tidyr::unnest(FundingOrgName) |>
+            dplyr::group_by(FundingOrgName, Disease) |>
+            dplyr::count(Disease, name = "n_grant_disease"),
+          by = "FundingOrgName"
+        ) |>
+        dplyr::arrange(dplyr::desc(n_grant), dplyr::desc(n_grant_disease)) |>
+        dplyr::relocate(n_grant, .before = n_grant_disease)
+    }
+
+    if (group_type == "funder_location") {
+      tidy_df <- unnest_df |>
+        tidyr::unnest(FunderRegion, FunderCountry) |>
+        dplyr::count(FunderRegion, name = "n_grant_region") |>
+        dplyr::right_join(
+          unnest_df |>
+            tidyr::unnest(FunderRegion, FunderCountry) |>
+            dplyr::group_by(FunderRegion, FunderCountry) |>
+            dplyr::count(FunderCountry, name = "n_grant_country"),
+          by = "FunderRegion"
+        ) |>
+        dplyr::right_join(
+          unnest_df |>
+            tidyr::unnest(FunderRegion, FunderCountry, Disease) |>
+            dplyr::group_by(FunderRegion, FunderCountry, Disease) |>
+            dplyr::count(Disease, name = "n_grant_disease")
+        ) |>
+        dplyr::arrange(
+          dplyr::desc(n_grant_region), 
+          dplyr::desc(n_grant_country), 
+          dplyr::desc(n_grant_disease)
+        )
+    }
+  } else {
+    tidy_df <- unnest_df |>
+      dplyr::count(Disease) |>
+      dplyr::arrange(dplyr::desc(n))
+  } 
 }

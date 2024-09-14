@@ -5,6 +5,7 @@
 \alias{pact_process_category}
 \alias{pact_process_category_pathogen}
 \alias{pact_process_category_funder}
+\alias{pact_process_disease}
 \title{Process Pandemic PACT data}
 \usage{
 pact_process_data_tracker(df)
@@ -14,6 +15,13 @@ pact_process_category(df, category, other = NULL, nest = FALSE)
 pact_process_category_pathogen(df)
 
 pact_process_category_funder(df)
+
+pact_process_disease(
+  df,
+  group = FALSE,
+  group_type = c("funder", "funder_location", "institution", "institution_location",
+    "research_location", "year")
+)
 }
 \arguments{
 \item{df}{A data.frame of the Pandemic PACT dataset from the Figshare
@@ -26,11 +34,11 @@ in the fields for \code{df} for collapsing multiple fields into one.}
 values for other for fields that have an other option. Default to NULL to
 indicate that field \code{category} has no other option.}
 
-\item{nest}{Should the collapsed variable/field be nested? Default to FALSE.}
+\item{nest}{Logical. Should variable/fields with multiple values be nested?
+Default to FALSE.}
 }
 \value{
-A tibble of processed Pandemic PACT dataset with a field for the
-PactID and a field for the variable with the name the same as \code{category}.
+A tibble of processed Pandemic PACT dataset.
 }
 \description{
 Process Pandemic PACT data
