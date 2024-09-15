@@ -24,7 +24,7 @@
 #'   str_trim str_split
 #' @importFrom rlang .data
 #' @importFrom dplyr left_join mutate group_by ungroup across select filter
-#'   right_join arrange relocate
+#'   right_join arrange relocate pull
 #' @importFrom tidyr pivot_longer unnest
 #' @importFrom countrycode countrycode
 #'

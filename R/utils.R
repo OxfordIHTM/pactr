@@ -1,9 +1,3 @@
-#
-# Quiet down checks for global variables
-#
-
-utils::globalVariables(c("defined_type", "group_id"))
-
 #'
 #' Process author names
 #'
@@ -16,6 +10,8 @@ utils::globalVariables(c("defined_type", "group_id"))
 #' \dontrun{
 #'   process_author_names(c("John Doe", "Jane Doe"))
 #' }
+#' 
+#' @keywords internal
 #' 
 
 process_author_names <- function(authors) {
@@ -55,6 +51,8 @@ nested_vars <- c(
 #' \dontrun{
 #'   detect_mismatch(ResearchInstitutionCountry, ResearchInstitutionRegion)
 #' } 
+#' 
+#' @keywords internal
 #'
 
 detect_mismatch <- function(x, y) {
@@ -83,6 +81,7 @@ detect_mismatch <- function(x, y) {
 #' }
 #' 
 #' @rdname get_who_region
+#' @keywords internal
 #'
 
 get_who_region <- function(x) {
@@ -118,6 +117,7 @@ get_who_region <- function(x) {
 
 #'
 #' @rdname get_who_region
+#' @keywords internal
 #' 
 
 get_who_regions <- function(x) {
