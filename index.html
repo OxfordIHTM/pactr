@@ -136,7 +136,7 @@
 </h3>
 <p>To read the Pandemic PACT tracker dataset into R, issue the following command:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read.html">pact_read_data_tracker</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_read_data_tracker</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a data.frame with 4637 records and 860 fields.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#&gt; 'data.frame':    4637 obs. of  860 variables:</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt;  $ PactID                                                                                                                                       : chr  "C00153" "C00154" "C00155" "C00156" ...</span></span>
@@ -241,7 +241,7 @@
 <span id="cb10-101"><a href="#cb10-101" tabindex="-1"></a><span class="co">#&gt;   [list output truncated]</span></span></code></pre></div>
 <p>This function reads the <em>labelled</em> tracker dataset by default. If the raw dataset is required, then issue the following command:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read.html">pact_read_data_tracker</a></span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_read_data_tracker</span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a data.frame with 4638 records and 860 fields.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co">#&gt; 'data.frame':    4638 obs. of  860 variables:</span></span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt;  $ pactid                                     : chr  "SDS001" "C00153" "C00154" "C00155" ...</span></span>
@@ -349,8 +349,8 @@
 <h3 id="process-the-pandemic-pact-tracker-dataset">Process the Pandemic PACT tracker dataset<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset"></a>
 </h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read.html">pact_read_data_tracker</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/pact_process.html">pact_process_data_tracker</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">pact_read_data_tracker</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">pact_process_data_tracker</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4,637 × 37</span></span>
 <span><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;          </span></span>
