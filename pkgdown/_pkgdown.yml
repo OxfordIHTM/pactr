@@ -58,7 +58,7 @@ reference:
 
   - title: Read
     contents:
-    - pact_read_data_tracker
+    - pact_read_data_figshare
     - pact_read_data_dictionary
     - pact_read_data_website
 
@@ -69,10 +69,11 @@ reference:
 
   - title: Process
     contents:
-    - pact_process_data_tracker
+    - pact_process_data_figshare
     - pact_process_category
     - pact_process_category_pathogen
     - pact_process_category_funder
+    - pact_process_disease
 
   - title: Cite
     contents:
@@ -81,3 +82,4 @@ reference:
   - title: Datasets
     contents:
     - who_country_info
+    - pact_research_category

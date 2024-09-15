@@ -25,3 +25,4 @@ Detect one-to-one mismatch in variables
 } 
 
 }
+\keyword{internal}

@@ -27,5 +27,5 @@ pact_list <- function(pact_client) {
 
 pact_list_data <- function(pact_client) {
   pact_client$deposits_search(group = 53043) |>
-    subset(defined_type == 3)
+    dplyr::filter(.data$defined_type == 3)
 }

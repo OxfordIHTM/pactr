@@ -23,7 +23,7 @@
 
 pact_get_group_id <- function(pact_client) {
   pact_list(pact_client = pact_client) |>
-    subset(select = group_id) |>
+    dplyr::pull(.data$group_id) |>
     unique() |>
     unlist()
 }
