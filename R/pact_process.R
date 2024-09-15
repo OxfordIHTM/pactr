@@ -28,7 +28,7 @@
 #' @export
 #'
 
-pact_process_data_tracker <- function(df) {
+pact_process_data_figshare <- function(df) {
   ## Get core variables ----
   core_vars <- df |>
     dplyr::select(.data$PactID:.data$Grant.Start.Year)
@@ -405,7 +405,9 @@ pact_process_disease <- function(df,
         ) |>
         dplyr::right_join(
           unnest_df |>
-            tidyr::unnest(c(.data$FunderRegion, .data$FunderCountry, Disease)) |>
+            tidyr::unnest(
+              c(.data$FunderRegion, .data$FunderCountry, .data$Disease)
+            ) |>
             dplyr::group_by(
               .data$FunderRegion, .data$FunderCountry, .data$Disease
             ) |>

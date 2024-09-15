@@ -5,7 +5,7 @@
 \alias{who_country_info}
 \title{World Health Organization (WHO) Country Information}
 \format{
-A data frame with 5 columns and 194 rows:\tabular{ll}{
+A data.frame with 5 columns and 194 rows:\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr
    \emph{country_iso3c} \tab ISO-3 country code \cr
    \emph{who_short_name} \tab Country short name given by WHO \cr
