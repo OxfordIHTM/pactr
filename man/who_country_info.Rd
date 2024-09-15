@@ -7,7 +7,7 @@
 \format{
 A data frame with 5 columns and 194 rows:\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr
-   \emph{country_iso3c} \tab ISO3 country code \cr
+   \emph{country_iso3c} \tab ISO-3 country code \cr
    \emph{who_short_name} \tab Country short name given by WHO \cr
    \emph{formal_name} \tab Country formal name \cr
    \emph{who_region} \tab WHO region name to which country belongs to \cr
@@ -15,7 +15,7 @@ A data frame with 5 columns and 194 rows:\tabular{ll}{
 }
 }
 \source{
-Data are drawn from WHO's Data Country list
+Data are drawn from WHO's Data Country list found at
 https://data.who.int/countries/
 }
 \usage{

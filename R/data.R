@@ -5,7 +5,7 @@
 #'
 #' | **Variable** | **Description** |
 #' | :--- | :--- |
-#' | *country_iso3c* | ISO3 country code |
+#' | *country_iso3c* | ISO-3 country code |
 #' | *who_short_name* | Country short name given by WHO |
 #' | *formal_name* | Country formal name |
 #' | *who_region* | WHO region name to which country belongs to |
@@ -15,6 +15,6 @@
 #' who_country_info
 #'
 #' @source Data are drawn from WHO's Data Country list found at 
-#' https://data.who.int/countries/
+#'   https://data.who.int/countries/
 #'
 "who_country_info"

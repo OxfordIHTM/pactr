@@ -21,9 +21,11 @@
 #' @importFrom methods is
 #' @importFrom tibble tibble
 #' @importFrom stringr str_remove str_remove_all str_replace str_replace_all
-#'   str_trim
+#'   str_trim str_split
 #' @importFrom rlang .data
 #' @importFrom dplyr left_join mutate group_by ungroup across select filter
-#' @importFrom tidyr pivot_longer
+#'   right_join arrange relocate
+#' @importFrom tidyr pivot_longer unnest
+#' @importFrom countrycode countrycode
 #'
 "_PACKAGE"

@@ -36,6 +36,11 @@ indicate that field \code{category} has no other option.}
 
 \item{nest}{Logical. Should variable/fields with multiple values be nested?
 Default to FALSE.}
+
+\item{group}{Logical. Should \code{df} be grouped? Default is FALSE.}
+
+\item{group_type}{A character value of type of grouping to perform. Only
+evaluated if \code{group = TRUE}. Possible values are \verb{funder``,  }funder_location\verb{, }institution\verb{, }institution_location\verb{, }research_location\verb{, or }year`.}
 }
 \value{
 A tibble of processed Pandemic PACT dataset.

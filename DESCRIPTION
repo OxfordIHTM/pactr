@@ -18,6 +18,7 @@ Description: The Pandemic PACT <https://www.pandemicpact.org/> monitors and
     database along with other data products provided by the project.
 License: GPL (>= 3)
 Imports: 
+    countrycode,
     deposits (>= 0.2.1.60),
     dplyr,
     methods,
