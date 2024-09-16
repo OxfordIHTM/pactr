@@ -39,6 +39,12 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/figshare-workflow.html">Figshare workflow</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><a class="external-link nav-link" href="http://twitter.com/OxIHTM" aria-label="Twitter"><span class="fa fab fa-twitter fa-lg"></span></a></li>
@@ -59,17 +65,29 @@
 </div>
 <!-- badges: start -->
 
-<p>The <a href="https://www.pandemicpact.org/" class="external-link">Pandemic PACT</a> monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its <a href="https://www.pandemicpact.org/" class="external-link">website</a> and from <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a>. This package provides an application programming interface (API) to the research programme’s Figshare repository to provide programmatic access to its publicly available tracker data along with it’s other data products.</p>
+<p>The <a href="https://www.pandemicpact.org/" class="external-link">Pandemic PACT</a> monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its <a href="https://www.pandemicpact.org/" class="external-link">website</a> and from <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a>. This package provides an application programming interface (API) to both the research programme’s Figshare repository and website data download facility to provide programmatic access to its publicly available tracker data along with it’s other data products.</p>
 <div class="section level2">
 <h2 id="what-does-pactr-do">What does <code>{pactr}</code> do?<a class="anchor" aria-label="anchor" href="#what-does-pactr-do"></a>
 </h2>
-<p><a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> provides functions to interface with Pandemic PACT’s Figshare repository for programmatic access to its contents. These functions are wrappers to specific functions of the <a href="https://docs.ropensci.org/deposits/index.html" class="external-link"><code>{deposits}</code> package</a> which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> are:</p>
+<p><a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> provides functions to interface programmatically with Pandemic PACT’s data products either through its Figshare repository or its website.</p>
+<p>The functions for Figshare interface are wrappers to specific functions of the <a href="https://docs.ropensci.org/deposits/index.html" class="external-link"><code>{deposits}</code> package</a> which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> are:</p>
 <ol style="list-style-type: decimal">
-<li><p>Listing of outputs/assets available from the Panedmic PACT Figshare repository;</p></li>
-<li><p>Download of outputs/assets available from the Pandemic PACT Figshare repository;</p></li>
-<li><p>Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository; and,</p></li>
-<li><p>Processing of Pandemic PACT data.</p></li>
+<li><p>Listing of outputs/assets available from the Panedmic PACT Figshare repository (<em>experimental</em>);</p></li>
+<li><p>Downloading of outputs/assets available from the Pandemic PACT Figshare repository (<em>experimental</em>);</p></li>
+<li><p>Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository (<em>experimental</em>); and,</p></li>
+<li><p>Processing of Pandemic PACT data (<em>experimental</em>).</p></li>
 </ol>
+<p>The functions for interfacing with the data available from the Pandemic PACT website allow for downloading, reading, and processing. Current website data-specific functionalities available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> are:</p>
+<ol style="list-style-type: decimal">
+<li><p>Downloading of Pandemic PACT dataset available from the website (<em>stable</em>);</p></li>
+<li><p>Reading of Pandemic PACT dataset available from the website (<em>stable</em>); and,</p></li>
+<li><p>Processing of Pandemic PACT dataset available from the website (<em>experimental</em>).</p></li>
+</ol>
+</div>
+<div class="section level2">
+<h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
+</h2>
+<p>The main motiviation for the development of <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> is to create a standardised programmatic interface to Pandemic PACT’s data for those performing research or investigation relevant to Pandemic PACT’s objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -89,7 +107,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+<h2 id="usage---figshare-workflow">Usage - Figshare workflow<a class="anchor" aria-label="anchor" href="#usage---figshare-workflow"></a>
 </h2>
 <div class="section level3">
 <h3 id="set-a-figshare-client">Set a Figshare client<a class="anchor" aria-label="anchor" href="#set-a-figshare-client"></a>
@@ -109,13 +127,21 @@
 <p>To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
-<p>The output is a <code>data.frame</code> containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming interface (API)</a> and are either set by the Pandemic PACT data team or by Figshare. The data.frame would have the following fields:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co">#&gt;  [1] "project_id"        "id"                "title"            </span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt;  [4] "doi"               "handle"            "url"              </span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;  [7] "published_date"    "thumb"             "defined_type"     </span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; [10] "defined_type_name" "group_id"          "url_private_api"  </span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; [13] "url_public_api"    "url_private_html"  "url_public_html"  </span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; [16] "timeline"          "resource_title"    "resource_doi"</span></span></code></pre></div>
+<p>The output is a <code>data.frame</code> containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming interface (API)</a> and are either set by the Pandemic PACT data team or by Figshare. The data.frame would look as follows:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 7 × 18</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt;   project_id       id title doi   handle url   published_date thumb defined_type</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;        &lt;int&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;        &lt;int&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; 1         NA 25827649 Scop… 10.2… ""     http… 2024-05-15T12… ""               3</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; 2         NA 25368136 test  10.2… ""     http… 2024-03-08T11… "htt…            1</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; 3     189177 25368070 Pand… 10.2… ""     http… 2024-03-08T10… "htt…            1</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; 4     189177 25352839 Exte… 10.2… ""     http… 2024-03-06T15… ""               6</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; 5     189168 24786258 Pand… 10.2… ""     http… 2023-12-15T11… ""               3</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; 6     189168 24773787 Pand… 10.2… ""     http… 2023-12-11T11… ""               3</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; 7     189168 24763548 Pand… 10.2… ""     http… 2023-12-11T11… ""               3</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; # ℹ 9 more variables: defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; #   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;, url_private_html &lt;chr&gt;,</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; #   url_public_html &lt;chr&gt;, timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;,</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; #   resource_doi &lt;chr&gt;</span></span></code></pre></div>
 <p>This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.</p>
 </div>
 <div class="section level3">
@@ -128,7 +154,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"Scoping Review Data"</span>, select <span class="op">=</span> <span class="va">id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">pact_download</span><span class="op">(</span>id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/pact_download.html">pact_download_figshare</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code></pre></div>
 <p>This will download the file <code>Scoping_Review-Data.xlsx</code> from the Pandemic PACT Figshare repository into the current working directory.</p>
 </div>
 <div class="section level3">
@@ -136,221 +162,60 @@
 </h3>
 <p>To read the Pandemic PACT tracker dataset into R, issue the following command:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">pact_read_data_tracker</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a data.frame with 4637 records and 860 fields.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#&gt; 'data.frame':    4637 obs. of  860 variables:</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt;  $ PactID                                                                                                                                       : chr  "C00153" "C00154" "C00155" "C00156" ...</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#&gt;  $ Grant.Number                                                                                                                                 : chr  "unknown" "unknown" "unknown" "unknown" ...</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt;  $ Grant.Title.Original                                                                                                                         : chr  "Serological studies to quantify SARS-CoV-2 population infection risk in Singapore, Hong Kong and Thailand" "African COVID-19 Preparedness (AFRICO19)" "COVID-19 Intervention Modelling for East Africa  (CIMEA)" "The African coaLition for Epidemic Research, Response and Training, Clinical Characterization Protocol (ALERRT CCP)" ...</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#&gt;  $ Grant.Title.Eng                                                                                                                              : chr  "Serological studies to quantify SARS-CoV-2 population infection risk in Singapore, Hong Kong and Thailand" "African COVID-19 Preparedness (AFRICO19)" "COVID-19 Intervention Modelling for East Africa  (CIMEA)" "The African coaLition for Epidemic Research, Response and Training, Clinical Characterization Protocol (ALERRT CCP)" ...</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt;  $ Award.Amount.Converted                                                                                                                       : num  1043108 2462448 1699974 1742202 2484600 ...</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#&gt;  $ Abstract.Eng                                                                                                                                 : chr  "We propose a prospective serological study to investigate the incidence of SARS-CoV-2 infection in the general "| __truncated__ "Our project, AFRICO19, will enhance capacity to understand SARS-CoV-2/hCoV-19 infection in three regions of Afr"| __truncated__ "COVID-19 is a global threat to health, with many countries reporting extended outbreaks. To date 9 countries in"| __truncated__ "As part of the response to the emergence of COVID-19, the World Health Organization Africa Regional Office is o"| __truncated__ ...</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt;  $ Laysummary                                                                                                                                   : chr  "" "" "" "" ...</span></span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co">#&gt;  $ ODA.funding.used                                                                                                                             : chr  "Pending" "Pending" "Pending" "Pending" ...</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt;  $ Grant.Type                                                                                                                                   : chr  "Pending" "New Grant" "Pending" "Pending" ...</span></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt;  $ Grant.Start.Year                                                                                                                             : int  2020 2020 2020 2020 2020 2020 2020 2020 2020 2020 ...</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Animals.                                                                                                               : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Bacteria.                                                                                                              : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Human.Populations.                                                                                                     : chr  "Checked" "Checked" "Checked" "Checked" ...</span></span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Disease.Vectors.                                                                                                       : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Viruses.                                                                                                               : chr  "Unchecked" "Checked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Environment.                                                                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Other.                                                                                                                 : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Unspecified.                                                                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt;  $ Study.Subject..choice.Not.applicable.                                                                                                        : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">#&gt;  $ If..Study.Subject..Please.Specific.                                                                                                          : chr  "" "" "" "" ...</span></span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">#&gt;  $ Ethnicity..choice.Asian.                                                                                                                     : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="co">#&gt;  $ Ethnicity..choice.Black.                                                                                                                     : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="co">#&gt;  $ Ethnicity..choice.White.                                                                                                                     : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="co">#&gt;  $ Ethnicity..choice.Mixed.                                                                                                                     : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="co">#&gt;  $ Ethnicity..choice.Other.                                                                                                                     : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="co">#&gt;  $ Ethnicity..choice.Unspecified.                                                                                                               : chr  "Checked" "Checked" "Checked" "Checked" ...</span></span>
-<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="co">#&gt;  $ Ethnicity..choice.Not.applicable.                                                                                                            : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="co">#&gt;  $ If..Other.Ethnicity..Please.Specific.                                                                                                        : chr  "" "" "" "" ...</span></span>
-<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Adolescent..em..font.color.blue..13.years.to.17.years...font...em..                                                       : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Adults..em..font.color.blue..18.and.older...font...em..                                                                   : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Children..em..font.color.blue..1.year.to.12.years...font...em..                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Infants..em..font.color.blue..1.month.to.1.year...font...em..                                                             : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-34"><a href="#cb10-34" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Newborns..em..font.color.blue..birth.to.1.month...font...em..                                                             : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-35"><a href="#cb10-35" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Older.adults..em..font.color.blue..65.and.older...font...em..                                                             : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-36"><a href="#cb10-36" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Other.                                                                                                                    : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-37"><a href="#cb10-37" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Unspecified.                                                                                                              : chr  "Checked" "Checked" "Checked" "Checked" ...</span></span>
-<span id="cb10-38"><a href="#cb10-38" tabindex="-1"></a><span class="co">#&gt;  $ Age.Groups..choice.Not.Applicable.                                                                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-39"><a href="#cb10-39" tabindex="-1"></a><span class="co">#&gt;  $ If..Other.AgeGroups..Please.Specific.                                                                                                        : chr  "" "" "" "" ...</span></span>
-<span id="cb10-40"><a href="#cb10-40" tabindex="-1"></a><span class="co">#&gt;  $ Rurality..choice.Rural.Population.Setting.                                                                                                   : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-41"><a href="#cb10-41" tabindex="-1"></a><span class="co">#&gt;  $ Rurality..choice.Suburban.Population.Setting.                                                                                                : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-42"><a href="#cb10-42" tabindex="-1"></a><span class="co">#&gt;  $ Rurality..choice.Urban.Population.Setting.                                                                                                   : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-43"><a href="#cb10-43" tabindex="-1"></a><span class="co">#&gt;  $ Rurality..choice.Other.                                                                                                                      : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-44"><a href="#cb10-44" tabindex="-1"></a><span class="co">#&gt;  $ Rurality..choice.Unspecified.                                                                                                                : chr  "Checked" "Checked" "Checked" "Unchecked" ...</span></span>
-<span id="cb10-45"><a href="#cb10-45" tabindex="-1"></a><span class="co">#&gt;  $ Rurality..choice.Not.applicable.                                                                                                             : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-46"><a href="#cb10-46" tabindex="-1"></a><span class="co">#&gt;  $ If..Other.Rurality..Please.Specific.                                                                                                         : chr  "" "" "" "" ...</span></span>
-<span id="cb10-47"><a href="#cb10-47" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Disabled.persons.                                                                                              : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-48"><a href="#cb10-48" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Drug.users.                                                                                                    : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-49"><a href="#cb10-49" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Internally.Displaced.and.Migrants.                                                                             : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-50"><a href="#cb10-50" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Indigenous.People.                                                                                             : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-51"><a href="#cb10-51" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Sexual.and.gender.minorities.                                                                                  : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-52"><a href="#cb10-52" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Prisoners.                                                                                                     : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-53"><a href="#cb10-53" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Sex.workers.                                                                                                   : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-54"><a href="#cb10-54" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Smokers.                                                                                                       : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-55"><a href="#cb10-55" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Women.                                                                                                         : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-56"><a href="#cb10-56" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Pregnant.women.                                                                                                : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-57"><a href="#cb10-57" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Individuals.with.multimorbidity.                                                                               : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-58"><a href="#cb10-58" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Minority.communities.unspecified.                                                                              : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-59"><a href="#cb10-59" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Vulnerable.populations.unspecified.                                                                            : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-60"><a href="#cb10-60" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Other.                                                                                                         : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-61"><a href="#cb10-61" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Unspecified.                                                                                                   : chr  "Checked" "Checked" "Checked" "Checked" ...</span></span>
-<span id="cb10-62"><a href="#cb10-62" tabindex="-1"></a><span class="co">#&gt;  $ Vulnerable.Population..choice.Not.applicable.                                                                                                : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-63"><a href="#cb10-63" tabindex="-1"></a><span class="co">#&gt;  $ If..Other.Vulnerable.Population..Please.Specific.                                                                                            : chr  "" "" "" "" ...</span></span>
-<span id="cb10-64"><a href="#cb10-64" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Farmers.                                                                                                         : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-65"><a href="#cb10-65" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Emergency.Responders.                                                                                            : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-66"><a href="#cb10-66" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Military.Personnel.                                                                                              : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-67"><a href="#cb10-67" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Social.Workers.                                                                                                  : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-68"><a href="#cb10-68" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Caregivers.                                                                                                      : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-69"><a href="#cb10-69" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Health.Personnel.                                                                                                : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-70"><a href="#cb10-70" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Hospital.personnel.                                                                                              : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-71"><a href="#cb10-71" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Nurses.and.Nursing.Staff.                                                                                        : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-72"><a href="#cb10-72" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Physicians.                                                                                                      : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-73"><a href="#cb10-73" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Dentists.and.dental.staff.                                                                                       : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-74"><a href="#cb10-74" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Veterinarians.                                                                                                   : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-75"><a href="#cb10-75" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Volunteers.                                                                                                      : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-76"><a href="#cb10-76" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Other.                                                                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-77"><a href="#cb10-77" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Unspecified.                                                                                                     : chr  "Checked" "Checked" "Checked" "Checked" ...</span></span>
-<span id="cb10-78"><a href="#cb10-78" tabindex="-1"></a><span class="co">#&gt;  $ Occupational.Groups..choice.Not.applicable.                                                                                                  : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-79"><a href="#cb10-79" tabindex="-1"></a><span class="co">#&gt;  $ If..Other.OccupationalGroups..Please.Specific.                                                                                               : chr  "" "" "" "" ...</span></span>
-<span id="cb10-80"><a href="#cb10-80" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Biological.Specimen.Banks.                                                                                                : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-81"><a href="#cb10-81" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Case.Reports.                                                                                                             : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-82"><a href="#cb10-82" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Clinical.Conference.                                                                                                      : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-83"><a href="#cb10-83" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Clinical.Study.                                                                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-84"><a href="#cb10-84" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Clinical.Trial.                                                                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-85"><a href="#cb10-85" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Comparative.Study.                                                                                                        : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-86"><a href="#cb10-86" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Consensus.Development.Conference.                                                                                         : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-87"><a href="#cb10-87" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Evaluation.Study.                                                                                                         : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-88"><a href="#cb10-88" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Laboratory.work.                                                                                                          : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-89"><a href="#cb10-89" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Meta.Analysis.                                                                                                            : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-90"><a href="#cb10-90" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Observational.Study.                                                                                                      : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-91"><a href="#cb10-91" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Policy.report.                                                                                                            : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-92"><a href="#cb10-92" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Review.                                                                                                                   : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-93"><a href="#cb10-93" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Secondary.Data.Analysis.                                                                                                  : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-94"><a href="#cb10-94" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Study..design.unspecified.                                                                                                : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-95"><a href="#cb10-95" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Systematic.Review.                                                                                                        : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-96"><a href="#cb10-96" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Validation.Study.                                                                                                         : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-97"><a href="#cb10-97" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Other.                                                                                                                    : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-98"><a href="#cb10-98" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Unspecified.                                                                                                              : chr  "Checked" "Checked" "Checked" "Checked" ...</span></span>
-<span id="cb10-99"><a href="#cb10-99" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Not.applicable.                                                                                                           : chr  "Unchecked" "Unchecked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-100"><a href="#cb10-100" tabindex="-1"></a><span class="co">#&gt;  $ Study.Type..choice.Clinical.                                                                                                                 : chr  "Unchecked" "Checked" "Unchecked" "Unchecked" ...</span></span>
-<span id="cb10-101"><a href="#cb10-101" tabindex="-1"></a><span class="co">#&gt;   [list output truncated]</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4,637 × 860</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;          </span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt;  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#&gt;  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt;  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#&gt;  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt;  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co">#&gt;  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt;  7 C00159 unknown      A comprehensive study of immunopathogene… ""             </span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt;  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt;  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt; 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 4,627 more rows</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 856 more variables: Award.Amount.Converted &lt;dbl&gt;, Abstract.Eng &lt;chr&gt;,</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt; #   Laysummary &lt;chr&gt;, ODA.funding.used &lt;chr&gt;, Grant.Type &lt;chr&gt;,</span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt; #   Grant.Start.Year &lt;int&gt;, Study.Subject..choice.Animals. &lt;chr&gt;,</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt; #   Study.Subject..choice.Bacteria. &lt;chr&gt;,</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt; #   Study.Subject..choice.Human.Populations. &lt;chr&gt;,</span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt; #   Study.Subject..choice.Disease.Vectors. &lt;chr&gt;, …</span></span></code></pre></div>
 <p>This function reads the <em>labelled</em> tracker dataset by default. If the raw dataset is required, then issue the following command:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">pact_read_data_tracker</span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a data.frame with 4638 records and 860 fields.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co">#&gt; 'data.frame':    4638 obs. of  860 variables:</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt;  $ pactid                                     : chr  "SDS001" "C00153" "C00154" "C00155" ...</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#&gt;  $ grant_number                               : chr  "unknown" "unknown" "unknown" "unknown" ...</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#&gt;  $ grant_title_original                       : chr  "Dummy record" "Serological studies to quantify SARS-CoV-2 population infection risk in Singapore, Hong Kong and Thailand" "African COVID-19 Preparedness (AFRICO19)" "COVID-19 Intervention Modelling for East Africa  (CIMEA)" ...</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#&gt;  $ grant_title_eng                            : chr  "Dummy record" "Serological studies to quantify SARS-CoV-2 population infection risk in Singapore, Hong Kong and Thailand" "African COVID-19 Preparedness (AFRICO19)" "COVID-19 Intervention Modelling for East Africa  (CIMEA)" ...</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#&gt;  $ award_amount_converted                     : num  1234567 1043108 2462448 1699974 1742202 ...</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#&gt;  $ abstract                                   : chr  "A dummy record to simulate a version update" "We propose a prospective serological study to investigate the incidence of SARS-CoV-2 infection in the general "| __truncated__ "Our project, AFRICO19, will enhance capacity to understand SARS-CoV-2/hCoV-19 infection in three regions of Afr"| __truncated__ "COVID-19 is a global threat to health, with many countries reporting extended outbreaks. To date 9 countries in"| __truncated__ ...</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt;  $ laysummary                                 : chr  "N/A" "" "" "" ...</span></span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#&gt;  $ oda_funding_used                           : int  -77 -77 -77 -77 -77 -77 -77 -77 -77 -77 ...</span></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt;  $ grant_type                                 : int  -77 -77 1 -77 -77 -77 1 1 -77 -77 ...</span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt;  $ grant_start_year                           : int  2020 2020 2020 2020 2020 2020 2020 2020 2020 2020 ...</span></span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt;  $ study_subject___1                          : int  0 0 0 0 0 0 0 1 0 0 ...</span></span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt;  $ study_subject___2                          : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt;  $ study_subject___3                          : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt;  $ study_subject___4                          : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt;  $ study_subject___5                          : int  0 0 1 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt;  $ study_subject___6                          : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt;  $ study_subject____88                        : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#&gt;  $ study_subject____99                        : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#&gt;  $ study_subject____9999                      : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co">#&gt;  $ study_subject_other                        : chr  "" "" "" "" ...</span></span>
-<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity___1                              : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity___2                              : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity___3                              : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity___4                              : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity____88                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity____99                            : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity____9999                          : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a><span class="co">#&gt;  $ ethnicity_other                            : chr  "" "" "" "" ...</span></span>
-<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a><span class="co">#&gt;  $ age_groups___1                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a><span class="co">#&gt;  $ age_groups___2                             : int  0 0 0 0 0 0 1 0 1 0 ...</span></span>
-<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a><span class="co">#&gt;  $ age_groups___5                             : int  0 0 0 0 0 0 1 0 0 0 ...</span></span>
-<span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a><span class="co">#&gt;  $ age_groups___6                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a><span class="co">#&gt;  $ age_groups___7                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a><span class="co">#&gt;  $ age_groups___3                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-36"><a href="#cb12-36" tabindex="-1"></a><span class="co">#&gt;  $ age_groups____88                           : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-37"><a href="#cb12-37" tabindex="-1"></a><span class="co">#&gt;  $ age_groups____99                           : int  1 1 1 1 1 1 0 1 0 1 ...</span></span>
-<span id="cb12-38"><a href="#cb12-38" tabindex="-1"></a><span class="co">#&gt;  $ age_groups____9999                         : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-39"><a href="#cb12-39" tabindex="-1"></a><span class="co">#&gt;  $ agegroups_other                            : chr  "" "" "" "" ...</span></span>
-<span id="cb12-40"><a href="#cb12-40" tabindex="-1"></a><span class="co">#&gt;  $ rurality___1                               : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-41"><a href="#cb12-41" tabindex="-1"></a><span class="co">#&gt;  $ rurality___2                               : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-42"><a href="#cb12-42" tabindex="-1"></a><span class="co">#&gt;  $ rurality___3                               : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-43"><a href="#cb12-43" tabindex="-1"></a><span class="co">#&gt;  $ rurality____88                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-44"><a href="#cb12-44" tabindex="-1"></a><span class="co">#&gt;  $ rurality____99                             : int  1 1 1 1 0 1 1 1 0 1 ...</span></span>
-<span id="cb12-45"><a href="#cb12-45" tabindex="-1"></a><span class="co">#&gt;  $ rurality____9999                           : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-46"><a href="#cb12-46" tabindex="-1"></a><span class="co">#&gt;  $ rurality_other                             : chr  "" "" "" "" ...</span></span>
-<span id="cb12-47"><a href="#cb12-47" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___1                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-48"><a href="#cb12-48" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___2                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-49"><a href="#cb12-49" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___3                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-50"><a href="#cb12-50" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___4                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-51"><a href="#cb12-51" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___5                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-52"><a href="#cb12-52" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___6                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-53"><a href="#cb12-53" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___7                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-54"><a href="#cb12-54" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___8                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-55"><a href="#cb12-55" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___9                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-56"><a href="#cb12-56" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___10                 : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-57"><a href="#cb12-57" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___13                 : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-58"><a href="#cb12-58" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___11                 : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-59"><a href="#cb12-59" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population___12                 : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-60"><a href="#cb12-60" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population____88                : int  0 0 0 0 0 1 0 0 0 0 ...</span></span>
-<span id="cb12-61"><a href="#cb12-61" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population____99                : int  1 1 1 1 1 0 1 1 1 1 ...</span></span>
-<span id="cb12-62"><a href="#cb12-62" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population____9999              : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-63"><a href="#cb12-63" tabindex="-1"></a><span class="co">#&gt;  $ vulnerable_population_other                : chr  "" "" "" "" ...</span></span>
-<span id="cb12-64"><a href="#cb12-64" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___1                    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-65"><a href="#cb12-65" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___2                    : int  0 0 0 0 0 0 0 0 1 0 ...</span></span>
-<span id="cb12-66"><a href="#cb12-66" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___3                    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-67"><a href="#cb12-67" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___4                    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-68"><a href="#cb12-68" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___5                    : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-69"><a href="#cb12-69" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___6                    : int  0 0 0 0 0 0 0 0 1 0 ...</span></span>
-<span id="cb12-70"><a href="#cb12-70" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___7                    : int  0 0 0 0 0 0 0 0 1 0 ...</span></span>
-<span id="cb12-71"><a href="#cb12-71" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___8                    : int  0 0 0 0 0 0 0 0 1 0 ...</span></span>
-<span id="cb12-72"><a href="#cb12-72" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___9                    : int  0 0 0 0 0 0 0 0 1 0 ...</span></span>
-<span id="cb12-73"><a href="#cb12-73" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___10                   : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-74"><a href="#cb12-74" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___11                   : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-75"><a href="#cb12-75" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups___12                   : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-76"><a href="#cb12-76" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups____88                  : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-77"><a href="#cb12-77" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups____99                  : int  1 1 1 1 1 1 1 1 0 1 ...</span></span>
-<span id="cb12-78"><a href="#cb12-78" tabindex="-1"></a><span class="co">#&gt;  $ occupational_groups____9999                : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-79"><a href="#cb12-79" tabindex="-1"></a><span class="co">#&gt;  $ occupationalgroups_other                   : chr  "" "" "" "" ...</span></span>
-<span id="cb12-80"><a href="#cb12-80" tabindex="-1"></a><span class="co">#&gt;  $ study_type___1                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-81"><a href="#cb12-81" tabindex="-1"></a><span class="co">#&gt;  $ study_type___2                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-82"><a href="#cb12-82" tabindex="-1"></a><span class="co">#&gt;  $ study_type___3                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-83"><a href="#cb12-83" tabindex="-1"></a><span class="co">#&gt;  $ study_type___4                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-84"><a href="#cb12-84" tabindex="-1"></a><span class="co">#&gt;  $ study_type___5                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-85"><a href="#cb12-85" tabindex="-1"></a><span class="co">#&gt;  $ study_type___6                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-86"><a href="#cb12-86" tabindex="-1"></a><span class="co">#&gt;  $ study_type___7                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-87"><a href="#cb12-87" tabindex="-1"></a><span class="co">#&gt;  $ study_type___8                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-88"><a href="#cb12-88" tabindex="-1"></a><span class="co">#&gt;  $ study_type___9                             : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-89"><a href="#cb12-89" tabindex="-1"></a><span class="co">#&gt;  $ study_type___10                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-90"><a href="#cb12-90" tabindex="-1"></a><span class="co">#&gt;  $ study_type___11                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-91"><a href="#cb12-91" tabindex="-1"></a><span class="co">#&gt;  $ study_type___12                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-92"><a href="#cb12-92" tabindex="-1"></a><span class="co">#&gt;  $ study_type___13                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-93"><a href="#cb12-93" tabindex="-1"></a><span class="co">#&gt;  $ study_type___14                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-94"><a href="#cb12-94" tabindex="-1"></a><span class="co">#&gt;  $ study_type___15                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-95"><a href="#cb12-95" tabindex="-1"></a><span class="co">#&gt;  $ study_type___16                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-96"><a href="#cb12-96" tabindex="-1"></a><span class="co">#&gt;  $ study_type___17                            : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-97"><a href="#cb12-97" tabindex="-1"></a><span class="co">#&gt;  $ study_type____88                           : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-98"><a href="#cb12-98" tabindex="-1"></a><span class="co">#&gt;  $ study_type____99                           : int  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb12-99"><a href="#cb12-99" tabindex="-1"></a><span class="co">#&gt;  $ study_type____9999                         : int  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span id="cb12-100"><a href="#cb12-100" tabindex="-1"></a><span class="co">#&gt;  $ study_type_main___5                        : int  0 0 1 0 0 1 1 0 0 1 ...</span></span>
-<span id="cb12-101"><a href="#cb12-101" tabindex="-1"></a><span class="co">#&gt;   [list output truncated]</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4,638 × 860</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt;    pactid grant_number grant_title_original                      grant_title_eng</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;          </span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#&gt;  1 SDS001 unknown      Dummy record                              "Dummy record" </span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#&gt;  2 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#&gt;  3 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#&gt;  4 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt;  5 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#&gt;  6 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt;  7 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt;  8 C00159 unknown      A comprehensive study of immunopathogene… ""             </span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt;  9 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…</span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; 10 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 4,628 more rows</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 856 more variables: award_amount_converted &lt;dbl&gt;, abstract &lt;chr&gt;,</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt; #   laysummary &lt;chr&gt;, oda_funding_used &lt;int&gt;, grant_type &lt;int&gt;,</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; #   grant_start_year &lt;int&gt;, study_subject___1 &lt;int&gt;, study_subject___2 &lt;int&gt;,</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt; #   study_subject___3 &lt;int&gt;, study_subject___4 &lt;int&gt;, study_subject___5 &lt;int&gt;,</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#&gt; #   study_subject___6 &lt;int&gt;, study_subject____88 &lt;int&gt;,</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#&gt; #   study_subject____99 &lt;int&gt;, study_subject____9999 &lt;int&gt;, …</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="process-the-pandemic-pact-tracker-dataset">Process the Pandemic PACT tracker dataset<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset"></a>
 </h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">pact_read_data_tracker</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">pact_process_data_tracker</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4,637 × 37</span></span>
 <span><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;          </span></span>
@@ -371,13 +236,62 @@
 <span><span class="co">#&gt; #   Age.Groups &lt;list&gt;, Rurality &lt;list&gt;, Vulnerable.Population &lt;list&gt;,</span></span>
 <span><span class="co">#&gt; #   Occupational.Groups &lt;list&gt;, Study.Type &lt;list&gt;, Clinical.Trial &lt;list&gt;,</span></span>
 <span><span class="co">#&gt; #   report &lt;chr&gt;, Pathogen &lt;list&gt;, Pathogen.Specific &lt;list&gt;, Disease &lt;list&gt;, …</span></span></code></pre></div>
+<p>For a more detailed discussion of the usage and limitations of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> Figshare functions, see this <a href="https://oxford-ihtm.io/pactr/figshare-workflow.html">vignette</a>.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="usage---website-data-workflow">Usage - website data workflow<a class="anchor" aria-label="anchor" href="#usage---website-data-workflow"></a>
+</h2>
+<div class="section level3">
+<h3 id="download-the-pandemic-pact-tracker-dataset-from-the-website">Download the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#download-the-pandemic-pact-tracker-dataset-from-the-website"></a>
+</h3>
+<p>To download the Pandemic PACT traker dataset available from its website, the following command can be used:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
+<span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>which will return the path to the downloaded dataset:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpQSQlFE/pandemic-pact-grants.csv"</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
+</h3>
+<p>Instead of downloading, the Pandemic PACT dataset available from its website can be read into R directly as follows:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>which results in the following:</p>
+</div>
+<div class="section level3">
+<h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
+</h3>
+<p>The package includes functions that will process the Pandemic PACT tracker dataset into specific structures and aggregations that will allow for further plotting and reporting of similar outputs that are currently presented in the Pandemic PACT website.</p>
+<p>For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the <a href="https://www.pandemicpact.org/visualise#disease" class="external-link">website</a>.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/pact_process_website.html">pact_process_website_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
+<p>which produces the following output:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 171 × 3</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease                                      n</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;                                    &lt;int&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt;  1           1978 Pandemic-prone influenza                     1</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt;  2           1978 Severe Acute Respiratory Syndrome (SARS)     1</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt;  3           1981 COVID-19                                     1</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt;  4           1982 COVID-19                                     1</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt;  5           1988 COVID-19                                     1</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co">#&gt;  6           1992 COVID-19                                     6</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt;  7           1994 COVID-19                                     2</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt;  8           1996 COVID-19                                     1</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt;  9           1997 COVID-19                                    28</span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt; 10           1997 Zika virus disease                           1</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 161 more rows</span></span></code></pre></div>
+<p>which in turn can be plotted as follows:</p>
+<p><img src="reference/figures/README-usage-website-3c-1.png" width="100%"></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package, please use the suggested citation provided by a call to the <code><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"pactr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite pactr in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -395,8 +309,9 @@
 <span><span class="co">#&gt;     url = {https://oxford-ihtm.io/pactr/},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the <code><a href="reference/pact_cite.html">pact_cite()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_cite.html">pact_cite</a></span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="fl">24763548</span><span class="op">)</span>  <span class="co">## cite the labelled version of the tracker dataset</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## cite the labelled version of the tracker dataset</span></span>
+<span><span class="fu"><a href="reference/pact_cite.html">pact_cite</a></span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="fl">24763548</span><span class="op">)</span>  </span>
 <span><span class="co">#&gt; To cite Pandemic PACT Grant Tracker (labelled) in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Pandemic PACT team (2023). "Pandemic PACT Grant Tracker (labelled).</span></span>
