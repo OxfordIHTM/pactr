@@ -2,7 +2,7 @@
 #' Process Pandemic PACT data
 #'
 #' @param df A data.frame of the Pandemic PACT dataset from the Figshare
-#'   repository
+#'   repository or from the website.
 #' @param category A character value for the variable category to look for
 #'   in the fields for `df` for collapsing multiple fields into one.
 #' @param other A character value for the name of the variable in `df` for
@@ -10,31 +10,26 @@
 #'   indicate that field `category` has no other option.
 #' @param nest Logical. Should variable/fields with multiple values be nested? 
 #'   Default to FALSE.
-#' @param group Logical. Should `df` be grouped? Default is FALSE.
-#' @param group_type A character value of type of grouping to perform. Only
-#'   evaluated if `group = TRUE`. Possible values are `funder``, 
-#'   `funder_location`, `institution`, `institution_location`,
-#'   `research_location`, or `year`.
 #'
 #' @returns A tibble of processed Pandemic PACT dataset.
 #'
 #' @examples
 #' \dontrun{
-#'   pact_data <- pact_read_data_tracker(pact_client_set())
-#'   pact_process_data_tracker(df = pact_data)
+#'   pact_data <- pact_read_figshare(pact_client_set())
+#'   pact_process_figshare(df = pact_data)
 #' }
 #'
-#' @rdname pact_process
+#' @rdname pact_process_figshare
 #' @export
 #'
 
-pact_process_data_figshare <- function(df) {
+pact_process_figshare <- function(df) {
   ## Get core variables ----
   core_vars <- df |>
     dplyr::select(.data$PactID:.data$Grant.Start.Year)
 
   ## Process study subject variable ----
-  study_subject <- pact_process_category(
+  study_subject <- pact_process_figshare_category(
     df, category = "Study.Subject",
     other = "If..Study.Subject..Please.Specific.", nest = TRUE
   )
@@ -44,7 +39,7 @@ pact_process_data_figshare <- function(df) {
     tibble::tibble()
 
   ## Process ethnicity variable ----
-  ethnicity <- pact_process_category(
+  ethnicity <- pact_process_figshare_category(
     df = df, category = "Ethnicity", 
     other = "If..Other.Ethnicity..Please.Specific.", nest = TRUE
   )
@@ -53,7 +48,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, ethnicity, by = "PactID")
 
   ## Process age groups variable ----
-  age_groups <- pact_process_category(
+  age_groups <- pact_process_figshare_category(
     df = df, category = "Age.Groups",
     other = "If..Other.AgeGroups..Please.Specific.", nest = TRUE
   )
@@ -62,7 +57,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, age_groups, by = "PactID")
 
   ## Process rurality variable ----
-  rurality <- pact_process_category(
+  rurality <- pact_process_figshare_category(
     df = df, category = "Rurality", 
     other = "If..Other.Rurality..Please.Specific.", nest = TRUE
   )
@@ -71,7 +66,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, rurality, by = "PactID")
 
   ## Process vulnerable variable ----
-  vulnerable <- pact_process_category(
+  vulnerable <- pact_process_figshare_category(
     df = df, category = "Vulnerable.Population",
     other = "If..Other.Vulnerable.Population..Please.Specific.", nest = TRUE
   )
@@ -80,7 +75,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, vulnerable, by = "PactID")
 
   ## Process occupation variable ----
-  occupation <- pact_process_category(
+  occupation <- pact_process_figshare_category(
     df = df, category = "Occupational.Groups",
     other = "If..Other.OccupationalGroups..Please.Specific.", nest = TRUE
   )
@@ -89,7 +84,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, occupation, by = "PactID")
 
   ## Process study type variable ----
-  study_type <- pact_process_category(
+  study_type <- pact_process_figshare_category(
     df = df, category = "Study.Type",
     other = "If..Other.Study.Type..Please.Specific.", nest = TRUE
   )
@@ -98,7 +93,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, study_type, by = "PactID")
 
   ## Process clinical trial variable ----
-  clinical_trial <- pact_process_category(
+  clinical_trial <- pact_process_figshare_category(
     df = df, category = "Clinical.Trial", nest = TRUE
   )
 
@@ -107,13 +102,13 @@ pact_process_data_figshare <- function(df) {
     dplyr::mutate(report = df$Report.or.Literature.Based.Research)
 
   ## Process pathogen variable ----
-  pathogen <- pact_process_category_pathogen(df = df)
+  pathogen <- pact_process_figshare_category_pathogen(df = df)
 
   ## Concatenate tidy_data with pathogen ----
   tidy_data <- dplyr::left_join(tidy_data, pathogen, by = "PactID")
 
   ## Process disease variable ----
-  disease <- pact_process_category(
+  disease <- pact_process_figshare_category(
     df = df, category = "Disease",
     other = "If..Other.Disease..Please.Specific.", nest = TRUE
   )
@@ -126,13 +121,13 @@ pact_process_data_figshare <- function(df) {
     )
 
   ## Process funder variable ----
-  funder <- pact_process_category_funder(df)
+  funder <- pact_process_figshare_category_funder(df)
 
   ## Concatenate tidy_data with funder ----
   tidy_data <- dplyr::left_join(tidy_data, funder, by = "PactID")
 
   ## Process funder country variable ----
-  funder_country <- pact_process_category(
+  funder_country <- pact_process_figshare_category(
     df, category = "Funder.Country", nest = TRUE
   )
 
@@ -140,7 +135,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, funder_country, by = "PactID")
 
   ## Process funder region variable ----
-  funder_region <- pact_process_category(
+  funder_region <- pact_process_figshare_category(
     df, category = "Funder.Region", nest = TRUE
   )
 
@@ -157,7 +152,7 @@ pact_process_data_figshare <- function(df) {
     )
 
   ## Process institution region variable ----
-  institution_region <- pact_process_category(
+  institution_region <- pact_process_figshare_category(
     df, category = "Research_Institution_Region", nest = TRUE
   )
 
@@ -165,7 +160,7 @@ pact_process_data_figshare <- function(df) {
   tidy_data <- dplyr::left_join(tidy_data, institution_region, by = "PactID")
 
   ## Process research location region variable ----
-  research_region <- pact_process_category(
+  research_region <- pact_process_figshare_category(
     df, category = "Research.Location.Region", nest = TRUE
   )
 
@@ -174,7 +169,7 @@ pact_process_data_figshare <- function(df) {
     dplyr::mutate(complete_section3 = df$Complete..2)
 
   ## Process tags variable ----
-  tags <- pact_process_category(df, category = "Tags", nest = TRUE)
+  tags <- pact_process_figshare_category(df, category = "Tags", nest = TRUE)
 
   ## Concatenate tidy_data with tags ----
   tidy_data <- dplyr::left_join(tidy_data, tags, by = "PactID") |>
@@ -186,11 +181,12 @@ pact_process_data_figshare <- function(df) {
 
 
 #'
-#' @rdname pact_process
+#' @rdname pact_process_figshare
 #' @export
 #'
 
-pact_process_category <- function(df, category, other = NULL, nest = FALSE) {
+pact_process_figshare_category <- function(df, category, 
+                                           other = NULL, nest = FALSE) {
   ## Tidy up df ----
   tidy_df <- df |>
     tidyr::pivot_longer(
@@ -256,11 +252,11 @@ pact_process_category <- function(df, category, other = NULL, nest = FALSE) {
 }
 
 #'
-#' @rdname pact_process
+#' @rdname pact_process_figshare
 #' @export
 #' 
 
-pact_process_category_pathogen <- function(df) {
+pact_process_figshare_category_pathogen <- function(df) {
   df |>
     tidyr::pivot_longer(
       cols = dplyr::starts_with("Pathogen"),
@@ -326,11 +322,11 @@ pact_process_category_pathogen <- function(df) {
 }
 
 #'
-#' @rdname pact_process
+#' @rdname pact_process_figshare
 #' @export
 #' 
 
-pact_process_category_funder <- function(df) {
+pact_process_figshare_category_funder <- function(df) {
   df |>
     tidyr::pivot_longer(
       cols = dplyr::starts_with("Funder.Name"),
@@ -351,95 +347,4 @@ pact_process_category_funder <- function(df) {
     dplyr::distinct() |>
     dplyr::ungroup() |>
     dplyr::select(c(.data$PactID, .data$Funder.Name))
-}
-
-#'
-#' @rdname pact_process
-#' @export
-#' 
-
-pact_process_disease <- function(df,
-                                 group = FALSE,
-                                 group_type = c("funder", "funder_location",
-                                                "institution", 
-                                                "institution_location",
-                                                "research_location",
-                                                "year")) {
-  ## Get agg_type ----
-  group_type <- match.arg(group_type)
-
-  ## Unnest disease ----
-  unnest_df <- df |>
-    tidyr::unnest(cols = .data$Disease)
-
-  if (group) {
-    if (group_type == "funder") {
-      tidy_df <- unnest_df |>
-        tidyr::unnest(.data$FundingOrgName) |>
-        dplyr::count(.data$FundingOrgName, name = "n_grant") |>
-        dplyr::right_join(
-          unnest_df |>
-            tidyr::unnest(.data$FundingOrgName) |>
-            dplyr::group_by(.data$FundingOrgName, .data$Disease) |>
-            dplyr::count(.data$Disease, name = "n_grant_disease"),
-          by = "FundingOrgName"
-        ) |>
-        dplyr::arrange(
-          dplyr::desc(
-            .data$n_grant), dplyr::desc(.data$n_grant_disease
-          )
-        ) |>
-        dplyr::relocate(.data$n_grant, .before = .data$n_grant_disease)
-    }
-
-    if (group_type == "funder_location") {
-      tidy_df <- unnest_df |>
-        tidyr::unnest(c(.data$FunderRegion, .data$FunderCountry)) |>
-        dplyr::count(.data$FunderRegion, name = "n_grant_region") |>
-        dplyr::right_join(
-          unnest_df |>
-            tidyr::unnest(c(.data$FunderRegion, .data$FunderCountry)) |>
-            dplyr::group_by(.data$FunderRegion, .data$FunderCountry) |>
-            dplyr::count(.data$FunderCountry, name = "n_grant_country"),
-          by = "FunderRegion"
-        ) |>
-        dplyr::right_join(
-          unnest_df |>
-            tidyr::unnest(
-              c(.data$FunderRegion, .data$FunderCountry, .data$Disease)
-            ) |>
-            dplyr::group_by(
-              .data$FunderRegion, .data$FunderCountry, .data$Disease
-            ) |>
-            dplyr::count(.data$Disease, name = "n_grant_disease"),
-          by = c("FunderRegion", "FunderCountry")
-        ) |>
-        dplyr::arrange(
-          dplyr::desc(.data$n_grant_region), 
-          dplyr::desc(.data$n_grant_country), 
-          dplyr::desc(.data$n_grant_disease)
-        )
-    }
-
-    if (group_type == "institution") {
-      tidy_df <- unnest_df |>
-        tidyr::unnest(.data$ResearchInstitutionName) |>
-        dplyr::count(.data$ResearchInstitutionName, name = "n_grant") |>
-        dplyr::right_join(
-          unnest_df |>
-            tidyr::unnest(.data$ResearchInstitutionName) |>
-            dplyr::group_by(.data$ResearchInstitutionName, .data$Disease) |>
-            dplyr::count(.data$Disease, name = "n_grant_disease"),
-          by = "ResearchInstitutionName"
-        ) |>
-        dplyr::arrange(
-          dplyr::desc(.data$n_grant), dplyr::desc(.data$n_grant_disease)
-        ) |>
-        dplyr::relocate(.data$n_grant, .before = .data$n_grant_disease)
-    }
-  } else {
-    tidy_df <- unnest_df |>
-      dplyr::count(.data$Disease) |>
-      dplyr::arrange(dplyr::desc(.data$n))
-  } 
 }

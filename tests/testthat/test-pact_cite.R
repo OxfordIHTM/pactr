@@ -12,10 +12,5 @@ test_that("pact_cite outputs as expected", {
   expect_type(pact_citation, "list")
   expect_s3_class(pact_citation, "citation")
   expect_s3_class(pact_citation, "bibentry")
-})
-
-test_that("CITATION file is present", {
-  skip_on_ci()
-
   expect_true("CITATION" %in% list.files(tempdir()))
 })
