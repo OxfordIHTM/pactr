@@ -25,19 +25,33 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/847474685.svg)](https://zenodo.org/badge/latestdoi/847474685)
 <!-- badges: end -->
 
-The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/) and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package provides an application programming interface (API) to the research programme's Figshare repository to provide programmatic access to its publicly available tracker data along with it's other data products.
+The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/) and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package provides an application programming interface (API) to both the research programme's Figshare repository and website data download facility to provide programmatic access to its publicly available tracker data along with it's other data products.
 
 ## What does `{pactr}` do?
 
-`{pactr}` provides functions to interface with Pandemic PACT's Figshare repository for programmatic access to its contents. These functions are wrappers to specific functions of the [`{deposits}` package](https://docs.ropensci.org/deposits/index.html) which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in `{pactr}` are:
+`{pactr}` provides functions to interface programmatically with Pandemic PACT's data products either through its Figshare repository or its website. 
 
-1. Listing of outputs/assets available from the Panedmic PACT Figshare repository;
+The functions for Figshare interface are wrappers to specific functions of the [`{deposits}` package](https://docs.ropensci.org/deposits/index.html) which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in `{pactr}` are:
 
-2. Download of outputs/assets available from the Pandemic PACT Figshare repository;
+1. Listing of outputs/assets available from the Panedmic PACT Figshare repository (*experimental*);
 
-3. Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository; and,
+2. Downloading of outputs/assets available from the Pandemic PACT Figshare repository (*experimental*);
 
-4. Processing of Pandemic PACT data.
+3. Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository (*experimental*); and,
+
+4. Processing of Pandemic PACT data (*experimental*).
+
+The functions for interfacing with the data available from the Pandemic PACT website allow for downloading, reading, and processing. Current website data-specific functionalities available in `{pactr}` are:
+
+1. Downloading of Pandemic PACT dataset available from the website (*stable*);
+
+2. Reading of Pandemic PACT dataset available from the website (*stable*); and,
+
+3. Processing of Pandemic PACT dataset available from the website (*experimental*).
+
+## Motivation
+
+The main motiviation for the development of `{pactr}` is to create a standardised programmatic interface to Pandemic PACT's data for those performing research or investigation relevant to Pandemic PACT's objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.
 
 ## Installation
 
@@ -63,7 +77,7 @@ remotes::install_github("OxfordIHTM/pactr")
 library(pactr)
 ```
 
-## Usage
+## Usage - Figshare workflow
 
 ### Set a Figshare client
 
@@ -91,11 +105,11 @@ To list available outputs/assets from the Pandemic PACT Figshare repository, iss
 pact_list(pact_client)
 ```
 
-The output is a `data.frame` containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by [Figshare's application programming interface (API)](https://docs.figshare.com/) and are either set by the Pandemic PACT data team or by Figshare. The data.frame would have the following fields:
+The output is a `data.frame` containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by [Figshare's application programming interface (API)](https://docs.figshare.com/) and are either set by the Pandemic PACT data team or by Figshare. The data.frame would look as follows:
 
 ```{r usage-1b, echo = FALSE}
 pact_list(pact_client) |>
-  names()
+  tibble::tibble()
 ```
 
 This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.
@@ -110,7 +124,7 @@ file_id <- pact_list(pact_client) |>
   subset(title == "Scoping Review Data", select = id) |>
   unlist()
 
-pact_download(id = file_id, path = ".")
+pact_download_figshare(id = file_id, path = ".")
 ```
 
 This will download the file `Scoping_Review-Data.xlsx` from the Pandemic PACT Figshare repository into the current working directory.
@@ -120,48 +134,126 @@ This will download the file `Scoping_Review-Data.xlsx` from the Pandemic PACT Fi
 To read the Pandemic PACT tracker dataset into R, issue the following command:
 
 ```{r usage-3a, eval = FALSE}
-pact_read_data_tracker(pact_client)
+pact_read_figshare(pact_client)
 ```
 
 which outputs a data.frame with 4637 records and 860 fields. 
 
 ```{r usage-3b, echo = FALSE}
-pact_read_data_tracker(pact_client) |>
-  str()
+pact_read_figshare(pact_client) |>
+  tibble::tibble()
 ```
 
 This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
 
 ```{r usage-3c, eval = FALSE}
-pact_read_data_tracker(pact_client, tracker_type = "raw")
+pact_read_figshare(pact_client, tracker_type = "raw")
 ```
 
 which outputs a data.frame with 4638 records and 860 fields.
 
 ```{r usage-3d, echo = FALSE}
-pact_read_data_tracker(pact_client, tracker_type = "raw") |>
-  str()
+pact_read_figshare(pact_client, tracker_type = "raw") |>
+  tibble::tibble()
 ```
 
 ### Process the Pandemic PACT tracker dataset
 
 ```{r useage-3e}
-pact_read_data_tracker(pact_client) |>
-  pact_process_data_tracker()
+pact_read_figshare(pact_client) |>
+  pact_process_figshare() |>
+  tibble::tibble()
+```
+
+For a more detailed discussion of the usage and limitations of the `{pactr}` Figshare functions, see this [vignette](https://oxford-ihtm.io/pactr/figshare-workflow.html).
+
+## Usage - website data workflow
+
+### Download the Pandemic PACT tracker dataset from the website
+
+To download the Pandemic PACT traker dataset available from its website, the following command can be used:
+
+```{r usage-website-1a, eval = FALSE}
+## Save the dataset from website to a temporary directory ----
+pact_download_website(path = tempdir())
+```
+
+which will return the path to the downloaded dataset:
+
+```{r usage-website-1b, echo = FALSE}
+## Save the dataset from website to a temporary directory ----
+pact_download_website(path = tempdir())
+```
+
+### Read the Pandemic PACT tracker dataset from the website
+
+Instead of downloading, the Pandemic PACT dataset available from its website can be read into R directly as follows:
+
+```{r usage-website-2a, eval = FALSE}
+pact_read_website()
+```
+
+which results in the following:
+
+```{r usage-website-2b, echo = FALSE}
+pact_read_website()
+```
+
+### Process the Pandemic PACT tracker dataset from the website
+
+The package includes functions that will process the Pandemic PACT tracker dataset into specific structures and aggregations that will allow for further plotting and reporting of similar outputs that are currently presented in the Pandemic PACT website.
+
+For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the [website](https://www.pandemicpact.org/visualise#disease).
+
+```{r usage-website-3a, eval = FALSE}
+pact_read_website() |>
+  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+```
+
+which produces the following output:
+
+```{r usage-website-3b, echo = FALSE}
+pact_read_website() |>
+  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+```
+
+which in turn can be plotted as follows:
+
+```{r usage-website-3c, echo = FALSE}
+pact_read_website() |>
+  dplyr::mutate(
+    Year = ifelse(
+      GrantStartYear < 2020 | is.na(GrantStartYear), 
+      PublicationYearOfAward, GrantStartYear
+    )
+  ) |>
+  pact_process_website_topic_group(
+    topic = "Disease", group = "Year"
+  ) |>
+    #dplyr::filter(GrantStartYear >= 2020) |>
+    ggplot2::ggplot(
+      mapping = ggplot2::aes(
+        x = Year, y = n, group = Disease, color = Disease
+      )
+    ) +
+      ggplot2::geom_line() +
+      ggplot2::theme_minimal() +
+      ggplot2::theme(legend.position = "top")
 ```
 
 ## Citation
 
 To cite the `{pactr}` package, please use the suggested citation provided by a call to the `citation()` function as follows:
 
-```{r citation-package}
+```{r citation-pac  kage}
 citation("pactr")
 ```
 
 To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the `pact_cite()` function as follows:
 
 ```{r citation-data}
-pact_cite(pact_client, id = 24763548)  ## cite the labelled version of the tracker dataset
+## cite the labelled version of the tracker dataset
+pact_cite(pact_client, id = 24763548)  
 ```
 
 ## Community guidelines

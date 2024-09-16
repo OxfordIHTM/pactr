@@ -1,0 +1,19 @@
+---
+title: "Figshare workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Figshare workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pactr)
+```
