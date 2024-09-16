@@ -58,9 +58,9 @@ reference:
 
   - title: Read
     contents:
-    - pact_read_data_figshare
-    - pact_read_data_dictionary
-    - pact_read_data_website
+    - pact_read_figshare
+    - pact_read_figshare_dictionary
+    - pact_read_website
 
   - title: Download
     contents:
@@ -69,11 +69,13 @@ reference:
 
   - title: Process
     contents:
-    - pact_process_data_figshare
-    - pact_process_category
-    - pact_process_category_pathogen
-    - pact_process_category_funder
-    - pact_process_disease
+    - pact_process_figshare
+    - pact_process_figshare_category
+    - pact_process_figshare_category_pathogen
+    - pact_process_figshare_category_funder
+    - pact_process_website_topic_group
+    - pact_process_website_disease
+
 
   - title: Cite
     contents:

@@ -37,6 +37,22 @@ nested_vars <- c(
   "ResearchSubcat"
 )
 
+#
+# Topic variables in downloadable dataset from website
+#
+
+topic_vars <- c(
+  "GrantEndYear", "ResearchInstitutionName", "StudySubject", "Ethnicity",
+  "AgeGroups", "Rurality", "VulnerablePopulations", "OccupationalGroups",
+  "StudyType", "ClinicalTrial", "Pathogen", "InfluenzaA", "InfluenzaH1",
+  "InfluenzaH2", "InfluenzaH3", "InfluenzaH5", "InfluenzaH6", "InfluenzaH7",
+  "InfluenzaH10", "Disease", "FundingOrgName", "FunderCountry", "FunderRegion",
+  "ResearchInstitutionRegion", "ResearchLocationRegion", "Tags",
+  "MPOXResearchPriority", "MPOXResearchSubPriority", 
+  "ResearchInstitutionCountry", "ResearchLocationCountry", "ResearchCat",
+  "GrantStartYear" 
+)
+
 #'
 #' Detect one-to-one mismatch in variables
 #' 
