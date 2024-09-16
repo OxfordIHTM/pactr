@@ -27,15 +27,15 @@
 #' @examples
 #' \dontrun{
 #'   df <- pact_read_data_website()
-#'   pact_process_topic_group(df, topic = "Disease")
+#'   pact_process_website_topic_group(df, topic = "Disease")
 #' }
 #' 
 #' @rdname pact_process_website
 #' @export
 #' 
 
-pact_process_topic_group <- function(df, topic, group = NULL, 
-                                     outcome = c("frequency", "money")) {
+pact_process_website_topic_group <- function(df, topic, group = NULL, 
+                                             outcome = c("frequency", "money")) {
   ## Get outcome value ----
   outcome <- match.arg(outcome)
 
@@ -129,7 +129,7 @@ pact_process_website_disease <- function(df,
   ## Get outcome ----
   outcome <- match.arg(outcome)
 
-  pact_process_topic_group(
+  pact_process_website_topic_group(
     df = df, topic = "Disease", group = group, outcome = outcome
   )
 }
