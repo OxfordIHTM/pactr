@@ -32,7 +32,7 @@ PACT data is publicly available for download from its
 provides an application programming interface (API) to both the research
 programme’s Figshare repository and website data download facility to
 provide programmatic access to its publicly available tracker data along
-with it’s other data products.
+with its other data products.
 
 ## What does `{pactr}` do?
 
@@ -274,7 +274,7 @@ pact_read_figshare(pact_client) |>
 
 For a more detailed discussion of the usage and limitations of the
 `{pactr}` Figshare functions, see this
-[vignette](https://oxford-ihtm.io/pactr/figshare-workflow.html).
+[vignette](https://oxford-ihtm.io/pactr/articles/figshare-workflow.html).
 
 ## Usage - website data workflow
 
@@ -290,7 +290,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpDIpuWt/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpeotbCg/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
