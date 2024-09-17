@@ -9,17 +9,20 @@
 #' @param path The local directory where file is to be downloaded.
 #' @param overwrite Logical. Should existing files be overwritten? If TRUE,
 #'   existing files will be overwritten. Default is FALSE.
-#' @param quiet Logical. If FALSE, download progress is displayed.
+#' @param quiet Logical. If TRUE (default), download progress is not displayed.
 #'
 #' @returns The full path of the downloaded file.
 #'
 #' @examples
 #' \dontrun{
+#'   ## From Figshare
 #'   pact_client <- pact_client_set()
 #'   pact_download_figshare(pact_client, id = 25827649, path = tempdir())
+#' 
+#'   ## From website
+#'   pact_download_website(path = tempdir())
 #' }
 #' 
-#' pact_download_website(path = tempdir())
 #'
 #' @rdname pact_download
 #' @export

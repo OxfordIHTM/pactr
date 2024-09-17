@@ -117,11 +117,9 @@ pact_read_figshare(pact_client)
 
 which outputs a data.frame with 4637 records and 860 fields. 
 
-```{r usage-3b, echo = FALSE, cache = TRUE}
-figshare_data <- pact_read_figshare(pact_client) |>
+```{r usage-3b, echo = FALSE}
+pact_read_figshare(pact_client) |>
   tibble::tibble()
-
-figshare_data
 ```
 
 This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
@@ -132,11 +130,9 @@ pact_read_figshare(pact_client, tracker_type = "raw")
 
 which outputs a data.frame with 4638 records and 860 fields.
 
-```{r usage-3d, echo = FALSE, cache = TRUE}
-figshare_data_raw <- pact_read_figshare(pact_client, tracker_type = "raw") |>
+```{r usage-3d, echo = FALSE}
+pact_read_figshare(pact_client, tracker_type = "raw") |>
   tibble::tibble()
-
-figshare_data_raw
 ```
 
 ### Process the Pandemic PACT tracker dataset
@@ -147,8 +143,8 @@ pact_read_figshare(pact_client) |>
   tibble::tibble()
 ```
 
-```{r useage-3f, echo = FALSE}
-figshare_data |>
+```{r useage-3f, echo = FALSE, eval = FALSE}
+pact_read_figshare(pact_client) |>
   pact_process_figshare() |>
   tibble::tibble()
 ```

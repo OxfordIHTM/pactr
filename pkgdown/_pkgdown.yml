@@ -24,11 +24,13 @@ navbar:
     right: [twitter, facebook, linkedin, github]
 
   components:
-    # articles:
-    #   text: Articles
-    #   menu:
-    #   - text: "ICD-11 Foundation"
-    #     href: articles/icd11_foundation.html
+    articles:
+      text: Articles
+      menu:
+      - text: "Figshare workflow"
+        href: articles/figshare-workflow.html
+      - text: "Website dataset workflow"
+        href: articles/website-dataset-workflow.html
     twitter:
       icon: "fab fa-twitter fa-lg"
       href: http://twitter.com/OxIHTM

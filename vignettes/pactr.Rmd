@@ -1,9 +1,8 @@
 ---
 title: "Introducing {pactr}"
-author: Ernest Guevarra
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting started with {pactr}}
+  %\VignetteIndexEntry{Introducing {pactr}}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -19,7 +18,7 @@ knitr::opts_chunk$set(
 library(pactr)
 ```
 
-The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/) and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package provides an application programming interface (API) to both the research programme's Figshare repository and website data download facility to provide programmatic access to its publicly available tracker data along with it's other data products.
+The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/) and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package provides an application programming interface (API) to both the research programme's Figshare repository and website data download facility to provide programmatic access to its publicly available tracker data along with its other data products.
 
 ## What does `{pactr}` do?
 
