@@ -21,6 +21,7 @@ jobs:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      FIGSHARE_TOKEN: ${{ secrets.FIGSHARE_TOKEN }}
     permissions:
       contents: write
     steps:
