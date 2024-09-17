@@ -1,0 +1,63 @@
+---
+title: "Introducing {pactr}"
+author: Ernest Guevarra
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with {pactr}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(pactr)
+```
+
+The [Pandemic PACT](https://www.pandemicpact.org/) monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/) and from [Figshare](https://portal.sds.ox.ac.uk/pandemicpact). This package provides an application programming interface (API) to both the research programme's Figshare repository and website data download facility to provide programmatic access to its publicly available tracker data along with it's other data products.
+
+## What does `{pactr}` do?
+
+`{pactr}` provides functions to interface programmatically with Pandemic PACT's data products either through its Figshare repository or its website. 
+
+The functions for Figshare interface are wrappers to specific functions of the [`{deposits}` package](https://docs.ropensci.org/deposits/index.html) which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in `{pactr}` are:
+
+1. Listing of outputs/assets available from the Panedmic PACT Figshare repository (*experimental*);
+
+2. Downloading of outputs/assets available from the Pandemic PACT Figshare repository (*experimental*);
+
+3. Reading of dataset outputs/assets available from the Pandemic PACT Figshare repository (*experimental*); and,
+
+4. Processing of Pandemic PACT data (*experimental*).
+
+The functions for interfacing with the data available from the Pandemic PACT website allow for downloading, reading, and processing. Current website data-specific functionalities available in `{pactr}` are:
+
+1. Downloading of Pandemic PACT dataset available from the website (*stable*);
+
+2. Reading of Pandemic PACT dataset available from the website (*stable*); and,
+
+3. Processing of Pandemic PACT dataset available from the website (*experimental*).
+
+## Motivation
+
+The main motivation for the development of `{pactr}` is to create a standardised programmatic interface to Pandemic PACT's data for those performing research or investigation relevant to Pandemic PACT's objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.
+
+The overall vision is that the `{pactr}` package development project will foster a community of researchers who primarily use R for their research analysis and who are or plan to work on and use the Pandemic PACT funding tracker dataset for their current or future research. In turn, the hope is that this community of researchers will engage in the package development through the following pathways:
+
+1. Use of the `{pactr}` package in their research work and through the process:
+
+    a. identify lacking functionalities; and/or,
+    b. report bugs and errors that come up during use.
+
+2. Contribute code to improve current functionalities and/or add new functionalities.
+
+3. Contribute documentation of use cases and application of the package.
+
+4. Host/initiate training sessions, discussions, and/or seminars on the use of the package in relation to research related to the Pandemic PACT funding tracker dataset.
+
+ 

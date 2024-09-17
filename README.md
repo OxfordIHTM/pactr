@@ -73,7 +73,7 @@ website data-specific functionalities available in `{pactr}` are:
 
 ## Motivation
 
-The main motiviation for the development of `{pactr}` is to create a
+The main motivation for the development of `{pactr}` is to create a
 standardised programmatic interface to Pandemic PACT’s data for those
 performing research or investigation relevant to Pandemic PACT’s
 objectives. Standardised programmatic interface, in turn, allow for
@@ -249,27 +249,28 @@ which outputs a data.frame with 4638 records and 860 fields.
 pact_read_figshare(pact_client) |>
   pact_process_figshare() |>
   tibble::tibble()
-#> # A tibble: 4,637 × 37
-#>    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng
-#>    <chr>  <chr>        <chr>                                     <chr>          
-#>  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…
-#>  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…
-#>  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…
-#>  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…
-#>  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…
-#>  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…
-#>  7 C00159 unknown      A comprehensive study of immunopathogene… ""             
-#>  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…
-#>  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…
-#> 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…
-#> # ℹ 4,627 more rows
-#> # ℹ 33 more variables: Award.Amount.Converted <dbl>, Abstract.Eng <chr>,
-#> #   Laysummary <chr>, ODA.funding.used <chr>, Grant.Type <chr>,
-#> #   Grant.Start.Year <int>, Study.Subject <list>, Ethnicity <list>,
-#> #   Age.Groups <list>, Rurality <list>, Vulnerable.Population <list>,
-#> #   Occupational.Groups <list>, Study.Type <list>, Clinical.Trial <list>,
-#> #   report <chr>, Pathogen <list>, Pathogen.Specific <list>, Disease <list>, …
 ```
+
+    #> # A tibble: 4,637 × 37
+    #>    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng
+    #>    <chr>  <chr>        <chr>                                     <chr>          
+    #>  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…
+    #>  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…
+    #>  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…
+    #>  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…
+    #>  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…
+    #>  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…
+    #>  7 C00159 unknown      A comprehensive study of immunopathogene… ""             
+    #>  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…
+    #>  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…
+    #> 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…
+    #> # ℹ 4,627 more rows
+    #> # ℹ 33 more variables: Award.Amount.Converted <dbl>, Abstract.Eng <chr>,
+    #> #   Laysummary <chr>, ODA.funding.used <chr>, Grant.Type <chr>,
+    #> #   Grant.Start.Year <int>, Study.Subject <list>, Ethnicity <list>,
+    #> #   Age.Groups <list>, Rurality <list>, Vulnerable.Population <list>,
+    #> #   Occupational.Groups <list>, Study.Type <list>, Clinical.Trial <list>,
+    #> #   report <chr>, Pathogen <list>, Pathogen.Specific <list>, Disease <list>, …
 
 For a more detailed discussion of the usage and limitations of the
 `{pactr}` Figshare functions, see this
@@ -279,8 +280,8 @@ For a more detailed discussion of the usage and limitations of the
 
 ### Download the Pandemic PACT tracker dataset from the website
 
-To download the Pandemic PACT traker dataset available from its website,
-the following command can be used:
+To download the Pandemic PACT tracker dataset available from its
+website, the following command can be used:
 
 ``` r
 ## Save the dataset from website to a temporary directory ----
@@ -289,7 +290,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpQSQlFE/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpDIpuWt/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -339,6 +340,14 @@ which produces the following output:
 which in turn can be plotted as follows:
 
 <img src="man/figures/README-usage-website-3c-1.png" width="100%" />
+
+or alternatively:
+
+<img src="man/figures/README-usage-website-3d-1.png" width="100%" />
+
+For a more detailed discussion of the usage and limitations of the
+`{pactr}` website dataset functions, see this
+[vignette](https://oxford-ihtm.io/pactr/website-dataset-workflow.html).
 
 ## Citation
 
