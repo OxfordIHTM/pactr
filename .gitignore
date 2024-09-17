@@ -7,4 +7,5 @@ docs
 /.quarto/
 
 README.html
+README_cache
 inst/doc

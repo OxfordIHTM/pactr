@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+library(pactr)
 ```
 
 # pactr: An Interface to the Pandemic PACT Data Repository <img src='man/figures/logo.png' width='200px' align='right' />
@@ -51,7 +53,7 @@ The functions for interfacing with the data available from the Pandemic PACT web
 
 ## Motivation
 
-The main motiviation for the development of `{pactr}` is to create a standardised programmatic interface to Pandemic PACT's data for those performing research or investigation relevant to Pandemic PACT's objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.
+The main motivation for the development of `{pactr}` is to create a standardised programmatic interface to Pandemic PACT's data for those performing research or investigation relevant to Pandemic PACT's objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.
 
 ## Installation
 
@@ -139,9 +141,11 @@ pact_read_figshare(pact_client)
 
 which outputs a data.frame with 4637 records and 860 fields. 
 
-```{r usage-3b, echo = FALSE}
-pact_read_figshare(pact_client) |>
+```{r usage-3b, echo = FALSE, cache = TRUE}
+figshare_data <- pact_read_figshare(pact_client) |>
   tibble::tibble()
+
+figshare_data
 ```
 
 This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
@@ -152,15 +156,23 @@ pact_read_figshare(pact_client, tracker_type = "raw")
 
 which outputs a data.frame with 4638 records and 860 fields.
 
-```{r usage-3d, echo = FALSE}
-pact_read_figshare(pact_client, tracker_type = "raw") |>
+```{r usage-3d, echo = FALSE, cache = TRUE}
+figshare_data_raw <- pact_read_figshare(pact_client, tracker_type = "raw") |>
   tibble::tibble()
+
+figshare_data_raw
 ```
 
 ### Process the Pandemic PACT tracker dataset
 
-```{r useage-3e}
+```{r useage-3e, eval = FALSE}
 pact_read_figshare(pact_client) |>
+  pact_process_figshare() |>
+  tibble::tibble()
+```
+
+```{r useage-3f, echo = FALSE}
+figshare_data |>
   pact_process_figshare() |>
   tibble::tibble()
 ```
@@ -171,7 +183,7 @@ For a more detailed discussion of the usage and limitations of the `{pactr}` Fig
 
 ### Download the Pandemic PACT tracker dataset from the website
 
-To download the Pandemic PACT traker dataset available from its website, the following command can be used:
+To download the Pandemic PACT tracker dataset available from its website, the following command can be used:
 
 ```{r usage-website-1a, eval = FALSE}
 ## Save the dataset from website to a temporary directory ----
@@ -195,8 +207,8 @@ pact_read_website()
 
 which results in the following:
 
-```{r usage-website-2b, echo = FALSE}
-pact_read_website()
+```{r usage-website-2b, echo = FALSE, cache = TRUE}
+pact_data <- pact_read_website()
 ```
 
 ### Process the Pandemic PACT tracker dataset from the website
@@ -212,15 +224,17 @@ pact_read_website() |>
 
 which produces the following output:
 
-```{r usage-website-3b, echo = FALSE}
-pact_read_website() |>
+```{r usage-website-3b, echo = FALSE, cache = TRUE}
+tidy_df <- pact_data |>
   pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+
+tidy_df
 ```
 
 which in turn can be plotted as follows:
 
-```{r usage-website-3c, echo = FALSE}
-pact_read_website() |>
+```{r usage-website-3c, echo = FALSE, fig.height = 8, cache = TRUE}
+disease_df <- pact_read_website() |>
   dplyr::mutate(
     Year = ifelse(
       GrantStartYear < 2020 | is.na(GrantStartYear), 
@@ -230,16 +244,71 @@ pact_read_website() |>
   pact_process_website_topic_group(
     topic = "Disease", group = "Year"
   ) |>
-    #dplyr::filter(GrantStartYear >= 2020) |>
-    ggplot2::ggplot(
-      mapping = ggplot2::aes(
-        x = Year, y = n, group = Disease, color = Disease
+    dplyr::mutate(
+    Disease = factor(
+      x = Disease, 
+      levels = c(
+        "COVID-19", "Disease X", "Congenital Zika virus disease",
+        "Crimean-Congo haemorrhagic fever", "Ebola virus disease",
+        "Hendra virus infection", "Lassa fever", "Marburg virus disease",
+        "Middle East Respiratory Syndrome Coronavirus (MERS-CoV)", 
+        "Mpox", "Nipah and henipaviral disease", "Pandemic-prone influenza",
+        "Plague", "Rift Valley Fever", 
+        "Severe Acute Respiratory Syndrome (SARS)",
+        "Zika virus disease", "Other", "Unspecified", "Not applicable"
+      ),
+      labels = c(
+        "COVID-19", "Disease X", "Congenital Zika", "CCHF", "Ebola", 
+        "Hendra virus", "Lassa fever", "Marburg", "MERS-CoV", "Mpox", 
+        "NiV and Henipa", "Pandemic influenza", "Plague", "RVF", "SARS", "Zika", "Other", "Unspecified", "Not applicable"
       )
-    ) +
-      ggplot2::geom_line() +
-      ggplot2::theme_minimal() +
-      ggplot2::theme(legend.position = "top")
+    )
+  )
+
+ggplot2::ggplot(
+  data = disease_df,
+  mapping = ggplot2::aes(
+    x = Year, y = n, group = Disease, color = Disease
+  )
+) +
+  ggplot2::geom_line() +
+  ggplot2::labs(x = "Year of Award Start", y = "Number of Grants") +
+  oxthema::theme_oxford() +
+  ggplot2::theme(
+    legend.position = "top",
+    legend.title = ggplot2::element_blank(),
+    legend.text = ggplot2::element_text(size = 8),
+    panel.border = ggplot2::element_blank(),
+    panel.grid.minor = ggplot2::element_blank()
+  )
 ```
+
+or alternatively:
+
+```{r usage-website-3d, echo = FALSE, fig.height = 12}
+disease_df |>
+  ggplot2::ggplot(mapping = ggplot2::aes(x = Year, y = n, group = Disease)) +
+  ggplot2::geom_line(
+    colour = oxthema::get_oxford_colour("sky"), linewidth = 1
+  ) +
+  ggplot2::scale_y_continuous(breaks = scales::breaks_pretty()) +
+  ggplot2::facet_wrap(. ~ Disease, nrow = 5, ncol = 4, scales = "free_y") +
+  ggplot2::labs(x = "Year of Award Start", y = "Number of Grants") +
+  ggplot2::theme_bw() +
+  ggplot2::theme(
+    strip.background = ggplot2::element_rect(
+      fill = oxthema::get_oxford_colour("sky"), 
+      colour = oxthema::get_oxford_colour("Oxford blue") 
+    ),
+    strip.text = ggplot2::element_text(size = 8),
+    panel.border = ggplot2::element_blank(),
+    panel.grid.minor = ggplot2::element_blank(),
+    axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1),
+    axis.ticks = ggplot2::element_blank()
+  )
+```
+
+For a more detailed discussion of the usage and limitations of the `{pactr}` website dataset functions, see this [vignette](https://oxford-ihtm.io/pactr/website-dataset-workflow.html).
 
 ## Citation
 

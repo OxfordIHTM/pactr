@@ -25,6 +25,13 @@ pact_read_website <- function(nest = TRUE,
   ## Read dataset from website ----
   df <- read.csv(file = .url) |> tibble::tibble()
 
+  ## Fix blank value for Disease (grant ID P22196)
+  df <- df |>
+    dplyr::mutate(
+      Disease = ifelse(
+        .data$GrantID == "P22196", "Zika virus disease", .data$Disease)
+    )
+
   ## Fix one-to-one issues ----
   df$FunderRegion <- get_who_regions(df$FunderCountry)
   df$ResearchInstitutionRegion <- get_who_regions(df$ResearchInstitutionCountry)

@@ -10,3 +10,4 @@
 ^pkgdown$
 ^README\.html$
 ^data-raw$
+^README_cache$
