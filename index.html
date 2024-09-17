@@ -38,11 +38,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="articles/pactr.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/figshare-workflow.html">Figshare workflow</a></li>
+    <li><a class="dropdown-item" href="articles/website-dataset-workflow.html">Website dataset workflow</a></li>
   </ul>
 </li>
       </ul>
@@ -65,7 +67,7 @@
 </div>
 <!-- badges: start -->
 
-<p>The <a href="https://www.pandemicpact.org/" class="external-link">Pandemic PACT</a> monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its <a href="https://www.pandemicpact.org/" class="external-link">website</a> and from <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a>. This package provides an application programming interface (API) to both the research programme’s Figshare repository and website data download facility to provide programmatic access to its publicly available tracker data along with it’s other data products.</p>
+<p>The <a href="https://www.pandemicpact.org/" class="external-link">Pandemic PACT</a> monitors and analyses global funding and research evidence related to diseases with pandemic potential, as well as broader research preparedness efforts, and is equipped to pivot in response to outbreaks. It collects, curates, codes, and analyses data in alignment with WHO priority diseases and other selected illnesses, including pandemic influenza, mpox, and plague. Pandemic PACT aims to guide policy and decision-making for research funders, policymakers, researchers, multilateral agencies. The Pandemic PACT data is publicly available for download from its <a href="https://www.pandemicpact.org/" class="external-link">website</a> and from <a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">Figshare</a>. This package provides an application programming interface (API) to both the research programme’s Figshare repository and website data download facility to provide programmatic access to its publicly available tracker data along with its other data products.</p>
 <div class="section level2">
 <h2 id="what-does-pactr-do">What does <code>{pactr}</code> do?<a class="anchor" aria-label="anchor" href="#what-does-pactr-do"></a>
 </h2>
@@ -87,7 +89,7 @@
 <div class="section level2">
 <h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h2>
-<p>The main motiviation for the development of <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> is to create a standardised programmatic interface to Pandemic PACT’s data for those performing research or investigation relevant to Pandemic PACT’s objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.</p>
+<p>The main motivation for the development of <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> is to create a standardised programmatic interface to Pandemic PACT’s data for those performing research or investigation relevant to Pandemic PACT’s objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -215,28 +217,28 @@
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 4,637 × 37</span></span>
-<span><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;          </span></span>
-<span><span class="co">#&gt;  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…</span></span>
-<span><span class="co">#&gt;  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…</span></span>
-<span><span class="co">#&gt;  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…</span></span>
-<span><span class="co">#&gt;  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…</span></span>
-<span><span class="co">#&gt;  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…</span></span>
-<span><span class="co">#&gt;  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…</span></span>
-<span><span class="co">#&gt;  7 C00159 unknown      A comprehensive study of immunopathogene… ""             </span></span>
-<span><span class="co">#&gt;  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…</span></span>
-<span><span class="co">#&gt;  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…</span></span>
-<span><span class="co">#&gt; 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…</span></span>
-<span><span class="co">#&gt; # ℹ 4,627 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 33 more variables: Award.Amount.Converted &lt;dbl&gt;, Abstract.Eng &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   Laysummary &lt;chr&gt;, ODA.funding.used &lt;chr&gt;, Grant.Type &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   Grant.Start.Year &lt;int&gt;, Study.Subject &lt;list&gt;, Ethnicity &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   Age.Groups &lt;list&gt;, Rurality &lt;list&gt;, Vulnerable.Population &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   Occupational.Groups &lt;list&gt;, Study.Type &lt;list&gt;, Clinical.Trial &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   report &lt;chr&gt;, Pathogen &lt;list&gt;, Pathogen.Specific &lt;list&gt;, Disease &lt;list&gt;, …</span></span></code></pre></div>
-<p>For a more detailed discussion of the usage and limitations of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> Figshare functions, see this <a href="https://oxford-ihtm.io/pactr/figshare-workflow.html">vignette</a>.</p>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4,637 × 37</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;          </span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#&gt;  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt;  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt;  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt;  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt;  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt;  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt;  7 C00159 unknown      A comprehensive study of immunopathogene… ""             </span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt;  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt;  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…</span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 4,627 more rows</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 33 more variables: Award.Amount.Converted &lt;dbl&gt;, Abstract.Eng &lt;chr&gt;,</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; #   Laysummary &lt;chr&gt;, ODA.funding.used &lt;chr&gt;, Grant.Type &lt;chr&gt;,</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; #   Grant.Start.Year &lt;int&gt;, Study.Subject &lt;list&gt;, Ethnicity &lt;list&gt;,</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; #   Age.Groups &lt;list&gt;, Rurality &lt;list&gt;, Vulnerable.Population &lt;list&gt;,</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt; #   Occupational.Groups &lt;list&gt;, Study.Type &lt;list&gt;, Clinical.Trial &lt;list&gt;,</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; #   report &lt;chr&gt;, Pathogen &lt;list&gt;, Pathogen.Specific &lt;list&gt;, Disease &lt;list&gt;, …</span></span></code></pre></div>
+<p>For a more detailed discussion of the usage and limitations of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> Figshare functions, see this <a href="https://oxford-ihtm.io/pactr/articles/figshare-workflow.html">vignette</a>.</p>
 </div>
 </div>
 <div class="section level2">
@@ -245,18 +247,18 @@
 <div class="section level3">
 <h3 id="download-the-pandemic-pact-tracker-dataset-from-the-website">Download the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#download-the-pandemic-pact-tracker-dataset-from-the-website"></a>
 </h3>
-<p>To download the Pandemic PACT traker dataset available from its website, the following command can be used:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<p>To download the Pandemic PACT tracker dataset available from its website, the following command can be used:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpQSQlFE/pandemic-pact-grants.csv"</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpeotbCg/pandemic-pact-grants.csv"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
 </h3>
 <p>Instead of downloading, the Pandemic PACT dataset available from its website can be read into R directly as follows:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which results in the following:</p>
 </div>
@@ -265,33 +267,36 @@
 </h3>
 <p>The package includes functions that will process the Pandemic PACT tracker dataset into specific structures and aggregations that will allow for further plotting and reporting of similar outputs that are currently presented in the Pandemic PACT website.</p>
 <p>For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the <a href="https://www.pandemicpact.org/visualise#disease" class="external-link">website</a>.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/pact_process_website.html">pact_process_website_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
 <p>which produces the following output:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 171 × 3</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease                                      n</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;                                    &lt;int&gt;</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt;  1           1978 Pandemic-prone influenza                     1</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt;  2           1978 Severe Acute Respiratory Syndrome (SARS)     1</span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt;  3           1981 COVID-19                                     1</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt;  4           1982 COVID-19                                     1</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt;  5           1988 COVID-19                                     1</span></span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co">#&gt;  6           1992 COVID-19                                     6</span></span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt;  7           1994 COVID-19                                     2</span></span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt;  8           1996 COVID-19                                     1</span></span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt;  9           1997 COVID-19                                    28</span></span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt; 10           1997 Zika virus disease                           1</span></span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 161 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 171 × 3</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease                                      n</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;                                    &lt;int&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co">#&gt;  1           1978 Pandemic-prone influenza                     1</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co">#&gt;  2           1978 Severe Acute Respiratory Syndrome (SARS)     1</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co">#&gt;  3           1981 COVID-19                                     1</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co">#&gt;  4           1982 COVID-19                                     1</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co">#&gt;  5           1988 COVID-19                                     1</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co">#&gt;  6           1992 COVID-19                                     6</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co">#&gt;  7           1994 COVID-19                                     2</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="co">#&gt;  8           1996 COVID-19                                     1</span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co">#&gt;  9           1997 COVID-19                                    28</span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co">#&gt; 10           1997 Zika virus disease                           1</span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 161 more rows</span></span></code></pre></div>
 <p>which in turn can be plotted as follows:</p>
 <p><img src="reference/figures/README-usage-website-3c-1.png" width="100%"></p>
+<p>or alternatively:</p>
+<p><img src="reference/figures/README-usage-website-3d-1.png" width="100%"></p>
+<p>For a more detailed discussion of the usage and limitations of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> website dataset functions, see this <a href="https://oxford-ihtm.io/pactr/website-dataset-workflow.html">vignette</a>.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package, please use the suggested citation provided by a call to the <code><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"pactr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite pactr in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -309,7 +314,7 @@
 <span><span class="co">#&gt;     url = {https://oxford-ihtm.io/pactr/},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the <code><a href="reference/pact_cite.html">pact_cite()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## cite the labelled version of the tracker dataset</span></span>
 <span><span class="fu"><a href="reference/pact_cite.html">pact_cite</a></span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="fl">24763548</span><span class="op">)</span>  </span>
 <span><span class="co">#&gt; To cite Pandemic PACT Grant Tracker (labelled) in publications use:</span></span>

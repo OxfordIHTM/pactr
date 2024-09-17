@@ -35,11 +35,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="../articles/pactr.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/figshare-workflow.html">Figshare workflow</a></li>
+    <li><a class="dropdown-item" href="../articles/website-dataset-workflow.html">Website dataset workflow</a></li>
   </ul>
 </li>
       </ul>
@@ -69,9 +71,178 @@
 
     
     
+<div class="section level2">
+<h2 id="about-the-pandemic-pact-figshare-repository">About the Pandemic PACT Figshare repository<a class="anchor" aria-label="anchor" href="#about-the-pandemic-pact-figshare-repository"></a>
+</h2>
+<p>The Pandemic PACT data is meant to be publicly available for download
+from Figshare as per information from the research programme’s website
+(see <a href="https://www.pandemicpact.org/about/our-data" class="external-link">here</a>) and
+based on its open peer review paper on Wellcome Open Research describing
+the <a href="https://wellcomeopenresearch.org/articles/9-156/v1?src=rss" class="external-link">study
+protocol</a>.</p>
+<p>However, the link provided from the website (<a href="https://figshare.com/s/58527668245cb63f14f5" class="external-link">https://figshare.com/s/58527668245cb63f14f5</a>)
+leads to a privately-shared Figshare collection. This means that the
+collection is only accessible to those who created it and to those who
+have been authorised to access it. The contents of the collection can be
+seen. However, the individual items cannot be viewed interactively from
+the browser and cannot be downloaded. This was the case as at 24 August
+2024 when development of this package was initiated and continue to
+current date. This is contrary to what is mentioned in the research
+programme’s website:</p>
+<blockquote>
+<p>“The data set can be downloaded from this website and all metadata
+and the dataset can be downloaded from Figshare.”</p>
+</blockquote>
+<p>and in the study protocol under open peer review:</p>
+<blockquote>
+<p>“Finally, the database is saved as a csv file and made available to
+the public on Figshare and can additionally be downloaded from the
+online funding tracker.”</p>
+</blockquote>
+<p>Thinking that maybe this was just a mistake (i.e., that there is a
+private and public repository and the link to the private repository was
+the one that was mistakenly shared), a simple search was performed
+within Figshare using the keyword “Pandemic PACT” in the search field.
+This search yielded several results the most relevant of which was the
+following:</p>
+<p><a href="https://portal.sds.ox.ac.uk/pandemicpact" class="external-link">https://portal.sds.ox.ac.uk/pandemicpact</a></p>
+<p>which is a University of Oxford-owned instance of Figshare containing
+the various data products (tracker data, data dictionary, scoping review
+data, extended data) referred to and used by the research programme.
+More importantly, this collection is public hence any individual,
+whether logged into Figshare or not, can view and download the datasets.
+Without further examining, it would be easy to think that this might be
+the publicly available data and data products being referred to by the
+website and the research protocol.</p>
+<p>However, on closer inspection, the datasets within this collection
+were last updated in 2023 and the names of the file indicated that these
+were demonstration datasets.</p>
+<p>Knowing that the research programme was indeed using Figshare to host
+its dataset (but not accessible) and given the existence of this
+demonstration dataset within the University of Oxford Figshare instance,
+development of Figshare-specific functions within the
+<a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package utilised the demonstration collection to
+prototype the Figshare-interface functions with the hope that if
+Pandemic PACT does decide to share their official dataset on Figshare
+publicly, the refactoring needed to get the current functions working
+will be minimal.</p>
+<p>As such, the following guidance on use of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a>
+Figshare interface functions should be used only for demonstration,
+development, and testing purposes and should not be used for production
+or research tasks.</p>
+</div>
+<div class="section level2">
+<h2 id="figshare-interface">Figshare interface<a class="anchor" aria-label="anchor" href="#figshare-interface"></a>
+</h2>
+<p>This package provides an application programming interface (API) to
+the research programme’s Figshare repository to provide programmatic
+access to its publicly available tracker data along with it’s other data
+products.</p>
+<p>The functions for Figshare interface are wrappers to specific
+functions of the <a href="https://docs.ropensci.org/deposits/index.html" class="external-link"><code>{deposits}</code>
+package</a> which provides the underlying universal interface to various
+online research data deposition services including Figshare. Current
+Figshare-specific functionalities available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a>
+are:</p>
+<ol style="list-style-type: decimal">
+<li><p>Listing of outputs/assets available from the Panedmic PACT
+Figshare repository (<em>experimental</em>);</p></li>
+<li><p>Downloading of outputs/assets available from the Pandemic PACT
+Figshare repository (<em>experimental</em>);</p></li>
+<li><p>Reading of dataset outputs/assets available from the Pandemic
+PACT Figshare repository (<em>experimental</em>); and,</p></li>
+<li><p>Processing of Pandemic PACT data
+(<em>experimental</em>).</p></li>
+</ol>
+<div class="section level3">
+<h3 id="set-a-figshare-client">Set a Figshare client<a class="anchor" aria-label="anchor" href="#set-a-figshare-client"></a>
+</h3>
+<p>Usage of <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> always starts with the setting up of a
+Figshare client. This requires creating a Figshare account and then
+creating a personal access token <a href="https://figshare.com/account/applications" class="external-link">here</a>.</p>
+<p>Once a Figshare token is created, it needs to be stored as a local
+environment variable. This can be done using the following command in
+R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a></span><span class="op">)</span></span></code></pre></div>
-  </main>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"FIGSHARE_TOKEN"</span><span class="op">=</span><span class="st">"YOUR_TOKEN_HERE"</span><span class="op">)</span></span></code></pre></div>
+<p>Once this token has been set as described above, the following
+command can be run to setup a Figshare client:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pact_client</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pact_client.html">pact_client_set</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Once a Figshare client has been setup, you can now perform the
+functionalities provided by the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package.</p>
+</div>
+<div class="section level3">
+<h3 id="list-outputsassets">List outputs/assets<a class="anchor" aria-label="anchor" href="#list-outputsassets"></a>
+</h3>
+<p>To list available outputs/assets from the Pandemic PACT Figshare
+repository, issue the following command:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<p>The output is a <code>data.frame</code> containing metadata regarding
+contents of the Figshare Pandemic PACT group. The information within the
+metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming
+interface (API)</a> and are either set by the Pandemic PACT data team or
+by Figshare. The data.frame would look as follows:</p>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 18</span></span></span>
+<span><span class="co">#&gt;   project_id       id title doi   handle url   published_date thumb defined_type</span></span>
+<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>         <span style="color: #BB0000;">NA</span> 25<span style="text-decoration: underline;">827</span>649 Scop… 10.2… <span style="color: #949494;">""</span>     http… 2024-05-15T12… <span style="color: #949494;">""</span>               3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>         <span style="color: #BB0000;">NA</span> 25<span style="text-decoration: underline;">368</span>136 test  10.2… <span style="color: #949494;">""</span>     http… 2024-03-08T11… <span style="color: #949494;">"</span>htt…            1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     <span style="text-decoration: underline;">189</span>177 25<span style="text-decoration: underline;">368</span>070 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2024-03-08T10… <span style="color: #949494;">"</span>htt…            1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     <span style="text-decoration: underline;">189</span>177 25<span style="text-decoration: underline;">352</span>839 Exte… 10.2… <span style="color: #949494;">""</span>     http… 2024-03-06T15… <span style="color: #949494;">""</span>               6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     <span style="text-decoration: underline;">189</span>168 24<span style="text-decoration: underline;">786</span>258 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2023-12-15T11… <span style="color: #949494;">""</span>               3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     <span style="text-decoration: underline;">189</span>168 24<span style="text-decoration: underline;">773</span>787 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2023-12-11T11… <span style="color: #949494;">""</span>               3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>     <span style="text-decoration: underline;">189</span>168 24<span style="text-decoration: underline;">763</span>548 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2023-12-11T11… <span style="color: #949494;">""</span>               3</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;, url_private_html &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   url_public_html &lt;chr&gt;, timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   resource_doi &lt;chr&gt;</span></span></span></code></pre>
+<p>This function is useful in getting an overview of what is currently
+available in the Pandemic PACT Figshare repository.</p>
+</div>
+<div class="section level3">
+<h3 id="download-outputsassets">Download outputs/assets<a class="anchor" aria-label="anchor" href="#download-outputsassets"></a>
+</h3>
+<p>To download a specific output/asset - say the scoping review data -
+from the Pandemic PACT Figshare repository, issue the following
+commands:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Get the unique identifier for the scoping review data from Figshare ----</span></span>
+<span><span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"Scoping Review Data"</span>, select <span class="op">=</span> <span class="va">id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/pact_download.html">pact_download_figshare</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code></pre></div>
+<p>This will download the file <code>Scoping_Review-Data.xlsx</code>
+from the Pandemic PACT Figshare repository into the current working
+directory.</p>
+</div>
+<div class="section level3">
+<h3 id="read-the-pandemic-pact-tracker-dataset-and-data-dictionary">Read the Pandemic PACT tracker dataset and data dictionary<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-and-data-dictionary"></a>
+</h3>
+<p>To read the Pandemic PACT tracker dataset into R, issue the following
+command:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<p>which outputs a data.frame with 4637 records and 860 fields.</p>
+<p>This function reads the <em>labelled</em> tracker dataset by default.
+If the raw dataset is required, then issue the following command:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
+<p>which outputs a data.frame with 4638 records and 860 fields.</p>
+</div>
+<div class="section level3">
+<h3 id="process-the-pandemic-pact-tracker-dataset">Process the Pandemic PACT tracker dataset<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset"></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
