@@ -71,9 +71,114 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a></span><span class="op">)</span></span></code></pre></div>
-  </main>
+<p>The Pandemic PACT data is publicly available for download from its <a href="https://www.pandemicpact.org/" class="external-link">website</a>. <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a>
+provides an application programming interface (API) to the research
+programme’s dataset available from its website data download facility
+allowing for programmatic access to its publicly available funder
+tracker dataset.</p>
+<div class="section level2">
+<h2 id="website-data-interface">Website data interface<a class="anchor" aria-label="anchor" href="#website-data-interface"></a>
+</h2>
+<p>The functions for interfacing with the data available from the
+Pandemic PACT website allow for <em>downloading</em>, <em>reading</em>,
+and <em>processing</em>. Current website data-specific functionalities
+available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> are:</p>
+<ol style="list-style-type: decimal">
+<li><p>Downloading of Pandemic PACT dataset available from the website
+(<em>stable</em>);</p></li>
+<li><p>Reading of Pandemic PACT dataset available from the website
+(<em>stable</em>); and,</p></li>
+<li><p>Processing of Pandemic PACT dataset available from the website
+(<em>experimental</em>).</p></li>
+</ol>
+</div>
+<div class="section level2">
+<h2 id="website-data-workflow">Website data workflow<a class="anchor" aria-label="anchor" href="#website-data-workflow"></a>
+</h2>
+<pre class="mermaid"><code>  %%{init: {"flowchart": {"htmlLabels": false}} }%%
+  flowchart LR
+    download_data("`**Download data**
+    *pact_download_website()*`")
+    
+    read_data("`**Read data**
+    *pact_read_website()*`")
+
+    process_data("`**Process data**
+    *pact_process_website_topic_group()*`")
+
+    read_data --&gt; process_data</code></pre>
+<div class="section level3">
+<h3 id="download-data-available-from-website">Download data available from website<a class="anchor" aria-label="anchor" href="#download-data-available-from-website"></a>
+</h3>
+<p>To download the Pandemic PACT tracker dataset available from its
+website, the following command can be used:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
+<span><span class="fu"><a href="../reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>which will return the path to the downloaded dataset:</p>
+<pre><code><span><span class="co">#&gt; [1] "/tmp/Rtmpd0LgSP/pandemic-pact-grants.csv"</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
+</h3>
+<p>Instead of downloading, the Pandemic PACT dataset available from its
+website can be read into R directly as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>which results in the following:</p>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9,862 × 39</span></span></span>
+<span><span class="co">#&gt;    GrantID PubMedGrantId GrantTitleEng           Abstract PublicationYearOfAward</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> C00037  <span style="color: #949494;">&lt;chr [1]&gt;</span>     COVID-19: Improving th… <span style="color: #949494;">"</span>The cl…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> C00038  <span style="color: #949494;">&lt;chr [3]&gt;</span>     Identification of biom… <span style="color: #949494;">"</span>The ou…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> C00040  <span style="color: #949494;">&lt;chr [2]&gt;</span>     Development of a rapid… <span style="color: #949494;">"</span>This r…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> C00041  <span style="color: #949494;">&lt;chr [1]&gt;</span>     Rapid, Low-cost Diagno… <span style="color: #949494;">"</span>The ou…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> C00043  <span style="color: #949494;">&lt;chr [1]&gt;</span>     Rapid Research Respons… <span style="color: #949494;">"</span>In 201…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> C00045  <span style="color: #949494;">&lt;chr [1]&gt;</span>     Development and Evalua… <span style="color: #949494;">"</span>Corona…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> C00046  <span style="color: #949494;">&lt;chr [2]&gt;</span>     Rapid development of a… <span style="color: #949494;">"</span>The ou…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> C00047  <span style="color: #949494;">&lt;chr [1]&gt;</span>     Preventing SARS-CoV- 2… <span style="color: #949494;">"</span>The SA…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> C00048  <span style="color: #949494;">&lt;chr [1]&gt;</span>     Understanding, Forecas… <span style="color: #949494;">"</span>A new …                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> C00049  <span style="color: #949494;">&lt;chr [2]&gt;</span>     RIsk of environmental … <span style="color: #949494;">"</span>This s…                   <span style="text-decoration: underline;">2</span>020</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9,852 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 34 more variables: GrantEndYear &lt;int&gt;, ResearchInstitutionName &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   GrantAmountConverted &lt;dbl&gt;, StudySubject &lt;list&gt;, Ethnicity &lt;list&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   AgeGroups &lt;list&gt;, Rurality &lt;list&gt;, VulnerablePopulations &lt;list&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   OccupationalGroups &lt;list&gt;, StudyType &lt;list&gt;, ClinicalTrial &lt;list&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   Pathogen &lt;list&gt;, InfluenzaA &lt;chr&gt;, InfluenzaH1 &lt;chr&gt;, InfluenzaH2 &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   InfluenzaH3 &lt;chr&gt;, InfluenzaH5 &lt;chr&gt;, InfluenzaH6 &lt;chr&gt;, …</span></span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
+</h3>
+<p>The package includes functions that will process the Pandemic PACT
+tracker dataset into specific structures and aggregations that will
+allow for further plotting and reporting of similar outputs that are
+currently presented in the Pandemic PACT website.</p>
+<p>For example, the following will process the Pandemic PACT tracker
+dataset into an aggregated dataset structure that can be used to create
+a similar plot to the one presented in the <a href="https://www.pandemicpact.org/visualise#disease" class="external-link">website</a>.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pact_process_website.html">pact_process_website_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
+<p>which produces the following output:</p>
+<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 170 × 3</span></span></span>
+<span><span class="co">#&gt;    GrantStartYear Disease                                      n</span></span>
+<span><span class="co">#&gt;             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>           <span style="text-decoration: underline;">1</span>978 Pandemic-prone influenza                     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>           <span style="text-decoration: underline;">1</span>978 Severe Acute Respiratory Syndrome (SARS)     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>           <span style="text-decoration: underline;">1</span>981 COVID-19                                     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>           <span style="text-decoration: underline;">1</span>982 COVID-19                                     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>           <span style="text-decoration: underline;">1</span>988 COVID-19                                     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>           <span style="text-decoration: underline;">1</span>992 COVID-19                                     6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>           <span style="text-decoration: underline;">1</span>994 COVID-19                                     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>           <span style="text-decoration: underline;">1</span>996 COVID-19                                     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>           <span style="text-decoration: underline;">1</span>997 COVID-19                                    28</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>           <span style="text-decoration: underline;">1</span>997 Zika virus disease                           1</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 160 more rows</span></span></span></code></pre>
+</div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
