@@ -154,6 +154,36 @@ PACT Figshare repository (<em>experimental</em>); and,</p></li>
 <li><p>Processing of Pandemic PACT data
 (<em>experimental</em>).</p></li>
 </ol>
+</div>
+<div class="section level2">
+<h2 id="figshare-workflow">Figshare workflow<a class="anchor" aria-label="anchor" href="#figshare-workflow"></a>
+</h2>
+<p>The following diagram illustrates the current steps (along with their
+corresponding functions) in the designed API for interfacing with the
+Figshare repository.</p>
+<pre class="mermaid"><code>  %%{init: {"flowchart": {"htmlLabels": false}} }%%
+  flowchart TD
+    create_token("`**Create Figshare token**`")
+    
+    set_client("`**Set client**
+    *pact_client_set()*`")    
+    
+    list_items("`**List contents of repository**
+    *pact_list()*`")
+    
+    download_data("`**Download data**
+    *pact_download_figshare()*`")
+    
+    read_data("`**Read data**
+    *pact_read_figshare()*`")
+
+    process_data("`**Process data**
+    *pact_process_figshare()*`")
+
+    create_token --&gt; set_client
+    set_client --&gt; list_items
+    set_client --&gt; download_data
+    set_client --&gt; read_data --&gt; process_data</code></pre>
 <div class="section level3">
 <h3 id="set-a-figshare-client">Set a Figshare client<a class="anchor" aria-label="anchor" href="#set-a-figshare-client"></a>
 </h3>
@@ -163,11 +193,11 @@ creating a personal access token <a href="https://figshare.com/account/applicati
 <p>Once a Figshare token is created, it needs to be stored as a local
 environment variable. This can be done using the following command in
 R:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"FIGSHARE_TOKEN"</span><span class="op">=</span><span class="st">"YOUR_TOKEN_HERE"</span><span class="op">)</span></span></code></pre></div>
 <p>Once this token has been set as described above, the following
 command can be run to setup a Figshare client:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pact_client</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pact_client.html">pact_client_set</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Once a Figshare client has been setup, you can now perform the
 functionalities provided by the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package.</p>
@@ -177,7 +207,7 @@ functionalities provided by the <a href="https://github.com/OxfordIHTM/pactr" cl
 </h3>
 <p>To list available outputs/assets from the Pandemic PACT Figshare
 repository, issue the following command:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>The output is a <code>data.frame</code> containing metadata regarding
 contents of the Figshare Pandemic PACT group. The information within the
@@ -207,13 +237,13 @@ available in the Pandemic PACT Figshare repository.</p>
 <p>To download a specific output/asset - say the scoping review data -
 from the Pandemic PACT Figshare repository, issue the following
 commands:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Get the unique identifier for the scoping review data from Figshare ----</span></span>
 <span><span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"Scoping Review Data"</span>, select <span class="op">=</span> <span class="va">id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/pact_download.html">pact_download_figshare</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/pact_download.html">pact_download_figshare</a></span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="va">file_id</span>, path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code></pre></div>
 <p>This will download the file <code>Scoping_Review-Data.xlsx</code>
 from the Pandemic PACT Figshare repository into the current working
 directory.</p>
@@ -223,22 +253,23 @@ directory.</p>
 </h3>
 <p>To read the Pandemic PACT tracker dataset into R, issue the following
 command:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
-<p>which outputs a data.frame with 4637 records and 860 fields.</p>
+<p>which outputs a data.frame of the available Pandemic PACT funding
+tracker dataset that has been labelled.</p>
 <p>This function reads the <em>labelled</em> tracker dataset by default.
 If the raw dataset is required, then issue the following command:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
-<p>which outputs a data.frame with 4638 records and 860 fields.</p>
+<p>which outputs a data.frame of the available raw Pandemic PACT funding
+tracker dataset.</p>
 </div>
 <div class="section level3">
 <h3 id="process-the-pandemic-pact-tracker-dataset">Process the Pandemic PACT tracker dataset<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="../reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
