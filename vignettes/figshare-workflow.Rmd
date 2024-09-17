@@ -57,6 +57,36 @@ The functions for Figshare interface are wrappers to specific functions of the [
 
 4. Processing of Pandemic PACT data (*experimental*).
 
+## Figshare workflow
+
+The following diagram illustrates the current steps (along with their corresponding functions) in the designed API for interfacing with the Figshare repository.
+
+```{mermaid figshare-workflow, fig.align = "center"}
+  %%{init: {"flowchart": {"htmlLabels": false}} }%%
+  flowchart TD
+    create_token("`**Create Figshare token**`")
+    
+    set_client("`**Set client**
+    *pact_client_set()*`")    
+    
+    list_items("`**List contents of repository**
+    *pact_list()*`")
+    
+    download_data("`**Download data**
+    *pact_download_figshare()*`")
+    
+    read_data("`**Read data**
+    *pact_read_figshare()*`")
+
+    process_data("`**Process data**
+    *pact_process_figshare()*`")
+
+    create_token --> set_client
+    set_client --> list_items
+    set_client --> download_data
+    set_client --> read_data --> process_data
+```
+
 ### Set a Figshare client
 
 Usage of `{pactr}` always starts with the setting up of a Figshare client. This requires creating a Figshare account and then creating a personal access token [here](https://figshare.com/account/applications).
@@ -102,7 +132,7 @@ file_id <- pact_list(pact_client) |>
   subset(title == "Scoping Review Data", select = id) |>
   unlist()
 
-pact_download_figshare(id = file_id, path = ".")
+pact_download_figshare(pact_client, id = file_id, path = ".")
 ```
 
 This will download the file `Scoping_Review-Data.xlsx` from the Pandemic PACT Figshare repository into the current working directory.
@@ -115,12 +145,7 @@ To read the Pandemic PACT tracker dataset into R, issue the following command:
 pact_read_figshare(pact_client)
 ```
 
-which outputs a data.frame with 4637 records and 860 fields. 
-
-```{r usage-3b, echo = FALSE, eval = FALSE}
-pact_read_figshare(pact_client) |>
-  tibble::tibble()
-```
+which outputs a data.frame of the available Pandemic PACT funding tracker dataset that has been labelled.
 
 This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
 
@@ -128,23 +153,11 @@ This function reads the *labelled* tracker dataset by default. If the raw datase
 pact_read_figshare(pact_client, tracker_type = "raw")
 ```
 
-which outputs a data.frame with 4638 records and 860 fields.
-
-```{r usage-3d, echo = FALSE, eval = FALSE}
-pact_read_figshare(pact_client, tracker_type = "raw") |>
-  tibble::tibble()
-```
+which outputs a data.frame of the available raw Pandemic PACT funding tracker dataset.
 
 ### Process the Pandemic PACT tracker dataset
 
 ```{r useage-3e, eval = FALSE}
 pact_read_figshare(pact_client) |>
-  pact_process_figshare() |>
-  tibble::tibble()
-```
-
-```{r useage-3f, echo = FALSE, eval = FALSE}
-pact_read_figshare(pact_client) |>
-  pact_process_figshare() |>
-  tibble::tibble()
+  pact_process_figshare()
 ```

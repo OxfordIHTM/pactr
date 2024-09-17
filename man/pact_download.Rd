@@ -22,7 +22,7 @@ repository.}
 \item{overwrite}{Logical. Should existing files be overwritten? If TRUE,
 existing files will be overwritten. Default is FALSE.}
 
-\item{quiet}{Logical. If FALSE, download progress is displayed.}
+\item{quiet}{Logical. If TRUE (default), download progress is not displayed.}
 }
 \value{
 The full path of the downloaded file.
@@ -32,10 +32,13 @@ Download outputs/assets from Pandemic PACT Figshare repository
 }
 \examples{
 \dontrun{
+  ## From Figshare
   pact_client <- pact_client_set()
   pact_download_figshare(pact_client, id = 25827649, path = tempdir())
+
+  ## From website
+  pact_download_website(path = tempdir())
 }
 
-pact_download_website(path = tempdir())
 
 }
