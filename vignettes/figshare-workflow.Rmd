@@ -117,7 +117,7 @@ pact_read_figshare(pact_client)
 
 which outputs a data.frame with 4637 records and 860 fields. 
 
-```{r usage-3b, echo = FALSE}
+```{r usage-3b, echo = FALSE, eval = FALSE}
 pact_read_figshare(pact_client) |>
   tibble::tibble()
 ```
@@ -130,7 +130,7 @@ pact_read_figshare(pact_client, tracker_type = "raw")
 
 which outputs a data.frame with 4638 records and 860 fields.
 
-```{r usage-3d, echo = FALSE}
+```{r usage-3d, echo = FALSE, eval = FALSE}
 pact_read_figshare(pact_client, tracker_type = "raw") |>
   tibble::tibble()
 ```
