@@ -42,9 +42,11 @@ The functions for interfacing with the data available from the Pandemic PACT web
 
 3. Processing of Pandemic PACT dataset available from the website (*experimental*).
 
-## Motivation
+## Why develop `{pactr}`?
 
-The main motivation for the development of `{pactr}` is to create a standardised programmatic interface to Pandemic PACT's data for those performing research or investigation relevant to Pandemic PACT's objectives. Standardised programmatic interface, in turn, allow for reproducible scientific workflows based on the Pandemic PACT dataset.
+The main motivation for the development of `{pactr}` is to create a standardised programmatic interface to Pandemic PACT's data for those performing research or investigation relevant to Pandemic PACT's objectives. Standardised programmatic interface, in turn, allows for reproducible scientific workflows that use the Pandemic PACT dataset.
+
+The Pandemic PACT research programme is described as a **"living mapping review" or LMR** with a plan for six-monthly updates to the dataset. Robust analytical tools that enforces standardised and reproducible steps in interfacing (reading, processing, and analysing) with this dataset ensures comparibility and consistency of outputs across various types of potential research and investigations using this dataset. Such tooling also contributes to reducing the time between research ideas to research insights and discovery.
 
 The overall vision is that the `{pactr}` package development project will foster a community of researchers who primarily use R for their research analysis and who are or plan to work on and use the Pandemic PACT funding tracker dataset for their current or future research. In turn, the hope is that this community of researchers will engage in the package development through the following pathways:
 
@@ -58,5 +60,3 @@ The overall vision is that the `{pactr}` package development project will foster
 3. Contribute documentation of use cases and application of the package.
 
 4. Host/initiate training sessions, discussions, and/or seminars on the use of the package in relation to research related to the Pandemic PACT funding tracker dataset.
-
- 
