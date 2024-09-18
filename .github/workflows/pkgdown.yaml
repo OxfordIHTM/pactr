@@ -40,7 +40,7 @@ jobs:
       
       - name: Update mermaid.js
         run: |
-          source("vignettes/update_mermaid.R")
+          source("../vignettes/update_mermaid.R")
         shell: Rscript {0}
 
       - name: Build site
