@@ -7,9 +7,16 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
-
-
+```{r setup, echo = FALSE}
+library(pactr)
+```
 
 The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/). `{pactr}` provides an application programming interface (API) to the research programme's dataset available from its website data download facility allowing for programmatic access to its publicly available funder tracker dataset.
 
@@ -25,58 +32,45 @@ The functions for interfacing with the data available from the Pandemic PACT web
 
 ## Website data workflow
 
+```{r website-workflow, echo = FALSE, eval = FALSE, fig.align = "center"}
+text <- paste(
+  readLines("website.mmd"),
+  collapse = "\n"
+)
 
+DiagrammeR::mermaid(text)
+```
 
 ### Download data available from website
 
 To download the Pandemic PACT tracker dataset available from its website, the following command can be used:
 
-
-```r
+```{r usage-website-1a, eval = FALSE}
 ## Save the dataset from website to a temporary directory ----
 pact_download_website(path = tempdir())
 ```
 
 which will return the path to the downloaded dataset:
 
-
-```
-#> [1] "/tmp/RtmpjUmn8P/pandemic-pact-grants.csv"
+```{r usage-website-1b, echo = FALSE}
+## Save the dataset from website to a temporary directory ----
+file.path(tempdir(), "pandemic-pact-grants.csv")
 ```
 
 ### Read the Pandemic PACT tracker dataset from the website
 
 Instead of downloading, the Pandemic PACT dataset available from its website can be read into R directly as follows:
 
-
-```r
+```{r usage-website-2a, eval = FALSE}
 pact_read_website()
 ```
 
 which results in the following:
 
+```{r usage-website-2b, echo = FALSE}
+pact_data <- pact_read_website()
 
-```
-#> # A tibble: 9,862 × 39
-#>    GrantID PubMedGrantId GrantTitleEng                      Abstract
-#>    <chr>   <list>        <chr>                              <chr>   
-#>  1 C00037  <chr [1]>     COVID-19: Improving the Evidence … "The cl…
-#>  2 C00038  <chr [3]>     Identification of biomarkers that… "The ou…
-#>  3 C00040  <chr [2]>     Development of a rapid point-of-c… "This r…
-#>  4 C00041  <chr [1]>     Rapid, Low-cost Diagnostics and D… "The ou…
-#>  5 C00043  <chr [1]>     Rapid Research Response to the 20… "In 201…
-#>  6 C00045  <chr [1]>     Development and Evaluation of SAR… "Corona…
-#>  7 C00046  <chr [2]>     Rapid development of antiviral co… "The ou…
-#>  8 C00047  <chr [1]>     Preventing SARS-CoV- 2 infection … "The SA…
-#>  9 C00048  <chr [1]>     Understanding, Forecasting and Co… "A new …
-#> 10 C00049  <chr [2]>     RIsk of environmental Surface and… "This s…
-#> # ℹ 9,852 more rows
-#> # ℹ 35 more variables: PublicationYearOfAward <int>,
-#> #   GrantEndYear <int>, ResearchInstitutionName <chr>,
-#> #   GrantAmountConverted <dbl>, StudySubject <list>,
-#> #   Ethnicity <list>, AgeGroups <list>, Rurality <list>,
-#> #   VulnerablePopulations <list>, OccupationalGroups <list>,
-#> #   StudyType <list>, ClinicalTrial <list>, Pathogen <list>, …
+pact_data
 ```
 
 ### Process the Pandemic PACT tracker dataset from the website
@@ -85,28 +79,16 @@ The package includes functions that will process the Pandemic PACT tracker datas
 
 For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the [website](https://www.pandemicpact.org/visualise#disease).
 
-
-```r
+```{r usage-website-3a, eval = FALSE}
 pact_read_website() |>
   pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
 ```
 
 which produces the following output:
 
+```{r usage-website-3b, echo = FALSE}
+tidy_df <- pact_data |>
+  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
 
-```
-#> # A tibble: 170 × 3
-#>    GrantStartYear Disease                                      n
-#>             <int> <chr>                                    <int>
-#>  1           1978 Pandemic-prone influenza                     1
-#>  2           1978 Severe Acute Respiratory Syndrome (SARS)     1
-#>  3           1981 COVID-19                                     1
-#>  4           1982 COVID-19                                     1
-#>  5           1988 COVID-19                                     1
-#>  6           1992 COVID-19                                     6
-#>  7           1994 COVID-19                                     2
-#>  8           1996 COVID-19                                     1
-#>  9           1997 COVID-19                                    28
-#> 10           1997 Zika virus disease                           1
-#> # ℹ 160 more rows
+tidy_df
 ```

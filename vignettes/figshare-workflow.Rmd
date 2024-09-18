@@ -17,25 +17,6 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo = FALSE}
 library(pactr)
-
-#'
-#' Update installed mermaid.js
-#' 
-updateMermaid <- function(version = "") {
-  url <- "https://cdn.jsdelivr.net/npm/mermaid@version/dist/mermaid.min.js"
-  if (version != "") {
-    stopifnot(grepl("^[[:digit:]]+\\.[[:digit:]]+\\.[[:digit:]]+$", version))
-    version <- paste0("@", version)
-  }
-  url <- gsub("@version", version, url)
-  try(
-    download.file(url, 
-                  system.file("htmlwidgets/lib/mermaid/dist/mermaid.slim.min.js", 
-                              package = "DiagrammeR"))
-  )
-}
-
-if (!nzchar(Sys.getenv("ZENODO_TOKEN"))) updateMermaid()
 ```
 
 ## About the Pandemic PACT Figshare repository
@@ -80,7 +61,7 @@ The functions for Figshare interface are wrappers to specific functions of the [
 
 The following diagram illustrates the current steps (along with their corresponding functions) in the designed API for interfacing with the Figshare repository.
 
-```{r figshare-workflow, echo = FALSE, fig.align = "center"}
+```{r figshare-workflow, echo = FALSE, eval = FALSE, fig.align = "center"}
 text <- paste(
   readLines("figshare.mmd"),
   collapse = "\n"
@@ -155,7 +136,7 @@ This function reads the *labelled* tracker dataset by default. If the raw datase
 pact_read_figshare(pact_client, tracker_type = "raw")
 ```
 
-which outputs a data.frame of the available raw Pandemic PACT funding tracker dataset.
+which outputs a `data.frame` of the available raw Pandemic PACT funding tracker dataset.
 
 ### Process the Pandemic PACT tracker dataset
 
