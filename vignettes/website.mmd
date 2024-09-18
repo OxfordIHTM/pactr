@@ -1,0 +1,13 @@
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+  flowchart TD
+    download_data("`**Download data**
+    *pact_download_website()*`")
+    
+    read_data("`**Read data**
+    *pact_read_website()*`")
+
+    process_data("`**Process data**
+    *pact_process_website_topic_group()*`")
+
+    read_data --> process_data
+    
