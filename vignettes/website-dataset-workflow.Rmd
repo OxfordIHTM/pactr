@@ -29,7 +29,8 @@ The functions for interfacing with the data available from the Pandemic PACT web
 ```
 #> Warning in readLines("website.mmd"): incomplete final line found on
 #> 'website.mmd'
-#> Error in loadNamespace(name): there is no package called 'webshot'
+#> PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+#> Error in path.expand(path): invalid 'path' argument
 ```
 
 ### Download data available from website
@@ -63,25 +64,25 @@ which results in the following:
 
 ```
 #> # A tibble: 9,862 × 39
-#>    GrantID PubMedGrantId GrantTitleEng Abstract PublicationYearOfAward
-#>    <chr>   <list>        <chr>         <chr>                     <int>
-#>  1 C00037  <chr [1]>     COVID-19: Im… "The cl…                   2020
-#>  2 C00038  <chr [3]>     Identificati… "The ou…                   2020
-#>  3 C00040  <chr [2]>     Development … "This r…                   2020
-#>  4 C00041  <chr [1]>     Rapid, Low-c… "The ou…                   2020
-#>  5 C00043  <chr [1]>     Rapid Resear… "In 201…                   2020
-#>  6 C00045  <chr [1]>     Development … "Corona…                   2020
-#>  7 C00046  <chr [2]>     Rapid develo… "The ou…                   2020
-#>  8 C00047  <chr [1]>     Preventing S… "The SA…                   2020
-#>  9 C00048  <chr [1]>     Understandin… "A new …                   2020
-#> 10 C00049  <chr [2]>     RIsk of envi… "This s…                   2020
+#>    GrantID PubMedGrantId GrantTitleEng                      Abstract
+#>    <chr>   <list>        <chr>                              <chr>   
+#>  1 C00037  <chr [1]>     COVID-19: Improving the Evidence … "The cl…
+#>  2 C00038  <chr [3]>     Identification of biomarkers that… "The ou…
+#>  3 C00040  <chr [2]>     Development of a rapid point-of-c… "This r…
+#>  4 C00041  <chr [1]>     Rapid, Low-cost Diagnostics and D… "The ou…
+#>  5 C00043  <chr [1]>     Rapid Research Response to the 20… "In 201…
+#>  6 C00045  <chr [1]>     Development and Evaluation of SAR… "Corona…
+#>  7 C00046  <chr [2]>     Rapid development of antiviral co… "The ou…
+#>  8 C00047  <chr [1]>     Preventing SARS-CoV- 2 infection … "The SA…
+#>  9 C00048  <chr [1]>     Understanding, Forecasting and Co… "A new …
+#> 10 C00049  <chr [2]>     RIsk of environmental Surface and… "This s…
 #> # ℹ 9,852 more rows
-#> # ℹ 34 more variables: GrantEndYear <int>,
-#> #   ResearchInstitutionName <chr>, GrantAmountConverted <dbl>,
-#> #   StudySubject <list>, Ethnicity <list>, AgeGroups <list>,
-#> #   Rurality <list>, VulnerablePopulations <list>,
-#> #   OccupationalGroups <list>, StudyType <list>,
-#> #   ClinicalTrial <list>, Pathogen <list>, InfluenzaA <chr>, …
+#> # ℹ 35 more variables: PublicationYearOfAward <int>,
+#> #   GrantEndYear <int>, ResearchInstitutionName <chr>,
+#> #   GrantAmountConverted <dbl>, StudySubject <list>,
+#> #   Ethnicity <list>, AgeGroups <list>, Rurality <list>,
+#> #   VulnerablePopulations <list>, OccupationalGroups <list>,
+#> #   StudyType <list>, ClinicalTrial <list>, Pathogen <list>, …
 ```
 
 ### Process the Pandemic PACT tracker dataset from the website
