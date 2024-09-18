@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup, echo = FALSE}
 library(pactr)
 
-if (!nzchar(Sys.getenv("ZENODO_TOKEN"))) source("update_mermaid.R")
+if (!nzchar(Sys.getenv("ZENODO_TOKEN"))) source("vignettes/update_mermaid.R")
 ```
 
 The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/). `{pactr}` provides an application programming interface (API) to the research programme's dataset available from its website data download facility allowing for programmatic access to its publicly available funder tracker dataset.
@@ -35,8 +35,6 @@ The functions for interfacing with the data available from the Pandemic PACT web
 ## Website data workflow
 
 ```{r website-workflow, echo = FALSE, fig.align = "center"}
-
-
 text <- paste(
   readLines("website.mmd"),
   collapse = "\n"

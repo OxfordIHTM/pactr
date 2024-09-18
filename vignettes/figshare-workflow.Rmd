@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 ```{r setup, echo = FALSE}
 library(pactr)
 
-if (!nzchar(Sys.getenv("ZENODO_TOKEN"))) source("update_mermaid.R")
+if (!nzchar(Sys.getenv("ZENODO_TOKEN"))) source("vignettes/update_mermaid.R")
 ```
 
 ## About the Pandemic PACT Figshare repository
