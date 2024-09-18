@@ -97,7 +97,8 @@ available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link"
 </h2>
 <pre><code><span><span class="co">#&gt; Warning in readLines("website.mmd"): incomplete final line found on</span></span>
 <span><span class="co">#&gt; 'website.mmd'</span></span>
-<span><span class="co">#&gt; Error in loadNamespace(name): there is no package called 'webshot'</span></span></code></pre>
+<span><span class="co">#&gt; PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.</span></span>
+<span><span class="co">#&gt; Error in path.expand(path): invalid 'path' argument</span></span></code></pre>
 <div class="section level3">
 <h3 id="download-data-available-from-website">Download data available from website<a class="anchor" aria-label="anchor" href="#download-data-available-from-website"></a>
 </h3>
@@ -118,25 +119,25 @@ website can be read into R directly as follows:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which results in the following:</p>
 <pre><code><span><span class="co">#&gt; # A tibble: 9,862 × 39</span></span>
-<span><span class="co">#&gt;    GrantID PubMedGrantId GrantTitleEng Abstract PublicationYearOfAward</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;   &lt;list&gt;        &lt;chr&gt;         &lt;chr&gt;                     &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 C00037  &lt;chr [1]&gt;     COVID-19: Im… "The cl…                   2020</span></span>
-<span><span class="co">#&gt;  2 C00038  &lt;chr [3]&gt;     Identificati… "The ou…                   2020</span></span>
-<span><span class="co">#&gt;  3 C00040  &lt;chr [2]&gt;     Development … "This r…                   2020</span></span>
-<span><span class="co">#&gt;  4 C00041  &lt;chr [1]&gt;     Rapid, Low-c… "The ou…                   2020</span></span>
-<span><span class="co">#&gt;  5 C00043  &lt;chr [1]&gt;     Rapid Resear… "In 201…                   2020</span></span>
-<span><span class="co">#&gt;  6 C00045  &lt;chr [1]&gt;     Development … "Corona…                   2020</span></span>
-<span><span class="co">#&gt;  7 C00046  &lt;chr [2]&gt;     Rapid develo… "The ou…                   2020</span></span>
-<span><span class="co">#&gt;  8 C00047  &lt;chr [1]&gt;     Preventing S… "The SA…                   2020</span></span>
-<span><span class="co">#&gt;  9 C00048  &lt;chr [1]&gt;     Understandin… "A new …                   2020</span></span>
-<span><span class="co">#&gt; 10 C00049  &lt;chr [2]&gt;     RIsk of envi… "This s…                   2020</span></span>
+<span><span class="co">#&gt;    GrantID PubMedGrantId GrantTitleEng                      Abstract</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;list&gt;        &lt;chr&gt;                              &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt;  1 C00037  &lt;chr [1]&gt;     COVID-19: Improving the Evidence … "The cl…</span></span>
+<span><span class="co">#&gt;  2 C00038  &lt;chr [3]&gt;     Identification of biomarkers that… "The ou…</span></span>
+<span><span class="co">#&gt;  3 C00040  &lt;chr [2]&gt;     Development of a rapid point-of-c… "This r…</span></span>
+<span><span class="co">#&gt;  4 C00041  &lt;chr [1]&gt;     Rapid, Low-cost Diagnostics and D… "The ou…</span></span>
+<span><span class="co">#&gt;  5 C00043  &lt;chr [1]&gt;     Rapid Research Response to the 20… "In 201…</span></span>
+<span><span class="co">#&gt;  6 C00045  &lt;chr [1]&gt;     Development and Evaluation of SAR… "Corona…</span></span>
+<span><span class="co">#&gt;  7 C00046  &lt;chr [2]&gt;     Rapid development of antiviral co… "The ou…</span></span>
+<span><span class="co">#&gt;  8 C00047  &lt;chr [1]&gt;     Preventing SARS-CoV- 2 infection … "The SA…</span></span>
+<span><span class="co">#&gt;  9 C00048  &lt;chr [1]&gt;     Understanding, Forecasting and Co… "A new …</span></span>
+<span><span class="co">#&gt; 10 C00049  &lt;chr [2]&gt;     RIsk of environmental Surface and… "This s…</span></span>
 <span><span class="co">#&gt; # ℹ 9,852 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 34 more variables: GrantEndYear &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   ResearchInstitutionName &lt;chr&gt;, GrantAmountConverted &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   StudySubject &lt;list&gt;, Ethnicity &lt;list&gt;, AgeGroups &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   Rurality &lt;list&gt;, VulnerablePopulations &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   OccupationalGroups &lt;list&gt;, StudyType &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   ClinicalTrial &lt;list&gt;, Pathogen &lt;list&gt;, InfluenzaA &lt;chr&gt;, …</span></span></code></pre>
+<span><span class="co">#&gt; # ℹ 35 more variables: PublicationYearOfAward &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   GrantEndYear &lt;int&gt;, ResearchInstitutionName &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   GrantAmountConverted &lt;dbl&gt;, StudySubject &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   Ethnicity &lt;list&gt;, AgeGroups &lt;list&gt;, Rurality &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   VulnerablePopulations &lt;list&gt;, OccupationalGroups &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   StudyType &lt;list&gt;, ClinicalTrial &lt;list&gt;, Pathogen &lt;list&gt;, …</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
