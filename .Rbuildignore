@@ -11,3 +11,5 @@
 ^README\.html$
 ^data-raw$
 ^README_cache$
+^doc$
+^Meta$
