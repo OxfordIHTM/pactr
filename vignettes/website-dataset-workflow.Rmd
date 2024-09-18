@@ -32,19 +32,13 @@ The functions for interfacing with the data available from the Pandemic PACT web
 
 ## Website data workflow
 
-```{mermaid website-workflow, fig.align = "center"}
-  %%{init: {"flowchart": {"htmlLabels": false}} }%%
-  flowchart LR
-    download_data("`**Download data**
-    *pact_download_website()*`")
-    
-    read_data("`**Read data**
-    *pact_read_website()*`")
+```{r website-workflow, echo = FALSE, fig.align = "center"}
+text <- paste(
+  readLines("website.mmd"),
+  collapse = "\n"
+)
 
-    process_data("`**Process data**
-    *pact_process_website_topic_group()*`")
-
-    read_data --> process_data
+DiagrammeR::mermaid(text)
 ```
 
 ### Download data available from website

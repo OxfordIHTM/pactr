@@ -29,6 +29,7 @@ Imports:
     tibble,
     tidyr
 Suggests: 
+    DiagrammeR,
     knitr,
     rmarkdown,
     spelling,
