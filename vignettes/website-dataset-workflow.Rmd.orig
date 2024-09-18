@@ -1,0 +1,94 @@
+---
+title: "Website dataset workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Website dataset workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(pactr)
+```
+
+The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/). `{pactr}` provides an application programming interface (API) to the research programme's dataset available from its website data download facility allowing for programmatic access to its publicly available funder tracker dataset.
+
+## Website data interface
+
+The functions for interfacing with the data available from the Pandemic PACT website allow for *downloading*, *reading*, and *processing*. Current website data-specific functionalities available in `{pactr}` are:
+
+1. Downloading of Pandemic PACT dataset available from the website (*stable*);
+
+2. Reading of Pandemic PACT dataset available from the website (*stable*); and,
+
+3. Processing of Pandemic PACT dataset available from the website (*experimental*).
+
+## Website data workflow
+
+```{r website-workflow, echo = FALSE, fig.align = "center"}
+text <- paste(
+  readLines("website.mmd"),
+  collapse = "\n"
+)
+
+DiagrammeR::mermaid(text)
+```
+
+### Download data available from website
+
+To download the Pandemic PACT tracker dataset available from its website, the following command can be used:
+
+```{r usage-website-1a, eval = FALSE}
+## Save the dataset from website to a temporary directory ----
+pact_download_website(path = tempdir())
+```
+
+which will return the path to the downloaded dataset:
+
+```{r usage-website-1b, echo = FALSE}
+## Save the dataset from website to a temporary directory ----
+pact_download_website(path = tempdir())
+```
+
+### Read the Pandemic PACT tracker dataset from the website
+
+Instead of downloading, the Pandemic PACT dataset available from its website can be read into R directly as follows:
+
+```{r usage-website-2a, eval = FALSE}
+pact_read_website()
+```
+
+which results in the following:
+
+```{r usage-website-2b, echo = FALSE}
+pact_data <- pact_read_website()
+
+pact_data
+```
+
+### Process the Pandemic PACT tracker dataset from the website
+
+The package includes functions that will process the Pandemic PACT tracker dataset into specific structures and aggregations that will allow for further plotting and reporting of similar outputs that are currently presented in the Pandemic PACT website.
+
+For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the [website](https://www.pandemicpact.org/visualise#disease).
+
+```{r usage-website-3a, eval = FALSE}
+pact_read_website() |>
+  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+```
+
+which produces the following output:
+
+```{r usage-website-3b, echo = FALSE}
+tidy_df <- pact_data |>
+  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+
+tidy_df
+```
