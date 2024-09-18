@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo = FALSE}
 library(pactr)
+library(webshot)
 ```
 
 The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/). `{pactr}` provides an application programming interface (API) to the research programme's dataset available from its website data download facility allowing for programmatic access to its publicly available funder tracker dataset.

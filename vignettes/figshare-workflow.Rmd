@@ -56,7 +56,8 @@ The following diagram illustrates the current steps (along with their correspond
 
 
 ```
-#> Error in loadNamespace(name): there is no package called 'webshot'
+#> PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+#> Error in path.expand(path): invalid 'path' argument
 ```
 
 ### Set a Figshare client
@@ -92,19 +93,19 @@ The output is a `data.frame` containing metadata regarding contents of the Figsh
 
 ```
 #> # A tibble: 7 × 18
-#>   project_id       id title    doi   handle url   published_date thumb
-#>        <int>    <int> <chr>    <chr> <chr>  <chr> <chr>          <chr>
-#> 1         NA 25827649 Scoping… 10.2… ""     http… 2024-05-15T12… ""   
-#> 2         NA 25368136 test     10.2… ""     http… 2024-03-08T11… "htt…
-#> 3     189177 25368070 Pandemi… 10.2… ""     http… 2024-03-08T10… "htt…
-#> 4     189177 25352839 Extende… 10.2… ""     http… 2024-03-06T15… ""   
-#> 5     189168 24786258 Pandemi… 10.2… ""     http… 2023-12-15T11… ""   
-#> 6     189168 24773787 Pandemi… 10.2… ""     http… 2023-12-11T11… ""   
-#> 7     189168 24763548 Pandemi… 10.2… ""     http… 2023-12-11T11… ""   
+#>   project_id       id title  doi   handle url   published_date thumb
+#>        <int>    <int> <chr>  <chr> <chr>  <chr> <chr>          <chr>
+#> 1         NA 25827649 Scopi… 10.2… ""     http… 2024-05-15T12… ""   
+#> 2         NA 25368136 test   10.2… ""     http… 2024-03-08T11… "htt…
+#> 3     189177 25368070 Pande… 10.2… ""     http… 2024-03-08T10… "htt…
+#> 4     189177 25352839 Exten… 10.2… ""     http… 2024-03-06T15… ""   
+#> 5     189168 24786258 Pande… 10.2… ""     http… 2023-12-15T11… ""   
+#> 6     189168 24773787 Pande… 10.2… ""     http… 2023-12-11T11… ""   
+#> 7     189168 24763548 Pande… 10.2… ""     http… 2023-12-11T11… ""   
 #> # ℹ 10 more variables: defined_type <int>, defined_type_name <chr>,
 #> #   group_id <int>, url_private_api <chr>, url_public_api <chr>,
-#> #   url_private_html <chr>, url_public_html <chr>, timeline <df[,2]>,
-#> #   resource_title <chr>, resource_doi <chr>
+#> #   url_private_html <chr>, url_public_html <chr>,
+#> #   timeline <df[,2]>, resource_title <chr>, resource_doi <chr>
 ```
 
 This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.

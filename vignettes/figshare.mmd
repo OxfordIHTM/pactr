@@ -1,23 +1,23 @@
-  %%{init: {"flowchart": {"htmlLabels": false}} }%%
-  flowchart TD
-    create_token("`**Create Figshare token**`")
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
+  create_token("`**Create Figshare token**`")
     
-    set_client("`**Set client**
-    *pact_client_set()*`")    
+  set_client("`**Set client**
+  *pact_client_set()*`")    
     
-    list_items("`**List contents of repository**
-    *pact_list()*`")
+  list_items("`**List contents of repository**
+  *pact_list()*`")
     
-    download_data("`**Download data**
-    *pact_download_figshare()*`")
+  download_data("`**Download data**
+  *pact_download_figshare()*`")
     
-    read_data("`**Read data**
-    *pact_read_figshare()*`")
+  read_data("`**Read data**
+  *pact_read_figshare()*`")
  
-    process_data("`**Process data**
-    *pact_process_figshare()*`")
+  process_data("`**Process data**
+  *pact_process_figshare()*`")
 
-    create_token --> set_client
-    set_client --> list_items
-    set_client --> download_data
-    set_client --> read_data --> process_data
+  create_token --> set_client
+  set_client --> list_items
+  set_client --> download_data
+  set_client --> read_data --> process_data
