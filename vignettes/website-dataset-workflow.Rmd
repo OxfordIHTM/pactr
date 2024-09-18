@@ -17,7 +17,24 @@ knitr::opts_chunk$set(
 ```{r setup, echo = FALSE}
 library(pactr)
 
-if (!nzchar(Sys.getenv("ZENODO_TOKEN"))) source("vignettes/update_mermaid.R")
+#'
+#' Update installed mermaid.js
+#' 
+updateMermaid <- function(version = "") {
+  url <- "https://cdn.jsdelivr.net/npm/mermaid@version/dist/mermaid.min.js"
+  if (version != "") {
+    stopifnot(grepl("^[[:digit:]]+\\.[[:digit:]]+\\.[[:digit:]]+$", version))
+    version <- paste0("@", version)
+  }
+  url <- gsub("@version", version, url)
+  try(
+    download.file(url, 
+                  system.file("htmlwidgets/lib/mermaid/dist/mermaid.slim.min.js", 
+                              package = "DiagrammeR"))
+  )
+}
+
+if (!nzchar(Sys.getenv("ZENODO_TOKEN"))) updateMermaid()
 ```
 
 The Pandemic PACT data is publicly available for download from its [website](https://www.pandemicpact.org/). `{pactr}` provides an application programming interface (API) to the research programme's dataset available from its website data download facility allowing for programmatic access to its publicly available funder tracker dataset.
