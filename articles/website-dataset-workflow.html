@@ -115,25 +115,25 @@ website can be read into R directly as follows:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which results in the following:</p>
 <pre><code><span><span class="co">#&gt; # A tibble: 9,862 × 39</span></span>
-<span><span class="co">#&gt;    GrantID PubMedGrantId GrantTitleEng                      Abstract</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;   &lt;list&gt;        &lt;chr&gt;                              &lt;chr&gt;   </span></span>
-<span><span class="co">#&gt;  1 C00037  &lt;chr [1]&gt;     COVID-19: Improving the Evidence … "The cl…</span></span>
-<span><span class="co">#&gt;  2 C00038  &lt;chr [3]&gt;     Identification of biomarkers that… "The ou…</span></span>
-<span><span class="co">#&gt;  3 C00040  &lt;chr [2]&gt;     Development of a rapid point-of-c… "This r…</span></span>
-<span><span class="co">#&gt;  4 C00041  &lt;chr [1]&gt;     Rapid, Low-cost Diagnostics and D… "The ou…</span></span>
-<span><span class="co">#&gt;  5 C00043  &lt;chr [1]&gt;     Rapid Research Response to the 20… "In 201…</span></span>
-<span><span class="co">#&gt;  6 C00045  &lt;chr [1]&gt;     Development and Evaluation of SAR… "Corona…</span></span>
-<span><span class="co">#&gt;  7 C00046  &lt;chr [2]&gt;     Rapid development of antiviral co… "The ou…</span></span>
-<span><span class="co">#&gt;  8 C00047  &lt;chr [1]&gt;     Preventing SARS-CoV- 2 infection … "The SA…</span></span>
-<span><span class="co">#&gt;  9 C00048  &lt;chr [1]&gt;     Understanding, Forecasting and Co… "A new …</span></span>
-<span><span class="co">#&gt; 10 C00049  &lt;chr [2]&gt;     RIsk of environmental Surface and… "This s…</span></span>
+<span><span class="co">#&gt;    GrantID PubMedGrantId          GrantTitleEng           Abstract</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                  &lt;chr&gt;                   &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt;  1 C00037  170359                 COVID-19: Improving th… "The cl…</span></span>
+<span><span class="co">#&gt;  2 C00038  170357, 171495, 175580 Identification of biom… "The ou…</span></span>
+<span><span class="co">#&gt;  3 C00040  170353, 175493         Development of a rapid… "This r…</span></span>
+<span><span class="co">#&gt;  4 C00041  109434                 Rapid, Low-cost Diagno… "The ou…</span></span>
+<span><span class="co">#&gt;  5 C00043  170355                 Rapid Research Respons… "In 201…</span></span>
+<span><span class="co">#&gt;  6 C00045  170343                 Development and Evalua… "Corona…</span></span>
+<span><span class="co">#&gt;  7 C00046  170346, 175528         Rapid development of a… "The ou…</span></span>
+<span><span class="co">#&gt;  8 C00047  170342                 Preventing SARS-CoV- 2… "The SA…</span></span>
+<span><span class="co">#&gt;  9 C00048  170360                 Understanding, Forecas… "A new …</span></span>
+<span><span class="co">#&gt; 10 C00049  170362, 175535         RIsk of environmental … "This s…</span></span>
 <span><span class="co">#&gt; # ℹ 9,852 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 35 more variables: PublicationYearOfAward &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   GrantEndYear &lt;int&gt;, ResearchInstitutionName &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   GrantAmountConverted &lt;dbl&gt;, StudySubject &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   Ethnicity &lt;list&gt;, AgeGroups &lt;list&gt;, Rurality &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   VulnerablePopulations &lt;list&gt;, OccupationalGroups &lt;list&gt;,</span></span>
-<span><span class="co">#&gt; #   StudyType &lt;list&gt;, ClinicalTrial &lt;list&gt;, Pathogen &lt;list&gt;, …</span></span></code></pre>
+<span><span class="co">#&gt; #   GrantAmountConverted &lt;dbl&gt;, StudySubject &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   Ethnicity &lt;chr&gt;, AgeGroups &lt;chr&gt;, Rurality &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   VulnerablePopulations &lt;chr&gt;, OccupationalGroups &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   StudyType &lt;chr&gt;, ClinicalTrial &lt;chr&gt;, Pathogen &lt;chr&gt;, …</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -147,9 +147,11 @@ dataset into an aggregated dataset structure that can be used to create
 a similar plot to the one presented in the <a href="https://www.pandemicpact.org/visualise#disease" class="external-link">website</a>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/pact_process_website.html">pact_process_website_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="../reference/pact_process_website.html">pact_process_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/pact_process.html">pact_process_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
 <p>which produces the following output:</p>
-<pre><code><span><span class="co">#&gt; # A tibble: 170 × 3</span></span>
+<pre><code><span><span class="co">#&gt; Error in pact_process_website(pact_data): could not find function "pact_process_website"</span></span>
+<span><span class="co">#&gt; # A tibble: 170 × 3</span></span>
 <span><span class="co">#&gt;    GrantStartYear Disease                                      n</span></span>
 <span><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;                                    &lt;int&gt;</span></span>
 <span><span class="co">#&gt;  1           1978 Pandemic-prone influenza                     1</span></span>

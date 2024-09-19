@@ -191,20 +191,21 @@ contents of the Figshare Pandemic PACT group. The information within the
 metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming
 interface (API)</a> and are either set by the Pandemic PACT data team or
 by Figshare. The data.frame would look as follows:</p>
-<pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 18</span></span></span>
-<span><span class="co">#&gt;   project_id       id title doi   handle url   published_date thumb defined_type</span></span>
-<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>         <span style="color: #BB0000;">NA</span> 25<span style="text-decoration: underline;">827</span>649 Scop… 10.2… <span style="color: #949494;">""</span>     http… 2024-05-15T12… <span style="color: #949494;">""</span>               3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>         <span style="color: #BB0000;">NA</span> 25<span style="text-decoration: underline;">368</span>136 test  10.2… <span style="color: #949494;">""</span>     http… 2024-03-08T11… <span style="color: #949494;">"</span>htt…            1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     <span style="text-decoration: underline;">189</span>177 25<span style="text-decoration: underline;">368</span>070 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2024-03-08T10… <span style="color: #949494;">"</span>htt…            1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     <span style="text-decoration: underline;">189</span>177 25<span style="text-decoration: underline;">352</span>839 Exte… 10.2… <span style="color: #949494;">""</span>     http… 2024-03-06T15… <span style="color: #949494;">""</span>               6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     <span style="text-decoration: underline;">189</span>168 24<span style="text-decoration: underline;">786</span>258 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2023-12-15T11… <span style="color: #949494;">""</span>               3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     <span style="text-decoration: underline;">189</span>168 24<span style="text-decoration: underline;">773</span>787 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2023-12-11T11… <span style="color: #949494;">""</span>               3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>     <span style="text-decoration: underline;">189</span>168 24<span style="text-decoration: underline;">763</span>548 Pand… 10.2… <span style="color: #949494;">""</span>     http… 2023-12-11T11… <span style="color: #949494;">""</span>               3</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;, url_private_html &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   url_public_html &lt;chr&gt;, timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   resource_doi &lt;chr&gt;</span></span></span></code></pre>
+<pre><code><span><span class="co">#&gt; # A tibble: 7 × 18</span></span>
+<span><span class="co">#&gt;   project_id      id title doi   handle url   published_date thumb</span></span>
+<span><span class="co">#&gt;        &lt;int&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1         NA  2.58e7 Scop… 10.2… ""     http… 2024-05-15T12… ""   </span></span>
+<span><span class="co">#&gt; 2         NA  2.54e7 test  10.2… ""     http… 2024-03-08T11… "htt…</span></span>
+<span><span class="co">#&gt; 3     189177  2.54e7 Pand… 10.2… ""     http… 2024-03-08T10… "htt…</span></span>
+<span><span class="co">#&gt; 4     189177  2.54e7 Exte… 10.2… ""     http… 2024-03-06T15… ""   </span></span>
+<span><span class="co">#&gt; 5     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-15T11… ""   </span></span>
+<span><span class="co">#&gt; 6     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-11T11… ""   </span></span>
+<span><span class="co">#&gt; 7     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-11T11… ""   </span></span>
+<span><span class="co">#&gt; # ℹ 10 more variables: defined_type &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   url_private_html &lt;chr&gt;, url_public_html &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;, resource_doi &lt;chr&gt;</span></span></code></pre>
 <p>This function is useful in getting an overview of what is currently
 available in the Pandemic PACT Figshare repository.</p>
 </div>
