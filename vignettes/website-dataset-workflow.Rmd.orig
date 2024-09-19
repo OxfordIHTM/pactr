@@ -81,14 +81,16 @@ For example, the following will process the Pandemic PACT tracker dataset into a
 
 ```{r usage-website-3a, eval = FALSE}
 pact_read_website() |>
-  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+  pact_process_website() |>
+  pact_process_topic_group(topic = "Disease", group = "GrantStartYear")
 ```
 
 which produces the following output:
 
 ```{r usage-website-3b, echo = FALSE}
 tidy_df <- pact_data |>
-  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+  pact_process_website() |>
+  pact_process_topic_group(topic = "Disease", group = "GrantStartYear")
 
 tidy_df
 ```
