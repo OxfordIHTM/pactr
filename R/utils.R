@@ -143,3 +143,91 @@ get_who_regions <- function(x) {
   ) |>
     unlist()
 }
+
+#'
+#' Get Pandemic PACT research category
+#'
+#' @param pact_data A data.frame for the Pandemic PACT dataset read from the
+#'   Pandemic PACT website. This is usually obtained via a call to 
+#'   `pact_read_website()`. 
+#' 
+#' @returns A data.frame of same structure as `pact_data` but with ResearchCat
+#'   and ResearchSubcat variables processed/cleaned.
+#' 
+#' @examples
+#' \dontrun{
+#'   get_research_categories(pact_data)
+#' }
+#' 
+#' @rdname get_research_category
+#' @keywords internal
+#'
+
+get_research_categories <- function(pact_data) {
+  ## Create CatSubcat in reference table ----
+  category_reference <- pactr::pact_research_category |>
+    dplyr::mutate(
+      CatSubcat = paste(
+        .data$research_category, .data$research_subcategory, sep = " - "
+      )
+    )
+
+  ## Recode categories and subcategories with "" values ----
+  catsubcat <- pact_data |>
+    dplyr::mutate(
+      ResearchCat = ifelse(
+        .data$ResearchCat == "", "No category", .data$ResearchCat
+      ),
+      ResearchSubcat = ifelse(
+        .data$ResearchSubcat == "", "No subcategory", .data$ResearchSubcat
+      )
+    ) |>
+    dplyr::mutate(
+      ResearchCat = stringr::str_split(
+        string = .data$ResearchCat, pattern = " \\| "
+      ),
+      ResearchSubcat = stringr::str_split(
+        string = .data$ResearchSubcat, pattern = " \\| "
+      )
+    ) |>
+    tidyr::unnest(.data$ResearchSubcat) |>
+    tidyr::unnest(.data$ResearchCat) |>
+    dplyr::mutate(
+      CatSubcat = paste(
+        .data$ResearchCat, .data$ResearchSubcat, sep = " - "
+      )
+    ) |>
+    dplyr::filter(
+      .data$CatSubcat %in% category_reference$CatSubcat |
+        stringr::str_detect(
+          string = .data$CatSubcat, pattern = "No category|No subcategory"
+        )
+    ) |>
+    dplyr::group_by(.data$GrantID) |>
+    dplyr::summarise(
+      CatSubcat = unique(.data$CatSubcat) |> paste(collapse = " | "),
+      .groups = "drop"
+    )
+
+  pact_data <- within(pact_data, {
+    ResearchCat = catsubcat$CatSubcat |>
+      stringr::str_split(pattern = " - | \\| ") |>
+      lapply(
+        FUN = function(x) {
+          x[!!seq_len(length(x)) %% 2] |>
+            paste(collapse = " | ")
+        }
+      ) |>
+      unlist()
+    ResearchSubcat = catsubcat$CatSubcat |>
+      stringr::str_split(pattern = " - | \\| ") |>
+      lapply(
+        FUN = function(x) {
+          x[!seq_len(length(x)) %% 2] |>
+            paste(collapse = " | ")
+        }
+      ) |>
+      unlist()
+  })
+}  
+  

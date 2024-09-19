@@ -4,25 +4,20 @@
 \alias{pact_read_website}
 \title{Read datasets from the Pandemic PACT website}
 \usage{
-pact_read_website(nest = TRUE, col_list = TRUE)
+pact_read_website(.url = NULL)
 }
 \arguments{
-\item{nest}{Logical. Should variable/fields with multiple values be nested?
-Default to FALSE.}
-
-\item{col_list}{Logical. Should variable/fields with multiple values be
-made into column lists? Only evaluated if \code{nest = TRUE}.}
+\item{.url}{The URL for the website dataset.}
 }
 \value{
-A tibble of the dataset from the website structured based on
-\code{nest} and \code{col_list} specifications.
+A tibble of the Pandemic PACT dataset from the website.
 }
 \description{
 Read datasets from the Pandemic PACT website
 }
 \examples{
 \dontrun{
-  pact_read_website(pact_client)
+  pact_read_website()
 }
 
 }

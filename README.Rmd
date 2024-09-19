@@ -207,8 +207,8 @@ pact_read_website()
 
 which results in the following:
 
-```{r usage-website-2b, echo = FALSE, cache = TRUE}
-pact_data <- pact_read_website()
+```{r usage-website-2b, echo = FALSE}
+pact_read_website()
 ```
 
 ### Process the Pandemic PACT tracker dataset from the website
@@ -219,14 +219,18 @@ For example, the following will process the Pandemic PACT tracker dataset into a
 
 ```{r usage-website-3a, eval = FALSE}
 pact_read_website() |>
-  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+  pact_process_website() |>
+  pact_process_topic_group(topic = "Disease", group = "GrantStartYear")
 ```
 
 which produces the following output:
 
 ```{r usage-website-3b, echo = FALSE, cache = TRUE}
+pact_data <- pact_read_website() |>
+  pact_process_website()
+
 tidy_df <- pact_data |>
-  pact_process_website_topic_group(topic = "Disease", group = "GrantStartYear")
+  pact_process_topic_group(topic = "Disease", group = "GrantStartYear")
 
 tidy_df
 ```
@@ -234,19 +238,10 @@ tidy_df
 which in turn can be plotted as follows:
 
 ```{r usage-website-3c, echo = FALSE, fig.height = 8, cache = TRUE}
-disease_df <- pact_read_website() |>
+disease_df <- tidy_df |>
   dplyr::mutate(
-    Year = ifelse(
-      GrantStartYear < 2020 | is.na(GrantStartYear), 
-      PublicationYearOfAward, GrantStartYear
-    )
-  ) |>
-  pact_process_website_topic_group(
-    topic = "Disease", group = "Year"
-  ) |>
-    dplyr::mutate(
     Disease = factor(
-      x = Disease, 
+    x = Disease, 
       levels = c(
         "COVID-19", "Disease X", "Congenital Zika virus disease",
         "Crimean-Congo haemorrhagic fever", "Ebola virus disease",
@@ -268,7 +263,7 @@ disease_df <- pact_read_website() |>
 ggplot2::ggplot(
   data = disease_df,
   mapping = ggplot2::aes(
-    x = Year, y = n, group = Disease, color = Disease
+    x = GrantStartYear, y = n, group = Disease, color = Disease
   )
 ) +
   ggplot2::geom_line() +
@@ -287,7 +282,9 @@ or alternatively:
 
 ```{r usage-website-3d, echo = FALSE, fig.height = 12}
 disease_df |>
-  ggplot2::ggplot(mapping = ggplot2::aes(x = Year, y = n, group = Disease)) +
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(x = GrantStartYear, y = n, group = Disease)
+  ) +
   ggplot2::geom_line(
     colour = oxthema::get_oxford_colour("sky"), linewidth = 1
   ) +
