@@ -37,3 +37,22 @@
 #' @source Pandemic PACT website https://www.pandemicpact.org/
 #' 
 "pact_research_category"
+
+#'
+#' Pandemic PACT Mpox Priorities
+#' 
+#' @format A data.frame with 4 columns and 23 rows:
+#' 
+#' | **Variable** | **Description** |
+#' | :--- | :--- |
+#' | *mpox_priority_code* | Two digit Mpox priority code |
+#' | *mpox_priority* | Mpox priority name |
+#' | *mpox_subpriority_code* | Four digit Mpox sub-priority code |
+#' | *mpox_subpriority* | Mpox sub-priority name |
+#' 
+#' @examples
+#' pact_mpox_priority
+#' 
+#' @source Pandemic PACT website https://www.pandemicpact.org/
+#' 
+"pact_mpox_priority"

@@ -35,7 +35,7 @@
 #' 
 
 pact_process_topic_group <- function(df, topic, group = NULL, 
-                                             outcome = c("frequency", "money")) {
+                                     outcome = c("frequency", "money")) {
   ## Get outcome value ----
   outcome <- match.arg(outcome)
 
