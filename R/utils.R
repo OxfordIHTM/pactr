@@ -151,8 +151,8 @@ get_who_regions <- function(x) {
 #'   Pandemic PACT website. This is usually obtained via a call to 
 #'   `pact_read_website()`. 
 #' 
-#' @returns A data.frame of same structure as `pact_data` but with ResearchCat
-#'   and ResearchSubcat variables processed/cleaned.
+#' @returns A data.frame of same structure as `pact_data` but with `ResearchCat`
+#'   and `ResearchSubcat` variables processed/cleaned.
 #' 
 #' @examples
 #' \dontrun{
@@ -228,6 +228,124 @@ get_research_categories <- function(pact_data) {
         }
       ) |>
       unlist()
-  })
+  }) |>
+    dplyr::mutate(
+      ResearchCat = ifelse(
+        .data$ResearchCat == "No category", NA_character_,
+        .data$ResearchCat
+      ),
+      ResearchSubCat = ifelse(
+        .data$ResearchSubCat == "No subcategory", NA_character_,
+        .data$ResearchSubCat
+      )
+    )
+
+  ## Return pact_data ----
+  pact_data
 }  
   
+
+#'
+#' Get Pandemic PACT Mpox priority
+#'
+#' @param pact_data A data.frame for the Pandemic PACT dataset read from the
+#'   Pandemic PACT website. This is usually obtained via a call to 
+#'   `pact_read_website()`. 
+#' 
+#' @returns A data.frame of same structure as `pact_data` but with
+#'   `MPOXResearchPriority` and `MPOXResearchSubPriority` variables 
+#'   processed/cleaned.
+#' 
+#' @examples
+#' \dontrun{
+#'   get_mpox_priority(pact_data)
+#' }
+#' 
+#' @rdname get_mpox_priority
+#' @keywords internal
+#'
+
+get_mpox_priority <- function(pact_data) {
+  ## Create priority reference based on details in reference table ----
+  priority_reference <- pactr::pact_mpox_priority |>
+    dplyr::mutate(
+      PriorSubprior = paste(
+        .data$mpox_priority, .data$mpox_subpriority, sep = " - "
+      )
+    )
+
+  ## Recode priorities and subpriorities with "" values ----
+  priorsubprior <- pact_data |>
+    dplyr::mutate(
+      MPOXResearchPriority = ifelse(
+        .data$MPOXResearchPriority == "", 
+        "No priority", .data$MPOXResearchPriority
+      ),
+      MPOXResearchSubPriority = ifelse(
+        .data$MPOXResearchSubPriority == "", 
+        "No subpriority", .data$MPOXResearchSubPriority
+      )
+    ) |>
+    dplyr::mutate(
+      MPOXResearchPriority = stringr::str_split(
+        string = .data$MPOXResearchPriority, pattern = " \\| "
+      ),
+      MPOXResearchSubPriority = stringr::str_split(
+        string = .data$MPOXResearchSubPriority, pattern = " \\| "
+      )
+    ) |>
+    tidyr::unnest(.data$MPOXResearchSubPriority) |>
+    tidyr::unnest(.data$MPOXResearchPriority) |>
+    dplyr::mutate(
+      PriorSubprior = paste(
+        .data$MPOXResearchPriority, .data$MPOXResearchSubPriority, 
+        sep = " - "
+      )
+    ) |>
+    dplyr::filter(
+      .data$PriorSubprior %in% priority_reference$PriorSubprior |
+        stringr::str_detect(
+          string = .data$PriorSubprior, pattern = "No priority|No subpriority"
+        )
+    ) |>
+    dplyr::group_by(.data$GrantID) |>
+    dplyr::summarise(
+      PriorSubprior = unique(.data$PriorSubprior) |> paste(collapse = " | "),
+      .groups = "drop"
+    )
+
+  pact_data <- within(pact_data, {
+    MPOXResearchPriority = priorsubprior$PriorSubprior |>
+      stringr::str_split(pattern = " - | \\| ") |>
+      lapply(
+        FUN = function(x) {
+          x[!!seq_len(length(x)) %% 2] |>
+            paste(collapse = " | ")
+        }
+      ) |>
+      unlist()
+    MPOXResearchSubPriority = priorsubprior$PriorSubprior |>
+      stringr::str_split(pattern = " - | \\| ") |>
+      lapply(
+        FUN = function(x) {
+          x[!seq_len(length(x)) %% 2] |>
+            paste(collapse = " | ")
+        }
+      ) |>
+      unlist()
+  }) |>
+    dplyr::mutate(
+      MPOXResearchPriority = ifelse(
+        .data$MPOXResearchPriority == "No priority", NA_character_,
+        .data$MPOXResearchPriority
+      ),
+      MPOXResearchSubPriority = ifelse(
+        .data$MPOXResearchSubPriority == "No subpriority", NA_character_,
+        .data$MPOXResearchSubPriority
+      )
+    )
+
+
+  ## Return pact_data ----
+  pact_data
+}

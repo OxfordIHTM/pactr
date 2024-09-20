@@ -12,8 +12,8 @@ Pandemic PACT website. This is usually obtained via a call to
 \code{pact_read_website()}.}
 }
 \value{
-A data.frame of same structure as \code{pact_data} but with ResearchCat
-and ResearchSubcat variables processed/cleaned.
+A data.frame of same structure as \code{pact_data} but with \code{ResearchCat}
+and \code{ResearchSubcat} variables processed/cleaned.
 }
 \description{
 Get Pandemic PACT research category
