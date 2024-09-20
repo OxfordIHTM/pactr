@@ -156,14 +156,14 @@ get_who_regions <- function(x) {
 #' 
 #' @examples
 #' \dontrun{
-#'   get_research_categories(pact_data)
+#'   get_research_category(pact_data)
 #' }
 #' 
 #' @rdname get_research_category
 #' @keywords internal
 #'
 
-get_research_categories <- function(pact_data) {
+get_research_category <- function(pact_data) {
   ## Create CatSubcat in reference table ----
   category_reference <- pactr::pact_research_category |>
     dplyr::mutate(
@@ -234,9 +234,9 @@ get_research_categories <- function(pact_data) {
         .data$ResearchCat == "No category", NA_character_,
         .data$ResearchCat
       ),
-      ResearchSubCat = ifelse(
-        .data$ResearchSubCat == "No subcategory", NA_character_,
-        .data$ResearchSubCat
+      ResearchSubcat = ifelse(
+        .data$ResearchSubcat == "No subcategory", NA_character_,
+        .data$ResearchSubcat
       )
     )
 
