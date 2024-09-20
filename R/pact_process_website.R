@@ -53,6 +53,9 @@ pact_process_website <- function(pact_data,
 
     ## Fix one-to-one issues with research category and subcategory ----
     pact_data <- get_research_categories(pact_data)
+
+    ## Fix one-to-one issues for Mpox subpriority and Mpox priority ----
+    pact_data <- get_mpox_priority(pact_data)
   
     ## Standardise NA specification (nested) ----
     pact_data <- pact_data |>

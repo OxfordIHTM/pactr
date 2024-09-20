@@ -10,7 +10,7 @@ mpox_priority <- c(
   rep("Infection prevention and control", 1),
   rep("Therapeutics research, development and implementation", 1),
   rep("Vaccines research, development and implementation", 2),
-  rep("Policies for public health, disease control & community resilience", 3),
+  rep("Policies for public health, disease control &  community resilience", 3),
   rep("Secondary impacts of disease, response & control measures", 1),
   rep("Health Systems Research", 2)
 )
@@ -46,7 +46,7 @@ mpox_subpriority <- c(
   "Development of equitable, accessible, safe & effective therapeutics",
   "Development of equitable, accessible, safe and effective vaccines",
   "Immunisation strategies to optimise use of available vaccines",
-  "Risk communication & community engagement e.g. key populations",
+  "Risk communication & community engagement e.g.  key populations",
   "Behavioural drivers of risk and protection in different contexts",
   "Evaluation of elimination strategy implementation in different contexts.",
   "Prevention of complications & social sequelae",
