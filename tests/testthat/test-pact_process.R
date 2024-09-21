@@ -32,7 +32,7 @@ test_that("pact_process works as expected", {
   expect_error(
     pact_process_topic_group(pact_data_non_list, topic = "Disease")
   )
-  
+
   expect_error(
     pact_process_topic_group(
       pact_data, topic = "Disease", 
@@ -45,6 +45,4 @@ test_that("pact_process works as expected", {
       pact_data, topic = "Disease", group = c("Disease", "StudySubject")
     )
   )
-
-
 })
