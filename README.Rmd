@@ -215,7 +215,7 @@ pact_read_website()
 
 The package includes functions that will process the Pandemic PACT tracker dataset into specific structures and aggregations that will allow for further plotting and reporting of similar outputs that are currently presented in the Pandemic PACT website.
 
-For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the [website](https://www.pandemicpact.org/visualise#disease).
+For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the [website](https://www.pandemicimpact.org/visualise#disease).
 
 ```{r usage-website-3a, eval = FALSE}
 pact_read_website() |>
@@ -237,7 +237,7 @@ tidy_df
 
 which in turn can be plotted as follows:
 
-```{r usage-website-3c, echo = FALSE, fig.height = 8, cache = TRUE}
+```{r usage-website-3c, echo = FALSE, fig.height = 8}
 disease_df <- tidy_df |>
   dplyr::mutate(
     Disease = factor(

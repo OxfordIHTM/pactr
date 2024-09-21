@@ -290,7 +290,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/Rtmpq8J43z/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpEjjFtW/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -334,7 +334,7 @@ currently presented in the Pandemic PACT website.
 For example, the following will process the Pandemic PACT tracker
 dataset into an aggregated dataset structure that can be used to create
 a similar plot to the one presented in the
-[website](https://www.pandemicpact.org/visualise#disease).
+[website](https://www.pandemicimpact.org/visualise#disease).
 
 ``` r
 pact_read_website() |>
