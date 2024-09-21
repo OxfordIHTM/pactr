@@ -252,7 +252,7 @@
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpEjjFtW/pandemic-pact-grants.csv"</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpvFKsbs/pandemic-pact-grants.csv"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -292,7 +292,7 @@
 <span>  <span class="fu"><a href="reference/pact_process_website.html">pact_process_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/pact_process.html">pact_process_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
 <p>which produces the following output:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 89 × 3</span></span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 88 × 3</span></span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease                                                     n</span></span>
 <span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;                                                   &lt;int&gt;</span></span>
 <span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#&gt;  1           2020 COVID-19                                                 4711</span></span>
@@ -305,12 +305,10 @@
 <span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="co">#&gt;  8           2020 Marburg virus disease                                      33</span></span>
 <span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co">#&gt;  9           2020 Middle East Respiratory Syndrome Coronavirus (MERS-CoV)    31</span></span>
 <span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co">#&gt; 10           2020 Mpox                                                       11</span></span>
-<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 79 more rows</span></span></code></pre></div>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 78 more rows</span></span></code></pre></div>
 <p>which in turn can be plotted as follows:</p>
 <p><img src="reference/figures/README-usage-website-3c-1.png" width="100%"></p>
 <p>or alternatively:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co">#&gt; `geom_line()`: Each group consists of only one observation.</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#&gt; ℹ Do you need to adjust the group aesthetic?</span></span></code></pre></div>
 <p><img src="reference/figures/README-usage-website-3d-1.png" width="100%"></p>
 <p>For a more detailed discussion of the usage and limitations of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> website dataset functions, see this <a href="https://oxford-ihtm.io/pactr/website-dataset-workflow.html">vignette</a>.</p>
 </div>
@@ -319,7 +317,7 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package, please use the suggested citation provided by a call to the <code><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"pactr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite pactr in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -337,7 +335,7 @@
 <span><span class="co">#&gt;     url = {https://oxford-ihtm.io/pactr/},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the <code><a href="reference/pact_cite.html">pact_cite()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## cite the labelled version of the tracker dataset</span></span>
 <span><span class="fu"><a href="reference/pact_cite.html">pact_cite</a></span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="fl">24763548</span><span class="op">)</span>  </span>
 <span><span class="co">#&gt; To cite Pandemic PACT Grant Tracker (labelled) in publications use:</span></span>
