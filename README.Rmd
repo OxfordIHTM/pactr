@@ -225,7 +225,7 @@ pact_read_website() |>
 
 which produces the following output:
 
-```{r usage-website-3b, echo = FALSE, cache = TRUE}
+```{r usage-website-3b, echo = FALSE, cache = FALSE}
 pact_data <- pact_read_website() |>
   pact_process_website()
 
