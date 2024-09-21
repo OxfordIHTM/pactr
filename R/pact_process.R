@@ -2,17 +2,21 @@
 #' Process variable of interest from Pandemic PACT website data by a grouping
 #' variable
 #' 
-#' @param df A data.frame of the Pandemic PACT dataset from the Figshare
-#'   repository.
-#' @param topic A character value of the variable name in `df` for the topic of
-#'   interest.
+#' @param pact_data_list_cols A data.frame for the Pandemic PACT dataset read 
+#'   from the Pandemic PACT website that has already been pre-processed to have
+#'   list columns for nested variables. This is usually obtained via a call to 
+#'   `pact_process_website()` with `col_list = TRUE`.
+#' @param topic A character value of the variable name in `pact_data` for the 
+#'   topic of interest.
 #' @param group A character value or vector of up to two values of the variable 
-#'   name/s  in `df` to use as grouping variable/s. When specified as NULL
-#'   (default), no grouping is applied to come up with value of `outcome`
-#'   based on the `topic` of interest. When specified as NULL (default), no
-#'   grouping is applied.
+#'   name/s  in `pact_data` to use as grouping variable/s. When specified as 
+#'   NULL (default), no grouping is applied to come up with value of `outcome`
+#'   based on the `topic` of interest.
 #' @param outcome The type of outcome. Either *"frequency"* or *"money"*.
 #'   Default is *"frequency"*.
+#' @param na_values A character value or vector of values for strings to be
+#'   considered as NA for `topic` and `group`. If NULL (default), `topic` and
+#'   `group` are kept as is.
 #' 
 #' @returns A data.frame structured based on specification. If `group` is NULL,
 #'   the data.frame presents values for `topic` as first column and then either
@@ -26,7 +30,7 @@
 #' 
 #' @examples
 #' \dontrun{
-#'   df <- pact_read_website()
+#'   df <- pact_read_website() |> pact_process_website()
 #'   pact_process_topic_group(df, topic = "Disease")
 #' }
 #' 
@@ -34,8 +38,21 @@
 #' @export
 #' 
 
-pact_process_topic_group <- function(df, topic, group = NULL, 
-                                     outcome = c("frequency", "money")) {
+pact_process_topic_group <- function(pact_data_list_cols, 
+                                     topic, group = NULL, 
+                                     outcome = c("frequency", "money"),
+                                     na_values = NULL) {
+  ## Check for list columns ----
+  if (all(lapply(pact_data_list_cols[ , nested_vars], FUN = class) == "list")) {
+    pact_data <- pact_data_list_cols
+  } else {
+    stop(
+      "`pact_data_list_cols` doesn't seem to have the expected list columns. ",
+      "Please check that you have used `col_list = TRUE` when using ",
+      "`pact_process_website()` and try again."
+    )
+  }
+  
   ## Get outcome value ----
   outcome <- match.arg(outcome)
 
@@ -58,10 +75,10 @@ pact_process_topic_group <- function(df, topic, group = NULL,
 
   ## Check if topic is a nested variable and unnest if so ----
   if (topic %in% nested_vars) {
-    tidy_df <- df |>
+    tidy_df <- pact_data |>
       tidyr::unnest(cols = {{ topic }})
   } else {
-    tidy_df <- df
+    tidy_df <- pact_data
   }
 
   ## Check if group is/are nested variable/s and unnest if so ----
@@ -91,6 +108,17 @@ pact_process_topic_group <- function(df, topic, group = NULL,
   
       tidy_df <- parse(text = unnest_text) |> eval()
     }
+  }
+
+  ## Handle NA values ----
+  if (!is.null(na_values)) {
+    tidy_df <- tidy_df |>
+      dplyr::mutate(
+        dplyr::across(
+          .cols = dplyr::contains(c(group, topic)),
+          .fns = ~ifelse(.x %in% na_values, NA_character_, .x)
+        )
+      )
   }
 
   ## Frequencies or monies ----
@@ -123,14 +151,15 @@ pact_process_topic_group <- function(df, topic, group = NULL,
 #' @export
 #' 
 
-pact_process_disease <- function(df,
+pact_process_disease <- function(pact_data_list_cols,
                                  group = NULL,
                                  outcome = c("frequency", "money")) {
   ## Get outcome ----
   outcome <- match.arg(outcome)
 
   pact_process_topic_group(
-    df = df, topic = "Disease", group = group, outcome = outcome
+    pact_data_list_cols = pact_data_list_cols, 
+    topic = "Disease", group = group, outcome = outcome
   )
 }
 
@@ -139,13 +168,15 @@ pact_process_disease <- function(df,
 #' @export
 #' 
 
-pact_process_category <- function(df,
+pact_process_category <- function(pact_data_list_cols,
                                   group = NULL,
                                   outcome = c("frequency", "money")) {
   ## Get outcome ----
   outcome <- match.arg(outcome)
 
   pact_process_topic_group(
-    df = df, topic = "ResearchSubcat", group = group, outcome = outcome
+    pact_data_list_cols = pact_data_list_cols, 
+    topic = c("ResearchSubcat", "ResearchCat"), 
+    group = group, outcome = outcome
   )
 }

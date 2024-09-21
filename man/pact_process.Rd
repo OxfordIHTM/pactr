@@ -8,31 +8,45 @@
 variable}
 \usage{
 pact_process_topic_group(
-  df,
+  pact_data_list_cols,
   topic,
+  group = NULL,
+  outcome = c("frequency", "money"),
+  na_values = NULL
+)
+
+pact_process_disease(
+  pact_data_list_cols,
   group = NULL,
   outcome = c("frequency", "money")
 )
 
-pact_process_disease(df, group = NULL, outcome = c("frequency", "money"))
-
-pact_process_category(df, group = NULL, outcome = c("frequency", "money"))
+pact_process_category(
+  pact_data_list_cols,
+  group = NULL,
+  outcome = c("frequency", "money")
+)
 }
 \arguments{
-\item{df}{A data.frame of the Pandemic PACT dataset from the Figshare
-repository.}
+\item{pact_data_list_cols}{A data.frame for the Pandemic PACT dataset read
+from the Pandemic PACT website that has already been pre-processed to have
+list columns for nested variables. This is usually obtained via a call to
+\code{pact_process_website()} with \code{col_list = TRUE}.}
 
-\item{topic}{A character value of the variable name in \code{df} for the topic of
-interest.}
+\item{topic}{A character value of the variable name in \code{pact_data} for the
+topic of interest.}
 
 \item{group}{A character value or vector of up to two values of the variable
-name/s  in \code{df} to use as grouping variable/s. When specified as NULL
-(default), no grouping is applied to come up with value of \code{outcome}
-based on the \code{topic} of interest. When specified as NULL (default), no
-grouping is applied.}
+name/s  in \code{pact_data} to use as grouping variable/s. When specified as
+NULL (default), no grouping is applied to come up with value of \code{outcome}
+based on the \code{topic} of interest.}
 
 \item{outcome}{The type of outcome. Either \emph{"frequency"} or \emph{"money"}.
 Default is \emph{"frequency"}.}
+
+\item{na_values}{A character value or vector of values for strings to be
+considered as NA for \code{topic} and \code{group}. If NULL (default), \code{topic} and
+\code{group} are kept as is.}
 }
 \value{
 A data.frame structured based on specification. If \code{group} is NULL,
@@ -51,7 +65,7 @@ variable
 }
 \examples{
 \dontrun{
-  df <- pact_read_website()
+  df <- pact_read_website() |> pact_process_website()
   pact_process_topic_group(df, topic = "Disease")
 }
 

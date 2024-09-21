@@ -22,5 +22,8 @@ pact_read_website <- function(.url = NULL) {
   }
 
   ## Read dataset from website ----
-  read.csv(file = .url) |> tibble::tibble()
+  pact_data <- read.csv(file = .url) |> tibble::tibble()
+
+  ## Return pact_data ----
+  pact_data
 }

@@ -26,7 +26,7 @@
 pact_process_figshare <- function(df) {
   ## Get core variables ----
   core_vars <- df |>
-    dplyr::select(.data$PactID:.data$Grant.Start.Year)
+    dplyr::select("PactID":"Grant.Start.Year")
 
   ## Process study subject variable ----
   study_subject <- pact_process_figshare_category(
@@ -245,7 +245,7 @@ pact_process_figshare_category <- function(df, category,
 
   ## Select PactID and category variable ----
   tidy_df <- tidy_df |>
-    dplyr::select(c(.data$PactID, {{ category }}))
+    dplyr::select("PactID", {{ category }})
 
   ## Return tidy_df ----
   tidy_df
@@ -264,7 +264,7 @@ pact_process_figshare_category_pathogen <- function(df) {
       names_prefix = "Pathogen..choice."
     ) |>
     dplyr::filter(.data$value == "Checked") |>
-    dplyr::select(c(.data$PactID, .data$Pathogen)) |>
+    dplyr::select("PactID", "Pathogen") |>
     dplyr::left_join(
       df |>
         tidyr::pivot_longer(
@@ -273,20 +273,20 @@ pact_process_figshare_category_pathogen <- function(df) {
           names_prefix = "Coronavirus..choice."
         ) |>
         dplyr::filter(.data$value == "Checked") |>
-        dplyr::select(c(.data$PactID, .data$Coronavirus)),
+        dplyr::select("PactID", "Coronavirus"),
       by = "PactID",
       relationship = "many-to-many"
     ) |>
     dplyr::left_join(
       df |>
         dplyr::select(
-          c(.data$PactID, .data$Bunyaviridae:.data$Influenza.A)
+          "PactID", "Bunyaviridae":"Influenza.A"
         ),
       by = "PactID"
     ) |>
     dplyr::mutate(
       dplyr::across(
-        .cols = .data$Pathogen:.data$Influenza.A,
+        .cols = "Pathogen":"Influenza.A",
         .fns = function(x) stringr::str_remove_all(
           string = x, pattern = "\\.$"
         ) |>
@@ -309,11 +309,11 @@ pact_process_figshare_category_pathogen <- function(df) {
         .default = .data$Pathogen
       )
     ) |>
-    dplyr::select(c(.data$PactID, .data$Pathogen, .data$Pathogen.Specific)) |>
+    dplyr::select("PactID", "Pathogen", "Pathogen.Specific") |>
     dplyr::group_by(.data$PactID) |>
     dplyr::mutate(
       dplyr::across(
-        .cols = .data$Pathogen:.data$Pathogen.Specific,
+        .cols = "Pathogen":"Pathogen.Specific",
         .fns = ~list(.x)
       )
     ) |>
@@ -346,5 +346,5 @@ pact_process_figshare_category_funder <- function(df) {
     dplyr::mutate(Funder.Name = list(.data$Funder.Name)) |>
     dplyr::distinct() |>
     dplyr::ungroup() |>
-    dplyr::select(c(.data$PactID, .data$Funder.Name))
+    dplyr::select("PactID", "Funder.Name")
 }
