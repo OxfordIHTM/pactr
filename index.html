@@ -252,7 +252,7 @@
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/Rtmpq8J43z/pandemic-pact-grants.csv"</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpEjjFtW/pandemic-pact-grants.csv"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -286,7 +286,7 @@
 <h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
 </h3>
 <p>The package includes functions that will process the Pandemic PACT tracker dataset into specific structures and aggregations that will allow for further plotting and reporting of similar outputs that are currently presented in the Pandemic PACT website.</p>
-<p>For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the <a href="https://www.pandemicpact.org/visualise#disease" class="external-link">website</a>.</p>
+<p>For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the <a href="https://www.pandemicimpact.org/visualise#disease" class="external-link">website</a>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/pact_process_website.html">pact_process_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>

@@ -192,20 +192,21 @@ metadata are those provided by <a href="https://docs.figshare.com/" class="exter
 interface (API)</a> and are either set by the Pandemic PACT data team or
 by Figshare. The data.frame would look as follows:</p>
 <pre><code><span><span class="co">#&gt; # A tibble: 7 × 18</span></span>
-<span><span class="co">#&gt;   project_id      id title doi   handle url   published_date thumb</span></span>
-<span><span class="co">#&gt;        &lt;int&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1         NA  2.58e7 Scop… 10.2… ""     http… 2024-05-15T12… ""   </span></span>
-<span><span class="co">#&gt; 2         NA  2.54e7 test  10.2… ""     http… 2024-03-08T11… "htt…</span></span>
-<span><span class="co">#&gt; 3     189177  2.54e7 Pand… 10.2… ""     http… 2024-03-08T10… "htt…</span></span>
-<span><span class="co">#&gt; 4     189177  2.54e7 Exte… 10.2… ""     http… 2024-03-06T15… ""   </span></span>
-<span><span class="co">#&gt; 5     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-15T11… ""   </span></span>
-<span><span class="co">#&gt; 6     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-11T11… ""   </span></span>
-<span><span class="co">#&gt; 7     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-11T11… ""   </span></span>
-<span><span class="co">#&gt; # ℹ 10 more variables: defined_type &lt;int&gt;,</span></span>
+<span><span class="co">#&gt;   project_id       id title   doi   handle url   published_date</span></span>
+<span><span class="co">#&gt;        &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;         </span></span>
+<span><span class="co">#&gt; 1         NA 25827649 Scopin… 10.2… ""     http… 2024-05-15T12…</span></span>
+<span><span class="co">#&gt; 2         NA 25368136 test    10.2… ""     http… 2024-03-08T11…</span></span>
+<span><span class="co">#&gt; 3     189177 25368070 Pandem… 10.2… ""     http… 2024-03-08T10…</span></span>
+<span><span class="co">#&gt; 4     189177 25352839 Extend… 10.2… ""     http… 2024-03-06T15…</span></span>
+<span><span class="co">#&gt; 5     189168 24786258 Pandem… 10.2… ""     http… 2023-12-15T11…</span></span>
+<span><span class="co">#&gt; 6     189168 24773787 Pandem… 10.2… ""     http… 2023-12-11T11…</span></span>
+<span><span class="co">#&gt; 7     189168 24763548 Pandem… 10.2… ""     http… 2023-12-11T11…</span></span>
+<span><span class="co">#&gt; # ℹ 11 more variables: thumb &lt;chr&gt;, defined_type &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   url_private_html &lt;chr&gt;, url_public_html &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;, resource_doi &lt;chr&gt;</span></span></code></pre>
+<span><span class="co">#&gt; #   timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   resource_doi &lt;chr&gt;</span></span></code></pre>
 <p>This function is useful in getting an overview of what is currently
 available in the Pandemic PACT Figshare repository.</p>
 </div>
