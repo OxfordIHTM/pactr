@@ -17,6 +17,8 @@
 #' @param na_values A character value or vector of values for strings to be
 #'   considered as NA for `topic` and `group`. If NULL (default), `topic` and
 #'   `group` are kept as is.
+#' @param split_grants Logical. Should grants be divided into those with
+#'   specified or unspecified amount of funding. Default to TRUE.
 #' 
 #' @returns A data.frame structured based on specification. If `group` is NULL,
 #'   the data.frame presents values for `topic` as first column and then either
@@ -169,14 +171,47 @@ pact_process_disease <- function(pact_data_list_cols,
 #' 
 
 pact_process_category <- function(pact_data_list_cols,
-                                  group = NULL,
+                                  topic = c("ResearchCat", "ResearchSubcat"),
+                                  split_grants = TRUE,
                                   outcome = c("frequency", "money")) {
+  ## Get topic ----
+  topic <- match.arg(topic)
+
   ## Get outcome ----
   outcome <- match.arg(outcome)
 
+  ## Process data based on split_grants ----
+  if (outcome == "frequency") {
+    if (split_grants) {
+      pact_data_list_cols <- pact_data_list_cols |>
+        dplyr::mutate(
+          grant_known_amount = ifelse(
+            is.na(.data$GrantAmountConverted), "Unspecified", "Specified"
+          ) |>
+            factor(levels = c("Specified", "Unspecified"))
+        )
+      
+      ## Create group ----
+      group <- ifelse(
+        topic == "ResearchCat", "ResearchCat", 
+        c("ResearchCat", "ResearchSubcat")
+      )
+
+      ## Set topic ----
+      topic <- "grant_known_amount"
+    } else {
+      if (topic == "ResearchCat") group <- NULL
+      if (topic == "ResearchSubcat") group <- "ResearchCat"
+    }
+  } else {
+    if (topic == "ResearchCat") group <- NULL
+    if (topic == "ResearchSubcat") group <- "ResearchCat"
+  }
+
+  ## Process table ----
   pact_process_topic_group(
     pact_data_list_cols = pact_data_list_cols, 
-    topic = "ResearchSubcat", 
+    topic = topic, 
     group = group, outcome = outcome
   )
 }
