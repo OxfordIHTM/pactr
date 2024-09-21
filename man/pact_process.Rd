@@ -23,7 +23,8 @@ pact_process_disease(
 
 pact_process_category(
   pact_data_list_cols,
-  group = NULL,
+  topic = c("ResearchCat", "ResearchSubcat"),
+  split_grants = TRUE,
   outcome = c("frequency", "money")
 )
 }
@@ -47,6 +48,9 @@ Default is \emph{"frequency"}.}
 \item{na_values}{A character value or vector of values for strings to be
 considered as NA for \code{topic} and \code{group}. If NULL (default), \code{topic} and
 \code{group} are kept as is.}
+
+\item{split_grants}{Logical. Should grants be divided into those with
+specified or unspecified amount of funding. Default to TRUE.}
 }
 \value{
 A data.frame structured based on specification. If \code{group} is NULL,
