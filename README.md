@@ -290,7 +290,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpEjjFtW/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpvFKsbs/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -344,7 +344,7 @@ pact_read_website() |>
 
 which produces the following output:
 
-    #> # A tibble: 89 × 3
+    #> # A tibble: 88 × 3
     #>    GrantStartYear Disease                                                     n
     #>             <int> <chr>                                                   <int>
     #>  1           2020 COVID-19                                                 4711
@@ -357,16 +357,13 @@ which produces the following output:
     #>  8           2020 Marburg virus disease                                      33
     #>  9           2020 Middle East Respiratory Syndrome Coronavirus (MERS-CoV)    31
     #> 10           2020 Mpox                                                       11
-    #> # ℹ 79 more rows
+    #> # ℹ 78 more rows
 
 which in turn can be plotted as follows:
 
 <img src="man/figures/README-usage-website-3c-1.png" width="100%" />
 
 or alternatively:
-
-    #> `geom_line()`: Each group consists of only one observation.
-    #> ℹ Do you need to adjust the group aesthetic?
 
 <img src="man/figures/README-usage-website-3d-1.png" width="100%" />
 

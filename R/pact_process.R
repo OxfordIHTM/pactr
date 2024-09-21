@@ -176,7 +176,7 @@ pact_process_category <- function(pact_data_list_cols,
 
   pact_process_topic_group(
     pact_data_list_cols = pact_data_list_cols, 
-    topic = c("ResearchSubcat", "ResearchCat"), 
+    topic = "ResearchSubcat", 
     group = group, outcome = outcome
   )
 }
