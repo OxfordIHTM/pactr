@@ -30,7 +30,58 @@ pact_process_website <- function(pact_data,
     pact_data <- pact_data |>
       dplyr::mutate(
         Disease = ifelse(
-          .data$GrantID == "P22196", "Zika virus disease", .data$Disease)
+          .data$GrantID == "P22196", "Zika virus disease", .data$Disease
+        ),
+        PubMedGrantId = ifelse(
+          .data$PubMedGrantId == "", NA_character_, .data$PubMedGrantId
+        ),
+        Abstract = ifelse(.data$Abstract == "", NA_character_, .data$Abstract),
+        PublicationYearOfAward = ifelse(
+          .data$PublicationYearOfAward == -99, NA_integer_, 
+          .data$PublicationYearOfAward
+        ),
+        GrantEndYear = ifelse(
+          .data$GrantEndYear == -99, NA_integer_, .data$GrantEndYear
+        ),   
+        ResearchInstitutionName = ifelse(
+          .data$ResearchInstitutionName == "N/A", NA_character_, 
+          .data$ResearchInstitutionName
+        ),
+        ClinicalTrial = ifelse(
+          .data$ClinicalTrial == "", NA_character_, .data$ClinicalTrial
+        ),
+        Pathogen = ifelse(.data$Pathogen == "", NA_character_, .data$Pathogen),
+        InfluenzaA = ifelse(
+          .data$InfluenzaA == "", NA_character_, .data$InfluenzaA
+        ),
+        InfluenzaH1 = ifelse(
+          .data$InfluenzaH1 == "", NA_character_, .data$InfluenzaH1
+        ),
+        InfluenzaH2 = ifelse(
+          .data$InfluenzaH2 == "", NA_character_, .data$InfluenzaH2
+        ),
+        InfluenzaH3 = ifelse(
+          .data$InfluenzaH3 == "", NA_character_, .data$InfluenzaH3
+        ),
+        InfluenzaH5 = ifelse(
+          .data$InfluenzaH5 == "", NA_character_, .data$InfluenzaH5
+        ),
+        InfluenzaH6 = ifelse(
+          .data$InfluenzaH6 == "", NA_character_, .data$InfluenzaH6
+        ),
+        InfluenzaH7 = ifelse(
+          .data$InfluenzaH7 == "", NA_character_, .data$InfluenzaH7
+        ),
+        InfluenzaH10 = ifelse(
+          .data$InfluenzaH10 == "", NA_character_, .data$InfluenzaH10
+        ),
+        Disease = ifelse(
+          .data$Disease == "", NA_character_, .data$Disease
+        ),
+        FundingOrgName = ifelse(
+          .data$FundingOrgName == "", NA_character_, .data$FundingOrgName
+        ),
+        Tags = ifelse(.data$Tags == "", NA_character_, .data$Tags)
       )
   
     ## Fix one-to-one issues for country and region variables ----
