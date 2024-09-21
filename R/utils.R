@@ -190,8 +190,8 @@ get_research_category <- function(pact_data) {
         string = .data$ResearchSubcat, pattern = " \\| "
       )
     ) |>
-    tidyr::unnest(.data$ResearchSubcat) |>
-    tidyr::unnest(.data$ResearchCat) |>
+    tidyr::unnest("ResearchSubcat") |>
+    tidyr::unnest("ResearchCat") |>
     dplyr::mutate(
       CatSubcat = paste(
         .data$ResearchCat, .data$ResearchSubcat, sep = " - "
@@ -294,8 +294,8 @@ get_mpox_priority <- function(pact_data) {
         string = .data$MPOXResearchSubPriority, pattern = " \\| "
       )
     ) |>
-    tidyr::unnest(.data$MPOXResearchSubPriority) |>
-    tidyr::unnest(.data$MPOXResearchPriority) |>
+    tidyr::unnest("MPOXResearchSubPriority") |>
+    tidyr::unnest("MPOXResearchPriority") |>
     dplyr::mutate(
       PriorSubprior = paste(
         .data$MPOXResearchPriority, .data$MPOXResearchSubPriority, 
@@ -344,7 +344,6 @@ get_mpox_priority <- function(pact_data) {
         .data$MPOXResearchSubPriority
       )
     )
-
 
   ## Return pact_data ----
   pact_data
