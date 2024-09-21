@@ -14,6 +14,10 @@ test_that("pact_process works as expected", {
     pact_data, group = "StudySubject", outcome = "money"
   )
 
+  pact_data_non_list <- pact_read_website() |> 
+    pact_process_website(col_list = FALSE)
+
+
   ## Check that output is of the correct class ----
   expect_s3_class(topic_group_df1, "tbl")
   expect_s3_class(topic_group_df2, "tbl")
@@ -23,4 +27,22 @@ test_that("pact_process works as expected", {
 
   ## Check that output is of the correct structure ----
   expect_named(topic_group_df1, c("Disease", "n"))
+
+  ## Check that error is spotted ----
+  expect_error(
+    pact_process_topic_group(pact_data_non_list, topic = "Disease")
+  )
+
+  expect_error(
+    pact_process_topic_group(
+      pact_data, topic = "Disease", 
+      group = c("StudySubject", "StudyType", "Pathogen")
+    )
+  )
+
+  expect_error(
+    pact_process_topic_group(
+      pact_data, topic = "Disease", group = c("Disease", "StudySubject")
+    )
+  )
 })
