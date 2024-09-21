@@ -89,20 +89,21 @@ The output is a `data.frame` containing metadata regarding contents of the Figsh
 
 ```
 #> # A tibble: 7 × 18
-#>   project_id      id title doi   handle url   published_date thumb
-#>        <int>   <int> <chr> <chr> <chr>  <chr> <chr>          <chr>
-#> 1         NA  2.58e7 Scop… 10.2… ""     http… 2024-05-15T12… ""   
-#> 2         NA  2.54e7 test  10.2… ""     http… 2024-03-08T11… "htt…
-#> 3     189177  2.54e7 Pand… 10.2… ""     http… 2024-03-08T10… "htt…
-#> 4     189177  2.54e7 Exte… 10.2… ""     http… 2024-03-06T15… ""   
-#> 5     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-15T11… ""   
-#> 6     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-11T11… ""   
-#> 7     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-11T11… ""   
-#> # ℹ 10 more variables: defined_type <int>,
+#>   project_id       id title   doi   handle url   published_date
+#>        <int>    <int> <chr>   <chr> <chr>  <chr> <chr>         
+#> 1         NA 25827649 Scopin… 10.2… ""     http… 2024-05-15T12…
+#> 2         NA 25368136 test    10.2… ""     http… 2024-03-08T11…
+#> 3     189177 25368070 Pandem… 10.2… ""     http… 2024-03-08T10…
+#> 4     189177 25352839 Extend… 10.2… ""     http… 2024-03-06T15…
+#> 5     189168 24786258 Pandem… 10.2… ""     http… 2023-12-15T11…
+#> 6     189168 24773787 Pandem… 10.2… ""     http… 2023-12-11T11…
+#> 7     189168 24763548 Pandem… 10.2… ""     http… 2023-12-11T11…
+#> # ℹ 11 more variables: thumb <chr>, defined_type <int>,
 #> #   defined_type_name <chr>, group_id <int>,
 #> #   url_private_api <chr>, url_public_api <chr>,
 #> #   url_private_html <chr>, url_public_html <chr>,
-#> #   timeline <df[,2]>, resource_title <chr>, resource_doi <chr>
+#> #   timeline <df[,2]>, resource_title <chr>,
+#> #   resource_doi <chr>
 ```
 
 This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.
