@@ -76,9 +76,12 @@ reference:
     - pact_process_figshare_category_pathogen
     - pact_process_figshare_category_funder
     - pact_process_website
-    - pact_process_topic_group
-    - pact_process_disease
 
+  - title: Tabulate
+    contents:
+    - pact_table_topic_group
+    - pact_table_disease
+    - pact_table_category
 
   - title: Cite
     contents:
