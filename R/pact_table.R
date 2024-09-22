@@ -9,16 +9,12 @@
 #' @param topic A character value of the variable name in `pact_data` for the 
 #'   topic of interest.
 #' @param group A character value or vector of up to two values of the variable 
-#'   name/s  in `pact_data` to use as grouping variable/s. When specified as 
-#'   NULL (default), no grouping is applied to come up with value of `outcome`
-#'   based on the `topic` of interest.
-#' @param outcome The type of outcome. Either *"frequency"* or *"money"*.
-#'   Default is *"frequency"*.
+#'   name/s  in `pact_data_list_cols` to use as grouping variable/s. When 
+#'   specified as NULL (default), no grouping is applied to the tabulation
+#'   based on the `topic` of interest and `group` specified.
 #' @param na_values A character value or vector of values for strings to be
 #'   considered as NA for `topic` and `group`. If NULL (default), `topic` and
 #'   `group` are kept as is.
-#' @param split_grants Logical. Should grants be divided into those with
-#'   specified or unspecified amount of funding. Default to TRUE.
 #' 
 #' @returns A data.frame structured based on specification. If `group` is NULL,
 #'   the data.frame presents values for `topic` as first column and then either
@@ -33,17 +29,16 @@
 #' @examples
 #' \dontrun{
 #'   df <- pact_read_website() |> pact_process_website()
-#'   pact_process_topic_group(df, topic = "Disease")
+#'   pact_table_topic_group(df, topic = "Disease")
 #' }
 #' 
-#' @rdname pact_process
+#' @rdname pact_table
 #' @export
 #' 
 
-pact_process_topic_group <- function(pact_data_list_cols, 
-                                     topic, group = NULL, 
-                                     outcome = c("frequency", "money"),
-                                     na_values = NULL) {
+pact_table_topic_group <- function(pact_data_list_cols, 
+                                   topic, group = NULL, 
+                                   na_values = NULL) {
   ## Check for list columns ----
   if (all(lapply(pact_data_list_cols[ , nested_vars], FUN = class) == "list")) {
     pact_data <- pact_data_list_cols
@@ -54,9 +49,6 @@ pact_process_topic_group <- function(pact_data_list_cols,
       "`pact_process_website()` and try again."
     )
   }
-  
-  ## Get outcome value ----
-  outcome <- match.arg(outcome)
 
   ## Check that group is of length 2 or less ----
   if (length(group) > 2) {
@@ -123,95 +115,86 @@ pact_process_topic_group <- function(pact_data_list_cols,
       )
   }
 
-  ## Frequencies or monies ----
-  if (outcome == "frequency") {
-    tidy_df <- parse(
-      text = paste0(
-        "tidy_df |> dplyr::count(",
-        paste(c(group, topic), collapse = ", "), ")"
+  ## Create variable for grant_amount_type ----
+  tidy_df <- tidy_df |>
+    dplyr::mutate(
+      grant_amount_type = ifelse(
+        is.na(.data$GrantAmountConverted), "Unspecfiied", "Specified"
       )
-    ) |>
-      eval()
-  } else {
-    tidy_df <- parse(
-      text = paste0(
-        "tidy_df |> dplyr::group_by(",
-        paste(c(group, topic), collapse = ", "), 
-        ") |> dplyr::summarise(",
-        "total_grant_amount = sum(GrantAmountConverted, na.rm = TRUE))"
-      )
-    ) |>
-      eval()
-  }
+    )
 
+  ## Frequencies ----
+  frequency_df <- parse(
+    text = paste0(
+      "tidy_df |> dplyr::count(",
+      paste(c(group, topic), collapse = ", "), 
+      ", name = 'n_grants')"
+    )
+  ) |>
+    eval()
+
+  ## Frequencies by grant_amount_type ----
+  specified_df <- parse(
+    text = paste0(
+      "tidy_df |> dplyr::count(",
+      paste(c(group, topic, "grant_amount_type"), collapse = ", "), 
+      ", name = 'n_grants_specified')"
+    )
+  ) |>
+    eval() |>
+    dplyr::filter(.data$grant_amount_type == "Specified") |>
+    dplyr::select(c(group, topic, "n_grants_specified"))
+
+  ## Total amount of grants ----
+  amount_df <- parse(
+    text = paste0(
+      "tidy_df |> dplyr::group_by(",
+      paste(c(group, topic), collapse = ", "), 
+      ") |> dplyr::summarise(",
+      "grant_amount_total = sum(GrantAmountConverted, na.rm = TRUE))"
+    )
+  ) |>
+    eval()
+
+  ## Concatenate frequency and amount ----
+  tidy_df <- dplyr::full_join(
+    frequency_df, specified_df, by = c(group, topic)
+  ) |>
+    dplyr::full_join(amount_df, by = c(group, topic))
+  
   ## Return tidy_df ----
   tidy_df
 }
 
 #'
-#' @rdname pact_process
+#' @rdname pact_table
 #' @export
 #' 
 
-pact_process_disease <- function(pact_data_list_cols,
-                                 group = NULL,
-                                 outcome = c("frequency", "money")) {
-  ## Get outcome ----
-  outcome <- match.arg(outcome)
-
-  pact_process_topic_group(
+pact_table_disease <- function(pact_data_list_cols, group = NULL) {
+  ## Process table
+  pact_table_topic_group(
     pact_data_list_cols = pact_data_list_cols, 
-    topic = "Disease", group = group, outcome = outcome
+    topic = "Disease", group = group
   )
 }
 
 #'
-#' @rdname pact_process
+#' @rdname pact_table
 #' @export
 #' 
 
-pact_process_category <- function(pact_data_list_cols,
-                                  topic = c("ResearchCat", "ResearchSubcat"),
-                                  split_grants = TRUE,
-                                  outcome = c("frequency", "money")) {
+pact_table_category <- function(pact_data_list_cols,
+                                topic = c("ResearchCat", "ResearchSubcat")) {
   ## Get topic ----
   topic <- match.arg(topic)
 
-  ## Get outcome ----
-  outcome <- match.arg(outcome)
-
-  ## Process data based on split_grants ----
-  if (outcome == "frequency") {
-    if (split_grants) {
-      pact_data_list_cols <- pact_data_list_cols |>
-        dplyr::mutate(
-          grant_known_amount = ifelse(
-            is.na(.data$GrantAmountConverted), "Unspecified", "Specified"
-          ) |>
-            factor(levels = c("Specified", "Unspecified"))
-        )
-      
-      ## Create group ----
-      group <- ifelse(
-        topic == "ResearchCat", "ResearchCat", 
-        c("ResearchCat", "ResearchSubcat")
-      )
-
-      ## Set topic ----
-      topic <- "grant_known_amount"
-    } else {
-      if (topic == "ResearchCat") group <- NULL
-      if (topic == "ResearchSubcat") group <- "ResearchCat"
-    }
-  } else {
-    if (topic == "ResearchCat") group <- NULL
-    if (topic == "ResearchSubcat") group <- "ResearchCat"
-  }
+  ## Determine group based on topic ----
+  if (topic == "ResearchCat") group <- NULL
+  if (topic == "ResearchSubcat") group <- "ResearchCat"
 
   ## Process table ----
-  pact_process_topic_group(
-    pact_data_list_cols = pact_data_list_cols, 
-    topic = topic, 
-    group = group, outcome = outcome
+  pact_table_topic_group(
+    pact_data_list_cols = pact_data_list_cols, topic = topic, group = group
   )
 }
