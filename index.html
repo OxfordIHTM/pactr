@@ -252,7 +252,7 @@
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpvFKsbs/pandemic-pact-grants.csv"</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpEIXb0I/pandemic-pact-grants.csv"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -290,21 +290,21 @@
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/pact_process_website.html">pact_process_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">pact_process_topic_group</span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="reference/pact_table.html">pact_table_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
 <p>which produces the following output:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 88 × 3</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease                                                     n</span></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;                                                   &lt;int&gt;</span></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#&gt;  1           2020 COVID-19                                                 4711</span></span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#&gt;  2           2020 Congenital Zika virus disease                              13</span></span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co">#&gt;  3           2020 Crimean-Congo haemorrhagic fever                           30</span></span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co">#&gt;  4           2020 Disease X                                                  89</span></span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co">#&gt;  5           2020 Ebola virus disease                                       101</span></span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co">#&gt;  6           2020 Hendra virus infection                                      1</span></span>
-<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="co">#&gt;  7           2020 Lassa fever                                                19</span></span>
-<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="co">#&gt;  8           2020 Marburg virus disease                                      33</span></span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co">#&gt;  9           2020 Middle East Respiratory Syndrome Coronavirus (MERS-CoV)    31</span></span>
-<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co">#&gt; 10           2020 Mpox                                                       11</span></span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 88 × 5</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease         n_grants n_grants_specified grant_amount_total</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;              &lt;int&gt;              &lt;int&gt;              &lt;dbl&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#&gt;  1           2020 COVID-19            4711               3917        7165275210.</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#&gt;  2           2020 Congenital Zik…       13                 12           6299449.</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co">#&gt;  3           2020 Crimean-Congo …       30                 30          21675622.</span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co">#&gt;  4           2020 Disease X             89                 85         363603562.</span></span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co">#&gt;  5           2020 Ebola virus di…      101                 95          63300851.</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co">#&gt;  6           2020 Hendra virus i…        1                  1             10059 </span></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="co">#&gt;  7           2020 Lassa fever           19                 18          19457036.</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="co">#&gt;  8           2020 Marburg virus …       33                 33          21701979.</span></span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co">#&gt;  9           2020 Middle East Re…       31                 31          30587054.</span></span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co">#&gt; 10           2020 Mpox                  11                  9          13115693 </span></span>
 <span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 78 more rows</span></span></code></pre></div>
 <p>which in turn can be plotted as follows:</p>
 <p><img src="reference/figures/README-usage-website-3c-1.png" width="100%"></p>
