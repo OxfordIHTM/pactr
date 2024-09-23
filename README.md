@@ -290,7 +290,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpvFKsbs/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpEIXb0I/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -339,24 +339,24 @@ a similar plot to the one presented in the
 ``` r
 pact_read_website() |>
   pact_process_website() |>
-  pact_process_topic_group(topic = "Disease", group = "GrantStartYear")
+  pact_table_topic_group(topic = "Disease", group = "GrantStartYear")
 ```
 
 which produces the following output:
 
-    #> # A tibble: 88 × 3
-    #>    GrantStartYear Disease                                                     n
-    #>             <int> <chr>                                                   <int>
-    #>  1           2020 COVID-19                                                 4711
-    #>  2           2020 Congenital Zika virus disease                              13
-    #>  3           2020 Crimean-Congo haemorrhagic fever                           30
-    #>  4           2020 Disease X                                                  89
-    #>  5           2020 Ebola virus disease                                       101
-    #>  6           2020 Hendra virus infection                                      1
-    #>  7           2020 Lassa fever                                                19
-    #>  8           2020 Marburg virus disease                                      33
-    #>  9           2020 Middle East Respiratory Syndrome Coronavirus (MERS-CoV)    31
-    #> 10           2020 Mpox                                                       11
+    #> # A tibble: 88 × 5
+    #>    GrantStartYear Disease         n_grants n_grants_specified grant_amount_total
+    #>             <int> <chr>              <int>              <int>              <dbl>
+    #>  1           2020 COVID-19            4711               3917        7165275210.
+    #>  2           2020 Congenital Zik…       13                 12           6299449.
+    #>  3           2020 Crimean-Congo …       30                 30          21675622.
+    #>  4           2020 Disease X             89                 85         363603562.
+    #>  5           2020 Ebola virus di…      101                 95          63300851.
+    #>  6           2020 Hendra virus i…        1                  1             10059 
+    #>  7           2020 Lassa fever           19                 18          19457036.
+    #>  8           2020 Marburg virus …       33                 33          21701979.
+    #>  9           2020 Middle East Re…       31                 31          30587054.
+    #> 10           2020 Mpox                  11                  9          13115693 
     #> # ℹ 78 more rows
 
 which in turn can be plotted as follows:
