@@ -243,19 +243,19 @@ disease_df <- tidy_df |>
     Disease = factor(
     x = Disease, 
       levels = c(
-        "COVID-19", "Disease X", "Congenital Zika virus disease",
-        "Crimean-Congo haemorrhagic fever", "Ebola virus disease",
-        "Hendra virus infection", "Lassa fever", "Marburg virus disease",
+        "COVID-19", "Disease X", "Crimean-Congo haemorrhagic fever", 
+        "Ebola virus disease", "Hendra virus infection", "Lassa fever", 
+        "Marburg virus disease", 
         "Middle East Respiratory Syndrome Coronavirus (MERS-CoV)", 
         "Mpox", "Nipah and henipaviral disease", "Pandemic-prone influenza",
-        "Plague", "Rift Valley Fever", 
-        "Severe Acute Respiratory Syndrome (SARS)",
-        "Zika virus disease", "Other", "Unspecified", "Not applicable"
+        "Plague", "Rift Valley Fever", "Severe Acute Respiratory Syndrome (SARS)", "Zika virus disease", "Congenital Zika virus disease", "Other", 
+        "Unspecified", "Not applicable"
       ),
       labels = c(
-        "COVID-19", "Disease X", "Congenital Zika", "CCHF", "Ebola", 
-        "Hendra virus", "Lassa fever", "Marburg", "MERS-CoV", "Mpox", 
-        "NiV and Henipa", "Pandemic influenza", "Plague", "RVF", "SARS", "Zika", "Other", "Unspecified", "Not applicable"
+        "COVID-19", "Disease X", "CCHF", "Ebola", "Hendra virus", "Lassa fever", 
+        "Marburg", "MERS-CoV", "Mpox", "NiV and Henipa", "Pandemic influenza", 
+        "Plague", "RVF", "SARS", "Zika", "Zika (congenital)", "Other", 
+        "Unspecified", "Not applicable"
       )
     )
   )
@@ -307,13 +307,13 @@ disease_df |>
   )
 ```
 
-For a more detailed discussion of the usage and limitations of the `{pactr}` website dataset functions, see this [vignette](https://oxford-ihtm.io/pactr/website-dataset-workflow.html).
+For a more detailed discussion of the usage and limitations of the `{pactr}` website dataset functions, see this [vignette](https://oxford-ihtm.io/pactr/articles/website-dataset-workflow.html).
 
 ## Citation
 
 To cite the `{pactr}` package, please use the suggested citation provided by a call to the `citation()` function as follows:
 
-```{r citation-pac  kage}
+```{r citation-package}
 citation("pactr")
 ```
 

@@ -14,11 +14,12 @@ pact_table_topic_group(
   na_values = NULL
 )
 
-pact_table_disease(pact_data_list_cols, group = NULL)
+pact_table_disease(pact_data_list_cols, group = NULL, na_values = NULL)
 
 pact_table_category(
   pact_data_list_cols,
-  topic = c("ResearchCat", "ResearchSubcat")
+  topic = c("ResearchCat", "ResearchSubcat"),
+  na_values = NULL
 )
 }
 \arguments{
