@@ -190,6 +190,7 @@ get_research_category <- function(pact_data) {
         string = .data$ResearchSubcat, pattern = " \\| "
       )
     ) |>
+    dplyr::group_by(.data$GrantID) |>
     tidyr::unnest("ResearchSubcat") |>
     tidyr::unnest("ResearchCat") |>
     dplyr::mutate(
@@ -203,7 +204,7 @@ get_research_category <- function(pact_data) {
           string = .data$CatSubcat, pattern = "No category|No subcategory"
         )
     ) |>
-    dplyr::group_by(.data$GrantID) |>
+    #dplyr::group_by(.data$GrantID) |>
     dplyr::summarise(
       CatSubcat = unique(.data$CatSubcat) |> paste(collapse = " | "),
       .groups = "drop"

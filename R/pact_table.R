@@ -69,8 +69,13 @@ pact_table_topic_group <- function(pact_data_list_cols,
 
   ## Check if topic is a nested variable and unnest if so ----
   if (topic %in% nested_vars) {
-    tidy_df <- pact_data |>
-      tidyr::unnest(cols = {{ topic }})
+    if (topic == "ResearchSubcat") {
+      tidy_df <- pact_data |>
+        tidyr::unnest(cols = c(.data$ResearchCat, .data$ResearchSubcat))
+    } else {
+      tidy_df <- pact_data |>
+        tidyr::unnest(cols = {{ topic }})
+    }
   } else {
     tidy_df <- pact_data
   }
