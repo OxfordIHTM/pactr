@@ -290,7 +290,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpjBEfJo/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmprpOOZP/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -369,7 +369,7 @@ or alternatively:
 
 For a more detailed discussion of the usage and limitations of the
 `{pactr}` website dataset functions, see this
-[vignette](https://oxford-ihtm.io/pactr/website-dataset-workflow.html).
+[vignette](https://oxford-ihtm.io/pactr/articles/website-dataset-workflow.html).
 
 ## Citation
 

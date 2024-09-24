@@ -171,11 +171,12 @@ pact_table_topic_group <- function(pact_data_list_cols,
 #' @export
 #' 
 
-pact_table_disease <- function(pact_data_list_cols, group = NULL) {
+pact_table_disease <- function(pact_data_list_cols, group = NULL, 
+                               na_values = NULL) {
   ## Process table
   pact_table_topic_group(
     pact_data_list_cols = pact_data_list_cols, 
-    topic = "Disease", group = group
+    topic = "Disease", group = group, na_values = na_values
   )
 }
 
@@ -185,16 +186,35 @@ pact_table_disease <- function(pact_data_list_cols, group = NULL) {
 #' 
 
 pact_table_category <- function(pact_data_list_cols,
-                                topic = c("ResearchCat", "ResearchSubcat")) {
+                                topic = c("ResearchCat", "ResearchSubcat"),
+                                na_values = NULL) {
   ## Get topic ----
   topic <- match.arg(topic)
 
   ## Determine group based on topic ----
-  if (topic == "ResearchCat") group <- NULL
-  if (topic == "ResearchSubcat") group <- "ResearchCat"
+  if (topic == "ResearchCat") {
+    group <- NULL
+
+    research_category <- pact_data_list_cols |>
+      tidyr::unnest(.data$ResearchCat) |> 
+      dplyr::group_by(.data$GrantID) |> 
+      dplyr::summarise(
+        ResearchCat = unique(.data$ResearchCat) |> paste(collapse = " | "), 
+        .groups = "drop"
+      ) |> 
+      dplyr::mutate(
+        ResearchCat = stringr::str_split(.data$ResearchCat, pattern = " \\| ")
+      ) |>
+      dplyr::pull(.data$ResearchCat)
+    
+    pact_data_list_cols$ResearchCat <- research_category
+  } else {
+    group <- "ResearchCat"
+  }
 
   ## Process table ----
   pact_table_topic_group(
-    pact_data_list_cols = pact_data_list_cols, topic = topic, group = group
+    pact_data_list_cols = pact_data_list_cols, 
+    topic = topic, group = group, na_values = na_values
   )
 }
