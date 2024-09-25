@@ -101,9 +101,12 @@ detect_mismatch <- function(x, y) {
 #'
 
 get_who_region <- function(x) {
-  ccode <- ifelse(
+  country_name <- ifelse(
     x == "", NA_character_, stringr::str_split(string = x, pattern = " \\| ")
   ) |>
+    unlist()
+
+  ccode <- country_name |>
     lapply(
       FUN = function(x) {
         ifelse(
@@ -115,9 +118,9 @@ get_who_region <- function(x) {
         )
       }
     ) |>
-      unlist()
+    unlist()
 
-  lapply(
+  country_region <- lapply(
     X = ccode, 
     FUN = function(x) {
       ifelse(
@@ -128,7 +131,21 @@ get_who_region <- function(x) {
       )
     }
   ) |>
-    paste(collapse = " | ")
+    unlist()
+
+  data.frame(country_region, country_name, ccode) |>
+    dplyr::mutate(
+      country_region = dplyr::case_when(
+        is.na(.data$country_region) & .data$country_name == "Puerto Rico" ~ "Americas",
+        is.na(.data$country_region) & .data$country_name == "Hong Kong" ~ "South-East Asia",
+        is.na(.data$country_region) & .data$country_name == "Palestine" ~ "Eastern Mediterranean",
+        is.na(.data$country_region) & .data$country_name == "Saint Martin (French part)" ~ "Europe",
+        .default = .data$country_region
+      )
+    ) |>
+    dplyr::pull(country_region) |>
+    paste(collapse = " | ") |>
+    (\(x) ifelse(x == "NA", NA_character_, x))()
 }
 
 #'
@@ -204,7 +221,6 @@ get_research_category <- function(pact_data) {
           string = .data$CatSubcat, pattern = "No category|No subcategory"
         )
     ) |>
-    #dplyr::group_by(.data$GrantID) |>
     dplyr::summarise(
       CatSubcat = unique(.data$CatSubcat) |> paste(collapse = " | "),
       .groups = "drop"
@@ -232,11 +248,13 @@ get_research_category <- function(pact_data) {
   }) |>
     dplyr::mutate(
       ResearchCat = ifelse(
-        .data$ResearchCat == "No category", NA_character_,
+        .data$ResearchCat == "No category" | .data$ResearchCat == "NA", 
+        NA_character_,
         .data$ResearchCat
       ),
       ResearchSubcat = ifelse(
-        .data$ResearchSubcat == "No subcategory", NA_character_,
+        .data$ResearchSubcat == "No subcategory" | .data$ResearchSubcat == "NA", 
+        NA_character_,
         .data$ResearchSubcat
       )
     )
