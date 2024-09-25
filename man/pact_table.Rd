@@ -4,6 +4,9 @@
 \alias{pact_table_topic_group}
 \alias{pact_table_disease}
 \alias{pact_table_category}
+\alias{pact_table_location_funder}
+\alias{pact_table_location_institution}
+\alias{pact_table_location_research}
 \title{Process variable of interest from Pandemic PACT website data by a grouping
 variable}
 \usage{
@@ -19,6 +22,24 @@ pact_table_disease(pact_data_list_cols, group = NULL, na_values = NULL)
 pact_table_category(
   pact_data_list_cols,
   topic = c("ResearchCat", "ResearchSubcat"),
+  na_values = NULL
+)
+
+pact_table_location_funder(
+  pact_data_list_cols,
+  topic = c("FunderRegion", "FunderCountry"),
+  na_values = NULL
+)
+
+pact_table_location_institution(
+  pact_data_list_cols,
+  topic = c("ResearchInstitutionRegion", "ResearchInstitutionCountry"),
+  na_values = NULL
+)
+
+pact_table_location_research(
+  pact_data_list_cols,
+  topic = c("ResearchLocationRegion", "ResearchLocationRegion"),
   na_values = NULL
 )
 }

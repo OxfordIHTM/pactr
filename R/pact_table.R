@@ -223,3 +223,73 @@ pact_table_category <- function(pact_data_list_cols,
     topic = topic, group = group, na_values = na_values
   )
 }
+
+#'
+#' @rdname pact_table
+#' @export
+#' 
+
+pact_table_location_funder <- function(pact_data_list_cols,
+                                       topic = c(
+                                        "FunderRegion", "FunderCountry"
+                                       ),
+                                       na_values = NULL) {
+  ## Get topic ----
+  topic <- match.arg(topic)
+
+  if (topic == "FunderRegion") group <- NULL else group <- "FunderRegion"
+
+  ## Process table ----
+  pact_table_topic_group(
+    pact_data_list_cols = pact_data_list_cols,
+    topic = topic, group = group, na_values = na_values
+  )
+}
+
+#'
+#' @rdname pact_table
+#' @export
+#'
+
+pact_table_location_institution <- function(pact_data_list_cols,
+                                            topic = c(
+                                              "ResearchInstitutionRegion", 
+                                              "ResearchInstitutionCountry"
+                                            ),
+                                            na_values = NULL) {
+  ## Get topic ----
+  topic <- match.arg(topic)
+
+  if (topic == "ResearchInstitutionRegion") group <- NULL 
+  else group <- "ResearchInstitutionRegion"
+
+  ## Process table ----
+  pact_table_topic_group(
+    pact_data_list_cols = pact_data_list_cols,
+    topic = topic, group = group, na_values = na_values
+  )
+}
+
+#'
+#' @rdname pact_table
+#' @export
+#' 
+
+pact_table_location_research <- function(pact_data_list_cols,
+                                         topic = c(
+                                          "ResearchLocationRegion",
+                                          "ResearchLocationRegion"
+                                         ),
+                                         na_values = NULL) {
+  ## Get topic ----
+  topic <- match.arg(topic)
+
+  if (topic == "ResearchLocationRegion") group <- NULL 
+  else group <- "ResearchLocationRegion"
+
+  ## Process table ----
+  pact_table_topic_group(
+    pact_data_list_cols = pact_data_list_cols,
+    topic = topic, group = group, na_values = na_values
+  )
+}
