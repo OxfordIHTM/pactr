@@ -39,7 +39,7 @@ pact_table_location_institution(
 
 pact_table_location_research(
   pact_data_list_cols,
-  topic = c("ResearchLocationRegion", "ResearchLocationRegion"),
+  topic = c("ResearchLocationRegion", "ResearchLocationCountry"),
   na_values = NULL
 )
 }

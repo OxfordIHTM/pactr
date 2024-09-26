@@ -84,6 +84,7 @@ reference:
     - pact_table_category
     - pact_table_location_funder
     - pact_table_location_institution
+    - pact_table_location_research
 
   - title: Cite
     contents:
