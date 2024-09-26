@@ -237,7 +237,22 @@ pact_table_location_funder <- function(pact_data_list_cols,
   ## Get topic ----
   topic <- match.arg(topic)
 
-  if (topic == "FunderRegion") group <- NULL else group <- "FunderRegion"
+  if (topic == "FunderRegion") {
+    group <- NULL
+
+    funder_region <- pact_data_list_cols |>
+      tidyr::unnest(.data$FunderRegion) |> 
+      dplyr::group_by(.data$GrantID) |> 
+      dplyr::summarise(
+        FunderRegion = unique(.data$FunderRegion) |> list(), 
+        .groups = "drop"
+      ) |>
+      dplyr::pull(.data$FunderRegion)
+    
+    pact_data_list_cols$FunderRegion <- funder_region
+   } else {
+    group <- "FunderRegion"
+   }
 
   ## Process table ----
   pact_table_topic_group(
@@ -260,8 +275,23 @@ pact_table_location_institution <- function(pact_data_list_cols,
   ## Get topic ----
   topic <- match.arg(topic)
 
-  if (topic == "ResearchInstitutionRegion") group <- NULL 
-  else group <- "ResearchInstitutionRegion"
+  if (topic == "ResearchInstitutionRegion") {
+    group <- NULL
+
+    institution_region <- pact_data_list_cols |>
+      tidyr::unnest(.data$ResearchInstitutionRegion) |> 
+      dplyr::group_by(.data$GrantID) |> 
+      dplyr::summarise(
+        ResearchInstitutionRegion = unique(.data$ResearchInstitutionRegion) |> 
+          list(), 
+        .groups = "drop"
+      ) |>
+      dplyr::pull(.data$ResearchInstitutionRegion)
+    
+    pact_data_list_cols$ResearchInstitutionRegion <- institution_region
+  } else {
+    group <- "ResearchInstitutionRegion"
+  }
 
   ## Process table ----
   pact_table_topic_group(

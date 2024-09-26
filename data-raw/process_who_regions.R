@@ -29,5 +29,12 @@ who_country_info <- lapply(
     .fn = ~c("country_iso3c", "who_short_name", "formal_name", "who_region", "un_region")
   )
 
+who_country_info <- who_country_info |>
+  dplyr::mutate(
+    who_region = ifelse(
+      who_region == "South East Asia", "South-East Asia", who_region
+    )
+  )
+
 ## Store who_country_info as internal data ----
 usethis::use_data(who_country_info, overwrite = TRUE, compress = "xz")
