@@ -136,10 +136,11 @@ get_who_region <- function(x) {
   data.frame(country_region, country_name, ccode) |>
     dplyr::mutate(
       country_region = dplyr::case_when(
-        is.na(.data$country_region) & .data$country_name == "Puerto Rico" ~ "Americas",
-        is.na(.data$country_region) & .data$country_name == "Hong Kong" ~ "South-East Asia",
-        is.na(.data$country_region) & .data$country_name == "Palestine" ~ "Eastern Mediterranean",
-        is.na(.data$country_region) & .data$country_name == "Saint Martin (French part)" ~ "Europe",
+        .data$country_name == "Puerto Rico" ~ "Americas",
+        .data$country_name == "Hong Kong" ~ "Western Pacific",
+        .data$country_name == "Palestine" ~ "Eastern Mediterranean",
+        .data$country_name == "Saint Martin (French part)" ~ "Europe",
+        .data$country_name == "Europe" ~ "Europe",
         .default = .data$country_region
       )
     ) |>
@@ -232,7 +233,8 @@ get_research_category <- function(pact_data) {
       lapply(
         FUN = function(x) {
           x[!!seq_len(length(x)) %% 2] |>
-            paste(collapse = " | ")
+            paste(collapse = " | ") |>
+            (\(x) ifelse(x == "NA", NA_character_, x))()
         }
       ) |>
       unlist()
@@ -241,7 +243,8 @@ get_research_category <- function(pact_data) {
       lapply(
         FUN = function(x) {
           x[!seq_len(length(x)) %% 2] |>
-            paste(collapse = " | ")
+            paste(collapse = " | ") |>
+            (\(x) ifelse(x == "NA", NA_character_, x))()
         }
       ) |>
       unlist()
