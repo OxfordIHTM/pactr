@@ -308,7 +308,7 @@ pact_table_location_institution <- function(pact_data_list_cols,
 pact_table_location_research <- function(pact_data_list_cols,
                                          topic = c(
                                           "ResearchLocationRegion",
-                                          "ResearchLocationRegion"
+                                          "ResearchLocationCountry"
                                          ),
                                          na_values = NULL) {
   ## Get topic ----
