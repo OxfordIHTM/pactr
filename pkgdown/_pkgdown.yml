@@ -17,7 +17,7 @@ home:
     href: https://www.pandemicpact.org/
 
 navbar:
-  bg: primary
+  bg: info
   type: light
   structure:
     left:  [home, intro, reference, articles, news]
@@ -38,6 +38,7 @@ navbar:
     mastodon:
       icon: "fab fa-mastodon fa-lg"
       href: https://mastodon.social/@ihealth
+      aria-label: Mastodon
 
 reference:
   - title: Client
