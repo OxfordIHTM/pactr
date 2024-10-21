@@ -106,19 +106,13 @@ get_who_region <- function(x) {
   ) |>
     unlist()
 
-  ccode <- country_name |>
-    lapply(
-      FUN = function(x) {
-        ifelse(
-          x == "International", "INT",
-          countrycode::countrycode(
-            sourcevar = x, origin = "country.name", destination = "iso3c",
-            warn = FALSE
-          )
-        )
-      }
-    ) |>
-    unlist()
+  ccode <- ifelse(
+    country_name == "International", "INT",
+    countrycode::countrycode(
+      sourcevar = country_name, origin = "country.name", destination = "iso3c",
+      warn = FALSE
+    )
+  )
 
   country_region <- lapply(
     X = ccode, 
@@ -133,19 +127,13 @@ get_who_region <- function(x) {
   ) |>
     unlist()
 
-  data.frame(country_region, country_name, ccode) |>
-    dplyr::mutate(
-      country_region = dplyr::case_when(
-        .data$country_name == "Puerto Rico" ~ "Americas",
-        .data$country_name == "Hong Kong" ~ "Western Pacific",
-        .data$country_name == "Palestine" ~ "Eastern Mediterranean",
-        .data$country_name == "Saint Martin (French part)" ~ "Europe",
-        .data$country_name == "Europe" ~ "Europe",
-        .default = .data$country_region
-      )
-    ) |>
-    dplyr::pull(country_region) |>
-    paste(collapse = " | ") |>
+  country_region[country_name == "Puerto Rico"]                <- "Americas"
+  country_region[country_name == "Hong Kong"]                  <- "Western Pacific"
+  country_region[country_name == "Palestine"]                  <- "Eastern Mediterranean"
+  country_region[country_name == "Saint Martin (French part)"] <- "Europe"
+  country_region[country_name == "Europe"]                     <- "Europe"
+
+  paste(country_region, collapse = " | ") |>
     (\(x) ifelse(x == "NA", NA_character_, x))()
 }
 
