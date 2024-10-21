@@ -47,7 +47,7 @@ the underlying universal interface to various online research data
 deposition services including Figshare. Current Figshare-specific
 functionalities available in `{pactr}` are:
 
-1.  Listing of outputs/assets available from the Panedmic PACT Figshare
+1.  Listing of outputs/assets available from the Pandemic PACT Figshare
     repository (*experimental*);
 
 2.  Downloading of outputs/assets available from the Pandemic PACT
@@ -146,16 +146,19 @@ are those provided by [Figshare’s application programming interface
 (API)](https://docs.figshare.com/) and are either set by the Pandemic
 PACT data team or by Figshare. The data.frame would look as follows:
 
-    #> # A tibble: 7 × 18
-    #>   project_id       id title doi   handle url   published_date thumb defined_type
-    #>        <int>    <int> <chr> <chr> <chr>  <chr> <chr>          <chr>        <int>
-    #> 1         NA 25827649 Scop… 10.2… ""     http… 2024-05-15T12… ""               3
-    #> 2         NA 25368136 test  10.2… ""     http… 2024-03-08T11… "htt…            1
-    #> 3     189177 25368070 Pand… 10.2… ""     http… 2024-03-08T10… "htt…            1
-    #> 4     189177 25352839 Exte… 10.2… ""     http… 2024-03-06T15… ""               6
-    #> 5     189168 24786258 Pand… 10.2… ""     http… 2023-12-15T11… ""               3
-    #> 6     189168 24773787 Pand… 10.2… ""     http… 2023-12-11T11… ""               3
-    #> 7     189168 24763548 Pand… 10.2… ""     http… 2023-12-11T11… ""               3
+    #> # A tibble: 10 × 18
+    #>    project_id      id title doi   handle url   published_date thumb defined_type
+    #>         <int>   <int> <chr> <chr> <chr>  <chr> <chr>          <chr>        <int>
+    #>  1     189177  2.72e7 mpox… 10.2… ""     http… 2024-10-04T10… "htt…            7
+    #>  2     189177  2.72e7 Pand… 10.2… ""     http… 2024-10-02T11… "htt…            6
+    #>  3     189177  2.71e7 mpox… 10.2… ""     http… 2024-09-26T13… "htt…            7
+    #>  4     189177  2.70e7 Pand… 10.2… ""     http… 2024-09-12T16… "htt…            6
+    #>  5     189177  2.68e7 Pand… 10.2… ""     http… 2024-08-20T17… "htt…            6
+    #>  6         NA  2.58e7 Scop… 10.2… ""     http… 2024-05-15T12… ""               3
+    #>  7         NA  2.54e7 test  10.2… ""     http… 2024-03-08T11… "htt…            1
+    #>  8     189177  2.54e7 Pand… 10.2… ""     http… 2024-03-08T10… "htt…            1
+    #>  9     189177  2.54e7 Exte… 10.2… ""     http… 2024-03-06T15… ""               6
+    #> 10     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-15T11… ""               3
     #> # ℹ 9 more variables: defined_type_name <chr>, group_id <int>,
     #> #   url_private_api <chr>, url_public_api <chr>, url_private_html <chr>,
     #> #   url_public_html <chr>, timeline <df[,2]>, resource_title <chr>,
@@ -290,7 +293,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmprpOOZP/pandemic-pact-grants.csv"
+    #> [1] "/tmp/Rtmp5QtSRK/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -303,26 +306,26 @@ pact_read_website()
 
 which results in the following:
 
-    #> # A tibble: 9,862 × 39
-    #>    GrantID PubMedGrantId          GrantTitleEng  Abstract PublicationYearOfAward
-    #>    <chr>   <chr>                  <chr>          <chr>                     <int>
-    #>  1 C00037  170359                 COVID-19: Imp… "The cl…                   2020
-    #>  2 C00038  170357, 171495, 175580 Identificatio… "The ou…                   2020
-    #>  3 C00040  170353, 175493         Development o… "This r…                   2020
-    #>  4 C00041  109434                 Rapid, Low-co… "The ou…                   2020
-    #>  5 C00043  170355                 Rapid Researc… "In 201…                   2020
-    #>  6 C00045  170343                 Development a… "Corona…                   2020
-    #>  7 C00046  170346, 175528         Rapid develop… "The ou…                   2020
-    #>  8 C00047  170342                 Preventing SA… "The SA…                   2020
-    #>  9 C00048  170360                 Understanding… "A new …                   2020
-    #> 10 C00049  170362, 175535         RIsk of envir… "This s…                   2020
-    #> # ℹ 9,852 more rows
+    #> # A tibble: 13,527 × 39
+    #>    GrantID PubMedGrantId           GrantTitleEng Abstract PublicationYearOfAward
+    #>    <chr>   <chr>                   <chr>         <chr>                     <int>
+    #>  1 C00019  CCP-nCoV                "Cohort foll… "Cohort…                   2020
+    #>  2 C00020  THERAMAB                "Identificat… "Identi…                   2020
+    #>  3 C00021  None                    "Using socia… "Using …                   2020
+    #>  4 C00024  A Toolbox for SARS-CoV… "Potentiatin… "Potent…                   2020
+    #>  5 C00028  LAMBats                 "Live animal… "Live a…                   2020
+    #>  6 C00030  Anti2019-nCoV           "Drug Reposi… "Strate…                   2020
+    #>  7 C00032  unknown                 "AEC²-France… "The AE…                   2020
+    #>  8 C00033  unknown                 "Perception … "Knowle…                   2020
+    #>  9 C00034  unknown                 "In vitro an… "An int…                   2020
+    #> 10 C00036  unknown                 "Science, In… "The pr…                   2020
+    #> # ℹ 13,517 more rows
     #> # ℹ 34 more variables: GrantEndYear <int>, ResearchInstitutionName <chr>,
-    #> #   GrantAmountConverted <dbl>, StudySubject <chr>, Ethnicity <chr>,
-    #> #   AgeGroups <chr>, Rurality <chr>, VulnerablePopulations <chr>,
-    #> #   OccupationalGroups <chr>, StudyType <chr>, ClinicalTrial <chr>,
-    #> #   Pathogen <chr>, InfluenzaA <chr>, InfluenzaH1 <chr>, InfluenzaH2 <chr>,
-    #> #   InfluenzaH3 <chr>, InfluenzaH5 <chr>, InfluenzaH6 <chr>, …
+    #> #   StudySubject <chr>, Ethnicity <chr>, AgeGroups <chr>, Rurality <chr>,
+    #> #   VulnerablePopulations <chr>, OccupationalGroups <chr>, StudyType <chr>,
+    #> #   ClinicalTrial <chr>, Pathogen <chr>, InfluenzaA <chr>, InfluenzaH1 <chr>,
+    #> #   InfluenzaH2 <chr>, InfluenzaH3 <chr>, InfluenzaH5 <chr>, InfluenzaH6 <chr>,
+    #> #   InfluenzaH7 <chr>, InfluenzaH10 <chr>, Disease <chr>, …
 
 ### Process the Pandemic PACT tracker dataset from the website
 
