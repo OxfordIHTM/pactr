@@ -7,9 +7,9 @@ development:
 
 template:
   bootstrap: 5
-  bootswatch: litera
-  theme: haddock
-  ganalytics: #
+  bootswatch: journal
+  theme: breeze-light
+  ganalytics: G-X96EG3R0VM
 
 home:
   links:
@@ -21,7 +21,7 @@ navbar:
   type: light
   structure:
     left:  [home, intro, reference, articles, news]
-    right: [twitter, facebook, linkedin, github]
+    right: [search, linkedin, mastodon, github]
 
   components:
     articles:
@@ -31,18 +31,13 @@ navbar:
         href: articles/figshare-workflow.html
       - text: "Website dataset workflow"
         href: articles/website-dataset-workflow.html
-    twitter:
-      icon: "fab fa-twitter fa-lg"
-      href: http://twitter.com/OxIHTM
-      aria-label: Twitter
-    facebook:
-      icon: "fab fa-facebook fa-lg"
-      href: https://www.facebook.com/MSc-in-International-Health-and-Tropical-Medicine-University-of-Oxford-433056700228246/
-      aria-label: Facebook
     linkedin:
       icon: "fab fa-linkedin fa-lg"
       href: https://www.linkedin.com/company/international-health-and-tropical-medicine
       aria-label: LinkedIn
+    mastodon:
+      icon: "fab fa-mastodon fa-lg"
+      href: https://mastodon.social/@ihealth
 
 reference:
   - title: Client

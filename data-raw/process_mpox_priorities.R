@@ -34,7 +34,7 @@ mpox_subpriority <- c(
   "Viral evolution in different contexts & implications",  
   "Investigation of zoonotic transmission & reservoirs",
   "Epidemiology & transmission dynamics of mpox including sexual transmission.",
-  "Disease epidemiology & risk factors & modes of transmission",
+  "Disease epidemiology & risk factors  & modes of transmission",
   "Transmission dynamics including via various modes",
   "Transmission dynamics including risk & determinants of acquisition",
   "Ongoing assessment & evaluation of surveillance",
