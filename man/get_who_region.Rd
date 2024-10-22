@@ -3,11 +3,20 @@
 \name{get_who_region}
 \alias{get_who_region}
 \alias{get_who_regions}
+\alias{get_region}
+\alias{get_regions}
+\alias{add_countries}
 \title{Get WHO region}
 \usage{
 get_who_region(x)
 
 get_who_regions(x)
+
+get_region(x)
+
+get_regions(x)
+
+add_countries()
 }
 \arguments{
 \item{x}{A character value or vector of values of WHO countries to get the
