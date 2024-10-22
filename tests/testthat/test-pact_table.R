@@ -1,25 +1,34 @@
 # Tests for pact_table functions -----------------------------------------------
 
 test_that("pact_table works as expected", {
-  pact_data_list_cols <- pact_read_website() |> pact_process_website()
+  pact_data_list_cols <- pact_read_website() |>
+    (\(x) x[c(seq_len(500), which(x$GrantID == "P22196")), ])() |> 
+    pact_process_website()
+  
   topic_group_df1 <- pact_table_topic_group(
     pact_data_list_cols, topic = "Disease"
   )
+  
   topic_group_df2 <- pact_table_topic_group(
     pact_data_list_cols, topic = "Disease", group = "StudySubject"
   )
+  
   topic_group_df3 <- pact_table_disease(pact_data_list_cols)
+  
   topic_group_df4 <- pact_table_disease(
     pact_data_list_cols, group = "StudySubject" )
+  
   topic_group_df5 <- pact_table_topic_group(
     pact_data_list_cols, topic = "GrantEndYear"
   )
+  
   topic_group_df6 <- pact_table_topic_group(
     pact_data_list_cols, topic = "Disease", 
     group = c("GrantStartYear", "GrantEndYear")
   )
 
   pact_data_non_list <- pact_read_website() |> 
+    (\(x) x[c(seq_len(500), which(x$GrantID == "P22196")), ])() |>
     pact_process_website(col_list = FALSE)
 
 

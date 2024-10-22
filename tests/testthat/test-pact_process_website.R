@@ -2,7 +2,7 @@
 
 test_that("website data processing works as expected", {
   pact_data <- pact_read_website() |>
-    (\(x) x[c(seq_len(500), 9527), ])()
+    (\(x) x[c(seq_len(500), which(x$GrantID == "P22196")), ])()
   df1 <- pact_process_website(pact_data)
   df2 <- pact_process_website(pact_data, col_list = FALSE, fix = FALSE)
 
