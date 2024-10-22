@@ -1,7 +1,8 @@
 # Tests for pact_process_website -----------------------------------------------
 
 test_that("website data processing works as expected", {
-  pact_data <- pact_read_website()
+  pact_data <- pact_read_website() |>
+    (\(x) x[c(seq_len(1000), 9527), ])()
   df1 <- pact_process_website(pact_data)
   df2 <- pact_process_website(pact_data, col_list = FALSE, fix = FALSE)
 

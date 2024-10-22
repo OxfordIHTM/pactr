@@ -106,35 +106,7 @@ get_who_region <- function(x) {
   ) |>
     unlist()
 
-  ccode <- ifelse(
-    country_name == "International", "INT",
-    countrycode::countrycode(
-      sourcevar = country_name, origin = "country.name", destination = "iso3c",
-      warn = FALSE
-    )
-  )
-
-  country_region <- lapply(
-    X = ccode, 
-    FUN = function(x) {
-      ifelse(
-        x == "INT", "International",
-        pactr::who_country_info |>
-          dplyr::filter(.data$country_iso3c == x) |>
-          dplyr::pull(.data$who_region)
-      )
-    }
-  ) |>
-    unlist()
-
-  country_region[country_name == "Puerto Rico"]                <- "Americas"
-  country_region[country_name == "Hong Kong"]                  <- "Western Pacific"
-  country_region[country_name == "Palestine"]                  <- "Eastern Mediterranean"
-  country_region[country_name == "Saint Martin (French part)"] <- "Europe"
-  country_region[country_name == "Europe"]                     <- "Europe"
-
-  paste(country_region, collapse = " | ") |>
-    (\(x) ifelse(x == "NA", NA_character_, x))()
+  country_region <- get_regions(country_name)
 }
 
 #'
@@ -148,6 +120,71 @@ get_who_regions <- function(x) {
     FUN = get_who_region
   ) |>
     unlist()
+}
+
+#'
+#' @rdname get_who_region
+#' @keywords internal
+#'
+
+get_region <- function(x) {
+  if (is.na(x)) {
+    NA_character_
+  } else {
+    region_reference <- add_countries()
+
+    ccode <- countrycode::countrycode(
+      sourcevar = x, origin = "country.name", 
+      destination = "iso3c", warn = FALSE
+    )
+
+    ccode[x == "Saint Martin (French part)"] <- "MAF"
+    ccode[x == "International"]              <- "INT"
+    ccode[x == "Europe"]                     <- "EUR"
+
+    which(region_reference$country_iso3c == ccode) |>
+      (\(x) region_reference$who_region[x])()
+  }
+}
+
+#'
+#' @rdname get_who_region
+#' @keywords internal
+#'
+get_regions <- function(x) {
+  if (all(is.na(x))) {
+    NA_character_
+  } else {
+    lapply(X = x, FUN = get_region) |>
+      paste(collapse = " | ")
+  }
+}
+
+#'
+#' @rdname get_who_region
+#' @keywords internal
+#'
+
+add_countries <- function() {
+  df <- data.frame(
+    country_iso3c = c("PRI", "HKG", "PSE", "MAF", "EUR", "INT"),
+    who_short_name = c(
+      "Puerto Rico", "Hong Kong", "Palestine", "Saint Martin (French part)",
+      "Europe", "International"
+    ),
+    formal_name = c(
+      "Puerto Rico", "Hong Kong", "Palestine", "Saint Martin (French part)",
+      "Europe", "International"
+    ),
+    who_region = c(
+      "Americas", "Western Pacific", "Eastern Mediterranean", "Europe", 
+      "Europe", "International"
+    ),
+    un_region = NA_character_    
+  )
+
+  rbind(pactr::who_country_info, df) |>
+    tibble::tibble()
 }
 
 #'
@@ -358,3 +395,4 @@ get_mpox_priority <- function(pact_data) {
   ## Return pact_data ----
   pact_data
 }
+
