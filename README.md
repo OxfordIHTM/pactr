@@ -147,22 +147,22 @@ are those provided by [Figshare’s application programming interface
 PACT data team or by Figshare. The data.frame would look as follows:
 
     #> # A tibble: 10 × 18
-    #>    project_id      id title doi   handle url   published_date thumb defined_type
-    #>         <int>   <int> <chr> <chr> <chr>  <chr> <chr>          <chr>        <int>
-    #>  1     189177  2.72e7 mpox… 10.2… ""     http… 2024-10-04T10… "htt…            7
-    #>  2     189177  2.72e7 Pand… 10.2… ""     http… 2024-10-02T11… "htt…            6
-    #>  3     189177  2.71e7 mpox… 10.2… ""     http… 2024-09-26T13… "htt…            7
-    #>  4     189177  2.70e7 Pand… 10.2… ""     http… 2024-09-12T16… "htt…            6
-    #>  5     189177  2.68e7 Pand… 10.2… ""     http… 2024-08-20T17… "htt…            6
-    #>  6         NA  2.58e7 Scop… 10.2… ""     http… 2024-05-15T12… ""               3
-    #>  7         NA  2.54e7 test  10.2… ""     http… 2024-03-08T11… "htt…            1
-    #>  8     189177  2.54e7 Pand… 10.2… ""     http… 2024-03-08T10… "htt…            1
-    #>  9     189177  2.54e7 Exte… 10.2… ""     http… 2024-03-06T15… ""               6
-    #> 10     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-15T11… ""               3
-    #> # ℹ 9 more variables: defined_type_name <chr>, group_id <int>,
-    #> #   url_private_api <chr>, url_public_api <chr>, url_private_html <chr>,
-    #> #   url_public_html <chr>, timeline <df[,2]>, resource_title <chr>,
-    #> #   resource_doi <chr>
+    #>    project_id       id title          doi   handle url   published_date thumb
+    #>         <int>    <int> <chr>          <chr> <chr>  <chr> <chr>          <chr>
+    #>  1     189177 27169608 mpox research… 10.2… ""     http… 2024-10-04T10… "htt…
+    #>  2     189177 27152799 Pandemic PACT… 10.2… ""     http… 2024-10-02T11… "htt…
+    #>  3     189177 27110389 mpox research… 10.2… ""     http… 2024-09-26T13… "htt…
+    #>  4     189177 27004912 Pandemic PACT… 10.2… ""     http… 2024-09-12T16… "htt…
+    #>  5     189177 26790535 Pandemic PACT… 10.2… ""     http… 2024-08-20T17… "htt…
+    #>  6         NA 25827649 Scoping Revie… 10.2… ""     http… 2024-05-15T12… ""   
+    #>  7         NA 25368136 test           10.2… ""     http… 2024-03-08T11… "htt…
+    #>  8     189177 25368070 Pandemic PACT… 10.2… ""     http… 2024-03-08T10… "htt…
+    #>  9     189177 25352839 Extended data… 10.2… ""     http… 2024-03-06T15… ""   
+    #> 10     189168 24786258 Pandemic PACT… 10.2… ""     http… 2023-12-15T11… ""   
+    #> # ℹ 10 more variables: defined_type <int>, defined_type_name <chr>,
+    #> #   group_id <int>, url_private_api <chr>, url_public_api <chr>,
+    #> #   url_private_html <chr>, url_public_html <chr>, timeline <df[,2]>,
+    #> #   resource_title <chr>, resource_doi <chr>
 
 This function is useful in getting an overview of what is currently
 available in the Pandemic PACT Figshare repository.
@@ -255,25 +255,25 @@ pact_read_figshare(pact_client) |>
 ```
 
     #> # A tibble: 4,637 × 37
-    #>    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng
-    #>    <chr>  <chr>        <chr>                                     <chr>          
-    #>  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…
-    #>  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…
-    #>  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…
-    #>  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…
-    #>  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…
-    #>  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…
-    #>  7 C00159 unknown      A comprehensive study of immunopathogene… ""             
-    #>  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…
-    #>  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…
-    #> 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…
+    #>    PactID Grant.Number Grant.Title.Original                   Grant.Title.Eng
+    #>    <chr>  <chr>        <chr>                                  <chr>          
+    #>  1 C00153 unknown      Serological studies to quantify SARS-… "Serological s…
+    #>  2 C00154 unknown      African COVID-19 Preparedness (AFRICO… "African COVID…
+    #>  3 C00155 unknown      COVID-19 Intervention Modelling for E… "COVID-19 Inte…
+    #>  4 C00156 unknown      The African coaLition for Epidemic Re… "The African c…
+    #>  5 C00157 unknown      Characterization of SARS-CoV-2 transm… "Characterizat…
+    #>  6 C00158 unknown      Investigation of pre-existing immunit… "Investigation…
+    #>  7 C00159 unknown      A comprehensive study of immunopathog… ""             
+    #>  8 C00160 MC_PC_19012  Centre for Global Infectious Disease … "Centre for Gl…
+    #>  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Charact… "ISARIC - Coro…
+    #> 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CV… "MRC Centre fo…
     #> # ℹ 4,627 more rows
     #> # ℹ 33 more variables: Award.Amount.Converted <dbl>, Abstract.Eng <chr>,
     #> #   Laysummary <chr>, ODA.funding.used <chr>, Grant.Type <chr>,
     #> #   Grant.Start.Year <int>, Study.Subject <list>, Ethnicity <list>,
     #> #   Age.Groups <list>, Rurality <list>, Vulnerable.Population <list>,
     #> #   Occupational.Groups <list>, Study.Type <list>, Clinical.Trial <list>,
-    #> #   report <chr>, Pathogen <list>, Pathogen.Specific <list>, Disease <list>, …
+    #> #   report <chr>, Pathogen <list>, Pathogen.Specific <list>, …
 
 For a more detailed discussion of the usage and limitations of the
 `{pactr}` Figshare functions, see this
@@ -293,7 +293,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/Rtmp5QtSRK/pandemic-pact-grants.csv"
+    #> [1] "/tmp/Rtmp4hFpkb/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -306,26 +306,26 @@ pact_read_website()
 
 which results in the following:
 
-    #> # A tibble: 13,527 × 39
-    #>    GrantID PubMedGrantId           GrantTitleEng Abstract PublicationYearOfAward
-    #>    <chr>   <chr>                   <chr>         <chr>                     <int>
-    #>  1 C00019  CCP-nCoV                "Cohort foll… "Cohort…                   2020
-    #>  2 C00020  THERAMAB                "Identificat… "Identi…                   2020
-    #>  3 C00021  None                    "Using socia… "Using …                   2020
-    #>  4 C00024  A Toolbox for SARS-CoV… "Potentiatin… "Potent…                   2020
-    #>  5 C00028  LAMBats                 "Live animal… "Live a…                   2020
-    #>  6 C00030  Anti2019-nCoV           "Drug Reposi… "Strate…                   2020
-    #>  7 C00032  unknown                 "AEC²-France… "The AE…                   2020
-    #>  8 C00033  unknown                 "Perception … "Knowle…                   2020
-    #>  9 C00034  unknown                 "In vitro an… "An int…                   2020
-    #> 10 C00036  unknown                 "Science, In… "The pr…                   2020
-    #> # ℹ 13,517 more rows
-    #> # ℹ 34 more variables: GrantEndYear <int>, ResearchInstitutionName <chr>,
+    #> # A tibble: 19,172 × 39
+    #>    GrantID PubMedGrantId                GrantTitleEng Abstract GrantStartYear
+    #>    <chr>   <chr>                        <chr>         <chr>             <int>
+    #>  1 C00018  unknown                      "Mathematica… "Mathem…             NA
+    #>  2 C00019  CCP-nCoV                     "Cohort foll… "Cohort…             NA
+    #>  3 C00020  THERAMAB                     "Identificat… "Identi…             NA
+    #>  4 C00021  None                         "Using socia… "Using …             NA
+    #>  5 C00022  CoV-CONTACT                  "Follow-up o… "Follow…             NA
+    #>  6 C00023  Réplicon                     "Development… "Develo…             NA
+    #>  7 C00024  A Toolbox for SARS-CoV-2 dr… "Potentiatin… "Potent…             NA
+    #>  8 C00025  NHP Model                    "Establishme… "Establ…             NA
+    #>  9 C00026  SARS-CoV2-LIPS               "Antibody pr… "Antibo…             NA
+    #> 10 C00027  SARS-CoV-2_EVOLSERO          "Evolution o… "Evolut…             NA
+    #> # ℹ 19,162 more rows
+    #> # ℹ 34 more variables: PublicationYearOfAward <int>, GrantEndYear <int>,
+    #> #   ResearchInstitutionName <chr>, GrantAmountConverted <dbl>,
     #> #   StudySubject <chr>, Ethnicity <chr>, AgeGroups <chr>, Rurality <chr>,
     #> #   VulnerablePopulations <chr>, OccupationalGroups <chr>, StudyType <chr>,
-    #> #   ClinicalTrial <chr>, Pathogen <chr>, InfluenzaA <chr>, InfluenzaH1 <chr>,
-    #> #   InfluenzaH2 <chr>, InfluenzaH3 <chr>, InfluenzaH5 <chr>, InfluenzaH6 <chr>,
-    #> #   InfluenzaH7 <chr>, InfluenzaH10 <chr>, Disease <chr>, …
+    #> #   ClinicalTrial <chr>, Pathogen <chr>, InfluenzaA <chr>,
+    #> #   InfluenzaH1 <chr>, InfluenzaH2 <chr>, InfluenzaH3 <chr>, …
 
 ### Process the Pandemic PACT tracker dataset from the website
 
@@ -347,26 +347,29 @@ pact_read_website() |>
 
 which produces the following output:
 
-    #> # A tibble: 88 × 5
-    #>    GrantStartYear Disease         n_grants n_grants_specified grant_amount_total
-    #>             <int> <chr>              <int>              <int>              <dbl>
-    #>  1           2020 COVID-19            4711               3917        7165275210.
-    #>  2           2020 Congenital Zik…       13                 12           6299449.
-    #>  3           2020 Crimean-Congo …       30                 30          21675622.
-    #>  4           2020 Disease X             89                 85         363603562.
-    #>  5           2020 Ebola virus di…      101                 95          63300851.
-    #>  6           2020 Hendra virus i…        1                  1             10059 
-    #>  7           2020 Lassa fever           19                 18          19457036.
-    #>  8           2020 Marburg virus …       33                 33          21701979.
-    #>  9           2020 Middle East Re…       31                 31          30587054.
-    #> 10           2020 Mpox                  11                  9          13115693 
-    #> # ℹ 78 more rows
+    #> # A tibble: 89 × 5
+    #>    GrantStartYear Disease      n_grants n_grants_specified grant_amount_total
+    #>             <int> <chr>           <int>              <int>              <dbl>
+    #>  1           2020 COVID-19        11163               8598        7911274955.
+    #>  2           2020 Congenital …       14                 13           6354949.
+    #>  3           2020 Crimean-Con…       30                 30          21675622.
+    #>  4           2020 Disease X          96                 92         364708975.
+    #>  5           2020 Ebola virus…      103                 97          63554343.
+    #>  6           2020 Hendra viru…        1                  1             10059 
+    #>  7           2020 Lassa fever        19                 18          19457036.
+    #>  8           2020 Marburg vir…       33                 33          21701979.
+    #>  9           2020 Middle East…       32                 32          30787054.
+    #> 10           2020 Mpox               13                 11          23684824 
+    #> # ℹ 79 more rows
 
 which in turn can be plotted as follows:
 
 <img src="man/figures/README-usage-website-3c-1.png" width="100%" />
 
 or alternatively:
+
+    #> `geom_line()`: Each group consists of only one observation.
+    #> ℹ Do you need to adjust the group aesthetic?
 
 <img src="man/figures/README-usage-website-3d-1.png" width="100%" />
 
@@ -406,8 +409,8 @@ citation provided by a call to the `pact_cite()` function as follows:
 pact_cite(pact_client, id = 24763548)  
 #> To cite Pandemic PACT Grant Tracker (labelled) in publications use:
 #> 
-#>   Pandemic PACT team (2023). "Pandemic PACT Grant Tracker (labelled).
-#>   dataset version 1." doi:10.25446/oxford.24763548.v1
+#>   Pandemic PACT team (2023). "Pandemic PACT Grant Tracker
+#>   (labelled). dataset version 1." doi:10.25446/oxford.24763548.v1
 #>   <https://doi.org/10.25446/oxford.24763548.v1>.
 #> 
 #> A BibTeX entry for LaTeX users is
