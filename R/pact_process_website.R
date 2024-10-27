@@ -32,6 +32,11 @@ pact_process_website <- function(pact_data,
         Disease = ifelse(
           .data$GrantID == "P22196", "Zika virus disease", .data$Disease
         ),
+        ResearchSubcat = ifelse(
+          .data$GrantID == "C18585", 
+          "Characterisation of vaccine-induced immunity",
+          .data$ResearchSubcat
+        ),
         PubMedGrantId = ifelse(
           .data$PubMedGrantId == "", NA_character_, .data$PubMedGrantId
         ),

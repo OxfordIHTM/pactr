@@ -124,7 +124,7 @@ pact_table_topic_group <- function(pact_data_list_cols,
   tidy_df <- tidy_df |>
     dplyr::mutate(
       grant_amount_type = ifelse(
-        is.na(.data$GrantAmountConverted), "Unspecfiied", "Specified"
+        is.na(.data$GrantAmountConverted), "Unspecified", "Specified"
       )
     )
 
