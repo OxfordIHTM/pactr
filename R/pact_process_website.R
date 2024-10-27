@@ -81,7 +81,7 @@ pact_process_website <- function(pact_data,
           .data$InfluenzaH10 == "", NA_character_, .data$InfluenzaH10
         ),
         Disease = ifelse(
-          .data$Disease == "", NA_character_, .data$Disease
+          .data$Disease == "", "Not applicable", .data$Disease
         ),
         FundingOrgName = ifelse(
           .data$FundingOrgName == "", NA_character_, .data$FundingOrgName

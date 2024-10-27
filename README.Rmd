@@ -57,7 +57,7 @@ The main motivation for the development of `{pactr}` is to create a standardised
 
 ## Installation
 
-`{pactr}` is not yet on CRAN but can be installed through the [Oxford IHTM r-universe](https://oxfordihtm.r-universe.dev) with:
+`{pactr}` is not yet on [CRAN](https://cran.r-project.org) but can be installed through the [Oxford iHealth R Universe](https://oxfordihtm.r-universe.dev) with:
 
 ```R
 install.packages(
@@ -66,24 +66,11 @@ install.packages(
 )
 ```
 
-Alternatively, `{pactr}` can be installed directly from [GitHub](https://github.com/OxfordIHTM/pactr) using the `{remotes}` package with the following command:
-
-```R
-if (!requireNamespace("remotes")) install.packages("remotes")
-remotes::install_github("OxfordIHTM/pactr")
-```
-
-`{pactr}` can then be loaded for use with:
-
-```{r load-package}
-library(pactr)
-```
-
 ## Usage - Figshare workflow
 
 ### Set a Figshare client
 
-Usage of `{pactr}` always starts with the setting up of a Figshare client. This requires creating a Figshare account and then creating a personal access token [here](https://figshare.com/account/applications).
+The `{pactr}` Figshare workflow always starts with the setting up of a Figshare client. This requires creating a Figshare account and then creating a personal access token [here](https://figshare.com/account/applications).
 
 Once a Figshare token is created, it needs to be stored as a local environment variable. This can be done using the following command in R:
 
@@ -171,7 +158,7 @@ pact_read_figshare(pact_client) |>
   tibble::tibble()
 ```
 
-```{r useage-3f, echo = FALSE}
+```{r usage-3f, echo = FALSE}
 figshare_data |>
   pact_process_figshare() |>
   tibble::tibble()
@@ -323,6 +310,10 @@ To cite the Pandemic PACT Tracker dataset, please use the suggested citation pro
 ## cite the labelled version of the tracker dataset
 pact_cite(pact_client, id = 24763548)  
 ```
+
+## Disclaimer
+
+This project is an independent effort by [Oxford iHealth](https://oxford-ihtm.io) in support of related analytics and research using the Pandemic PACT dataset. This project is not recognised by the Pandemic PACT project. Any issues or problems arising from using the `{pactr}` package or from participating or contributing to the development of this project are the responsibility of the authors and maintainers of this project and should be addressed to them accordingly and not to the Pandemic PACT project.
 
 ## Community guidelines
 
