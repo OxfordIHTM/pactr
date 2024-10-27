@@ -134,22 +134,22 @@
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>The output is a <code>data.frame</code> containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming interface (API)</a> and are either set by the Pandemic PACT data team or by Figshare. The data.frame would look as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 × 18</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt;    project_id      id title doi   handle url   published_date thumb defined_type</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;         &lt;int&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;        &lt;int&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt;  1     189177  2.72e7 mpox… 10.2… ""     http… 2024-10-04T10… "htt…            7</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  2     189177  2.72e7 Pand… 10.2… ""     http… 2024-10-02T11… "htt…            6</span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt;  3     189177  2.71e7 mpox… 10.2… ""     http… 2024-09-26T13… "htt…            7</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  4     189177  2.70e7 Pand… 10.2… ""     http… 2024-09-12T16… "htt…            6</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;  5     189177  2.68e7 Pand… 10.2… ""     http… 2024-08-20T17… "htt…            6</span></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt;  6         NA  2.58e7 Scop… 10.2… ""     http… 2024-05-15T12… ""               3</span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt;  7         NA  2.54e7 test  10.2… ""     http… 2024-03-08T11… "htt…            1</span></span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;  8     189177  2.54e7 Pand… 10.2… ""     http… 2024-03-08T10… "htt…            1</span></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt;  9     189177  2.54e7 Exte… 10.2… ""     http… 2024-03-06T15… ""               6</span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; 10     189168  2.48e7 Pand… 10.2… ""     http… 2023-12-15T11… ""               3</span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 9 more variables: defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; #   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;, url_private_html &lt;chr&gt;,</span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; #   url_public_html &lt;chr&gt;, timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;,</span></span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt; #   resource_doi &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt;    project_id       id title          doi   handle url   published_date thumb</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;         &lt;int&gt;    &lt;int&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt;  1     189177 27169608 mpox research… 10.2… ""     http… 2024-10-04T10… "htt…</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  2     189177 27152799 Pandemic PACT… 10.2… ""     http… 2024-10-02T11… "htt…</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt;  3     189177 27110389 mpox research… 10.2… ""     http… 2024-09-26T13… "htt…</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  4     189177 27004912 Pandemic PACT… 10.2… ""     http… 2024-09-12T16… "htt…</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;  5     189177 26790535 Pandemic PACT… 10.2… ""     http… 2024-08-20T17… "htt…</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt;  6         NA 25827649 Scoping Revie… 10.2… ""     http… 2024-05-15T12… ""   </span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt;  7         NA 25368136 test           10.2… ""     http… 2024-03-08T11… "htt…</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;  8     189177 25368070 Pandemic PACT… 10.2… ""     http… 2024-03-08T10… "htt…</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt;  9     189177 25352839 Extended data… 10.2… ""     http… 2024-03-06T15… ""   </span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; 10     189168 24786258 Pandemic PACT… 10.2… ""     http… 2023-12-15T11… ""   </span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 10 more variables: defined_type &lt;int&gt;, defined_type_name &lt;chr&gt;,</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; #   group_id &lt;int&gt;, url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;,</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; #   url_private_html &lt;chr&gt;, url_public_html &lt;chr&gt;, timeline &lt;df[,2]&gt;,</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt; #   resource_title &lt;chr&gt;, resource_doi &lt;chr&gt;</span></span></code></pre></div>
 <p>This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.</p>
 </div>
 <div class="section level3">
@@ -225,25 +225,25 @@
 <span>  <span class="fu"><a href="reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4,637 × 37</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;          </span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#&gt;  1 C00153 unknown      Serological studies to quantify SARS-CoV… "Serological s…</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt;  2 C00154 unknown      African COVID-19 Preparedness (AFRICO19)  "African COVID…</span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt;  3 C00155 unknown      COVID-19 Intervention Modelling for East… "COVID-19 Inte…</span></span>
-<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt;  4 C00156 unknown      The African coaLition for Epidemic Resea… "The African c…</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt;  5 C00157 unknown      Characterization of SARS-CoV-2 transmiss… "Characterizat…</span></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt;  6 C00158 unknown      Investigation of pre-existing immunity t… "Investigation…</span></span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt;  7 C00159 unknown      A comprehensive study of immunopathogene… ""             </span></span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt;  8 C00160 MC_PC_19012  Centre for Global Infectious Disease Ana… "Centre for Gl…</span></span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt;  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Characteri… "ISARIC - Coro…</span></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CVR) … "MRC Centre fo…</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                   Grant.Title.Eng</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt;                                  &lt;chr&gt;          </span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#&gt;  1 C00153 unknown      Serological studies to quantify SARS-… "Serological s…</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt;  2 C00154 unknown      African COVID-19 Preparedness (AFRICO… "African COVID…</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt;  3 C00155 unknown      COVID-19 Intervention Modelling for E… "COVID-19 Inte…</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt;  4 C00156 unknown      The African coaLition for Epidemic Re… "The African c…</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt;  5 C00157 unknown      Characterization of SARS-CoV-2 transm… "Characterizat…</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt;  6 C00158 unknown      Investigation of pre-existing immunit… "Investigation…</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt;  7 C00159 unknown      A comprehensive study of immunopathog… ""             </span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt;  8 C00160 MC_PC_19012  Centre for Global Infectious Disease … "Centre for Gl…</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt;  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical Charact… "ISARIC - Coro…</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 10 C00162 MC_PC_19026  MRC Centre for Virus Research (MRC CV… "MRC Centre fo…</span></span>
 <span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 4,627 more rows</span></span>
 <span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 33 more variables: Award.Amount.Converted &lt;dbl&gt;, Abstract.Eng &lt;chr&gt;,</span></span>
 <span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; #   Laysummary &lt;chr&gt;, ODA.funding.used &lt;chr&gt;, Grant.Type &lt;chr&gt;,</span></span>
 <span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; #   Grant.Start.Year &lt;int&gt;, Study.Subject &lt;list&gt;, Ethnicity &lt;list&gt;,</span></span>
 <span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; #   Age.Groups &lt;list&gt;, Rurality &lt;list&gt;, Vulnerable.Population &lt;list&gt;,</span></span>
 <span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt; #   Occupational.Groups &lt;list&gt;, Study.Type &lt;list&gt;, Clinical.Trial &lt;list&gt;,</span></span>
-<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; #   report &lt;chr&gt;, Pathogen &lt;list&gt;, Pathogen.Specific &lt;list&gt;, Disease &lt;list&gt;, …</span></span></code></pre></div>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; #   report &lt;chr&gt;, Pathogen &lt;list&gt;, Pathogen.Specific &lt;list&gt;, …</span></span></code></pre></div>
 <p>For a more detailed discussion of the usage and limitations of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> Figshare functions, see this <a href="https://oxford-ihtm.io/pactr/articles/figshare-workflow.html">vignette</a>.</p>
 </div>
 </div>
@@ -258,7 +258,7 @@
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/Rtmp5QtSRK/pandemic-pact-grants.csv"</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/Rtmp4hFpkb/pandemic-pact-grants.csv"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -267,26 +267,26 @@
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which results in the following:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 13,527 × 39</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co">#&gt;    GrantID PubMedGrantId           GrantTitleEng Abstract PublicationYearOfAward</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                   &lt;chr&gt;         &lt;chr&gt;                     &lt;int&gt;</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt;  1 C00019  CCP-nCoV                "Cohort foll… "Cohort…                   2020</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt;  2 C00020  THERAMAB                "Identificat… "Identi…                   2020</span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt;  3 C00021  None                    "Using socia… "Using …                   2020</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt;  4 C00024  A Toolbox for SARS-CoV… "Potentiatin… "Potent…                   2020</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt;  5 C00028  LAMBats                 "Live animal… "Live a…                   2020</span></span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co">#&gt;  6 C00030  Anti2019-nCoV           "Drug Reposi… "Strate…                   2020</span></span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt;  7 C00032  unknown                 "AEC²-France… "The AE…                   2020</span></span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt;  8 C00033  unknown                 "Perception … "Knowle…                   2020</span></span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt;  9 C00034  unknown                 "In vitro an… "An int…                   2020</span></span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt; 10 C00036  unknown                 "Science, In… "The pr…                   2020</span></span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 13,517 more rows</span></span>
-<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 34 more variables: GrantEndYear &lt;int&gt;, ResearchInstitutionName &lt;chr&gt;,</span></span>
-<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co">#&gt; #   StudySubject &lt;chr&gt;, Ethnicity &lt;chr&gt;, AgeGroups &lt;chr&gt;, Rurality &lt;chr&gt;,</span></span>
-<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co">#&gt; #   VulnerablePopulations &lt;chr&gt;, OccupationalGroups &lt;chr&gt;, StudyType &lt;chr&gt;,</span></span>
-<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co">#&gt; #   ClinicalTrial &lt;chr&gt;, Pathogen &lt;chr&gt;, InfluenzaA &lt;chr&gt;, InfluenzaH1 &lt;chr&gt;,</span></span>
-<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#&gt; #   InfluenzaH2 &lt;chr&gt;, InfluenzaH3 &lt;chr&gt;, InfluenzaH5 &lt;chr&gt;, InfluenzaH6 &lt;chr&gt;,</span></span>
-<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co">#&gt; #   InfluenzaH7 &lt;chr&gt;, InfluenzaH10 &lt;chr&gt;, Disease &lt;chr&gt;, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 19,172 × 39</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co">#&gt;    GrantID PubMedGrantId                GrantTitleEng Abstract GrantStartYear</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                        &lt;chr&gt;         &lt;chr&gt;             &lt;int&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt;  1 C00018  unknown                      "Mathematica… "Mathem…             NA</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt;  2 C00019  CCP-nCoV                     "Cohort foll… "Cohort…             NA</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt;  3 C00020  THERAMAB                     "Identificat… "Identi…             NA</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt;  4 C00021  None                         "Using socia… "Using …             NA</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt;  5 C00022  CoV-CONTACT                  "Follow-up o… "Follow…             NA</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co">#&gt;  6 C00023  Réplicon                     "Development… "Develo…             NA</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt;  7 C00024  A Toolbox for SARS-CoV-2 dr… "Potentiatin… "Potent…             NA</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt;  8 C00025  NHP Model                    "Establishme… "Establ…             NA</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt;  9 C00026  SARS-CoV2-LIPS               "Antibody pr… "Antibo…             NA</span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt; 10 C00027  SARS-CoV-2_EVOLSERO          "Evolution o… "Evolut…             NA</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 19,162 more rows</span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 34 more variables: PublicationYearOfAward &lt;int&gt;, GrantEndYear &lt;int&gt;,</span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co">#&gt; #   ResearchInstitutionName &lt;chr&gt;, GrantAmountConverted &lt;dbl&gt;,</span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co">#&gt; #   StudySubject &lt;chr&gt;, Ethnicity &lt;chr&gt;, AgeGroups &lt;chr&gt;, Rurality &lt;chr&gt;,</span></span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co">#&gt; #   VulnerablePopulations &lt;chr&gt;, OccupationalGroups &lt;chr&gt;, StudyType &lt;chr&gt;,</span></span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#&gt; #   ClinicalTrial &lt;chr&gt;, Pathogen &lt;chr&gt;, InfluenzaA &lt;chr&gt;,</span></span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co">#&gt; #   InfluenzaH1 &lt;chr&gt;, InfluenzaH2 &lt;chr&gt;, InfluenzaH3 &lt;chr&gt;, …</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -298,23 +298,25 @@
 <span>  <span class="fu"><a href="reference/pact_process_website.html">pact_process_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/pact_table.html">pact_table_topic_group</a></span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
 <p>which produces the following output:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 88 × 5</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease         n_grants n_grants_specified grant_amount_total</span></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;              &lt;int&gt;              &lt;int&gt;              &lt;dbl&gt;</span></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#&gt;  1           2020 COVID-19            4711               3917        7165275210.</span></span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#&gt;  2           2020 Congenital Zik…       13                 12           6299449.</span></span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co">#&gt;  3           2020 Crimean-Congo …       30                 30          21675622.</span></span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co">#&gt;  4           2020 Disease X             89                 85         363603562.</span></span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co">#&gt;  5           2020 Ebola virus di…      101                 95          63300851.</span></span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co">#&gt;  6           2020 Hendra virus i…        1                  1             10059 </span></span>
-<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="co">#&gt;  7           2020 Lassa fever           19                 18          19457036.</span></span>
-<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="co">#&gt;  8           2020 Marburg virus …       33                 33          21701979.</span></span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co">#&gt;  9           2020 Middle East Re…       31                 31          30587054.</span></span>
-<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co">#&gt; 10           2020 Mpox                  11                  9          13115693 </span></span>
-<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 78 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 89 × 5</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#&gt;    GrantStartYear Disease      n_grants n_grants_specified grant_amount_total</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;           &lt;int&gt;              &lt;int&gt;              &lt;dbl&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#&gt;  1           2020 COVID-19        11163               8598        7911274955.</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#&gt;  2           2020 Congenital …       14                 13           6354949.</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co">#&gt;  3           2020 Crimean-Con…       30                 30          21675622.</span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co">#&gt;  4           2020 Disease X          96                 92         364708975.</span></span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co">#&gt;  5           2020 Ebola virus…      103                 97          63554343.</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co">#&gt;  6           2020 Hendra viru…        1                  1             10059 </span></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="co">#&gt;  7           2020 Lassa fever        19                 18          19457036.</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="co">#&gt;  8           2020 Marburg vir…       33                 33          21701979.</span></span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co">#&gt;  9           2020 Middle East…       32                 32          30787054.</span></span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co">#&gt; 10           2020 Mpox               13                 11          23684824 </span></span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 79 more rows</span></span></code></pre></div>
 <p>which in turn can be plotted as follows:</p>
 <p><img src="reference/figures/README-usage-website-3c-1.png" width="100%"></p>
 <p>or alternatively:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co">#&gt; `geom_line()`: Each group consists of only one observation.</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#&gt; ℹ Do you need to adjust the group aesthetic?</span></span></code></pre></div>
 <p><img src="reference/figures/README-usage-website-3d-1.png" width="100%"></p>
 <p>For a more detailed discussion of the usage and limitations of the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> website dataset functions, see this <a href="https://oxford-ihtm.io/pactr/articles/website-dataset-workflow.html">vignette</a>.</p>
 </div>
@@ -323,7 +325,7 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite the <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a> package, please use the suggested citation provided by a call to the <code><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"pactr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite pactr in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -341,13 +343,13 @@
 <span><span class="co">#&gt;     url = {https://oxford-ihtm.io/pactr/},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the <code><a href="reference/pact_cite.html">pact_cite()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## cite the labelled version of the tracker dataset</span></span>
 <span><span class="fu"><a href="reference/pact_cite.html">pact_cite</a></span><span class="op">(</span><span class="va">pact_client</span>, id <span class="op">=</span> <span class="fl">24763548</span><span class="op">)</span>  </span>
 <span><span class="co">#&gt; To cite Pandemic PACT Grant Tracker (labelled) in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Pandemic PACT team (2023). "Pandemic PACT Grant Tracker (labelled).</span></span>
-<span><span class="co">#&gt;   dataset version 1." doi:10.25446/oxford.24763548.v1</span></span>
+<span><span class="co">#&gt;   Pandemic PACT team (2023). "Pandemic PACT Grant Tracker</span></span>
+<span><span class="co">#&gt;   (labelled). dataset version 1." doi:10.25446/oxford.24763548.v1</span></span>
 <span><span class="co">#&gt;   &lt;https://doi.org/10.25446/oxford.24763548.v1&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
