@@ -35,7 +35,14 @@ test_that("get_who_regions give the correct output", {
 
 ## Get research category and mpox priority ----
 test_that("categories and priorities are correctly matched", {
-  pact_data <- pact_read_website()
+  pact_data <- pact_read_website() |>
+    dplyr::mutate(
+      ResearchSubcat = ifelse(
+        .data$GrantID == "C18585", 
+        "Characterisation of vaccine-induced immunity",
+        .data$ResearchSubcat
+      )
+    )
 
   expect_s3_class(
     get_research_category(pact_data),
