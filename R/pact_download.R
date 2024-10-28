@@ -89,13 +89,13 @@ pact_download_figshare_private <- function(path,
       if (overwrite) {
         download.file(
           url = download_url, destfile = file.path(path, filename), 
-          quiet = quiet
+          mode = "wb", quiet = quiet
         )
       } else {
         if (!file_present) {
           download.file(
             url = download_url, destfile = file.path(path, filename), 
-            quiet = quiet
+            mode = "wb", quiet = quiet
           )
         }
       }
