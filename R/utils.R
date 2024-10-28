@@ -396,3 +396,31 @@ get_mpox_priority <- function(pact_data) {
   pact_data
 }
 
+#'
+#' Build Figshare download URL for a collection
+#' 
+#' @param collection_id An integer for the collection identifier.
+#' @param private_link_id An identifier value for the private link to the
+#'   collection.
+#' 
+#' @returns A download URL for the specified private Figshare collection.
+#' 
+#' @examples
+#' \dontrun{
+#'   build_figshare_download_url(
+#'     collection_id = 25370686, 
+#'     private_link_id = "58527668245cb63f14f5"
+#'   )
+#' }
+#' 
+#' @keywords internal
+#' 
+
+build_figshare_download_url <- function(collection_id, private_link_id) {
+  file.path(
+    "https://figshare.com/ndownloader/articles",
+    collection_id
+  ) |>
+    paste(private_link_id, sep = "?private_link=")
+}
+

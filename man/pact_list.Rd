@@ -3,16 +3,22 @@
 \name{pact_list}
 \alias{pact_list}
 \alias{pact_list_data}
+\alias{pact_list_download}
 \title{List all available outputs/assets from Pandemic PACT's Figshare repository}
 \usage{
 pact_list(pact_client)
 
 pact_list_data(pact_client)
+
+pact_list_download(path_to_download)
 }
 \arguments{
 \item{pact_client}{An interface client to the Pandemic PACT Figshare
 repository. This is usually set/created through a call to
 \code{pact_client_set()}.}
+
+\item{path_to_download}{Path to downloaded zip file from Pandemic PACT's
+Figshare repository}
 }
 \value{
 A data.frame of available outputs/assets from Pandemic PACT's
