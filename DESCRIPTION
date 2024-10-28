@@ -24,10 +24,13 @@ Imports:
     deposits (>= 0.2.1.60),
     dplyr,
     methods,
+    openxlsx2,
     rlang,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    utils,
+    withr
 Suggests: 
     DiagrammeR,
     knitr,

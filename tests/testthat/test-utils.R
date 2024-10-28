@@ -64,3 +64,12 @@ test_that("categories and priorities are correctly matched", {
     )
   )
 })
+
+## Build Figshare download URL ----
+test_that("build_figshare_download_url works as expected", {
+  .url <- build_figshare_download_url(
+    collection_id = 25370686, private_link_id = "58527668245cb63f14f5"
+  )
+
+  expect_type(.url, "character")
+})

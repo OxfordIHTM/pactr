@@ -2,10 +2,13 @@
 % Please edit documentation in R/pact_download.R
 \name{pact_download_figshare}
 \alias{pact_download_figshare}
+\alias{pact_download_figshare_private}
 \alias{pact_download_website}
 \title{Download outputs/assets from Pandemic PACT Figshare repository}
 \usage{
 pact_download_figshare(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
+
+pact_download_figshare_private(path, overwrite = FALSE, quiet = TRUE)
 
 pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 }

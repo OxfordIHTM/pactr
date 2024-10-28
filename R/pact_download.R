@@ -30,7 +30,8 @@
 
 pact_download_figshare <- function(pact_client,
                                    id, path,
-                                   overwrite = FALSE, quiet = TRUE) {
+                                   overwrite = FALSE, 
+                                   quiet = TRUE) {
   ## Retrieve specified file ----
   pact_client$deposit_retrieve(deposit_id = id)
 
@@ -53,6 +54,53 @@ pact_download_figshare <- function(pact_client,
       )
     }
   }
+
+  ## Return path to downloaded file ----
+  file.path(path, filename)
+}
+
+#'
+#' @rdname pact_download
+#' @export
+#' 
+
+pact_download_figshare_private <- function(path,
+                                           overwrite = FALSE, 
+                                           quiet = TRUE) {
+  ## Private collection ID ----
+  collection_id <- 25370686
+  private_link_id <- "58527668245cb63f14f5"
+  
+  ## Filename ----
+  filename <- "pandemic_pact_figshare.zip"
+  
+  ## Build download URL ----
+  download_url <- build_figshare_download_url(
+    collection_id = collection_id, private_link_id = private_link_id
+  )
+
+  ## Check if download file is already present in path
+  file_present <- filename %in% list.files(path)
+
+  withr::with_options(
+    new = list(timeout = max(300, getOption("timeout"))),
+    code = {
+      ## Download file ----
+      if (overwrite) {
+        download.file(
+          url = download_url, destfile = file.path(path, filename), 
+          quiet = quiet
+        )
+      } else {
+        if (!file_present) {
+          download.file(
+            url = download_url, destfile = file.path(path, filename), 
+            quiet = quiet
+          )
+        }
+      }
+    }
+  )
 
   ## Return path to downloaded file ----
   file.path(path, filename)

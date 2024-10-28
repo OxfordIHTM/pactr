@@ -27,5 +27,8 @@
 #'   right_join arrange relocate pull
 #' @importFrom tidyr pivot_longer unnest
 #' @importFrom countrycode countrycode
+#' @importFrom withr with_options
+#' @importFrom openxlsx2 read_xlsx
+#' @importFrom utils unzip
 #'
 "_PACKAGE"

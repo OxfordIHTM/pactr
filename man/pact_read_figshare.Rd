@@ -3,11 +3,14 @@
 \name{pact_read_figshare}
 \alias{pact_read_figshare}
 \alias{pact_read_figshare_dictionary}
+\alias{pact_read_figshare_download}
 \title{Read datasets from the Pandemic PACT Figshare repository}
 \usage{
 pact_read_figshare(pact_client, tracker_type = c("labelled", "raw"))
 
 pact_read_figshare_dictionary(pact_client)
+
+pact_read_figshare_download(path_to_download, filename)
 }
 \arguments{
 \item{pact_client}{An interface client to the Pandemic PACT Figshare
@@ -15,6 +18,12 @@ repository. This is usually set/created through a call to
 \code{pact_client_set()}.}
 
 \item{tracker_type}{Either "labelled" or "raw". Default is "labelled".}
+
+\item{path_to_download}{Path to downloaded private Figshare collection zip
+file.}
+
+\item{filename}{Filename of Pandemic PACT asset or dataset to read from
+downloaded private Figshare collection zip file.}
 }
 \value{
 A data.frame of the requested dataset.
