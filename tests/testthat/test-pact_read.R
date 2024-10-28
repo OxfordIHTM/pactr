@@ -15,3 +15,16 @@ test_that("data output is as expected", {
   expect_s3_class(data_raw, "data.frame")
   expect_s3_class(data_dictionary, "data.frame")
 })
+
+
+test_that("data output of pact_read_figshare_download is as expected", {
+  download_zip <- pact_download_figshare_private(path = tempdir())
+
+  pact_figshare_list <- pact_list_download(download_zip)
+
+  df1 <- pact_read_figshare_download(download_zip, pact_figshare_list[1, 1])
+  df2 <- pact_read_figshare_download(download_zip, pact_figshare_list[2, 1])
+
+  expect_s3_class(df1, "data.frame")
+  expect_s3_class(df2, "data.frame")
+})
