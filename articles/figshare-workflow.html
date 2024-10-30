@@ -66,6 +66,8 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Figshare workflow</h1>
+                        <h4 data-toc-skip class="author">Ernest
+Guevarra</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/OxfordIHTM/pactr/blob/main/vignettes/figshare-workflow.Rmd" class="external-link"><code>vignettes/figshare-workflow.Rmd</code></a></small>
@@ -148,7 +150,7 @@ online research data deposition services including Figshare. Current
 Figshare-specific functionalities available in <a href="https://github.com/OxfordIHTM/pactr" class="external-link">pactr</a>
 are:</p>
 <ol style="list-style-type: decimal">
-<li><p>Listing of outputs/assets available from the Panedmic PACT
+<li><p>Listing of outputs/assets available from the Pandemic PACT
 Figshare repository (<em>experimental</em>);</p></li>
 <li><p>Downloading of outputs/assets available from the Pandemic PACT
 Figshare repository (<em>experimental</em>);</p></li>
@@ -194,22 +196,23 @@ contents of the Figshare Pandemic PACT group. The information within the
 metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming
 interface (API)</a> and are either set by the Pandemic PACT data team or
 by Figshare. The data.frame would look as follows:</p>
-<pre><code><span><span class="co">#&gt; # A tibble: 7 × 18</span></span>
-<span><span class="co">#&gt;   project_id       id title   doi   handle url   published_date</span></span>
-<span><span class="co">#&gt;        &lt;int&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;         </span></span>
-<span><span class="co">#&gt; 1         NA 25827649 Scopin… 10.2… ""     http… 2024-05-15T12…</span></span>
-<span><span class="co">#&gt; 2         NA 25368136 test    10.2… ""     http… 2024-03-08T11…</span></span>
-<span><span class="co">#&gt; 3     189177 25368070 Pandem… 10.2… ""     http… 2024-03-08T10…</span></span>
-<span><span class="co">#&gt; 4     189177 25352839 Extend… 10.2… ""     http… 2024-03-06T15…</span></span>
-<span><span class="co">#&gt; 5     189168 24786258 Pandem… 10.2… ""     http… 2023-12-15T11…</span></span>
-<span><span class="co">#&gt; 6     189168 24773787 Pandem… 10.2… ""     http… 2023-12-11T11…</span></span>
-<span><span class="co">#&gt; 7     189168 24763548 Pandem… 10.2… ""     http… 2023-12-11T11…</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: thumb &lt;chr&gt;, defined_type &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   url_private_html &lt;chr&gt;, url_public_html &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   resource_doi &lt;chr&gt;</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; # A tibble: 10 × 18</span></span>
+<span><span class="co">#&gt;    project_id       id title       doi   handle url   published_date thumb</span></span>
+<span><span class="co">#&gt;         &lt;int&gt;    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;  1     189177 27169608 mpox resea… 10.2… ""     http… 2024-10-04T10… "htt…</span></span>
+<span><span class="co">#&gt;  2     189177 27152799 Pandemic P… 10.2… ""     http… 2024-10-02T11… "htt…</span></span>
+<span><span class="co">#&gt;  3     189177 27110389 mpox resea… 10.2… ""     http… 2024-09-26T13… "htt…</span></span>
+<span><span class="co">#&gt;  4     189177 27004912 Pandemic P… 10.2… ""     http… 2024-09-12T16… "htt…</span></span>
+<span><span class="co">#&gt;  5     189177 26790535 Pandemic P… 10.2… ""     http… 2024-08-20T17… "htt…</span></span>
+<span><span class="co">#&gt;  6         NA 25827649 Scoping Re… 10.2… ""     http… 2024-05-15T12… ""   </span></span>
+<span><span class="co">#&gt;  7         NA 25368136 test        10.2… ""     http… 2024-03-08T11… "htt…</span></span>
+<span><span class="co">#&gt;  8     189177 25368070 Pandemic P… 10.2… ""     http… 2024-03-08T10… "htt…</span></span>
+<span><span class="co">#&gt;  9     189177 25352839 Extended d… 10.2… ""     http… 2024-03-06T15… ""   </span></span>
+<span><span class="co">#&gt; 10     189168 24786258 Pandemic P… 10.2… ""     http… 2023-12-15T11… ""   </span></span>
+<span><span class="co">#&gt; # ℹ 10 more variables: defined_type &lt;int&gt;, defined_type_name &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   group_id &lt;int&gt;, url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   url_private_html &lt;chr&gt;, url_public_html &lt;chr&gt;, timeline &lt;df[,2]&gt;,</span></span>
+<span><span class="co">#&gt; #   resource_title &lt;chr&gt;, resource_doi &lt;chr&gt;</span></span></code></pre>
 <p>This function is useful in getting an overview of what is currently
 available in the Pandemic PACT Figshare repository.</p>
 </div>

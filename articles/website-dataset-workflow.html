@@ -66,6 +66,8 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Website dataset workflow</h1>
+                        <h4 data-toc-skip class="author">Ernest
+Guevarra</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/OxfordIHTM/pactr/blob/main/vignettes/website-dataset-workflow.Rmd" class="external-link"><code>vignettes/website-dataset-workflow.Rmd</code></a></small>
@@ -107,7 +109,7 @@ website, the following command can be used:</p>
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="../reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<pre><code><span><span class="co">#&gt; [1] "/tmp/RtmphrPqml/pandemic-pact-grants.csv"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "/tmp/RtmpkRyT53/pandemic-pact-grants.csv"</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -117,26 +119,26 @@ website can be read into R directly as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which results in the following:</p>
-<pre><code><span><span class="co">#&gt; # A tibble: 9,862 × 39</span></span>
-<span><span class="co">#&gt;    GrantID PubMedGrantId          GrantTitleEng        Abstract</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                  &lt;chr&gt;                &lt;chr&gt;   </span></span>
-<span><span class="co">#&gt;  1 C00037  170359                 COVID-19: Improving… "The cl…</span></span>
-<span><span class="co">#&gt;  2 C00038  170357, 171495, 175580 Identification of b… "The ou…</span></span>
-<span><span class="co">#&gt;  3 C00040  170353, 175493         Development of a ra… "This r…</span></span>
-<span><span class="co">#&gt;  4 C00041  109434                 Rapid, Low-cost Dia… "The ou…</span></span>
-<span><span class="co">#&gt;  5 C00043  170355                 Rapid Research Resp… "In 201…</span></span>
-<span><span class="co">#&gt;  6 C00045  170343                 Development and Eva… "Corona…</span></span>
-<span><span class="co">#&gt;  7 C00046  170346, 175528         Rapid development o… "The ou…</span></span>
-<span><span class="co">#&gt;  8 C00047  170342                 Preventing SARS-CoV… "The SA…</span></span>
-<span><span class="co">#&gt;  9 C00048  170360                 Understanding, Fore… "A new …</span></span>
-<span><span class="co">#&gt; 10 C00049  170362, 175535         RIsk of environment… "This s…</span></span>
-<span><span class="co">#&gt; # ℹ 9,852 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 35 more variables: PublicationYearOfAward &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   GrantEndYear &lt;int&gt;, ResearchInstitutionName &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   GrantAmountConverted &lt;dbl&gt;, StudySubject &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   Ethnicity &lt;chr&gt;, AgeGroups &lt;chr&gt;, Rurality &lt;chr&gt;,</span></span>
+<pre><code><span><span class="co">#&gt; # A tibble: 19,172 × 39</span></span>
+<span><span class="co">#&gt;    GrantID PubMedGrantId             GrantTitleEng Abstract GrantStartYear</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                     &lt;chr&gt;         &lt;chr&gt;             &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1 C00018  unknown                   "Mathematica… "Mathem…             NA</span></span>
+<span><span class="co">#&gt;  2 C00019  CCP-nCoV                  "Cohort foll… "Cohort…             NA</span></span>
+<span><span class="co">#&gt;  3 C00020  THERAMAB                  "Identificat… "Identi…             NA</span></span>
+<span><span class="co">#&gt;  4 C00021  None                      "Using socia… "Using …             NA</span></span>
+<span><span class="co">#&gt;  5 C00022  CoV-CONTACT               "Follow-up o… "Follow…             NA</span></span>
+<span><span class="co">#&gt;  6 C00023  Réplicon                  "Development… "Develo…             NA</span></span>
+<span><span class="co">#&gt;  7 C00024  A Toolbox for SARS-CoV-2… "Potentiatin… "Potent…             NA</span></span>
+<span><span class="co">#&gt;  8 C00025  NHP Model                 "Establishme… "Establ…             NA</span></span>
+<span><span class="co">#&gt;  9 C00026  SARS-CoV2-LIPS            "Antibody pr… "Antibo…             NA</span></span>
+<span><span class="co">#&gt; 10 C00027  SARS-CoV-2_EVOLSERO       "Evolution o… "Evolut…             NA</span></span>
+<span><span class="co">#&gt; # ℹ 19,162 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 34 more variables: PublicationYearOfAward &lt;int&gt;, GrantEndYear &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   ResearchInstitutionName &lt;chr&gt;, GrantAmountConverted &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   StudySubject &lt;chr&gt;, Ethnicity &lt;chr&gt;, AgeGroups &lt;chr&gt;, Rurality &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   VulnerablePopulations &lt;chr&gt;, OccupationalGroups &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   StudyType &lt;chr&gt;, ClinicalTrial &lt;chr&gt;, Pathogen &lt;chr&gt;, …</span></span></code></pre>
+<span><span class="co">#&gt; #   StudyType &lt;chr&gt;, ClinicalTrial &lt;chr&gt;, Pathogen &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   InfluenzaA &lt;chr&gt;, InfluenzaH1 &lt;chr&gt;, InfluenzaH2 &lt;chr&gt;, …</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -153,20 +155,8 @@ a similar plot to the one presented in the <a href="https://www.pandemicpact.org
 <span>  <span class="fu"><a href="../reference/pact_process_website.html">pact_process_website</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pact_process_topic_group</span><span class="op">(</span>topic <span class="op">=</span> <span class="st">"Disease"</span>, group <span class="op">=</span> <span class="st">"GrantStartYear"</span><span class="op">)</span></span></code></pre></div>
 <p>which produces the following output:</p>
-<pre><code><span><span class="co">#&gt; # A tibble: 88 × 3</span></span>
-<span><span class="co">#&gt;    GrantStartYear Disease                                     n</span></span>
-<span><span class="co">#&gt;             &lt;int&gt; &lt;chr&gt;                                   &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1           2020 COVID-19                                 4711</span></span>
-<span><span class="co">#&gt;  2           2020 Congenital Zika virus disease              13</span></span>
-<span><span class="co">#&gt;  3           2020 Crimean-Congo haemorrhagic fever           30</span></span>
-<span><span class="co">#&gt;  4           2020 Disease X                                  89</span></span>
-<span><span class="co">#&gt;  5           2020 Ebola virus disease                       101</span></span>
-<span><span class="co">#&gt;  6           2020 Hendra virus infection                      1</span></span>
-<span><span class="co">#&gt;  7           2020 Lassa fever                                19</span></span>
-<span><span class="co">#&gt;  8           2020 Marburg virus disease                      33</span></span>
-<span><span class="co">#&gt;  9           2020 Middle East Respiratory Syndrome Coron…    31</span></span>
-<span><span class="co">#&gt; 10           2020 Mpox                                       11</span></span>
-<span><span class="co">#&gt; # ℹ 78 more rows</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Error in pact_process_topic_group(pact_process_website(pact_data), topic = "Disease", : could not find function "pact_process_topic_group"</span></span>
+<span><span class="co">#&gt; Error: object 'tidy_df' not found</span></span></code></pre>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
