@@ -1,5 +1,6 @@
 ---
 title: "Website dataset workflow"
+author: Ernest Guevarra
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Website dataset workflow}
@@ -32,7 +33,7 @@ The functions for interfacing with the data available from the Pandemic PACT web
 To download the Pandemic PACT tracker dataset available from its website, the following command can be used:
 
 
-```r
+``` r
 ## Save the dataset from website to a temporary directory ----
 pact_download_website(path = tempdir())
 ```
@@ -41,7 +42,7 @@ which will return the path to the downloaded dataset:
 
 
 ```
-#> [1] "/tmp/RtmphrPqml/pandemic-pact-grants.csv"
+#> [1] "/tmp/RtmpkRyT53/pandemic-pact-grants.csv"
 ```
 
 ### Read the Pandemic PACT tracker dataset from the website
@@ -49,7 +50,7 @@ which will return the path to the downloaded dataset:
 Instead of downloading, the Pandemic PACT dataset available from its website can be read into R directly as follows:
 
 
-```r
+``` r
 pact_read_website()
 ```
 
@@ -57,26 +58,26 @@ which results in the following:
 
 
 ```
-#> # A tibble: 9,862 × 39
-#>    GrantID PubMedGrantId          GrantTitleEng        Abstract
-#>    <chr>   <chr>                  <chr>                <chr>   
-#>  1 C00037  170359                 COVID-19: Improving… "The cl…
-#>  2 C00038  170357, 171495, 175580 Identification of b… "The ou…
-#>  3 C00040  170353, 175493         Development of a ra… "This r…
-#>  4 C00041  109434                 Rapid, Low-cost Dia… "The ou…
-#>  5 C00043  170355                 Rapid Research Resp… "In 201…
-#>  6 C00045  170343                 Development and Eva… "Corona…
-#>  7 C00046  170346, 175528         Rapid development o… "The ou…
-#>  8 C00047  170342                 Preventing SARS-CoV… "The SA…
-#>  9 C00048  170360                 Understanding, Fore… "A new …
-#> 10 C00049  170362, 175535         RIsk of environment… "This s…
-#> # ℹ 9,852 more rows
-#> # ℹ 35 more variables: PublicationYearOfAward <int>,
-#> #   GrantEndYear <int>, ResearchInstitutionName <chr>,
-#> #   GrantAmountConverted <dbl>, StudySubject <chr>,
-#> #   Ethnicity <chr>, AgeGroups <chr>, Rurality <chr>,
+#> # A tibble: 19,172 × 39
+#>    GrantID PubMedGrantId             GrantTitleEng Abstract GrantStartYear
+#>    <chr>   <chr>                     <chr>         <chr>             <int>
+#>  1 C00018  unknown                   "Mathematica… "Mathem…             NA
+#>  2 C00019  CCP-nCoV                  "Cohort foll… "Cohort…             NA
+#>  3 C00020  THERAMAB                  "Identificat… "Identi…             NA
+#>  4 C00021  None                      "Using socia… "Using …             NA
+#>  5 C00022  CoV-CONTACT               "Follow-up o… "Follow…             NA
+#>  6 C00023  Réplicon                  "Development… "Develo…             NA
+#>  7 C00024  A Toolbox for SARS-CoV-2… "Potentiatin… "Potent…             NA
+#>  8 C00025  NHP Model                 "Establishme… "Establ…             NA
+#>  9 C00026  SARS-CoV2-LIPS            "Antibody pr… "Antibo…             NA
+#> 10 C00027  SARS-CoV-2_EVOLSERO       "Evolution o… "Evolut…             NA
+#> # ℹ 19,162 more rows
+#> # ℹ 34 more variables: PublicationYearOfAward <int>, GrantEndYear <int>,
+#> #   ResearchInstitutionName <chr>, GrantAmountConverted <dbl>,
+#> #   StudySubject <chr>, Ethnicity <chr>, AgeGroups <chr>, Rurality <chr>,
 #> #   VulnerablePopulations <chr>, OccupationalGroups <chr>,
-#> #   StudyType <chr>, ClinicalTrial <chr>, Pathogen <chr>, …
+#> #   StudyType <chr>, ClinicalTrial <chr>, Pathogen <chr>,
+#> #   InfluenzaA <chr>, InfluenzaH1 <chr>, InfluenzaH2 <chr>, …
 ```
 
 ### Process the Pandemic PACT tracker dataset from the website
@@ -86,7 +87,7 @@ The package includes functions that will process the Pandemic PACT tracker datas
 For example, the following will process the Pandemic PACT tracker dataset into an aggregated dataset structure that can be used to create a similar plot to the one presented in the [website](https://www.pandemicpact.org/visualise#disease).
 
 
-```r
+``` r
 pact_read_website() |>
   pact_process_website() |>
   pact_process_topic_group(topic = "Disease", group = "GrantStartYear")
@@ -96,18 +97,6 @@ which produces the following output:
 
 
 ```
-#> # A tibble: 88 × 3
-#>    GrantStartYear Disease                                     n
-#>             <int> <chr>                                   <int>
-#>  1           2020 COVID-19                                 4711
-#>  2           2020 Congenital Zika virus disease              13
-#>  3           2020 Crimean-Congo haemorrhagic fever           30
-#>  4           2020 Disease X                                  89
-#>  5           2020 Ebola virus disease                       101
-#>  6           2020 Hendra virus infection                      1
-#>  7           2020 Lassa fever                                19
-#>  8           2020 Marburg virus disease                      33
-#>  9           2020 Middle East Respiratory Syndrome Coron…    31
-#> 10           2020 Mpox                                       11
-#> # ℹ 78 more rows
+#> Error in pact_process_topic_group(pact_process_website(pact_data), topic = "Disease", : could not find function "pact_process_topic_group"
+#> Error: object 'tidy_df' not found
 ```

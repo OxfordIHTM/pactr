@@ -1,6 +1,6 @@
 ---
 title: "Figshare workflow"
-auther: Ernest Guevarra
+author: Ernest Guevarra
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Figshare workflow}
@@ -42,7 +42,7 @@ This package provides an application programming interface (API) to the research
 
 The functions for Figshare interface are wrappers to specific functions of the [`{deposits}` package](https://docs.ropensci.org/deposits/index.html) which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in `{pactr}` are:
 
-1. Listing of outputs/assets available from the Panedmic PACT Figshare repository (*experimental*);
+1. Listing of outputs/assets available from the Pandemic PACT Figshare repository (*experimental*);
 
 2. Downloading of outputs/assets available from the Pandemic PACT Figshare repository (*experimental*);
 
@@ -69,7 +69,7 @@ Sys.setenv("FIGSHARE_TOKEN"="YOUR_TOKEN_HERE")
 Once this token has been set as described above, the following command can be run to setup a Figshare client:
 
 
-```r
+``` r
 pact_client <- pact_client_set()
 ```
 
@@ -80,7 +80,7 @@ Once a Figshare client has been setup, you can now perform the functionalities p
 To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:
 
 
-```r
+``` r
 pact_list(pact_client)
 ```
 
@@ -88,22 +88,23 @@ The output is a `data.frame` containing metadata regarding contents of the Figsh
 
 
 ```
-#> # A tibble: 7 × 18
-#>   project_id       id title   doi   handle url   published_date
-#>        <int>    <int> <chr>   <chr> <chr>  <chr> <chr>         
-#> 1         NA 25827649 Scopin… 10.2… ""     http… 2024-05-15T12…
-#> 2         NA 25368136 test    10.2… ""     http… 2024-03-08T11…
-#> 3     189177 25368070 Pandem… 10.2… ""     http… 2024-03-08T10…
-#> 4     189177 25352839 Extend… 10.2… ""     http… 2024-03-06T15…
-#> 5     189168 24786258 Pandem… 10.2… ""     http… 2023-12-15T11…
-#> 6     189168 24773787 Pandem… 10.2… ""     http… 2023-12-11T11…
-#> 7     189168 24763548 Pandem… 10.2… ""     http… 2023-12-11T11…
-#> # ℹ 11 more variables: thumb <chr>, defined_type <int>,
-#> #   defined_type_name <chr>, group_id <int>,
-#> #   url_private_api <chr>, url_public_api <chr>,
-#> #   url_private_html <chr>, url_public_html <chr>,
-#> #   timeline <df[,2]>, resource_title <chr>,
-#> #   resource_doi <chr>
+#> # A tibble: 10 × 18
+#>    project_id       id title       doi   handle url   published_date thumb
+#>         <int>    <int> <chr>       <chr> <chr>  <chr> <chr>          <chr>
+#>  1     189177 27169608 mpox resea… 10.2… ""     http… 2024-10-04T10… "htt…
+#>  2     189177 27152799 Pandemic P… 10.2… ""     http… 2024-10-02T11… "htt…
+#>  3     189177 27110389 mpox resea… 10.2… ""     http… 2024-09-26T13… "htt…
+#>  4     189177 27004912 Pandemic P… 10.2… ""     http… 2024-09-12T16… "htt…
+#>  5     189177 26790535 Pandemic P… 10.2… ""     http… 2024-08-20T17… "htt…
+#>  6         NA 25827649 Scoping Re… 10.2… ""     http… 2024-05-15T12… ""   
+#>  7         NA 25368136 test        10.2… ""     http… 2024-03-08T11… "htt…
+#>  8     189177 25368070 Pandemic P… 10.2… ""     http… 2024-03-08T10… "htt…
+#>  9     189177 25352839 Extended d… 10.2… ""     http… 2024-03-06T15… ""   
+#> 10     189168 24786258 Pandemic P… 10.2… ""     http… 2023-12-15T11… ""   
+#> # ℹ 10 more variables: defined_type <int>, defined_type_name <chr>,
+#> #   group_id <int>, url_private_api <chr>, url_public_api <chr>,
+#> #   url_private_html <chr>, url_public_html <chr>, timeline <df[,2]>,
+#> #   resource_title <chr>, resource_doi <chr>
 ```
 
 This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.
@@ -113,7 +114,7 @@ This function is useful in getting an overview of what is currently available in
 To download a specific output/asset - say the scoping review data - from the Pandemic PACT Figshare repository, issue the following commands:
 
 
-```r
+``` r
 ## Get the unique identifier for the scoping review data from Figshare ----
 file_id <- pact_list(pact_client) |>
   subset(title == "Scoping Review Data", select = id) |>
@@ -129,7 +130,7 @@ This will download the file `Scoping_Review-Data.xlsx` from the Pandemic PACT Fi
 To read the Pandemic PACT tracker dataset into R, issue the following command:
 
 
-```r
+``` r
 pact_read_figshare(pact_client)
 ```
 
@@ -138,7 +139,7 @@ which outputs a data.frame of the available Pandemic PACT funding tracker datase
 This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
 
 
-```r
+``` r
 pact_read_figshare(pact_client, tracker_type = "raw")
 ```
 
@@ -147,7 +148,7 @@ which outputs a `data.frame` of the available raw Pandemic PACT funding tracker 
 ### Process the Pandemic PACT tracker dataset
 
 
-```r
+``` r
 pact_read_figshare(pact_client) |>
   pact_process_figshare()
 ```
