@@ -1,5 +1,6 @@
 ---
 title: "Website dataset workflow"
+author: Ernest Guevarra
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Website dataset workflow}

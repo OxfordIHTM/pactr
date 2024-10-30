@@ -1,6 +1,6 @@
 ---
 title: "Figshare workflow"
-auther: Ernest Guevarra
+author: Ernest Guevarra
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Figshare workflow}
@@ -49,7 +49,7 @@ This package provides an application programming interface (API) to the research
 
 The functions for Figshare interface are wrappers to specific functions of the [`{deposits}` package](https://docs.ropensci.org/deposits/index.html) which provides the underlying universal interface to various online research data deposition services including Figshare. Current Figshare-specific functionalities available in `{pactr}` are:
 
-1. Listing of outputs/assets available from the Panedmic PACT Figshare repository (*experimental*);
+1. Listing of outputs/assets available from the Pandemic PACT Figshare repository (*experimental*);
 
 2. Downloading of outputs/assets available from the Pandemic PACT Figshare repository (*experimental*);
 
@@ -140,7 +140,7 @@ which outputs a `data.frame` of the available raw Pandemic PACT funding tracker 
 
 ### Process the Pandemic PACT tracker dataset
 
-```{r useage-3e, eval = FALSE}
+```{r usage-3e, eval = FALSE}
 pact_read_figshare(pact_client) |>
   pact_process_figshare()
 ```
