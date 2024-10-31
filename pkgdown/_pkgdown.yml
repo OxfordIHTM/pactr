@@ -7,7 +7,7 @@ development:
 
 template:
   bootstrap: 5
-  bootswatch: journal
+  bootswatch: sandstone
   theme: breeze-light
   ganalytics: G-X96EG3R0VM
 
@@ -17,7 +17,7 @@ home:
     href: https://www.pandemicpact.org/
 
 navbar:
-  bg: info
+  bg: primary
   type: light
   structure:
     left:  [home, intro, reference, articles, news]
