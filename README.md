@@ -13,7 +13,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml)
 [![test-coverage.yaml](https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/OxfordIHTM/pactr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/pactr?branch=main)
+coverage](https://codecov.io/gh/OxfordIHTM/pactr/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/pactr)
 [![CodeFactor](https://www.codefactor.io/repository/github/OxfordIHTM/pactr/badge)](https://www.codefactor.io/repository/github/OxfordIHTM/pactr)
 [![DOI](https://zenodo.org/badge/847474685.svg)](https://zenodo.org/badge/latestdoi/847474685)
 <!-- badges: end -->
@@ -280,7 +280,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/Rtmp2WaGMQ/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpXxqP4Z/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
