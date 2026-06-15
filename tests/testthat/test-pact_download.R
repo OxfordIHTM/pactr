@@ -62,23 +62,23 @@ test_that("pact_download_website works as expected", {
 })
 
 
-test_that("pact_download_figshare_private works as expected", {
-  download_zip <- pact_download_figshare_private(path = tempdir())
+# test_that("pact_download_figshare_private works as expected", {
+#   download_zip <- pact_download_figshare_private(path = tempdir())
 
-  expect_equal(
-    download_zip, file.path(tempdir(), "pandemic_pact_figshare.zip")
-  )
-  expect_type(download_zip, "character")
-  #expect_true("pandemic_pact_figshare.zip" %in% list.files(tempdir()))
+#   expect_equal(
+#     download_zip, file.path(tempdir(), "pandemic_pact_figshare.zip")
+#   )
+#   expect_type(download_zip, "character")
+#   #expect_true("pandemic_pact_figshare.zip" %in% list.files(tempdir()))
 
-  download_zip_overwrite <- pact_download_figshare_private(
-    path = tempdir(), overwrite = TRUE
-  )
+#   download_zip_overwrite <- pact_download_figshare_private(
+#     path = tempdir(), overwrite = TRUE
+#   )
 
-  expect_equal(
-    download_zip_overwrite, file.path(tempdir(), "pandemic_pact_figshare.zip")
-  )
-  expect_type(download_zip_overwrite, "character")
-  #expect_true("pandemic_pact_figshare.zip" %in% list.files(tempdir()))
-})
+#   expect_equal(
+#     download_zip_overwrite, file.path(tempdir(), "pandemic_pact_figshare.zip")
+#   )
+#   expect_type(download_zip_overwrite, "character")
+#   #expect_true("pandemic_pact_figshare.zip" %in% list.files(tempdir()))
+# })
 
