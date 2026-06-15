@@ -1,5 +1,7 @@
 # Tests for utility functions --------------------------------------------------
 
+pact_data <- pact_read_website()
+
 ## Process author names ----
 test_that("process_author_names works as expected", {
   authors <- c("John Doe", "Jane Doe")
@@ -35,7 +37,7 @@ test_that("get_who_regions give the correct output", {
 
 ## Get research category and mpox priority ----
 test_that("categories and priorities are correctly matched", {
-  pact_data <- pact_read_website() |>
+  pact_data_test <- pact_data |>
     dplyr::mutate(
       ResearchSubcat = ifelse(
         .data$GrantID == "C18585", 
@@ -45,21 +47,28 @@ test_that("categories and priorities are correctly matched", {
     )
 
   expect_s3_class(
-    get_research_category(pact_data),
+    get_research_category(pact_data_test),
     "tbl"
   )
   expect_false(
-    all(detect_mismatch(pact_data$ResearchSubcat, pact_data$ResearchCat))
+    all(detect_mismatch(pact_data_test$ResearchSubcat, pact_data_test$ResearchCat))
   )
 
   expect_s3_class(
-    get_mpox_priority(pact_data),
+    get_mpox_priority_who(pact_data_test),
     "tbl"
   )
+
+  expect_s3_class(
+    get_mpox_priority_global(pact_data_test),
+    "tbl"
+  )
+
   expect_false(
     all(
       detect_mismatch(
-        pact_data$MPOXResearchSubPriority, pact_data$MPOXResearchPriority
+        pact_data_test$WHOMpoxResearchSubPriorities, 
+        pact_data_test$WHOMpoxResearchPriorities
       )
     )
   )

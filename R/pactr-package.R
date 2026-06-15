@@ -20,11 +20,9 @@
 #' @importFrom utils read.csv download.file readCitationFile
 #' @importFrom methods is
 #' @importFrom tibble tibble
-#' @importFrom stringr str_remove str_remove_all str_replace str_replace_all
-#'   str_trim str_split
+#' @importFrom stringr str_remove str_remove_all str_replace str_replace_all str_trim str_split
 #' @importFrom rlang .data
-#' @importFrom dplyr left_join mutate group_by ungroup across select filter
-#'   right_join arrange relocate pull
+#' @importFrom dplyr left_join mutate group_by ungroup across select filter right_join arrange relocate pull
 #' @importFrom tidyr pivot_longer unnest
 #' @importFrom countrycode countrycode
 #' @importFrom withr with_options

@@ -29,9 +29,9 @@ pact_process_website <- function(pact_data,
     ## Fix blank value for Disease (grant ID P22196)
     pact_data <- pact_data |>
       dplyr::mutate(
-        Disease = ifelse(
-          .data$GrantID == "P22196", "Zika virus disease", .data$Disease
-        ),
+        # Diseases = ifelse(
+        #   .data$GrantID == "P22196", "Zika virus disease", .data$Diseases
+        # ),
         ResearchSubcat = ifelse(
           .data$GrantID == "C18585", 
           "Characterisation of vaccine-induced immunity",
@@ -55,33 +55,33 @@ pact_process_website <- function(pact_data,
         ClinicalTrial = ifelse(
           .data$ClinicalTrial == "", NA_character_, .data$ClinicalTrial
         ),
-        Pathogen = ifelse(.data$Pathogen == "", NA_character_, .data$Pathogen),
-        InfluenzaA = ifelse(
-          .data$InfluenzaA == "", NA_character_, .data$InfluenzaA
-        ),
-        InfluenzaH1 = ifelse(
-          .data$InfluenzaH1 == "", NA_character_, .data$InfluenzaH1
-        ),
-        InfluenzaH2 = ifelse(
-          .data$InfluenzaH2 == "", NA_character_, .data$InfluenzaH2
-        ),
-        InfluenzaH3 = ifelse(
-          .data$InfluenzaH3 == "", NA_character_, .data$InfluenzaH3
-        ),
-        InfluenzaH5 = ifelse(
-          .data$InfluenzaH5 == "", NA_character_, .data$InfluenzaH5
-        ),
-        InfluenzaH6 = ifelse(
-          .data$InfluenzaH6 == "", NA_character_, .data$InfluenzaH6
-        ),
-        InfluenzaH7 = ifelse(
-          .data$InfluenzaH7 == "", NA_character_, .data$InfluenzaH7
-        ),
-        InfluenzaH10 = ifelse(
-          .data$InfluenzaH10 == "", NA_character_, .data$InfluenzaH10
-        ),
-        Disease = ifelse(
-          .data$Disease == "", "Not applicable", .data$Disease
+        Pathogens = ifelse(.data$Pathogens == "", NA_character_, .data$Pathogens),
+        # InfluenzaA = ifelse(
+        #   .data$InfluenzaA == "", NA_character_, .data$InfluenzaA
+        # ),
+        # InfluenzaH1 = ifelse(
+        #   .data$InfluenzaH1 == "", NA_character_, .data$InfluenzaH1
+        # ),
+        # InfluenzaH2 = ifelse(
+        #   .data$InfluenzaH2 == "", NA_character_, .data$InfluenzaH2
+        # ),
+        # InfluenzaH3 = ifelse(
+        #   .data$InfluenzaH3 == "", NA_character_, .data$InfluenzaH3
+        # ),
+        # InfluenzaH5 = ifelse(
+        #   .data$InfluenzaH5 == "", NA_character_, .data$InfluenzaH5
+        # ),
+        # InfluenzaH6 = ifelse(
+        #   .data$InfluenzaH6 == "", NA_character_, .data$InfluenzaH6
+        # ),
+        # InfluenzaH7 = ifelse(
+        #   .data$InfluenzaH7 == "", NA_character_, .data$InfluenzaH7
+        # ),
+        # InfluenzaH10 = ifelse(
+        #   .data$InfluenzaH10 == "", NA_character_, .data$InfluenzaH10
+        # ),
+        Diseases = ifelse(
+          .data$Diseases == "", "Not applicable", .data$Diseases
         ),
         FundingOrgName = ifelse(
           .data$FundingOrgName == "", NA_character_, .data$FundingOrgName
@@ -108,8 +108,11 @@ pact_process_website <- function(pact_data,
     ## Fix one-to-one issues with research category and subcategory ----
     pact_data <- get_research_category(pact_data)
 
-    ## Fix one-to-one issues for Mpox subpriority and Mpox priority ----
-    pact_data <- get_mpox_priority(pact_data)
+    ## Fix one-to-one issues for WHO Mpox subpriority and Mpox priority ----
+    pact_data <- get_mpox_priority_who(pact_data)
+
+    ## Fix one-to-one issues for Global Mpox subpriority and Mpox priority ----
+    pact_data <- get_mpox_priority_global(pact_data)
   }
   
   ## Standardise NA specification (nested) ----

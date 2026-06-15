@@ -113,7 +113,7 @@ pact_download_figshare_private <- function(path,
 
 pact_download_website <- function(path, overwrite = FALSE, quiet = TRUE) {
   ## Get filename of specified file ----
-  download_url <- "https://pandemicpact.org/export/pandemic-pact-grants.csv"
+  download_url <- "https://pandemicpact.org/export/grants/pandemic-pact-grants.csv"
   filename <- basename(download_url)
 
   ## Check if download file is already present in path

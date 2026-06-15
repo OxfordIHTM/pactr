@@ -16,7 +16,7 @@
 
 pact_read_website <- function(.url = NULL) {
   if (is.null(.url)) {
-    .url <- "https://pandemicpact.org/export/pandemic-pact-grants.csv"
+    .url <- "https://pandemicpact.org/export/grants/pandemic-pact-grants.csv"
   } else {
     .url <- .url 
   }
