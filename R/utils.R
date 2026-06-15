@@ -258,7 +258,7 @@ get_research_category <- function(pact_data) {
       stringr::str_split(pattern = " - | \\| ") |>
       lapply(
         FUN = function(x) {
-          x[!!seq_len(length(x)) %% 2] |>
+          x[!!seq_along(x) %% 2] |>
             paste(collapse = " | ") |>
             (\(x) ifelse(x == "NA", NA_character_, x))()
         }
@@ -268,7 +268,7 @@ get_research_category <- function(pact_data) {
       stringr::str_split(pattern = " - | \\| ") |>
       lapply(
         FUN = function(x) {
-          x[!seq_len(length(x)) %% 2] |>
+          x[!seq_along(x) %% 2] |>
             paste(collapse = " | ") |>
             (\(x) ifelse(x == "NA", NA_character_, x))()
         }
@@ -369,7 +369,7 @@ get_mpox_priority_who <- function(pact_data) {
       stringr::str_split(pattern = " - | \\| ") |>
       lapply(
         FUN = function(x) {
-          x[!!seq_len(length(x)) %% 2] |>
+          x[!!seq_along(x) %% 2] |>
             paste(collapse = " | ")
         }
       ) |>
@@ -378,7 +378,7 @@ get_mpox_priority_who <- function(pact_data) {
       stringr::str_split(pattern = " - | \\| ") |>
       lapply(
         FUN = function(x) {
-          x[!seq_len(length(x)) %% 2] |>
+          x[!seq_along(x) %% 2] |>
             paste(collapse = " | ")
         }
       ) |>
@@ -458,7 +458,7 @@ get_mpox_priority_global <- function(pact_data) {
       stringr::str_split(pattern = " - | \\| ") |>
       lapply(
         FUN = function(x) {
-          x[!!seq_len(length(x)) %% 2] |>
+          x[!!seq_along(x) %% 2] |>
             paste(collapse = " | ")
         }
       ) |>
@@ -467,7 +467,7 @@ get_mpox_priority_global <- function(pact_data) {
       stringr::str_split(pattern = " - | \\| ") |>
       lapply(
         FUN = function(x) {
-          x[!seq_len(length(x)) %% 2] |>
+          x[!seq_along(x) %% 2] |>
             paste(collapse = " | ")
         }
       ) |>

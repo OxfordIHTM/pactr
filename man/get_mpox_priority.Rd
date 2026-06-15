@@ -3,7 +3,7 @@
 \name{get_mpox_priority_who}
 \alias{get_mpox_priority_who}
 \alias{get_mpox_priority_global}
-\title{Get Pandemic PACT Mpox priority - WHO Research Priority}
+\title{Get Pandemic PACT Mpox priority - Global and WHO Research Priority}
 \usage{
 get_mpox_priority_who(pact_data)
 
@@ -16,15 +16,17 @@ Pandemic PACT website. This is usually obtained via a call to
 }
 \value{
 A data.frame of same structure as \code{pact_data} but with
-\code{WHOMpoxResearchPriorities} and \code{WHOMpoxResearchSubPriorities} variables
-processed/cleaned.
+\code{WHOMpoxResearchPriorities} and \code{WHOMpoxResearchSubPriorities} variables or
+\code{GlobalMpoxResearchPriorities} and \code{GlobalMpoxResearchSubPriorities}
+variables processed/cleaned.
 }
 \description{
-Get Pandemic PACT Mpox priority - WHO Research Priority
+Get Pandemic PACT Mpox priority - Global and WHO Research Priority
 }
 \examples{
 \dontrun{
-  get_mpox_who_priority(pact_data)
+  get_mpox_priority_who(pact_data)
+  get_mpox_priority_global(pact_data)
 }
 
 }
