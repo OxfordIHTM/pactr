@@ -33,7 +33,7 @@ navbar:
         href: articles/website-dataset-workflow.html
     linkedin:
       icon: "fab fa-linkedin fa-lg"
-      href: https://www.linkedin.com/company/international-health-and-tropical-medicine
+      href: https://www.linkedin.com/company/oxford-ihealth
       aria-label: LinkedIn
     mastodon:
       icon: "fab fa-mastodon fa-lg"
