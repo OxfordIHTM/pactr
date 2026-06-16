@@ -1,18 +1,10 @@
 # Tests for pact_process_website -----------------------------------------------
 
 test_that("website data processing works as expected", {
-  unzip(
-    zipfile = system.file("extdata", "pandemic-pact-grants.zip", package = "pactr"),
-    junkpaths = TRUE,
-    exdir = tempdir()
-  )
-
-  pact_data <- pact_read_website(
-    .url = file.path(tempdir(), "pandemic-pact-grants.csv")
-  ) |>
+  pact_data_subset <- pact_data |>
     (\(x) x[c(seq_len(500), which(x$GrantID == "P22196")), ])()
-  df1 <- pact_process_website(pact_data)
-  df2 <- pact_process_website(pact_data, col_list = FALSE, fix = FALSE)
+  df1 <- pact_process_website(pact_data_subset)
+  df2 <- pact_process_website(pact_data_subset, col_list = FALSE, fix = FALSE)
 
   expect_s3_class(df1, "tbl")
   expect_s3_class(df2, "tbl")

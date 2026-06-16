@@ -1,14 +1,14 @@
 # Tests for pact_table functions -----------------------------------------------
 
-unzip(
-  zipfile = system.file("extdata", "pandemic-pact-grants.zip", package = "pactr"),
-  junkpaths = TRUE,
-  exdir = tempdir()
-)
+# unzip(
+#   zipfile = system.file("extdata", "pandemic-pact-grants.zip", package = "pactr"),
+#   junkpaths = TRUE,
+#   exdir = tempdir()
+# )
 
-pact_data <- pact_read_website(
-  .url = file.path(tempdir(), "pandemic-pact-grants.csv")
-)
+# pact_data <- pact_read_website(
+#   .url = file.path(tempdir(), "pandemic-pact-grants.csv")
+# )
 
 pact_data_list_cols <- pact_data |>
   (\(x) x[c(seq_len(500), which(x$GrantID == "P22196")), ])() |> 

@@ -39,7 +39,7 @@ pact_read_figshare <- function(pact_client,
   data_url <- pact_client_update$hostdata$files$download_url
 
   ## Read dataset ----
-  read.csv(file = data_url)
+  utils::read.csv(file = data_url)
 }
 
 #'
@@ -53,7 +53,7 @@ pact_read_figshare_dictionary <- function(pact_client) {
   data_url <- pact_client_update$hostdata$files$download_url
 
   ## Read data dictionary ----
-  read.csv(file = data_url)
+  utils::read.csv(file = data_url)
 }
 
 #'
@@ -75,7 +75,7 @@ pact_read_figshare_download <- function(path_to_download, filename) {
   if (tools::file_ext(filename) == "xlsx") {
     openxlsx2::read_xlsx(file = path_to_file)
   } else {
-    read.csv(file = path_to_file)
+    utils::read.csv(file = path_to_file)
   }
 }
 
