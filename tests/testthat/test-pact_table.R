@@ -1,6 +1,10 @@
 # Tests for pact_table functions -----------------------------------------------
 
-pact_data_list_cols <- pact_read_website() |>
+pact_data <- pact_read_website(
+  .url = system.file("extdata", "pandemic-pact-grants.csv", package = "pactr")
+)
+
+pact_data_list_cols <- pact_data |>
   (\(x) x[c(seq_len(500), which(x$GrantID == "P22196")), ])() |> 
   pact_process_website()
 
@@ -27,7 +31,7 @@ topic_group_df6 <- pact_table_topic_group(
   group = c("GrantStartYear", "GrantEndYear")
 )
 
-pact_data_non_list <- pact_read_website() |> 
+pact_data_non_list <- pact_data |>
   (\(x) x[c(seq_len(500), which(x$GrantID == "P22196")), ])() |>
   pact_process_website(col_list = FALSE)
 

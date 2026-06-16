@@ -1,6 +1,8 @@
 # Tests for utility functions --------------------------------------------------
 
-pact_data <- pact_read_website()
+pact_data <- pact_read_website(
+  .url = system.file("extdata", "pandemic-pact-grants.csv", package = "pactr")
+)
 
 ## Process author names ----
 test_that("process_author_names works as expected", {

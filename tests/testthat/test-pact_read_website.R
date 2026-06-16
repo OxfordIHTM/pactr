@@ -3,7 +3,7 @@
 test_that("pact_read_website works as expected", {
   pd1 <- pact_read_website()
   pd2 <- pact_read_website(
-    .url = "https://pandemicpact.org/export/grants/pandemic-pact-grants.csv"
+    .url = system.file("extdata", "pandemic-pact-grants.csv", package = "pactr")
   )
 
   expect_s3_class(pd1, "tbl")

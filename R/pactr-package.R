@@ -28,5 +28,6 @@
 #' @importFrom withr with_options
 #' @importFrom openxlsx2 read_xlsx
 #' @importFrom utils unzip
+#' @importFrom here here
 #'
 "_PACKAGE"
