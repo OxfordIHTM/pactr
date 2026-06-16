@@ -1,0 +1,3 @@
+*.mmd linguist-detectable=false
+*.Rmd linguist-language=R
+*.qmd linguist-language=R
