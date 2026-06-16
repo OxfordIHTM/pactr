@@ -1,7 +1,13 @@
 # Tests for utility functions --------------------------------------------------
 
+unzip(
+  zipfile = system.file("extdata", "pandemic-pact-grants.zip", package = "pactr"),
+  junkpaths = TRUE,
+  exdir = tempdir()
+)
+
 pact_data <- pact_read_website(
-  .url = system.file("extdata", "pandemic-pact-grants.csv", package = "pactr")
+  .url = file.path(tempdir(), "pandemic-pact-grants.csv")
 )
 
 ## Process author names ----
