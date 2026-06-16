@@ -190,8 +190,13 @@ command:
 pact_read_figshare(pact_client)
 ```
 
-which outputs a data.frame of the available Pandemic PACT funding
+which outputs a `data.frame` of the available Pandemic PACT funding
 tracker dataset that has been labelled.
+
+``` r
+
+pact_read_figshare(pact_client)
+```
 
 This function reads the *labelled* tracker dataset by default. If the
 raw dataset is required, then issue the following command:
@@ -204,10 +209,446 @@ pact_read_figshare(pact_client, tracker_type = "raw")
 which outputs a `data.frame` of the available raw Pandemic PACT funding
 tracker dataset.
 
+``` r
+
+pact_read_figshare(pact_client, tracker_type = "raw")
+#>   pactid grant_number grant_title_original grant_title_eng award_amount_converted
+#> 1 SDS001      unknown         Dummy record    Dummy record                1234567
+#>                                      abstract laysummary oda_funding_used grant_type
+#> 1 A dummy record to simulate a version update        N/A              -77        -77
+#>   grant_start_year study_subject___1 study_subject___2 study_subject___3 study_subject___4
+#> 1             2020                 0                 0                 1                 0
+#>   study_subject___5 study_subject___6 study_subject____88 study_subject____99
+#> 1                 0                 0                   0                   0
+#>   study_subject____9999 study_subject_other ethnicity___1 ethnicity___2 ethnicity___3
+#> 1                     0                                 0             0             0
+#>   ethnicity___4 ethnicity____88 ethnicity____99 ethnicity____9999 ethnicity_other
+#> 1             0               0               1                 0                
+#>   age_groups___1 age_groups___2 age_groups___5 age_groups___6 age_groups___7 age_groups___3
+#> 1              0              0              0              0              0              0
+#>   age_groups____88 age_groups____99 age_groups____9999 agegroups_other rurality___1
+#> 1                0                1                  0                            0
+#>   rurality___2 rurality___3 rurality____88 rurality____99 rurality____9999 rurality_other
+#> 1            0            0              0              1                0               
+#>   vulnerable_population___1 vulnerable_population___2 vulnerable_population___3
+#> 1                         0                         0                         0
+#>   vulnerable_population___4 vulnerable_population___5 vulnerable_population___6
+#> 1                         0                         0                         0
+#>   vulnerable_population___7 vulnerable_population___8 vulnerable_population___9
+#> 1                         0                         0                         0
+#>   vulnerable_population___10 vulnerable_population___13 vulnerable_population___11
+#> 1                          0                          0                          0
+#>   vulnerable_population___12 vulnerable_population____88 vulnerable_population____99
+#> 1                          0                           0                           1
+#>   vulnerable_population____9999 vulnerable_population_other occupational_groups___1
+#> 1                             0                                                   0
+#>   occupational_groups___2 occupational_groups___3 occupational_groups___4
+#> 1                       0                       0                       0
+#>   occupational_groups___5 occupational_groups___6 occupational_groups___7
+#> 1                       0                       0                       0
+#>   occupational_groups___8 occupational_groups___9 occupational_groups___10
+#> 1                       0                       0                        0
+#>   occupational_groups___11 occupational_groups___12 occupational_groups____88
+#> 1                        0                        0                         0
+#>   occupational_groups____99 occupational_groups____9999 occupationalgroups_other
+#> 1                         1                           0                         
+#>   study_type___1 study_type___2 study_type___3 study_type___4 study_type___5 study_type___6
+#> 1              0              0              0              0              0              0
+#>   study_type___7 study_type___8 study_type___9 study_type___10 study_type___11
+#> 1              0              0              0               0               0
+#>   study_type___12 study_type___13 study_type___14 study_type___15 study_type___16
+#> 1               0               0               0               0               0
+#>   study_type___17 study_type____88 study_type____99 study_type____9999 study_type_main___5
+#> 1               0                0                1                  0                   0
+#>   study_type_main___6 study_type_main____88 study_type_main____99 study_type_main____9999
+#> 1                   1                     0                     0                       0
+#>   clinical_trial___1 clinical_trial___2 clinical_trial___3 clinical_trial___4
+#> 1                  0                  0                  0                  0
+#>   clinical_trial___5 clinical_trial___6 clinical_trial___7 clinical_trial___8
+#> 1                  0                  0                  0                  0
+#>   clinical_trial___9 clinical_trial____99 clinical_trial____9999
+#> 1                  0                    0                      0
+#>   report_or_literature_based_research study_type_other pathogen___243624009
+#> 1                                   0               NA                    0
+#>   pathogen___243615000 pathogen___243607003 pathogen___407325004 pathogen___243602009
+#> 1                    0                    0                    1                    0
+#>   pathogen___407486001 pathogen___407479009 pathogen___np001 pathogen____99
+#> 1                    1                    0                0              0
+#>   coronavirus___1263733001 coronavirus___1263732006 coronavirus___840533007
+#> 1                        0                        0                       0
+#>   coronavirus___12637330001 coronavirus___697932005 coronavirus____88 coronavirus____99
+#> 1                         0                       0                 0                 0
+#>   coronavirus____9999 bunyaviridae filoviridae arenaviridae henipavirus flaviviridae
+#> 1                   0           NA   424206003           NA         -99           NA
+#>   influenza_a disease___840539006 disease___43489008 disease___37109004 disease___77503002
+#> 1          NA                   0                  1                  1                  0
+#>   disease___19065005 disease___651000146102 disease___398447004 disease___406597005
+#> 1                  1                      1                   1                   0
+#>   disease___402917003 disease___3928002 disease___762725007 disease___359814004
+#> 1                   0                 1                   0                   0
+#>   disease___58750007 disease___6142004 disease___dx001 disease____88 disease____9999
+#> 1                  0                 1               0             0               0
+#>   disease_other mesh_terms grant_complete funder_name___395 funder_name___290
+#> 1                                       2                 0                 0
+#>   funder_name___46 funder_name___216 funder_name___152 funder_name___139 funder_name___174
+#> 1                0                 0                 0                 0                 0
+#>   funder_name___102 funder_name___231 funder_name___95 funder_name___339 funder_name___262
+#> 1                 0                 0                0                 0                 0
+#>   funder_name___209 funder_name___250 funder_name___229 funder_name___220 funder_name___223
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___242 funder_name___158 funder_name___107 funder_name___29 funder_name___21
+#> 1                 0                 0                 0                0                0
+#>   funder_name___8 funder_name___143 funder_name___259 funder_name___337 funder_name___265
+#> 1               0                 0                 0                 0                 0
+#>   funder_name___110 funder_name___230 funder_name___99 funder_name___203 funder_name___133
+#> 1                 0                 0                0                 0                 0
+#>   funder_name___380 funder_name___356 funder_name___396 funder_name___272 funder_name___15
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___252 funder_name___111 funder_name___347 funder_name___84 funder_name___291
+#> 1                 0                 0                 0                0                 0
+#>   funder_name___312 funder_name___160 funder_name___35 funder_name___188 funder_name___100
+#> 1                 0                 0                0                 0                 0
+#>   funder_name___293 funder_name___361 funder_name___349 funder_name___243 funder_name___166
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___384 funder_name___115 funder_name___313 funder_name___155 funder_name___281
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___397 funder_name___246 funder_name___198 funder_name___68 funder_name___377
+#> 1                 0                 0                 0                0                 0
+#>   funder_name___388 funder_name___106 funder_name___74 funder_name___236 funder_name___298
+#> 1                 0                 0                0                 0                 0
+#>   funder_name___297 funder_name___3 funder_name___168 funder_name___49 funder_name___193
+#> 1                 0               0                 0                0                 0
+#>   funder_name___16 funder_name___210 funder_name___44 funder_name___228 funder_name___136
+#> 1                0                 0                0                 0                 0
+#>   funder_name___131 funder_name___391 funder_name___141 funder_name___277 funder_name___28
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___18 funder_name___53 funder_name___394 funder_name___134 funder_name___92
+#> 1                0                0                 0                 0                0
+#>   funder_name___128 funder_name___249 funder_name___248 funder_name___266 funder_name___199
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___27 funder_name___34 funder_name___187 funder_name___85 funder_name___341
+#> 1                0                0                 0                0                 0
+#>   funder_name___256 funder_name___365 funder_name___191 funder_name___398 funder_name___148
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___1 funder_name___56 funder_name___57 funder_name___184 funder_name___399
+#> 1               0                0                0                 0                 0
+#>   funder_name___24 funder_name___330 funder_name___253 funder_name___14 funder_name___362
+#> 1                0                 0                 0                0                 0
+#>   funder_name___400 funder_name___393 funder_name___336 funder_name___80 funder_name___296
+#> 1                 0                 0                 0                0                 0
+#>   funder_name___401 funder_name___402 funder_name___70 funder_name___71 funder_name___369
+#> 1                 0                 0                0                0                 0
+#>   funder_name___355 funder_name___176 funder_name___270 funder_name___118 funder_name___173
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___179 funder_name___180 funder_name___119 funder_name___308 funder_name___286
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___120 funder_name___287 funder_name___122 funder_name___78 funder_name___177
+#> 1                 0                 0                 0                0                 0
+#>   funder_name___82 funder_name___76 funder_name___273 funder_name___50 funder_name___31
+#> 1                0                0                 0                0                0
+#>   funder_name___279 funder_name___226 funder_name___25 funder_name___87 funder_name___235
+#> 1                 0                 0                1                0                 0
+#>   funder_name___218 funder_name___181 funder_name___175 funder_name___121 funder_name___51
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___117 funder_name___116 funder_name___127 funder_name___178 funder_name___129
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___47 funder_name___48 funder_name___207 funder_name___lic funder_name___381
+#> 1                0                0                 0                 0                 0
+#>   funder_name___225 funder_name___354 funder_name___390 funder_name___340 funder_name___346
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___214 funder_name___275 funder_name___65 funder_name___224 funder_name___104
+#> 1                 0                 0                0                 0                 0
+#>   funder_name___284 funder_name___359 funder_name___17 funder_name___348 funder_name___302
+#> 1                 0                 0                0                 0                 0
+#>   funder_name___205 funder_name___274 funder_name___36 funder_name___67 funder_name___358
+#> 1                 0                 0                0                0                 0
+#>   funder_name___5 funder_name___169 funder_name___147 funder_name___162 funder_name___112
+#> 1               0                 0                 0                 0                 0
+#>   funder_name___375 funder_name___75 funder_name___114 funder_name___403 funder_name___94
+#> 1                 0                0                 0                 0                0
+#>   funder_name___54 funder_name___295 funder_name___353 funder_name___109 funder_name___13
+#> 1                0                 0                 0                 0                0
+#>   funder_name___329 funder_name___260 funder_name___132 funder_name___261 funder_name___204
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___126 funder_name___364 funder_name___222 funder_name___172 funder_name___357
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___12 funder_name___91 funder_name___278 funder_name___183 funder_name___342
+#> 1                0                0                 0                 0                 0
+#>   funder_name___7 funder_name___404 funder_name___206 funder_name___101 funder_name___130
+#> 1               0                 0                 0                 0                 0
+#>   funder_name___241 funder_name___219 funder_name___263 funder_name___376 funder_name___55
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___124 funder_name___325 funder_name___151 funder_name___311 funder_name___23
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___264 funder_name___386 funder_name___96 funder_name___157 funder_name___40
+#> 1                 0                 0                0                 0                0
+#>   funder_name___125 funder_name___332 funder_name___328 funder_name___163 funder_name___79
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___331 funder_name___382 funder_name___389 funder_name___309 funder_name___154
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___146 funder_name___232 funder_name___334 funder_name___405 funder_name___406
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___407 funder_name___408 funder_name___409 funder_name___410 funder_name___32
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___89 funder_name___213 funder_name___90 funder_name___153 funder_name___255
+#> 1                0                 0                0                 0                 0
+#>   funder_name___59 funder_name___411 funder_name___149 funder_name___315 funder_name___383
+#> 1                0                 0                 0                 0                 0
+#>   funder_name___93 funder_name___267 funder_name___137 funder_name___39 funder_name___20
+#> 1                0                 0                 0                0                0
+#>   funder_name___217 funder_name___81 funder_name___69 funder_name___192 funder_name___323
+#> 1                 0                0                0                 0                 0
+#>   funder_name___378 funder_name___41 funder_name___301 funder_name___6 funder_name___19
+#> 1                 0                0                 0               0                0
+#>   funder_name___159 funder_name___186 funder_name___73 funder_name___372 funder_name___77
+#> 1                 0                 0                0                 0                0
+#>   funder_name___62 funder_name___299 funder_name___30 funder_name___303 funder_name___294
+#> 1                0                 0                0                 0                 0
+#>   funder_name___319 funder_name___282 funder_name___244 funder_name___189 funder_name___165
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___103 funder_name___280 funder_name___72 funder_name___161 funder_name___283
+#> 1                 0                 0                0                 0                 0
+#>   funder_name___197 funder_name___98 funder_name___289 funder_name___258 funder_name___285
+#> 1                 0                0                 0                 0                 0
+#>   funder_name___113 funder_name___257 funder_name___307 funder_name___2 funder_name___292
+#> 1                 0                 0                 0               0                 0
+#>   funder_name___43 funder_name___333 funder_name___9 funder_name___64 funder_name___234
+#> 1                0                 0               0                0                 0
+#>   funder_name___190 funder_name___42 funder_name___63 funder_name___61 funder_name___142
+#> 1                 0                0                0                0                 0
+#>   funder_name___185 funder_name___318 funder_name___317 funder_name___412 funder_name___97
+#> 1                 0                 0                 0                 0                0
+#>   funder_name___37 funder_name___135 funder_name___60 funder_name___314 funder_name___245
+#> 1                0                 0                0                 0                 0
+#>   funder_name___227 funder_name___324 funder_name___33 funder_name___38 funder_name___150
+#> 1                 0                 0                0                0                 0
+#>   funder_name___182 funder_name___194 funder_name___268 funder_name___387 funder_name___269
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___145 funder_name___140 funder_name___201 funder_name___4 funder_name___350
+#> 1                 0                 0                 0               0                 0
+#>   funder_name___196 funder_name___26 funder_name___343 funder_name___144 funder_name___385
+#> 1                 0                0                 0                 0                 0
+#>   funder_name___195 funder_name___370 funder_name___338 funder_name___379 funder_name___233
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___88 funder_name___164 funder_name___366 funder_name___239 funder_name___360
+#> 1                0                 0                 0                 0                 0
+#>   funder_name___221 funder_name___271 funder_name___202 funder_name___52 funder_name___304
+#> 1                 0                 0                 0                0                 0
+#>   funder_name___11 funder_name___170 funder_name___22 funder_name___344 funder_name___138
+#> 1                0                 0                0                 0                 0
+#>   funder_name___240 funder_name___310 funder_name___345 funder_name___363 funder_name___300
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___321 funder_name___322 funder_name___327 funder_name___251 funder_name___367
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___371 funder_name___238 funder_name___254 funder_name___108 funder_name___373
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___247 funder_name___237 funder_name___374 funder_name___288 funder_name___305
+#> 1                 0                 0                 0                 0                 0
+#>   funder_name___276 funder_name___105 funder_name___200 funder_name___86 funder_name___212
+#> 1                 0                 0                 0                0                 0
+#>   funder_name___123 funder_name___215 funder_name___351 funder_name___45 funder_name___326
+#> 1                 0                 0                 0                0                 0
+#>   funder_name___66 funder_name___10 funder_name___320 funder_name___171 funder_name___211
+#> 1                0                1                 0                 0                 0
+#>   funder_name___368 funder_name___156 funder_name___208 funder_name___316 funder_name___392
+#> 1                 0                 0                 0                 0                 0
+#>   funder_country___4 funder_country___248 funder_country___8 funder_country___12
+#> 1                  0                    0                  0                   0
+#>   funder_country___16 funder_country___20 funder_country___24 funder_country___660
+#> 1                   0                   0                   0                    0
+#>   funder_country___10 funder_country___28 funder_country___32 funder_country___51
+#> 1                   0                   0                   0                   0
+#>   funder_country___533 funder_country___36 funder_country___40 funder_country___31
+#> 1                    0                   0                   0                   0
+#>   funder_country___44 funder_country___48 funder_country___50 funder_country___52
+#> 1                   0                   0                   0                   0
+#>   funder_country___112 funder_country___56 funder_country___84 funder_country___204
+#> 1                    0                   0                   0                    0
+#>   funder_country___60 funder_country___64 funder_country___68 funder_country___535
+#> 1                   0                   0                   0                    0
+#>   funder_country___70 funder_country___72 funder_country___74 funder_country___76
+#> 1                   0                   0                   0                   0
+#>   funder_country___86 funder_country___96 funder_country___100 funder_country___854
+#> 1                   0                   0                    0                    0
+#>   funder_country___108 funder_country___132 funder_country___116 funder_country___120
+#> 1                    0                    0                    0                    0
+#>   funder_country___124 funder_country___136 funder_country___140 funder_country___148
+#> 1                    0                    0                    0                    0
+#>   funder_country___152 funder_country___156 funder_country___162 funder_country___166
+#> 1                    0                    0                    0                    0
+#>   funder_country___170 funder_country___174 funder_country___178 funder_country___180
+#> 1                    0                    0                    0                    0
+#>   funder_country___184 funder_country___188 funder_country___384 funder_country___191
+#> 1                    0                    0                    0                    0
+#>   funder_country___192 funder_country___531 funder_country___196 funder_country___203
+#> 1                    0                    0                    0                    0
+#>   funder_country___208 funder_country___262 funder_country___212 funder_country___214
+#> 1                    0                    0                    0                    0
+#>   funder_country___218 funder_country___818 funder_country___222 funder_country___226
+#> 1                    0                    0                    0                    0
+#>   funder_country___232 funder_country___233 funder_country___748 funder_country___231
+#> 1                    0                    0                    0                    0
+#>   funder_country___238 funder_country___234 funder_country___242 funder_country___246
+#> 1                    0                    0                    0                    0
+#>   funder_country___250 funder_country___254 funder_country___258 funder_country___260
+#> 1                    0                    0                    0                    0
+#>   funder_country___266 funder_country___270 funder_country___268 funder_country___276
+#> 1                    0                    0                    0                    0
+#>   funder_country___288 funder_country___292 funder_country___300 funder_country___304
+#> 1                    0                    0                    0                    0
+#>   funder_country___308 funder_country___312 funder_country___316 funder_country___320
+#> 1                    0                    0                    0                    0
+#>   funder_country___831 funder_country___324 funder_country___624 funder_country___328
+#> 1                    0                    0                    0                    0
+#>   funder_country___332 funder_country___334 funder_country___336 funder_country___340
+#> 1                    0                    0                    0                    0
+#>   funder_country___344 funder_country___348 funder_country___352 funder_country___356
+#> 1                    0                    0                    0                    0
+#>   funder_country___360 funder_country___364 funder_country___368 funder_country___372
+#> 1                    0                    0                    0                    0
+#>   funder_country___833 funder_country___376 funder_country___380 funder_country___388
+#> 1                    0                    0                    0                    0
+#>   funder_country___392 funder_country___832 funder_country___400 funder_country___398
+#> 1                    0                    0                    0                    0
+#>   funder_country___404 funder_country___296 funder_country___414 funder_country___417
+#> 1                    0                    0                    0                    0
+#>   funder_country___418 funder_country___428 funder_country___422 funder_country___426
+#> 1                    0                    0                    0                    0
+#>   funder_country___430 funder_country___434 funder_country___438 funder_country___440
+#> 1                    0                    0                    0                    0
+#>   funder_country___442 funder_country___446 funder_country___450 funder_country___454
+#> 1                    0                    0                    0                    0
+#>   funder_country___458 funder_country___462 funder_country___466 funder_country___470
+#> 1                    0                    0                    0                    0
+#>   funder_country___584 funder_country___474 funder_country___478 funder_country___480
+#> 1                    0                    0                    0                    0
+#>   funder_country___175 funder_country___484 funder_country___583 funder_country___498
+#> 1                    0                    0                    0                    0
+#>   funder_country___492 funder_country___496 funder_country___499 funder_country___500
+#> 1                    0                    0                    0                    0
+#>   funder_country___504 funder_country___508 funder_country___104 funder_country___516
+#> 1                    0                    0                    0                    0
+#>   funder_country___520 funder_country___524 funder_country___528 funder_country___540
+#> 1                    0                    0                    0                    0
+#>   funder_country___554 funder_country___558 funder_country___562 funder_country___566
+#> 1                    0                    0                    0                    0
+#>   funder_country___570 funder_country___574 funder_country___408 funder_country___580
+#> 1                    0                    0                    0                    0
+#>   funder_country___578 funder_country___512 funder_country___586 funder_country___585
+#> 1                    0                    0                    0                    0
+#>   funder_country___275 funder_country___591 funder_country___598 funder_country___600
+#> 1                    0                    0                    0                    0
+#>   funder_country___604 funder_country___608 funder_country___612 funder_country___616
+#> 1                    0                    0                    0                    0
+#>   funder_country___620 funder_country___630 funder_country___634 funder_country___807
+#> 1                    0                    0                    0                    0
+#>   funder_country___638 funder_country___642 funder_country___643 funder_country___646
+#> 1                    0                    0                    0                    0
+#>   funder_country___652 funder_country___654 funder_country___659 funder_country___662
+#> 1                    0                    0                    0                    0
+#>   funder_country___663 funder_country___666 funder_country___670 funder_country___882
+#> 1                    0                    0                    0                    0
+#>   funder_country___674 funder_country___678 funder_country___682 funder_country___686
+#> 1                    0                    0                    0                    0
+#>   funder_country___688 funder_country___690 funder_country___694 funder_country___702
+#> 1                    0                    0                    0                    0
+#>   funder_country___534 funder_country___703 funder_country___705 funder_country___90
+#> 1                    0                    0                    0                   0
+#>   funder_country___706 funder_country___710 funder_country___239 funder_country___410
+#> 1                    0                    0                    0                    0
+#>   funder_country___728 funder_country___724 funder_country___144 funder_country___729
+#> 1                    0                    0                    0                    0
+#>   funder_country___740 funder_country___744 funder_country___752 funder_country___756
+#> 1                    0                    0                    0                    0
+#>   funder_country___760 funder_country___158 funder_country___762 funder_country___834
+#> 1                    0                    0                    0                    0
+#>   funder_country___764 funder_country___626 funder_country___768 funder_country___772
+#> 1                    0                    0                    0                    0
+#>   funder_country___776 funder_country___780 funder_country___788 funder_country___792
+#> 1                    0                    0                    0                    0
+#>   funder_country___795 funder_country___796 funder_country___798 funder_country___800
+#> 1                    0                    0                    0                    0
+#>   funder_country___804 funder_country___784 funder_country___826 funder_country___581
+#> 1                    0                    0                    1                    0
+#>   funder_country___840 funder_country___858 funder_country___860 funder_country___548
+#> 1                    0                    0                    0                    0
+#>   funder_country___862 funder_country___704 funder_country___92 funder_country___850
+#> 1                    0                    0                   0                    0
+#>   funder_country___876 funder_country___732 funder_country___887 funder_country___894
+#> 1                    0                    0                    0                    0
+#>   funder_country___716 funder_country___9999 funder_country___99999 funder_country___999999
+#> 1                    0                     0                      0                       0
+#>   funder_country___9999999 funder_region___1 funder_region___2 funder_region___5
+#> 1                        0                 0                 0                 0
+#>   funder_region___99999 funder_region___9999 funder_region___999999 funder_region___9999999
+#> 1                     1                    0                      0                       0
+#>   funder_region____99 funder_complete       rorid        research_institition_name
+#> 1                   0               0 grid.4280.e National University of Singapore
+#>   research_institution_country research_institution_country_iso
+#> 1                    Singapore                              702
+#>   research_institution_region___1 research_institution_region___2
+#> 1                               0                               0
+#>   research_institution_region___5 research_institution_region___99999
+#> 1                               0                                   0
+#>   research_institution_region___9999 research_institution_region___999999
+#> 1                                  0                                    0
+#>   research_institution_region___9999999 research_institution_region____99
+#> 1                                     1                                 0
+#>        research_location_country research_location_country_iso research_location_region___1
+#> 1 Singapore, Hong Kong, Thailand                 702, 344, 764                            0
+#>   research_location_region___2 research_location_region___5 research_location_region___99999
+#> 1                            0                            0                                0
+#>   research_location_region___9999 research_location_region___999999
+#> 1                               0                                 1
+#>   research_location_region___9999999 research_location_region____99
+#> 1                                  1                              0
+#>   researchinstitution_complete tags___1 tags___2 tags___3 tags___4
+#> 1                            0        0        0        0        0
+#>   main_research_priority_area_number_new main_research_sub_priority_number_new
+#> 1                                      3                                3a, 3b
+#>   secondary_research_priority_area_number_new secondary_research_sub_priority_number_new
+#> 1                                                                                       
+#>   researchcategory_complete
+#> 1                         2
+#>  [ reached 'max' / getOption("max.print") -- omitted 4637 rows ]
+```
+
 ### Process the Pandemic PACT tracker dataset
+
+To process the Pandemic PACT tracker dataset downloaded from Figshare,
+use the following commands:
 
 ``` r
 
 pact_read_figshare(pact_client) |>
   pact_process_figshare()
+```
+
+which outputs a `data.frame` of the processed Pandemic PACT funding
+tracker dataset:
+
+``` r
+
+pact_read_figshare(pact_client) |>
+  pact_process_figshare()
+#> # A tibble: 4,637 × 37
+#>    PactID Grant.Number Grant.Title.Original             Grant.Title.Eng Award.Amount.Converted
+#>    <chr>  <chr>        <chr>                            <chr>                            <dbl>
+#>  1 C00153 unknown      Serological studies to quantify… "Serological s…               1043108.
+#>  2 C00154 unknown      African COVID-19 Preparedness (… "African COVID…               2462448.
+#>  3 C00155 unknown      COVID-19 Intervention Modelling… "COVID-19 Inte…               1699974.
+#>  4 C00156 unknown      The African coaLition for Epide… "The African c…               1742202.
+#>  5 C00157 unknown      Characterization of SARS-CoV-2 … "Characterizat…               2484600 
+#>  6 C00158 unknown      Investigation of pre-existing i… "Investigation…               1551892.
+#>  7 C00159 unknown      A comprehensive study of immuno… ""                            1106601.
+#>  8 C00160 MC_PC_19012  Centre for Global Infectious Di… "Centre for Gl…                660260 
+#>  9 C00161 MC_PC_19025  ISARIC - Coronavirus Clinical C… "ISARIC - Coro…                 98958.
+#> 10 C00162 MC_PC_19026  MRC Centre for Virus Research (… "MRC Centre fo…                660260 
+#> # ℹ 4,627 more rows
+#> # ℹ 32 more variables: Abstract.Eng <chr>, Laysummary <chr>, ODA.funding.used <chr>,
+#> #   Grant.Type <chr>, Grant.Start.Year <int>, Study.Subject <list>, Ethnicity <list>,
+#> #   Age.Groups <list>, Rurality <list>, Vulnerable.Population <list>,
+#> #   Occupational.Groups <list>, Study.Type <list>, Clinical.Trial <list>, report <chr>,
+#> #   Pathogen <list>, Pathogen.Specific <list>, Disease <list>, mesh_terms <chr>,
+#> #   complete_section1 <chr>, Funder.Name <list>, Funder.Country <list>, …
 ```
