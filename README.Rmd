@@ -195,7 +195,16 @@ pact_read_website()
 which results in the following:
 
 ```{r usage-website-2b, echo = FALSE}
-pact_read_website()
+unzip(
+  zipfile = system.file("extdata", "pandemic-pact-grants.zip", package = "pactr"),
+  exdir = tempdir()
+)
+
+pact_data_raw <- read.csv(file.path(tempdir(), "pandemic-pact-grants.csv")) |>
+  tibble::tibble()
+
+pact_data_raw
+#pact_read_website()
 ```
 
 ### Process the Pandemic PACT tracker dataset from the website
@@ -213,7 +222,7 @@ pact_read_website() |>
 which produces the following output:
 
 ```{r usage-website-3b, echo = FALSE, cache = FALSE}
-pact_data <- pact_read_website() |>
+pact_data <- pact_data_raw |>
   pact_process_website()
 
 tidy_df <- pact_data |>
@@ -244,7 +253,7 @@ which in turn can be plotted as follows:
 ```{r usage-website-3c, echo = FALSE, fig.height = 8}
 disease_df <- tidy_df |>
   dplyr::mutate(
-    Disease = factor(
+    Diseases = factor(
       x = Diseases, levels = disease_levels, labels = disease_labels
     )
   )
@@ -252,7 +261,7 @@ disease_df <- tidy_df |>
 ggplot2::ggplot(
   data = disease_df,
   mapping = ggplot2::aes(
-    x = GrantStartYear, y = n_grants, group = Diseases, color = Diseases
+    x = GrantStartYear, y = n_grants, group = Diseases, colour = Diseases
   )
 ) +
   ggplot2::geom_line() +
@@ -270,7 +279,7 @@ ggplot2::ggplot(
 
 or alternatively:
 
-```{r usage-website-3d, echo = FALSE, fig.height = 12}
+```{r usage-website-3d, echo = FALSE, fig.height = 20}
 disease_df |>
   ggplot2::ggplot(
     mapping = ggplot2::aes(x = GrantStartYear, y = n_grants, group = Diseases)
@@ -322,3 +331,9 @@ This project is an independent effort by [Oxford iHealth](https://oxford-ihtm.io
 Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/OxfordIHTM/pactr/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://oxford-ihtm.io/pactr/CONTRIBUTING.html).
 
 This project is released with a [Contributor Code of Conduct](https://oxford-ihtm/pactr/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
+
+If you are interested in [Oxford iHealth](https://oxford-ihtm.io)'s work and would like to join the community or contribute to it's various projects, visit the [Oxford iHealth website](https://oxford-ihtm.io) and its [community page](https://oxford-ihtm.io/community/) to learn more.
+
+&nbsp;
+
+[![This is a project under the Oxford iHealth initiative of the MSc in International Health and Tropical Medicine of the Nuffield Department of Medicine, University of Oxford](https://github.com/OxfordIHTM/ihealth-images/blob/main/ihealth/ihealth_footer.png?raw=true)](https://oxford-ihtm.io)
