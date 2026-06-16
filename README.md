@@ -280,7 +280,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpwuflPU/pandemic-pact-grants.csv"
+    #> [1] "/tmp/Rtmp8jYfzf/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 

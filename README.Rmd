@@ -289,7 +289,7 @@ disease_df |>
     linewidth = 0.75, alpha = 0.7
   ) +
   ggplot2::scale_y_continuous(breaks = scales::breaks_pretty()) +
-  ggplot2::facet_wrap(. ~ Diseases, nrow = 6, ncol = 6, scales = "free_y") +
+  ggplot2::facet_wrap(. ~ Diseases, nrow = 9, ncol = 4, scales = "free_y") +
   ggplot2::labs(x = "Year of Award Start", y = "Number of Grants") +
   ggplot2::theme_bw() +
   ggplot2::theme(
