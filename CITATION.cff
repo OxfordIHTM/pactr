@@ -8,7 +8,7 @@ message: 'To cite package "pactr" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'pactr: An Interface to the Pandemic PACT Database'
-version: 0.0.0.9004
+version: 0.0.0.9005
 abstract: The Pandemic PACT <https://www.pandemicpact.org/> monitors and analyses
   global funding and research evidence related to diseases with pandemic potential,
   as well as broader research preparedness efforts, and is equipped to pivot in response
@@ -30,7 +30,7 @@ preferred-citation:
   authors:
   - name: Ernest Guevarra
   year: '2026'
-  notes: R package version 0.0.9003
+  notes: R package version 0.0.9005
   url: https://oxford-ihtm.io/pactr/
 repository-code: https://github.com/OxfordIHTM/pactr
 url: https://oxford-ihtm.io/pactr/
@@ -105,6 +105,18 @@ references:
     orcid: https://orcid.org/0000-0003-4777-038X
   year: '2026'
   doi: 10.32614/CRAN.package.dplyr
+- type: software
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  notes: Imports
+  url: https://httr2.r-lib.org
+  repository: https://CRAN.R-project.org/package=httr2
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.httr2
 - type: software
   title: methods
   abstract: 'R: A Language and Environment for Statistical Computing'
