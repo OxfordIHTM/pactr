@@ -128,7 +128,11 @@ To read the Pandemic PACT tracker dataset into R, issue the following command:
 pact_read_figshare(pact_client)
 ```
 
-which outputs a data.frame of the available Pandemic PACT funding tracker dataset that has been labelled.
+which outputs a `data.frame` of the available Pandemic PACT funding tracker dataset that has been labelled.
+
+```{r usage-3b, eval = FALSE}
+pact_read_figshare(pact_client)
+```
 
 This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
 
@@ -138,9 +142,22 @@ pact_read_figshare(pact_client, tracker_type = "raw")
 
 which outputs a `data.frame` of the available raw Pandemic PACT funding tracker dataset.
 
+```{r usage-3d, eval = TRUE}
+pact_read_figshare(pact_client, tracker_type = "raw")
+```
+
 ### Process the Pandemic PACT tracker dataset
 
+To process the Pandemic PACT tracker dataset downloaded from Figshare, use the following commands:
+
 ```{r usage-3e, eval = FALSE}
+pact_read_figshare(pact_client) |>
+  pact_process_figshare()
+```
+
+which outputs a `data.frame` of the processed Pandemic PACT funding tracker dataset:
+
+```{r usage-3f, eval = TRUE}
 pact_read_figshare(pact_client) |>
   pact_process_figshare()
 ```

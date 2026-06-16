@@ -518,3 +518,34 @@ build_figshare_download_url <- function(collection_id, private_link_id) {
     paste(private_link_id, sep = "?private_link=")
 }
 
+
+
+#' @keywords internal
+
+pact_download_url <- function(.url, 
+                              destfile,
+                              overwrite = FALSE,
+                              quiet = TRUE,
+                              timeout = 300,
+                              connecttimeout = 30) {
+  ## Skip if file already present and not overwriting ----
+  if (file.exists(destfile) && !overwrite) {
+    return(destfile)
+  }
+
+  ## Build request ----
+  req <- httr2::request(.url) |>
+    httr2::req_timeout(seconds = timeout) |>
+    httr2::req_options(connecttimeout = connecttimeout) |>
+    httr2::req_retry(max_tries = 3)
+
+  ## Add a progress bar unless quiet ----
+  if (!quiet) {
+    req <- httr2::req_progress(req, type = "down")
+  }
+
+  ## Stream response body to disk ----
+  httr2::req_perform(req, path = destfile)
+
+  destfile
+}
