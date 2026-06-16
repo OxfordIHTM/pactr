@@ -142,23 +142,22 @@ are those provided by [Figshare’s application programming interface
 (API)](https://docs.figshare.com/) and are either set by the Pandemic
 PACT data team or by Figshare. The data.frame would look as follows:
 
-    #> # A tibble: 10 × 18
-    #>    project_id       id title       doi   handle url   published_date thumb
-    #>         <int>    <int> <chr>       <chr> <chr>  <chr> <chr>          <chr>
-    #>  1     189177 27169608 mpox resea… 10.2… ""     http… 2024-10-04T10… "htt…
-    #>  2     189177 27152799 Pandemic P… 10.2… ""     http… 2024-10-02T11… "htt…
-    #>  3     189177 27110389 mpox resea… 10.2… ""     http… 2024-09-26T13… "htt…
-    #>  4     189177 27004912 Pandemic P… 10.2… ""     http… 2024-09-12T16… "htt…
-    #>  5     189177 26790535 Pandemic P… 10.2… ""     http… 2024-08-20T17… "htt…
-    #>  6         NA 25827649 Scoping Re… 10.2… ""     http… 2024-05-15T12… ""   
-    #>  7         NA 25368136 test        10.2… ""     http… 2024-03-08T11… "htt…
-    #>  8     189177 25368070 Pandemic P… 10.2… ""     http… 2024-03-08T10… "htt…
-    #>  9     189177 25352839 Extended d… 10.2… ""     http… 2024-03-06T15… ""   
-    #> 10     189168 24786258 Pandemic P… 10.2… ""     http… 2023-12-15T11… ""   
-    #> # ℹ 10 more variables: defined_type <int>, defined_type_name <chr>,
-    #> #   group_id <int>, url_private_api <chr>, url_public_api <chr>,
-    #> #   url_private_html <chr>, url_public_html <chr>, timeline <df[,2]>,
-    #> #   resource_title <chr>, resource_doi <chr>
+    #> # A tibble: 10 × 20
+    #>    project_id       id title              doi   handle url   published_date thumb defined_type
+    #>         <int>    <int> <chr>              <chr> <chr>  <chr> <chr>          <chr>        <int>
+    #>  1     189177 26937448 PandemicPACT Data… 10.2… ""     http… 2026-06-15T15… ""               3
+    #>  2     189177 32572314 Pandemic PACT (Cl… 10.2… ""     http… 2026-06-05T12… ""               3
+    #>  3     189177 30084583 Ebola in the DRC … 10.2… ""     http… 2026-06-02T08… "htt…            6
+    #>  4         NA 32261511 Hantavirus - Summ… 10.2… ""     http… 2026-05-13T08… "htt…            6
+    #>  5     267506 31325617 RRNA Visualisatio… 10.2… ""     http… 2026-03-05T15… "htt…            3
+    #>  6         NA 31390030 Pandemic Intellig… 10.2… ""     http… 2026-02-23T14… ""               3
+    #>  7     189177 25412518 Direct data provi… 10.2… ""     http… 2026-02-12T00… "htt…            3
+    #>  8     189177 25374430 PACT Grant Eligib… 10.2… ""     http… 2026-02-12T00… "htt…            1
+    #>  9     189177 31096339 <b>Mapping the ex… 10.2… ""     http… 2026-01-20T13… ""               3
+    #> 10         NA 30933185 Marburg Virus Dis… 10.2… ""     http… 2025-12-22T13… "htt…            6
+    #> # ℹ 11 more variables: defined_type_name <chr>, group_id <int>, url_private_api <chr>,
+    #> #   url_public_api <chr>, url_private_html <chr>, url_public_html <chr>, timeline <df[,2]>,
+    #> #   resource_title <chr>, resource_doi <chr>, created_date <chr>, modified_date <chr>
 
 This function is useful in getting an overview of what is currently
 available in the Pandemic PACT Figshare repository.
