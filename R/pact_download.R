@@ -39,24 +39,12 @@ pact_download_figshare <- function(pact_client,
   download_url <- pact_client$hostdata$files$download_url
   filename <- pact_client$hostdata$files$name
 
-  ## Check if download file is already present in path
-  file_present <- filename %in% list.files(path)
-
-  ## Download file ----
-  if (overwrite) {
-    download.file(
-      url = download_url, destfile = file.path(path, filename), quiet = quiet
-    )
-  } else {
-    if (!file_present) {
-      download.file(
-        url = download_url, destfile = file.path(path, filename), quiet = quiet
-      )
-    }
-  }
-
-  ## Return path to downloaded file ----
-  file.path(path, filename)
+  pact_download_url(
+    .url = download_url,
+    destfile = file.path(path, filename),
+    overwrite = overwrite,
+    quiet = quiet
+  )
 }
 
 
@@ -70,22 +58,10 @@ pact_download_website <- function(path, overwrite = FALSE, quiet = TRUE) {
   download_url <- "https://pandemicpact.org/export/grants/pandemic-pact-grants.csv"
   filename <- basename(download_url)
 
-  ## Check if download file is already present in path
-  file_present <- filename %in% list.files(path)
-
-  ## Download file ----
-  if (overwrite) {
-    download.file(
-      url = download_url, destfile = file.path(path, filename), quiet = quiet
-    )
-  } else {
-    if (!file_present) {
-      download.file(
-        url = download_url, destfile = file.path(path, filename), quiet = quiet
-      )
-    }
-  }
-
-  ## Return path to downloaded file ----
-  file.path(path, filename)
+  pact_download_url(
+    .url = download_url,
+    destfile = file.path(path, filename),
+    overwrite = overwrite,
+    quiet = quiet
+  )
 }

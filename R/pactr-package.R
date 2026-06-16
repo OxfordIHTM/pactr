@@ -28,5 +28,6 @@
 #' @importFrom withr with_options
 #' @importFrom openxlsx2 read_xlsx
 #' @importFrom utils unzip
+#' @importFrom httr2 request req_perform req_timeout req_options req_retry req_progress req_perform
 #'
 "_PACKAGE"
