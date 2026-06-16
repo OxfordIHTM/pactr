@@ -3,7 +3,7 @@ bibentry(
   header   = "To cite pactr in publications use:",
   title    = "pactr: An Interface to the Pandemic PACT Repository",
   author   = person("Ernest Guevarra"),
-  year     = "2024",
-  note     = "R package version 0.0.9001",
+  year     = "2026",
+  note     = "R package version 0.0.9002",
   url      = "https://oxford-ihtm.io/pactr/"
 )
