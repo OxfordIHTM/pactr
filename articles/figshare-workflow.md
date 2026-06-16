@@ -1,0 +1,214 @@
+# Figshare workflow
+
+## About the Pandemic PACT Figshare repository
+
+The Pandemic PACT data is meant to be publicly available for download
+from Figshare as per information from the research programme’s website
+(see [here](https://www.pandemicpact.org/about/our-data)) and based on
+its open peer review paper on Wellcome Open Research describing the
+[study
+protocol](https://wellcomeopenresearch.org/articles/9-156/v1?src=rss).
+
+However, the link provided from the website
+(<https://figshare.com/s/58527668245cb63f14f5>) leads to a
+privately-shared Figshare collection. This means that the collection is
+only accessible to those who created it and to those who have been
+authorised to access it. The contents of the collection can be seen.
+However, the individual items cannot be viewed interactively from the
+browser and cannot be downloaded. This was the case as at 24 August 2024
+when development of this package was initiated and continue to current
+date. This is contrary to what is mentioned in the research programme’s
+website:
+
+> “The data set can be downloaded from this website and all metadata and
+> the dataset can be downloaded from Figshare.”
+
+and in the study protocol under open peer review:
+
+> “Finally, the database is saved as a csv file and made available to
+> the public on Figshare and can additionally be downloaded from the
+> online funding tracker.”
+
+Thinking that maybe this was just a mistake (i.e., that there is a
+private and public repository and the link to the private repository was
+the one that was mistakenly shared), a simple search was performed
+within Figshare using the keyword “Pandemic PACT” in the search field.
+This search yielded several results the most relevant of which was the
+following:
+
+<https://portal.sds.ox.ac.uk/pandemicpact>
+
+which is a University of Oxford-owned instance of Figshare containing
+the various data products (tracker data, data dictionary, scoping review
+data, extended data) referred to and used by the research programme.
+More importantly, this collection is public hence any individual,
+whether logged into Figshare or not, can view and download the datasets.
+Without further examining, it would be easy to think that this might be
+the publicly available data and data products being referred to by the
+website and the research protocol.
+
+However, on closer inspection, the datasets within this collection were
+last updated in 2023 and the names of the file indicated that these were
+demonstration datasets.
+
+Knowing that the research programme was indeed using Figshare to host
+its dataset (but not accessible) and given the existence of this
+demonstration dataset within the University of Oxford Figshare instance,
+development of Figshare-specific functions within the
+[pactr](https://github.com/OxfordIHTM/pactr) package utilised the
+demonstration collection to prototype the Figshare-interface functions
+with the hope that if Pandemic PACT does decide to share their official
+dataset on Figshare publicly, the refactoring needed to get the current
+functions working will be minimal.
+
+As such, the following guidance on use of the
+[pactr](https://github.com/OxfordIHTM/pactr) Figshare interface
+functions should be used only for demonstration, development, and
+testing purposes and should not be used for production or research
+tasks.
+
+## Figshare interface
+
+This package provides an application programming interface (API) to the
+research programme’s Figshare repository to provide programmatic access
+to its publicly available tracker data along with it’s other data
+products.
+
+The functions for Figshare interface are wrappers to specific functions
+of the [`{deposits}`
+package](https://docs.ropensci.org/deposits/index.html) which provides
+the underlying universal interface to various online research data
+deposition services including Figshare. Current Figshare-specific
+functionalities available in
+[pactr](https://github.com/OxfordIHTM/pactr) are:
+
+1.  Listing of outputs/assets available from the Pandemic PACT Figshare
+    repository (*experimental*);
+
+2.  Downloading of outputs/assets available from the Pandemic PACT
+    Figshare repository (*experimental*);
+
+3.  Reading of dataset outputs/assets available from the Pandemic PACT
+    Figshare repository (*experimental*); and,
+
+4.  Processing of Pandemic PACT data (*experimental*).
+
+## Figshare workflow
+
+The following diagram illustrates the current steps (along with their
+corresponding functions) in the designed API for interfacing with the
+Figshare repository.
+
+### Set a Figshare client
+
+Usage of [pactr](https://github.com/OxfordIHTM/pactr) always starts with
+the setting up of a Figshare client. This requires creating a Figshare
+account and then creating a personal access token
+[here](https://figshare.com/account/applications).
+
+Once a Figshare token is created, it needs to be stored as a local
+environment variable. This can be done using the following command in R:
+
+``` r
+
+Sys.setenv("FIGSHARE_TOKEN"="YOUR_TOKEN_HERE")
+```
+
+Once this token has been set as described above, the following command
+can be run to setup a Figshare client:
+
+``` r
+
+pact_client <- pact_client_set()
+```
+
+Once a Figshare client has been setup, you can now perform the
+functionalities provided by the
+[pactr](https://github.com/OxfordIHTM/pactr) package.
+
+### List outputs/assets
+
+To list available outputs/assets from the Pandemic PACT Figshare
+repository, issue the following command:
+
+``` r
+
+pact_list(pact_client)
+```
+
+The output is a `data.frame` containing metadata regarding contents of
+the Figshare Pandemic PACT group. The information within the metadata
+are those provided by [Figshare’s application programming interface
+(API)](https://docs.figshare.com/) and are either set by the Pandemic
+PACT data team or by Figshare. The data.frame would look as follows:
+
+    #> # A tibble: 10 × 18
+    #>    project_id       id title       doi   handle url   published_date thumb
+    #>         <int>    <int> <chr>       <chr> <chr>  <chr> <chr>          <chr>
+    #>  1     189177 27169608 mpox resea… 10.2… ""     http… 2024-10-04T10… "htt…
+    #>  2     189177 27152799 Pandemic P… 10.2… ""     http… 2024-10-02T11… "htt…
+    #>  3     189177 27110389 mpox resea… 10.2… ""     http… 2024-09-26T13… "htt…
+    #>  4     189177 27004912 Pandemic P… 10.2… ""     http… 2024-09-12T16… "htt…
+    #>  5     189177 26790535 Pandemic P… 10.2… ""     http… 2024-08-20T17… "htt…
+    #>  6         NA 25827649 Scoping Re… 10.2… ""     http… 2024-05-15T12… ""   
+    #>  7         NA 25368136 test        10.2… ""     http… 2024-03-08T11… "htt…
+    #>  8     189177 25368070 Pandemic P… 10.2… ""     http… 2024-03-08T10… "htt…
+    #>  9     189177 25352839 Extended d… 10.2… ""     http… 2024-03-06T15… ""   
+    #> 10     189168 24786258 Pandemic P… 10.2… ""     http… 2023-12-15T11… ""   
+    #> # ℹ 10 more variables: defined_type <int>, defined_type_name <chr>,
+    #> #   group_id <int>, url_private_api <chr>, url_public_api <chr>,
+    #> #   url_private_html <chr>, url_public_html <chr>, timeline <df[,2]>,
+    #> #   resource_title <chr>, resource_doi <chr>
+
+This function is useful in getting an overview of what is currently
+available in the Pandemic PACT Figshare repository.
+
+### Download outputs/assets
+
+To download a specific output/asset - say the scoping review data - from
+the Pandemic PACT Figshare repository, issue the following commands:
+
+``` r
+
+## Get the unique identifier for the scoping review data from Figshare ----
+file_id <- pact_list(pact_client) |>
+  subset(title == "Scoping Review Data", select = id) |>
+  unlist()
+
+pact_download_figshare(pact_client, id = file_id, path = ".")
+```
+
+This will download the file `Scoping_Review-Data.xlsx` from the Pandemic
+PACT Figshare repository into the current working directory.
+
+### Read the Pandemic PACT tracker dataset and data dictionary
+
+To read the Pandemic PACT tracker dataset into R, issue the following
+command:
+
+``` r
+
+pact_read_figshare(pact_client)
+```
+
+which outputs a data.frame of the available Pandemic PACT funding
+tracker dataset that has been labelled.
+
+This function reads the *labelled* tracker dataset by default. If the
+raw dataset is required, then issue the following command:
+
+``` r
+
+pact_read_figshare(pact_client, tracker_type = "raw")
+```
+
+which outputs a `data.frame` of the available raw Pandemic PACT funding
+tracker dataset.
+
+### Process the Pandemic PACT tracker dataset
+
+``` r
+
+pact_read_figshare(pact_client) |>
+  pact_process_figshare()
+```

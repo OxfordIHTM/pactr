@@ -1,0 +1,98 @@
+# Website dataset workflow
+
+The Pandemic PACT data is publicly available for download from its
+[website](https://www.pandemicpact.org/).
+[pactr](https://github.com/OxfordIHTM/pactr) provides an application
+programming interface (API) to the research programme’s dataset
+available from its website data download facility allowing for
+programmatic access to its publicly available funder tracker dataset.
+
+## Website data interface
+
+The functions for interfacing with the data available from the Pandemic
+PACT website allow for *downloading*, *reading*, and *processing*.
+Current website data-specific functionalities available in
+[pactr](https://github.com/OxfordIHTM/pactr) are:
+
+1.  Downloading of Pandemic PACT dataset available from the website
+    (*stable*);
+
+2.  Reading of Pandemic PACT dataset available from the website
+    (*stable*); and,
+
+3.  Processing of Pandemic PACT dataset available from the website
+    (*experimental*).
+
+## Website data workflow
+
+### Download data available from website
+
+To download the Pandemic PACT tracker dataset available from its
+website, the following command can be used:
+
+``` r
+
+## Save the dataset from website to a temporary directory ----
+pact_download_website(path = tempdir())
+```
+
+which will return the path to the downloaded dataset:
+
+    #> [1] "/tmp/RtmpkRyT53/pandemic-pact-grants.csv"
+
+### Read the Pandemic PACT tracker dataset from the website
+
+Instead of downloading, the Pandemic PACT dataset available from its
+website can be read into R directly as follows:
+
+``` r
+
+pact_read_website()
+```
+
+which results in the following:
+
+    #> # A tibble: 19,172 × 39
+    #>    GrantID PubMedGrantId             GrantTitleEng Abstract GrantStartYear
+    #>    <chr>   <chr>                     <chr>         <chr>             <int>
+    #>  1 C00018  unknown                   "Mathematica… "Mathem…             NA
+    #>  2 C00019  CCP-nCoV                  "Cohort foll… "Cohort…             NA
+    #>  3 C00020  THERAMAB                  "Identificat… "Identi…             NA
+    #>  4 C00021  None                      "Using socia… "Using …             NA
+    #>  5 C00022  CoV-CONTACT               "Follow-up o… "Follow…             NA
+    #>  6 C00023  Réplicon                  "Development… "Develo…             NA
+    #>  7 C00024  A Toolbox for SARS-CoV-2… "Potentiatin… "Potent…             NA
+    #>  8 C00025  NHP Model                 "Establishme… "Establ…             NA
+    #>  9 C00026  SARS-CoV2-LIPS            "Antibody pr… "Antibo…             NA
+    #> 10 C00027  SARS-CoV-2_EVOLSERO       "Evolution o… "Evolut…             NA
+    #> # ℹ 19,162 more rows
+    #> # ℹ 34 more variables: PublicationYearOfAward <int>, GrantEndYear <int>,
+    #> #   ResearchInstitutionName <chr>, GrantAmountConverted <dbl>,
+    #> #   StudySubject <chr>, Ethnicity <chr>, AgeGroups <chr>, Rurality <chr>,
+    #> #   VulnerablePopulations <chr>, OccupationalGroups <chr>,
+    #> #   StudyType <chr>, ClinicalTrial <chr>, Pathogen <chr>,
+    #> #   InfluenzaA <chr>, InfluenzaH1 <chr>, InfluenzaH2 <chr>, …
+
+### Process the Pandemic PACT tracker dataset from the website
+
+The package includes functions that will process the Pandemic PACT
+tracker dataset into specific structures and aggregations that will
+allow for further plotting and reporting of similar outputs that are
+currently presented in the Pandemic PACT website.
+
+For example, the following will process the Pandemic PACT tracker
+dataset into an aggregated dataset structure that can be used to create
+a similar plot to the one presented in the
+[website](https://www.pandemicpact.org/visualise#disease).
+
+``` r
+
+pact_read_website() |>
+  pact_process_website() |>
+  pact_process_topic_group(topic = "Disease", group = "GrantStartYear")
+```
+
+which produces the following output:
+
+    #> Error in pact_process_topic_group(pact_process_website(pact_data), topic = "Disease", : could not find function "pact_process_topic_group"
+    #> Error: object 'tidy_df' not found
