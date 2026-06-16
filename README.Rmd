@@ -22,7 +22,7 @@ library(pactr)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/R-CMD-check.yaml)
 [![test-coverage.yaml](https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/OxfordIHTM/pactr/actions/workflows/test-coverage.yaml)
-[![Codecov test coverage](https://codecov.io/gh/OxfordIHTM/pactr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/pactr?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/OxfordIHTM/pactr/graph/badge.svg)](https://app.codecov.io/gh/OxfordIHTM/pactr)
 [![CodeFactor](https://www.codefactor.io/repository/github/OxfordIHTM/pactr/badge)](https://www.codefactor.io/repository/github/OxfordIHTM/pactr)
 [![DOI](https://zenodo.org/badge/847474685.svg)](https://zenodo.org/badge/latestdoi/847474685)
 <!-- badges: end -->
@@ -207,7 +207,7 @@ For example, the following will process the Pandemic PACT tracker dataset into a
 ```{r usage-website-3a, eval = FALSE}
 pact_read_website() |>
   pact_process_website() |>
-  pact_table_topic_group(topic = "Disease", group = "GrantStartYear")
+  pact_table_topic_group(topic = "Diseases", group = "GrantStartYear")
 ```
 
 which produces the following output:
@@ -217,9 +217,26 @@ pact_data <- pact_read_website() |>
   pact_process_website()
 
 tidy_df <- pact_data |>
-  pact_table_topic_group(topic = "Disease", group = "GrantStartYear")
+  pact_table_topic_group(topic = "Diseases", group = "GrantStartYear")
 
 tidy_df
+
+disease_levels <- tidy_df$Diseases |>
+  unique() |>
+  sort() |>
+  (\(x) x[!x %in% c("Other", "Unspecified", "Not applicable", "Congenital infection caused by Zika virus")] )() |>
+  c("Congenital infection caused by Zika virus", "Other", "Unspecified", "Not applicable")
+
+disease_labels <- c(
+  "Argentine HF", "Klebsiella pneumonia", "Chikungunya", "Cholera",
+  "COVID-19", "CCHF", "Dengue", "Disease X", "Venezuelan equine encephalitis", 
+  "Ebola", "Hendra virus", "Nipah virus", "Influenza A H2", "Influenza A H5",
+  "Influenza A H7", "Lassa fever", "Lujo fever", "Marburg", "MERS-CoV", "Mpox",
+  "Plague", "RVF", "Salmonella", "SARS", "Severe fever & thrombocytopenia",
+  "Shigellosis", "Smallpox", "Tick-borne encephalitis", "Vaccinia", "West Nile",
+  "Yellow Fever", "Zika", "Zika (congenital)",
+  "Other", "Unspecified", "Not applicable"
+)
 ```
 
 which in turn can be plotted as follows:
@@ -228,29 +245,14 @@ which in turn can be plotted as follows:
 disease_df <- tidy_df |>
   dplyr::mutate(
     Disease = factor(
-    x = Disease, 
-      levels = c(
-        "COVID-19", "Disease X", "Crimean-Congo haemorrhagic fever", 
-        "Ebola virus disease", "Hendra virus infection", "Lassa fever", 
-        "Marburg virus disease", 
-        "Middle East Respiratory Syndrome Coronavirus (MERS-CoV)", 
-        "Mpox", "Nipah and henipaviral disease", "Pandemic-prone influenza",
-        "Plague", "Rift Valley Fever", "Severe Acute Respiratory Syndrome (SARS)", "Zika virus disease", "Congenital Zika virus disease", "Other", 
-        "Unspecified", "Not applicable"
-      ),
-      labels = c(
-        "COVID-19", "Disease X", "CCHF", "Ebola", "Hendra virus", "Lassa fever", 
-        "Marburg", "MERS-CoV", "Mpox", "NiV and Henipa", "Pandemic influenza", 
-        "Plague", "RVF", "SARS", "Zika", "Zika (congenital)", "Other", 
-        "Unspecified", "Not applicable"
-      )
+      x = Diseases, levels = disease_levels, labels = disease_labels
     )
   )
 
 ggplot2::ggplot(
   data = disease_df,
   mapping = ggplot2::aes(
-    x = GrantStartYear, y = n_grants, group = Disease, color = Disease
+    x = GrantStartYear, y = n_grants, group = Diseases, color = Diseases
   )
 ) +
   ggplot2::geom_line() +
@@ -271,14 +273,14 @@ or alternatively:
 ```{r usage-website-3d, echo = FALSE, fig.height = 12}
 disease_df |>
   ggplot2::ggplot(
-    mapping = ggplot2::aes(x = GrantStartYear, y = n_grants, group = Disease)
+    mapping = ggplot2::aes(x = GrantStartYear, y = n_grants, group = Diseases)
   ) +
   ggplot2::geom_line(
     colour = oxthema::get_oxford_colour("sky"), 
     linewidth = 0.75, alpha = 0.7
   ) +
   ggplot2::scale_y_continuous(breaks = scales::breaks_pretty()) +
-  ggplot2::facet_wrap(. ~ Disease, nrow = 5, ncol = 4, scales = "free_y") +
+  ggplot2::facet_wrap(. ~ Diseases, nrow = 6, ncol = 6, scales = "free_y") +
   ggplot2::labs(x = "Year of Award Start", y = "Number of Grants") +
   ggplot2::theme_bw() +
   ggplot2::theme(

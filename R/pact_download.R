@@ -59,52 +59,6 @@ pact_download_figshare <- function(pact_client,
   file.path(path, filename)
 }
 
-#'
-#' @rdname pact_download
-#' @export
-#' 
-
-pact_download_figshare_private <- function(path,
-                                           overwrite = FALSE, 
-                                           quiet = TRUE) {
-  ## Private collection ID ----
-  collection_id <- 25370686
-  private_link_id <- "58527668245cb63f14f5"
-  
-  ## Filename ----
-  filename <- "pandemic_pact_figshare.zip"
-  
-  ## Build download URL ----
-  download_url <- build_figshare_download_url(
-    collection_id = collection_id, private_link_id = private_link_id
-  )
-
-  ## Check if download file is already present in path
-  file_present <- filename %in% list.files(path)
-
-  withr::with_options(
-    new = list(timeout = max(300, getOption("timeout"))),
-    code = {
-      ## Download file ----
-      if (overwrite) {
-        download.file(
-          url = download_url, destfile = file.path(path, filename), 
-          mode = "wb", quiet = quiet
-        )
-      } else {
-        if (!file_present) {
-          download.file(
-            url = download_url, destfile = file.path(path, filename), 
-            mode = "wb", quiet = quiet
-          )
-        }
-      }
-    }
-  )
-
-  ## Return path to downloaded file ----
-  file.path(path, filename)
-}
 
 #'
 #' @rdname pact_download
@@ -113,7 +67,7 @@ pact_download_figshare_private <- function(path,
 
 pact_download_website <- function(path, overwrite = FALSE, quiet = TRUE) {
   ## Get filename of specified file ----
-  download_url <- "https://pandemicpact.org/export/pandemic-pact-grants.csv"
+  download_url <- "https://pandemicpact.org/export/grants/pandemic-pact-grants.csv"
   filename <- basename(download_url)
 
   ## Check if download file is already present in path

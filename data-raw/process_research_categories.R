@@ -125,4 +125,23 @@ pact_research_category <- tibble::tibble(
   research_subcategory_code, research_subcategory
 )
 
+pact_research_category <- read.csv("data-raw/research-categories.csv", sep = ";", quote = "") |>
+  tibble::as_tibble() |>
+  setNames(nm = c("research_category_code", "research_category", "research_subcategory_code", "research_subcategory", "code")) |>
+  dplyr::mutate(
+    research_category_code = gsub("\"", "", research_category_code, fixed = TRUE),
+    research_category = trimws(research_category) |>
+      gsub(
+        "Therapeutics research, Adverse events associated with therapeutic administration",
+        "Therapeutics research, development and implementation",
+        x = _, fixed = TRUE
+      ),
+    research_subcategory_code = gsub("6k,,", "k", research_subcategory_code, fixed = TRUE),
+    research_subcategory = trimws(research_subcategory) |>
+      (\(x) ifelse(x == "", "Adverse events associated with therapeutic administration", x))(),
+    code = gsub("\"", "", code, fixed = TRUE) |>
+      gsub(",", "", x = _, fixed = TRUE) |>
+      (\(x) ifelse(x == "", "6k", x))()
+  )
+  
 usethis::use_data(pact_research_category, overwrite = TRUE, compress = "xz")

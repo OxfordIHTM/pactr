@@ -11,7 +11,7 @@ test_that("website data processing works as expected", {
   expect_true(all(lapply(df1[ , nested_vars], FUN = class) == "list"))
   expect_false(all(lapply(df2[ , nested_vars], FUN = class) == "list"))
   expect_identical(
-    df1[df1$GrantID == "P22196", ]$Disease |> unlist(), "Zika virus disease"
+    df1[df1$GrantID == "P22196", ]$Diseases |> unlist(), "Zika virus disease"
   )
-  expect_identical(df2[df2$GrantID == "P22196", ]$Disease, "")
+  expect_identical(df2[df2$GrantID == "P22196", ]$Diseases, "Zika virus disease")
 })

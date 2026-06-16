@@ -30,6 +30,7 @@
 #' | *research_category* | Research category name |
 #' | *research_subcategory_code* | Four digit research sub-category code |
 #' | *research_subcategory* | Research sub-category name |
+#' | *code* | Concatenated research category and sub-category code |
 #' 
 #' @examples
 #' pact_research_category

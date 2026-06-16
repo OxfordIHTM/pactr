@@ -11,6 +11,7 @@ A data.frame with 4 columns and 70 rows:\tabular{ll}{
    \emph{research_category} \tab Research category name \cr
    \emph{research_subcategory_code} \tab Four digit research sub-category code \cr
    \emph{research_subcategory} \tab Research sub-category name \cr
+   \emph{code} \tab Concatenated research category and sub-category code \cr
 }
 }
 \source{

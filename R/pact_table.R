@@ -90,7 +90,7 @@ pact_table_topic_group <- function(pact_data_list_cols,
     )
 
     tidy_df <- tidy_df |>
-      tidyr::unnest(cols = nested_group_cols)
+      tidyr::unnest(cols = dplyr::any_of(nested_group_cols))
   } else {
     if (length(nested_group_cols) == 0) {
       tidy_df
@@ -100,7 +100,7 @@ pact_table_topic_group <- function(pact_data_list_cols,
         paste0(
           "tidyr::unnest(cols = ",
           nested_group_cols,
-          ")" 
+          ")"
         ) |>
           paste(collapse = " |> ")
       )
@@ -114,7 +114,7 @@ pact_table_topic_group <- function(pact_data_list_cols,
     tidy_df <- tidy_df |>
       dplyr::mutate(
         dplyr::across(
-          .cols = dplyr::contains(c(group, topic)),
+          .cols = dplyr::contains(c(dplyr::any_of(group), dplyr::any_of(topic))),
           .fns = ~ifelse(.x %in% na_values, NA_character_, .x)
         )
       )
@@ -148,7 +148,7 @@ pact_table_topic_group <- function(pact_data_list_cols,
   ) |>
     eval() |>
     dplyr::filter(.data$grant_amount_type == "Specified") |>
-    dplyr::select(c(group, topic, "n_grants_specified"))
+    dplyr::select(dplyr::any_of(c(group, topic, "n_grants_specified")))
 
   ## Total amount of grants ----
   amount_df <- parse(
@@ -181,7 +181,7 @@ pact_table_disease <- function(pact_data_list_cols, group = NULL,
   ## Process table
   pact_table_topic_group(
     pact_data_list_cols = pact_data_list_cols, 
-    topic = "Disease", group = group, na_values = na_values
+    topic = "Diseases", group = group, na_values = na_values
   )
 }
 
