@@ -45,7 +45,6 @@ test_that("pact_download_website forwards overwrite/quiet flags", {
   expect_false(captured$quiet)
 })
 
-
 test_that("pact_download_figshare resolves URL/filename from the client", {
   # Fake client: no token, no network. Mimics the deposits R6 client surface
   # that pact_download_figshare touches (deposit_retrieve + hostdata).

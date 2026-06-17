@@ -154,8 +154,7 @@ figshare_data_raw
 
 ```{r usage-3e, eval = FALSE}
 pact_read_figshare(pact_client) |>
-  pact_process_figshare() |>
-  tibble::tibble()
+  pact_process_figshare()
 ```
 
 ```{r usage-3f, echo = FALSE}

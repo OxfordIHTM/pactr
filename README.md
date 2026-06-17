@@ -237,8 +237,7 @@ which outputs a data.frame with 4638 records and 860 fields.
 
 ``` r
 pact_read_figshare(pact_client) |>
-  pact_process_figshare() |>
-  tibble::tibble()
+  pact_process_figshare()
 ```
 
     #> # A tibble: 4,637 × 37
@@ -280,7 +279,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/Rtmp498KV1/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpFrcCEd/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
