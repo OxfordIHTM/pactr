@@ -15,3 +15,5 @@
 ^Meta$
 ^pandemic_pact_figshare\.zip$
 ^CITATION\.cff$
+^\.env$
+^\.Rprofile$

@@ -12,4 +12,6 @@ inst/doc
 /doc/
 /Meta/
 
-pandemic_pact_figshare.zip
+*.zip
+.env
+.Rprofile

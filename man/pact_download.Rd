@@ -2,10 +2,13 @@
 % Please edit documentation in R/pact_download.R
 \name{pact_download_figshare}
 \alias{pact_download_figshare}
+\alias{pact_download_figshare_private}
 \alias{pact_download_website}
 \title{Download outputs/assets from Pandemic PACT Figshare repository}
 \usage{
 pact_download_figshare(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
+
+pact_download_figshare_private(.url, path, overwrite = FALSE, quiet = TRUE)
 
 pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 }
@@ -23,6 +26,10 @@ repository.}
 existing files will be overwritten. Default is FALSE.}
 
 \item{quiet}{Logical. If TRUE (default), download progress is not displayed.}
+
+\item{.url}{A URL to the bulk download facility provided by Figshare for the
+private Pandemic PACT dataset collection. If provided (not missing), this
+will override the default URL for the private dataset collection.}
 }
 \value{
 The full path of the downloaded file.
