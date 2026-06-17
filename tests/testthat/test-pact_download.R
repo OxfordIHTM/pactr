@@ -46,50 +46,6 @@ test_that("pact_download_website forwards overwrite/quiet flags", {
 })
 
 
-test_that("pact_download_figshare_private builds the correct URL and destfile", {
-  captured <- NULL
-
-  local_mocked_bindings(
-    pact_download_url = function(.url, destfile, overwrite = FALSE, quiet = TRUE, ...) {
-      captured <<- list(
-        url = .url, destfile = destfile, overwrite = overwrite, quiet = quiet
-      )
-      
-      destfile
-    }
-  )
-
-  out <- pact_download_figshare_private(path = tempdir())
-
-  expect_identical(
-    captured$url,
-    "https://figshare.com/ndownloader/articles/26937448?private_link=9e712aa1f4255e37b0db"
-  )
-  expect_identical(
-    captured$destfile, file.path(tempdir(), "pandemic_pact_figshare.zip")
-  )
-  expect_false(captured$overwrite)
-  expect_identical(out, file.path(tempdir(), "pandemic_pact_figshare.zip"))
-})
-
-# test_that("pact_download_figshare_private forwards overwrite/quiet flags", {
-#   captured <- NULL
-  
-#   local_mocked_bindings(
-#     pact_download_url = function(.url, destfile, overwrite = FALSE, quiet = TRUE, ...) {
-#       captured <<- list(overwrite = overwrite, quiet = quiet)
-#       destfile
-#     }
-  
-#   )
-#   pact_download_figshare_private(
-#     path = tempdir(), overwrite = TRUE, quiet = FALSE
-#   )
-#   expect_true(captured$overwrite)
-#   expect_false(captured$quiet)
-# })
-
-
 test_that("pact_download_figshare resolves URL/filename from the client", {
   # Fake client: no token, no network. Mimics the deposits R6 client surface
   # that pact_download_figshare touches (deposit_retrieve + hostdata).
@@ -127,6 +83,49 @@ test_that("pact_download_figshare resolves URL/filename from the client", {
   expect_identical(captured$destfile, file.path(tempdir(), "demo.csv"))
   expect_identical(out, file.path(tempdir(), "demo.csv"))
 })
+
+
+test_that("pact_download_figshare_private resolves URL/filename from the client", {
+  # Fake client: no token, no network. Mimics the deposits R6 client surface
+  # that pact_download_figshare_private touches (deposit_retrieve + hostdata).
+  retrieved_id <- NULL
+  
+  fake_client <- local({
+    e <- new.env()
+    e$hostdata <- list(
+      files = data.frame(
+        id = 49007725,
+        download_url = "https://figshare.com/ndownloader/files/123",
+        name = "demo.csv"
+      )
+    )
+
+    e$deposit_retrieve <- function(deposit_id) retrieved_id <<- deposit_id
+    e
+  })
+
+  captured <- NULL
+  
+  local_mocked_bindings(
+    pact_download_url = function(.url, destfile, ...) {
+      captured <<- list(url = .url, destfile = destfile)
+      destfile
+    }
+  )
+
+  out <- pact_download_figshare_private(
+    fake_client, id = 49007725, path = tempdir()
+  )
+
+  expect_equal(retrieved_id, 26937448)
+  expect_identical(
+    captured$url,
+    "https://figshare.com/ndownloader/files/123"
+  )
+  expect_identical(captured$destfile, file.path(tempdir(), "demo.csv"))
+  expect_identical(out, file.path(tempdir(), "demo.csv"))
+})
+
 
 
 ## Tier 2: pact_download_url() itself, network mocked ----

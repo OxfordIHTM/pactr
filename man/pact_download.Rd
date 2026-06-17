@@ -8,7 +8,13 @@
 \usage{
 pact_download_figshare(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
 
-pact_download_figshare_private(.url, path, overwrite = FALSE, quiet = TRUE)
+pact_download_figshare_private(
+  pact_client,
+  id,
+  path,
+  overwrite = FALSE,
+  quiet = TRUE
+)
 
 pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 }

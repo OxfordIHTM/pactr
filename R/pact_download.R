@@ -56,16 +56,19 @@ pact_download_figshare <- function(pact_client,
 #' @export
 #'
  
-pact_download_figshare_private <- function(.url, path,
+pact_download_figshare_private <- function(pact_client,
+                                           id, path,
                                            overwrite = FALSE,
                                            quiet = TRUE) {
-  download_url <- "https://figshare.com/ndownloader/articles/26937448?private_link=9e712aa1f4255e37b0db"
+  pact_client$deposit_retrieve(deposit_id = 26937448)
 
-  if (!missing(.url)) {
-    download_url <- .url
-  }
+  figshare_df <- pact_client$hostdata$files |>
+    (\(x) x[x$id == id, ])()
 
-  destfile <- file.path(path, "pandemic_pact_figshare.zip")
+  download_url <- figshare_df$download_url
+  filename <- figshare_df$name
+
+  destfile <- file.path(path, filename)
 
   ## Nothing there yet -> just download normally ----
   if (!file.exists(destfile)) {
@@ -75,10 +78,12 @@ pact_download_figshare_private <- function(.url, path,
   }
 
   ## File exists -> download to temp, compare, then decide ----
-  tmp <- tempfile(fileext = ".zip")
+  tmp <- file.path(tempdir(), filename)
   on.exit(unlink(tmp), add = TRUE)
   
-  pact_download_url(.url = download_url, destfile = tmp, quiet = quiet)
+  pact_download_url(
+    .url = download_url, destfile = tmp, quiet = quiet
+  )
 
   if (same_file(tmp, destfile)) {
     ## identical content -> keep existing, skip the write
