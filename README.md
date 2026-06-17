@@ -292,6 +292,8 @@ pact_read_website()
 
 which results in the following:
 
+    #> Warning in unzip(zipfile = system.file("extdata", "pandemic-pact-grants.zip", :
+    #> error 1 in extracting from zip file
     #> # A tibble: 29,583 × 50
     #>    GrantID PubMedGrantId            OutbreakIds GrantTitleOriginal GrantTitleEng
     #>    <chr>   <chr>                    <lgl>       <chr>              <chr>        
