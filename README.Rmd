@@ -195,16 +195,8 @@ pact_read_website()
 which results in the following:
 
 ```{r usage-website-2b, echo = FALSE}
-unzip(
-  zipfile = system.file("extdata", "pandemic-pact-grants.zip", package = "pactr"),
-  exdir = tempdir()
-)
-
-pact_data_raw <- read.csv(file.path(tempdir(), "pandemic-pact-grants.csv")) |>
-  tibble::tibble()
-
+pact_data_raw <- pact_read_website()
 pact_data_raw
-#pact_read_website()
 ```
 
 ### Process the Pandemic PACT tracker dataset from the website
@@ -270,7 +262,7 @@ ggplot2::ggplot(
   ggplot2::theme(
     legend.position = "top",
     legend.title = ggplot2::element_blank(),
-    legend.text = ggplot2::element_text(size = 8),
+    legend.text = ggplot2::element_text(size = 6),
     legend.spacing.y = ggplot2::unit(2, 'points'),
     panel.border = ggplot2::element_blank(),
     panel.grid.minor = ggplot2::element_blank()

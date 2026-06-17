@@ -280,7 +280,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpTCAZAZ/pandemic-pact-grants.csv"
+    #> [1] "/tmp/Rtmp498KV1/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -293,8 +293,6 @@ pact_read_website()
 
 which results in the following:
 
-    #> Warning in unzip(zipfile = system.file("extdata", "pandemic-pact-grants.zip", :
-    #> error 1 in extracting from zip file
     #> # A tibble: 29,583 × 50
     #>    GrantID PubMedGrantId            OutbreakIds GrantTitleOriginal GrantTitleEng
     #>    <chr>   <chr>                    <lgl>       <chr>              <chr>        
@@ -373,7 +371,7 @@ citation("pactr")
 #> To cite pactr in publications use:
 #> 
 #>   Ernest Guevarra (2026). _pactr: An Interface to the Pandemic PACT
-#>   Repository_. R package version 0.0.9005,
+#>   Repository_. R package version 0.0.9007,
 #>   <https://oxford-ihtm.io/pactr/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -382,7 +380,7 @@ citation("pactr")
 #>     title = {pactr: An Interface to the Pandemic PACT Repository},
 #>     author = {{Ernest Guevarra}},
 #>     year = {2026},
-#>     note = {R package version 0.0.9005},
+#>     note = {R package version 0.0.9007},
 #>     url = {https://oxford-ihtm.io/pactr/},
 #>   }
 ```
