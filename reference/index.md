@@ -31,6 +31,7 @@
 ## Download
 
 - [`pact_download_figshare()`](https://oxford-ihtm.io/pactr/reference/pact_download.md)
+  [`pact_download_figshare_private()`](https://oxford-ihtm.io/pactr/reference/pact_download.md)
   [`pact_download_website()`](https://oxford-ihtm.io/pactr/reference/pact_download.md)
   : Download outputs/assets from Pandemic PACT Figshare repository
 

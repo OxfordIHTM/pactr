@@ -35,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="index.html">pactr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9006</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -257,7 +257,7 @@
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/Rtmpan4lAN/pandemic-pact-grants.csv"</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpTCAZAZ/pandemic-pact-grants.csv"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -266,26 +266,28 @@
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_website.html">pact_read_website</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which results in the following:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 29,583 × 50</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co">#&gt;    GrantID PubMedGrantId            OutbreakIds GrantTitleOriginal GrantTitleEng</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                    &lt;lgl&gt;       &lt;chr&gt;              &lt;chr&gt;        </span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#&gt;  1 C00018  unknown                  NA          "Mathematical mod… "Mathematica…</span></span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt;  2 C00019  CCP-nCoV                 NA          "Cohort follow-up… "Cohort foll…</span></span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt;  3 C00020  THERAMAB                 NA          "Identification a… "Identificat…</span></span>
-<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#&gt;  4 C00021  None                     NA          "Using social sci… "Using socia…</span></span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co">#&gt;  5 C00022  CoV-CONTACT              NA          "Follow-up of sub… "Follow-up o…</span></span>
-<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co">#&gt;  6 C00023  Réplicon                 NA          "Development of a… "Development…</span></span>
-<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="co">#&gt;  7 C00024  A Toolbox for SARS-CoV-… NA          "Potentiating exi… "Potentiatin…</span></span>
-<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co">#&gt;  8 C00025  NHP Model                NA          "Establishment of… "Establishme…</span></span>
-<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="co">#&gt;  9 C00026  SARS-CoV2-LIPS           NA          "Antibody profili… "Antibody pr…</span></span>
-<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="co">#&gt; 10 C00027  SARS-CoV-2_EVOLSERO      NA          "Evolution of SAR… "Evolution o…</span></span>
-<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 29,573 more rows</span></span>
-<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 45 more variables: AbstractOriginal &lt;chr&gt;, Abstract &lt;chr&gt;,</span></span>
-<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a><span class="co">#&gt; #   GrantStartYear &lt;int&gt;, PublicationYearOfAward &lt;int&gt;, GrantEndYear &lt;chr&gt;,</span></span>
-<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a><span class="co">#&gt; #   ResearchInstitutionName &lt;chr&gt;, HundredDaysMissionFlag &lt;int&gt;,</span></span>
-<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a><span class="co">#&gt; #   GrantAmountConverted &lt;dbl&gt;, StudySubject &lt;chr&gt;, Ethnicity &lt;chr&gt;,</span></span>
-<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a><span class="co">#&gt; #   AgeGroups &lt;chr&gt;, Rurality &lt;chr&gt;, VulnerablePopulations &lt;chr&gt;,</span></span>
-<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a><span class="co">#&gt; #   OccupationalGroups &lt;chr&gt;, StudyType &lt;chr&gt;, ClinicalTrial &lt;chr&gt;, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co">#&gt; Warning in unzip(zipfile = system.file("extdata", "pandemic-pact-grants.zip", :</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co">#&gt; error 1 in extracting from zip file</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#&gt; # A tibble: 29,583 × 50</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#&gt;    GrantID PubMedGrantId            OutbreakIds GrantTitleOriginal GrantTitleEng</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                    &lt;lgl&gt;       &lt;chr&gt;              &lt;chr&gt;        </span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt;  1 C00018  unknown                  NA          "Mathematical mod… "Mathematica…</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#&gt;  2 C00019  CCP-nCoV                 NA          "Cohort follow-up… "Cohort foll…</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co">#&gt;  3 C00020  THERAMAB                 NA          "Identification a… "Identificat…</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co">#&gt;  4 C00021  None                     NA          "Using social sci… "Using socia…</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="co">#&gt;  5 C00022  CoV-CONTACT              NA          "Follow-up of sub… "Follow-up o…</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co">#&gt;  6 C00023  Réplicon                 NA          "Development of a… "Development…</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="co">#&gt;  7 C00024  A Toolbox for SARS-CoV-… NA          "Potentiating exi… "Potentiatin…</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="co">#&gt;  8 C00025  NHP Model                NA          "Establishment of… "Establishme…</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="co">#&gt;  9 C00026  SARS-CoV2-LIPS           NA          "Antibody profili… "Antibody pr…</span></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="co">#&gt; 10 C00027  SARS-CoV-2_EVOLSERO      NA          "Evolution of SAR… "Evolution o…</span></span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a><span class="co">#&gt; # ℹ 29,573 more rows</span></span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a><span class="co">#&gt; # ℹ 45 more variables: AbstractOriginal &lt;chr&gt;, Abstract &lt;chr&gt;,</span></span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a><span class="co">#&gt; #   GrantStartYear &lt;int&gt;, PublicationYearOfAward &lt;int&gt;, GrantEndYear &lt;chr&gt;,</span></span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a><span class="co">#&gt; #   ResearchInstitutionName &lt;chr&gt;, HundredDaysMissionFlag &lt;int&gt;,</span></span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a><span class="co">#&gt; #   GrantAmountConverted &lt;dbl&gt;, StudySubject &lt;chr&gt;, Ethnicity &lt;chr&gt;,</span></span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a><span class="co">#&gt; #   AgeGroups &lt;chr&gt;, Rurality &lt;chr&gt;, VulnerablePopulations &lt;chr&gt;,</span></span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a><span class="co">#&gt; #   OccupationalGroups &lt;chr&gt;, StudyType &lt;chr&gt;, ClinicalTrial &lt;chr&gt;, …</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="process-the-pandemic-pact-tracker-dataset-from-the-website">Process the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -327,7 +329,7 @@
 <span><span class="co">#&gt; To cite pactr in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Ernest Guevarra (2026). _pactr: An Interface to the Pandemic PACT</span></span>
-<span><span class="co">#&gt;   Repository_. R package version 0.0.9003,</span></span>
+<span><span class="co">#&gt;   Repository_. R package version 0.0.9005,</span></span>
 <span><span class="co">#&gt;   &lt;https://oxford-ihtm.io/pactr/&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
@@ -336,7 +338,7 @@
 <span><span class="co">#&gt;     title = {pactr: An Interface to the Pandemic PACT Repository},</span></span>
 <span><span class="co">#&gt;     author = {{Ernest Guevarra}},</span></span>
 <span><span class="co">#&gt;     year = {2026},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.0.9003},</span></span>
+<span><span class="co">#&gt;     note = {R package version 0.0.9005},</span></span>
 <span><span class="co">#&gt;     url = {https://oxford-ihtm.io/pactr/},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the <code><a href="reference/pact_cite.html">pact_cite()</a></code> function as follows:</p>
