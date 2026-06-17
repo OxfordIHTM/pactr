@@ -6,9 +6,6 @@
 #'   `pact_client_set()`.
 #' @param id A unique integer value identifying a specific file in the
 #'   repository.
-#' @param .url A URL to the bulk download facility provided by Figshare for the
-#'   private Pandemic PACT dataset collection. If provided (not missing), this
-#'   will override the default URL for the private dataset collection.
 #' @param path The local directory where file is to be downloaded.
 #' @param overwrite Logical. Should existing files be overwritten? If TRUE,
 #'   existing files will be overwritten. Default is FALSE.
