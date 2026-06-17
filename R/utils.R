@@ -549,3 +549,13 @@ pact_download_url <- function(.url,
 
   destfile
 }
+
+
+#' @keywords internal
+
+same_file <- function(path_a, path_b) {
+  if (!file.exists(path_a) || !file.exists(path_b)) return(FALSE)
+  ## cheap size pre-check before hashing
+  if (file.info(path_a)$size != file.info(path_b)$size) return(FALSE)
+  unname(tools::md5sum(path_a) == tools::md5sum(path_b))
+}

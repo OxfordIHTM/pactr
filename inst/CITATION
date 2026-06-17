@@ -4,6 +4,6 @@ bibentry(
   title    = "pactr: An Interface to the Pandemic PACT Repository",
   author   = person("Ernest Guevarra"),
   year     = "2026",
-  note     = "R package version 0.0.9005",
+  note     = "R package version 0.0.9006",
   url      = "https://oxford-ihtm.io/pactr/"
 )

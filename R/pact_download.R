@@ -6,6 +6,9 @@
 #'   `pact_client_set()`.
 #' @param id A unique integer value identifying a specific file in the
 #'   repository.
+#' @param .url A URL to the bulk download facility provided by Figshare for the
+#'   private Pandemic PACT dataset collection. If provided (not missing), this
+#'   will override the default URL for the private dataset collection.
 #' @param path The local directory where file is to be downloaded.
 #' @param overwrite Logical. Should existing files be overwritten? If TRUE,
 #'   existing files will be overwritten. Default is FALSE.
@@ -47,6 +50,56 @@ pact_download_figshare <- function(pact_client,
   )
 }
 
+
+#'
+#' @rdname pact_download
+#' @export
+#'
+ 
+pact_download_figshare_private <- function(.url, path,
+                                           overwrite = FALSE,
+                                           quiet = TRUE) {
+  download_url <- "https://figshare.com/ndownloader/articles/26937448?private_link=9e712aa1f4255e37b0db"
+
+  if (!missing(.url)) {
+    download_url <- .url
+  }
+
+  destfile <- file.path(path, "pandemic_pact_figshare.zip")
+
+  ## Nothing there yet -> just download normally ----
+  if (!file.exists(destfile)) {
+    return(
+      pact_download_url(.url = download_url, destfile = destfile, quiet = quiet)
+    )
+  }
+
+  ## File exists -> download to temp, compare, then decide ----
+  tmp <- tempfile(fileext = ".zip")
+  on.exit(unlink(tmp), add = TRUE)
+  
+  pact_download_url(.url = download_url, destfile = tmp, quiet = quiet)
+
+  if (same_file(tmp, destfile)) {
+    ## identical content -> keep existing, skip the write
+    message(
+      "Existing file is identical to the remote file; keeping local copy."
+    )
+    
+    return(destfile)
+  }
+
+  if (!overwrite) {
+    message(
+      "Remote file differs from local file. Set `overwrite = TRUE` to replace."
+    )
+
+    return(destfile)
+  }
+
+  file.copy(tmp, destfile, overwrite = TRUE)
+  destfile
+}
 
 #'
 #' @rdname pact_download

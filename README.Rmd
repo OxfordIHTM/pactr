@@ -297,7 +297,7 @@ disease_df |>
       fill = oxthema::get_oxford_colour("Oxford blue"), 
       colour = oxthema::get_oxford_colour("Oxford blue") 
     ),
-    strip.text = ggplot2::element_text(colour = "#FFFFFF", size = 9),
+    strip.text = ggplot2::element_text(colour = "#FFFFFF", size = 8),
     panel.border = ggplot2::element_blank(),
     panel.grid.minor = ggplot2::element_blank(),
     axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1),
