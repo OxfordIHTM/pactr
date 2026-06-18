@@ -1,49 +1,59 @@
 #'
-#' List all available outputs/assets from Pandemic PACT's Figshare repository
+#' List all available outputs/assets from Pandemic PACT's Figshare repositories.
 #'
 #' @param pact_client An interface client to the Pandemic PACT Figshare
 #'   repository. This is usually set/created through a call to
 #'   `pact_client_set()`.
-#' @param path_to_download Path to downloaded zip file from Pandemic PACT's
-#'   Figshare repository
 #'
-#' @returns A data.frame of available outputs/assets from Pandemic PACT's
-#'   Figshare repository.
+#' @returns A `tibble::tibble()` of available outputs/assets from the
+#'   Pandemic PACT Figshare repository.
 #'
 #' @examples
 #' \dontrun{
-#'   pact_list(pact_client = pact_client_set())
+#'   pact_figshare_list(pact_client = pact_client_set())
 #' }
 #'
-#' @rdname pact_list
+#' @rdname pact_figshare_list
 #' @export
 #'
-pact_list <- function(pact_client) {
-  pact_client$deposits_search(group = 53043)
+pact_figshare_list <- function(pact_client) {
+  df <- pact_figshare_list_group(pact_client = pact_client)
+
+  lapply(
+    X = df$id,
+    FUN = function(x) {
+      pact_client$deposit_retrieve(deposit_id = x) |>
+        (\(x) x$hostdata$files)() |>
+        tibble::as_tibble() |>
+        dplyr::mutate(deposit_id = x, .before = 1)
+    }
+  ) |>
+    dplyr::bind_rows() |>
+    dplyr::left_join(
+      y = df |> 
+        dplyr::select(
+          dplyr::all_of(c("group_id", "project_id", "id", "title"))
+        ),
+      by = c("deposit_id" = "id")
+    )
 }
 
-#'
-#' @rdname pact_list
-#' @export
-#'
 
-pact_list_data <- function(pact_client) {
-  pact_client$deposits_search(group = 53043) |>
-    dplyr::filter(.data$defined_type == 3)
-}
+#' @keywords internal
 
+pact_figshare_list_group <- function(pact_client, page = 1L) {
+  ## Recursively retrieve all pages of deposits ----
+  df <- pact_client$deposits_search(
+    page_size = 10L, group = 53043, page = page
+  ) |>
+    tibble::as_tibble()
 
-#'
-#' @rdname pact_list
-#' @export
-#' 
-
-pact_list_download <- function(path_to_download) {
-  if (tools::file_ext(path_to_download) != "zip") {
-    stop("`path_to_download` should be a zip file. Try again.")
+  if (nrow(df) == 0) {
+    NULL
+  } else {
+    dplyr::bind_rows(
+      df, pact_figshare_list_group(pact_client, page = page + 1L)
+    ) |>
+      dplyr::mutate(group_id = as.integer(53043), .before = 1)
   }
-
-  utils::unzip(zipfile = path_to_download, list = TRUE) |>
-    dplyr::arrange(.data$Name)
 }
-

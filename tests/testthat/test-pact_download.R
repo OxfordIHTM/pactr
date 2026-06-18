@@ -84,49 +84,6 @@ test_that("pact_download_figshare resolves URL/filename from the client", {
 })
 
 
-test_that("pact_download_figshare_private resolves URL/filename from the client", {
-  # Fake client: no token, no network. Mimics the deposits R6 client surface
-  # that pact_download_figshare_private touches (deposit_retrieve + hostdata).
-  retrieved_id <- NULL
-  
-  fake_client <- local({
-    e <- new.env()
-    e$hostdata <- list(
-      files = data.frame(
-        id = 49007725,
-        download_url = "https://figshare.com/ndownloader/files/123",
-        name = "demo.csv"
-      )
-    )
-
-    e$deposit_retrieve <- function(deposit_id) retrieved_id <<- deposit_id
-    e
-  })
-
-  captured <- NULL
-  
-  local_mocked_bindings(
-    pact_download_url = function(.url, destfile, ...) {
-      captured <<- list(url = .url, destfile = destfile)
-      destfile
-    }
-  )
-
-  out <- pact_download_figshare_private(
-    fake_client, id = 49007725, path = tempdir()
-  )
-
-  expect_equal(retrieved_id, 26937448)
-  expect_identical(
-    captured$url,
-    "https://figshare.com/ndownloader/files/123"
-  )
-  expect_identical(captured$destfile, file.path(tempdir(), "demo.csv"))
-  expect_identical(out, file.path(tempdir(), "demo.csv"))
-})
-
-
-
 ## Tier 2: pact_download_url() itself, network mocked ----
 
 test_that("pact_download_url skips the download when file exists", {

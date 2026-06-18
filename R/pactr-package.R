@@ -19,7 +19,7 @@
 #' @importFrom deposits depositsClient
 #' @importFrom utils read.csv download.file readCitationFile
 #' @importFrom methods is
-#' @importFrom tibble tibble
+#' @importFrom tibble tibble as_tibble
 #' @importFrom stringr str_remove str_remove_all str_replace str_replace_all str_trim str_split
 #' @importFrom rlang .data
 #' @importFrom dplyr left_join mutate group_by ungroup across select filter right_join arrange relocate pull

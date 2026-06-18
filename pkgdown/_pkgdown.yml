@@ -57,7 +57,7 @@ reference:
 
   - title: List
     contents:
-    - pact_list
+    - pact_figshare_list
 
   - title: Get
     contents:
@@ -73,7 +73,6 @@ reference:
   - title: Download
     contents:
     - pact_download_figshare
-    - pact_download_figshare_private
     - pact_download_website
 
   - title: Process

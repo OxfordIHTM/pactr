@@ -2,19 +2,12 @@
 % Please edit documentation in R/pact_download.R
 \name{pact_download_figshare}
 \alias{pact_download_figshare}
-\alias{pact_download_figshare_private}
 \alias{pact_download_website}
 \title{Download outputs/assets from Pandemic PACT Figshare repository}
 \usage{
 pact_download_figshare(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
 
-pact_download_figshare_private(
-  pact_client,
-  id,
-  path,
-  overwrite = FALSE,
-  quiet = TRUE
-)
+pact_download_figshare(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
 
 pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 }
@@ -23,8 +16,10 @@ pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 repository. This is usually set/created through a call to
 \code{pact_client_set()}.}
 
-\item{id}{A unique integer value identifying a specific file in the
-repository.}
+\item{id}{An integer value unique identifier for a specific file in the
+Pandemic PACT Figshare repository. A list of files available from the
+Pandemic PACT Figshare repository with their corresponding \code{id} can be
+retrieved via a call to \code{pact_figshare_list()}.}
 
 \item{path}{The local directory where file is to be downloaded.}
 
@@ -34,7 +29,7 @@ existing files will be overwritten. Default is FALSE.}
 \item{quiet}{Logical. If TRUE (default), download progress is not displayed.}
 }
 \value{
-The full path of the downloaded file.
+The full path to the downloaded file.
 }
 \description{
 Download outputs/assets from Pandemic PACT Figshare repository

@@ -19,7 +19,7 @@ repository.}
 }
 \value{
 An integer or character value or vector of values for requested
-identifier.
+identifier or information.
 }
 \description{
 Get outputs/assets identifiers
