@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pactr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,18 +46,19 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.0.0.9007" id="pactr-v0009007-development-version">pactr v0.0.0.9007 (development version)<a class="anchor" aria-label="anchor" href="#pactr-v0009007-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.0.0.9008" id="pactr-v0009008-development-version">pactr v0.0.0.9008 (development version)<a class="anchor" aria-label="anchor" href="#pactr-v0009008-development-version"></a></h2>
 <p>This is a pre-release, development version. In this release:</p>
 <div class="section level3">
-<h3 id="new-features-0-0-0-9007">New features<a class="anchor" aria-label="anchor" href="#new-features-0-0-0-9007"></a></h3>
-<ul><li>created <code><a href="../reference/pact_download.html">pact_download_figshare_private()</a></code> function for downloading private datasets from the Pandemic PACT Figshare repository.</li>
+<h3 id="new-features-0-0-0-9008">New features<a class="anchor" aria-label="anchor" href="#new-features-0-0-0-9008"></a></h3>
+<ul><li>created <code>pact_download_figshare_private()</code> function for downloading private datasets from the Pandemic PACT Figshare repository.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="bug-fixes-and-improvements-0-0-0-9007">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-0-0-0-9007"></a></h3>
+<h3 id="bug-fixes-and-improvements-0-0-0-9008">Bug fixes and improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-improvements-0-0-0-9008"></a></h3>
 <ul><li><p><code>pact_download_*()</code> functions for downloading data from the Pandemic PACT Figshare repository or from the Pandemic PACT website now use <code>httr2</code> for HTTP requests rather than <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file()</a></code> base function. This allows for more robust and flexible handling of HTTP requests and addition of request options such as timeouts, retries, and throttling. This change also supports easier implementation of mock tests.</p></li>
 <li><p><code><a href="../reference/pact_process_website.html">pact_process_website()</a></code> function for processing data from the Pandemic PACT website has been refactored to take into account the new data structure of the Pandemic PACT dataset available from the website.</p></li>
 <li><p><code><a href="../reference/pact_read_website.html">pact_read_website()</a></code> function for reading data from the Pandemic PACT website has been updated to reflect the new URL used in the website for accessing the dataset.</p></li>
 <li><p><code>pact_table_*()</code> functions for creating tables from the Pandemic PACT data have been updated to reflect the new data structure.</p></li>
+<li><p><code><a href="../reference/pact_figshare_list.html">pact_figshare_list()</a></code> replaces <code>pact_list()</code> to signify that that is a Figshare specific function. <code><a href="../reference/pact_figshare_list.html">pact_figshare_list()</a></code> has additional functionality to retrieve and return all available outputs/assets from the Figshare repository of Pandemic PACT.</p></li>
 <li><p>package tests have been refactored so as to limit API calls and network calls through use of mock tests whenever possible.</p></li>
 </ul></div>
 </div>

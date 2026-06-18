@@ -1,15 +1,13 @@
 # Changelog
 
-## pactr v0.0.0.9007 (development version)
+## pactr v0.0.0.9008 (development version)
 
 This is a pre-release, development version. In this release:
 
 ### New features
 
-- created
-  [`pact_download_figshare_private()`](https://oxford-ihtm.io/pactr/reference/pact_download.md)
-  function for downloading private datasets from the Pandemic PACT
-  Figshare repository.
+- created `pact_download_figshare_private()` function for downloading
+  private datasets from the Pandemic PACT Figshare repository.
 
 ### Bug fixes and improvements
 
@@ -34,6 +32,13 @@ This is a pre-release, development version. In this release:
 
 - `pact_table_*()` functions for creating tables from the Pandemic PACT
   data have been updated to reflect the new data structure.
+
+- [`pact_figshare_list()`](https://oxford-ihtm.io/pactr/reference/pact_figshare_list.md)
+  replaces `pact_list()` to signify that that is a Figshare specific
+  function.
+  [`pact_figshare_list()`](https://oxford-ihtm.io/pactr/reference/pact_figshare_list.md)
+  has additional functionality to retrieve and return all available
+  outputs/assets from the Figshare repository of Pandemic PACT.
 
 - package tests have been refactored so as to limit API calls and
   network calls through use of mock tests whenever possible.

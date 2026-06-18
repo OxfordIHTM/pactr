@@ -7,13 +7,7 @@ Download outputs/assets from Pandemic PACT Figshare repository
 ``` r
 pact_download_figshare(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
 
-pact_download_figshare_private(
-  pact_client,
-  id,
-  path,
-  overwrite = FALSE,
-  quiet = TRUE
-)
+pact_download_figshare(pact_client, id, path, overwrite = FALSE, quiet = TRUE)
 
 pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 ```
@@ -28,7 +22,11 @@ pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 
 - id:
 
-  A unique integer value identifying a specific file in the repository.
+  An integer value unique identifier for a specific file in the Pandemic
+  PACT Figshare repository. A list of files available from the Pandemic
+  PACT Figshare repository with their corresponding `id` can be
+  retrieved via a call to
+  [`pact_figshare_list()`](https://oxford-ihtm.io/pactr/reference/pact_figshare_list.md).
 
 - path:
 
@@ -45,7 +43,7 @@ pact_download_website(path, overwrite = FALSE, quiet = TRUE)
 
 ## Value
 
-The full path of the downloaded file.
+The full path to the downloaded file.
 
 ## Examples
 

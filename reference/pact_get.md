@@ -25,7 +25,7 @@ pact_get_filename(pact_client, id)
 ## Value
 
 An integer or character value or vector of values for requested
-identifier.
+identifier or information.
 
 ## Examples
 

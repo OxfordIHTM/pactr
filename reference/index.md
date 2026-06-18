@@ -7,11 +7,9 @@
 
 ## List
 
-- [`pact_list()`](https://oxford-ihtm.io/pactr/reference/pact_list.md)
-  [`pact_list_data()`](https://oxford-ihtm.io/pactr/reference/pact_list.md)
-  [`pact_list_download()`](https://oxford-ihtm.io/pactr/reference/pact_list.md)
+- [`pact_figshare_list()`](https://oxford-ihtm.io/pactr/reference/pact_figshare_list.md)
   : List all available outputs/assets from Pandemic PACT's Figshare
-  repository
+  repositories.
 
 ## Get
 
@@ -31,7 +29,6 @@
 ## Download
 
 - [`pact_download_figshare()`](https://oxford-ihtm.io/pactr/reference/pact_download.md)
-  [`pact_download_figshare_private()`](https://oxford-ihtm.io/pactr/reference/pact_download.md)
   [`pact_download_website()`](https://oxford-ihtm.io/pactr/reference/pact_download.md)
   : Download outputs/assets from Pandemic PACT Figshare repository
 

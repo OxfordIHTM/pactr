@@ -35,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="index.html">pactr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
 </h3>
 <p>To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_list</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>The output is a <code>data.frame</code> containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming interface (API)</a> and are either set by the Pandemic PACT data team or by Figshare. The data.frame would look as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 × 20</span></span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt;    project_id      id title doi   handle url   published_date thumb defined_type</span></span>
@@ -157,7 +157,7 @@
 <p>To download a specific output/asset - say the scoping review data - from the Pandemic PACT Figshare repository, issue the following commands:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Get the unique identifier for the scoping review data from Figshare ----</span></span>
-<span><span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pact_list.html">pact_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="va">file_id</span> <span class="op">&lt;-</span> <span class="fu">pact_list</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"Scoping Review Data"</span>, select <span class="op">=</span> <span class="va">id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
