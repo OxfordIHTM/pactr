@@ -237,8 +237,7 @@ which outputs a data.frame with 4638 records and 860 fields.
 ``` r
 
 pact_read_figshare(pact_client) |>
-  pact_process_figshare() |>
-  tibble::tibble()
+  pact_process_figshare()
 ```
 
 ``` R
@@ -285,7 +284,7 @@ pact_download_website(path = tempdir())
 which will return the path to the downloaded dataset:
 
 ``` R
-#> [1] "/tmp/RtmpTCAZAZ/pandemic-pact-grants.csv"
+#> [1] "/tmp/RtmpFrcCEd/pandemic-pact-grants.csv"
 ```
 
 ### Read the Pandemic PACT tracker dataset from the website
@@ -389,7 +388,7 @@ citation("pactr")
 #> To cite pactr in publications use:
 #> 
 #>   Ernest Guevarra (2026). _pactr: An Interface to the Pandemic PACT
-#>   Repository_. R package version 0.0.9005,
+#>   Repository_. R package version 0.0.9007,
 #>   <https://oxford-ihtm.io/pactr/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -398,7 +397,7 @@ citation("pactr")
 #>     title = {pactr: An Interface to the Pandemic PACT Repository},
 #>     author = {{Ernest Guevarra}},
 #>     year = {2026},
-#>     note = {R package version 0.0.9005},
+#>     note = {R package version 0.0.9007},
 #>     url = {https://oxford-ihtm.io/pactr/},
 #>   }
 ```

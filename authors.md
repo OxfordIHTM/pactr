@@ -11,13 +11,13 @@ Source:
 [`inst/CITATION`](https://github.com/OxfordIHTM/pactr/blob/main/inst/CITATION)
 
 Ernest Guevarra (2026). *pactr: An Interface to the Pandemic PACT
-Repository*. R package version 0.0.9006,
+Repository*. R package version 0.0.9007,
 <https://oxford-ihtm.io/pactr/>.
 
     @Manual{,
       title = {pactr: An Interface to the Pandemic PACT Repository},
       author = {{Ernest Guevarra}},
       year = {2026},
-      note = {R package version 0.0.9006},
+      note = {R package version 0.0.9007},
       url = {https://oxford-ihtm.io/pactr/},
     }
