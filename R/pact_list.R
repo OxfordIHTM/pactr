@@ -31,7 +31,9 @@ pact_figshare_list <- function(pact_client) {
     dplyr::bind_rows() |>
     dplyr::left_join(
       y = df |> 
-        dplyr::select(dplyr::all_of("group_id", "project_id", "id", "title")),
+        dplyr::select(
+          dplyr::all_of(c("group_id", "project_id", "id", "title"))
+        ),
       by = c("deposit_id" = "id")
     )
 }
