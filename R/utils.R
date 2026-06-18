@@ -550,7 +550,6 @@ pact_download_url <- function(.url,
   destfile
 }
 
-
 #' @keywords internal
 
 same_file <- function(path_a, path_b) {
