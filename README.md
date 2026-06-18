@@ -279,7 +279,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/RtmpFrcCEd/pandemic-pact-grants.csv"
+    #> [1] "/tmp/Rtmp8Vz0gA/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -292,8 +292,6 @@ pact_read_website()
 
 which results in the following:
 
-    #> Warning in unzip(zipfile = system.file("extdata", "pandemic-pact-grants.zip", :
-    #> error 1 in extracting from zip file
     #> # A tibble: 29,583 × 50
     #>    GrantID PubMedGrantId            OutbreakIds GrantTitleOriginal GrantTitleEng
     #>    <chr>   <chr>                    <lgl>       <chr>              <chr>        
