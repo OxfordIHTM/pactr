@@ -1,4 +1,4 @@
-# pactr v0.0.0.9007 (development version)
+# pactr v0.0.0.9008 (development version)
 
 This is a pre-release, development version. In this release:
 
@@ -15,6 +15,8 @@ This is a pre-release, development version. In this release:
 - `pact_read_website()` function for reading data from the Pandemic PACT website has been updated to reflect the new URL used in the website for accessing the dataset.
 
 - `pact_table_*()` functions for creating tables from the Pandemic PACT data have been updated to reflect the new data structure.
+
+- `pact_figshare_list()` replaces `pact_list()` to signify that that is a Figshare specific function. `pact_figshare_list()` has additional functionality to retrieve and return all available outputs/assets from the Figshare repository of Pandemic PACT.
 
 - package tests have been refactored so as to limit API calls and network calls through use of mock tests whenever possible.
 

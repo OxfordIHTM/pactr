@@ -21,7 +21,7 @@ test_that("filename is as expected", {
   pact_client <- pact_client_set()
 
   ## Get filename ----
-  filename <- pact_get_filename(pact_client, id = 24763548)
+  filename <- pact_get_filename(pact_client, id = 43544916)
 
   expect_equal(filename, "PandemicPACT-GloPIDRAndUKC_DemoData-Label_21-11-23.csv")
   expect_type(filename, "character")

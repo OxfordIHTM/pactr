@@ -4,14 +4,16 @@
 #' @param pact_client An interface client to the Pandemic PACT Figshare
 #'   repository. This is usually set/created through a call to
 #'   `pact_client_set()`.
-#' @param id A unique integer value identifying a specific file in the
-#'   repository.
+#' @param id An integer value unique identifier for a specific file in the
+#'   Pandemic PACT Figshare repository. A list of files available from the
+#'   Pandemic PACT Figshare repository with their corresponding `id` can be
+#'   retrieved via a call to `pact_figshare_list()`.
 #' @param path The local directory where file is to be downloaded.
 #' @param overwrite Logical. Should existing files be overwritten? If TRUE,
 #'   existing files will be overwritten. Default is FALSE.
 #' @param quiet Logical. If TRUE (default), download progress is not displayed.
 #'
-#' @returns The full path of the downloaded file.
+#' @returns The full path to the downloaded file.
 #'
 #' @examples
 #' \dontrun{
@@ -29,15 +31,11 @@
 #'
 
 pact_download_figshare <- function(pact_client,
-                                   id, path,
+                                   id, 
+                                   path,
                                    overwrite = FALSE, 
                                    quiet = TRUE) {
-  ## Retrieve specified file ----
-  pact_client$deposit_retrieve(deposit_id = id)
 
-  ## Get download URL and filename of specified file ----
-  download_url <- pact_client$hostdata$files$download_url
-  filename <- pact_client$hostdata$files$name
 
   pact_download_url(
     .url = download_url,
@@ -53,17 +51,16 @@ pact_download_figshare <- function(pact_client,
 #' @export
 #'
  
-pact_download_figshare_private <- function(pact_client,
-                                           id, path,
-                                           overwrite = FALSE,
-                                           quiet = TRUE) {
-  pact_client$deposit_retrieve(deposit_id = 26937448)
+pact_download_figshare <- function(pact_client,
+                                   id, path,
+                                   overwrite = FALSE,
+                                   quiet = TRUE) {
+  ## Retrieve specified file ----
+  pact_client$deposit_retrieve(deposit_id = id)
 
-  figshare_df <- pact_client$hostdata$files |>
-    (\(x) x[x$id == id, ])()
-
-  download_url <- figshare_df$download_url
-  filename <- figshare_df$name
+  ## Get download URL and filename of specified file ----
+  download_url <- pact_client$hostdata$files$download_url
+  filename <- pact_client$hostdata$files$name
 
   destfile <- file.path(path, filename)
 

@@ -8,7 +8,7 @@
 #'   repository.
 #'
 #' @returns An integer or character value or vector of values for requested
-#'   identifier.
+#'   identifier or information.
 #'
 #' @examples
 #' \dontrun{
@@ -22,7 +22,7 @@
 #'
 
 pact_get_group_id <- function(pact_client) {
-  pact_list(pact_client = pact_client) |>
+  pact_figshare_list(pact_client = pact_client) |>
     dplyr::pull(.data$group_id) |>
     unique() |>
     unlist()
@@ -34,6 +34,6 @@ pact_get_group_id <- function(pact_client) {
 #'
 
 pact_get_filename <- function(pact_client, id) {
-  pact_client$deposit_retrieve(deposit_id = id) |>
-    (\(x) x$hostdata$files$name)()
+  pact_figshare_list(pact_client = pact_client) |>
+    (\(x) x[x$id == id, ]$name)()
 }
