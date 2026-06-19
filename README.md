@@ -124,7 +124,7 @@ To list available outputs/assets from the Pandemic PACT Figshare
 repository, issue the following command:
 
 ``` r
-pact_list(pact_client)
+pact_figshare_list(pact_client)
 ```
 
 The output is a `data.frame` containing metadata regarding contents of
@@ -133,23 +133,22 @@ are those provided by [Figshare’s application programming interface
 (API)](https://docs.figshare.com/) and are either set by the Pandemic
 PACT data team or by Figshare. The data.frame would look as follows:
 
-    #> # A tibble: 10 × 20
-    #>    project_id      id title doi   handle url   published_date thumb defined_type
-    #>         <int>   <int> <chr> <chr> <chr>  <chr> <chr>          <chr>        <int>
-    #>  1     189177  2.69e7 Pand… 10.2… ""     http… 2026-06-15T15… ""               3
-    #>  2     189177  3.26e7 Pand… 10.2… ""     http… 2026-06-05T12… ""               3
-    #>  3     189177  3.01e7 Ebol… 10.2… ""     http… 2026-06-02T08… "htt…            6
-    #>  4         NA  3.23e7 Hant… 10.2… ""     http… 2026-05-13T08… "htt…            6
-    #>  5     267506  3.13e7 RRNA… 10.2… ""     http… 2026-03-05T15… "htt…            3
-    #>  6         NA  3.14e7 Pand… 10.2… ""     http… 2026-02-23T14… ""               3
-    #>  7     189177  2.54e7 Dire… 10.2… ""     http… 2026-02-12T00… "htt…            3
-    #>  8     189177  2.54e7 PACT… 10.2… ""     http… 2026-02-12T00… "htt…            1
-    #>  9     189177  3.11e7 <b>M… 10.2… ""     http… 2026-01-20T13… ""               3
-    #> 10         NA  3.09e7 Marb… 10.2… ""     http… 2025-12-22T13… "htt…            6
-    #> # ℹ 11 more variables: defined_type_name <chr>, group_id <int>,
-    #> #   url_private_api <chr>, url_public_api <chr>, url_private_html <chr>,
-    #> #   url_public_html <chr>, timeline <df[,2]>, resource_title <chr>,
-    #> #   resource_doi <chr>, created_date <chr>, modified_date <chr>
+    #> # A tibble: 133 × 12
+    #>    deposit_id       id name          size is_link_only download_url supplied_md5
+    #>         <int>    <int> <chr>        <int> <lgl>        <chr>        <chr>       
+    #>  1   26937448 49007725 PandemicPA… 4.74e4 FALSE        https://ndo… 2cca47b50c0…
+    #>  2   26937448 49007743 Mpox - Map… 1.15e4 FALSE        https://ndo… 99c03bed91c…
+    #>  3   26937448 49007755 research-c… 6.86e3 FALSE        https://ndo… b3d92f5954d…
+    #>  4   26937448 49506642 PandemicPA… 4.88e4 FALSE        https://ndo… a6b309ee2c8…
+    #>  5   26937448 49550799 PandemicPA… 7.07e7 FALSE        https://ndo… a139502ed97…
+    #>  6   26937448 51875285 PandemicPA… 5.08e4 FALSE        https://ndo… 7d7b44270ca…
+    #>  7   26937448 52153913 PandemicPA… 5.27e4 FALSE        https://ndo… 30f52675091…
+    #>  8   26937448 52661744 PandemicPA… 6.92e4 FALSE        https://ndo… f90b7282611…
+    #>  9   26937448 53222348 PandemicPA… 6.97e4 FALSE        https://ndo… 78cde9c0779…
+    #> 10   26937448 54135791 Covid_Gran… 1.61e4 FALSE        https://ndo… 8db01bd6c13…
+    #> # ℹ 123 more rows
+    #> # ℹ 5 more variables: computed_md5 <chr>, mimetype <chr>, group_id <int>,
+    #> #   project_id <int>, title <chr>
 
 This function is useful in getting an overview of what is currently
 available in the Pandemic PACT Figshare repository.
@@ -279,7 +278,7 @@ pact_download_website(path = tempdir())
 
 which will return the path to the downloaded dataset:
 
-    #> [1] "/tmp/Rtmp8Vz0gA/pandemic-pact-grants.csv"
+    #> [1] "/tmp/RtmpqWKUwZ/pandemic-pact-grants.csv"
 
 ### Read the Pandemic PACT tracker dataset from the website
 
@@ -370,7 +369,7 @@ citation("pactr")
 #> To cite pactr in publications use:
 #> 
 #>   Ernest Guevarra (2026). _pactr: An Interface to the Pandemic PACT
-#>   Repository_. R package version 0.0.9007,
+#>   Repository_. R package version 0.0.9009,
 #>   <https://oxford-ihtm.io/pactr/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -379,7 +378,7 @@ citation("pactr")
 #>     title = {pactr: An Interface to the Pandemic PACT Repository},
 #>     author = {{Ernest Guevarra}},
 #>     year = {2026},
-#>     note = {R package version 0.0.9007},
+#>     note = {R package version 0.0.9009},
 #>     url = {https://oxford-ihtm.io/pactr/},
 #>   }
 ```

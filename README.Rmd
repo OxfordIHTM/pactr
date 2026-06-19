@@ -91,13 +91,13 @@ Once a Figshare client has been setup, you can now perform the functionalities p
 To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:
 
 ```{r usage-1a, eval = FALSE}
-pact_list(pact_client)
+pact_figshare_list(pact_client)
 ```
 
 The output is a `data.frame` containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by [Figshare's application programming interface (API)](https://docs.figshare.com/) and are either set by the Pandemic PACT data team or by Figshare. The data.frame would look as follows:
 
 ```{r usage-1b, echo = FALSE}
-pact_list(pact_client) |>
+pact_figshare_list(pact_client) |>
   tibble::tibble()
 ```
 
@@ -123,37 +123,22 @@ This will download the file `Scoping_Review-Data.xlsx` from the Pandemic PACT Fi
 To read the Pandemic PACT tracker dataset into R, issue the following command:
 
 ```{r usage-3a, eval = FALSE}
-pact_read_figshare(pact_client)
+pact_data_read_figshare(pact_client)
 ```
 
 which outputs a data.frame with 4637 records and 860 fields. 
 
 ```{r usage-3b, echo = FALSE, cache = TRUE}
-figshare_data <- pact_read_figshare(pact_client) |>
+figshare_data <- pact_data_read_figshare(pact_client) |>
   tibble::tibble()
 
 figshare_data
 ```
 
-This function reads the *labelled* tracker dataset by default. If the raw dataset is required, then issue the following command:
-
-```{r usage-3c, eval = FALSE}
-pact_read_figshare(pact_client, tracker_type = "raw")
-```
-
-which outputs a data.frame with 4638 records and 860 fields.
-
-```{r usage-3d, echo = FALSE, cache = TRUE}
-figshare_data_raw <- pact_read_figshare(pact_client, tracker_type = "raw") |>
-  tibble::tibble()
-
-figshare_data_raw
-```
-
 ### Process the Pandemic PACT tracker dataset
 
 ```{r usage-3e, eval = FALSE}
-pact_read_figshare(pact_client) |>
+pact_data_read_figshare(pact_client) |>
   pact_process_figshare()
 ```
 

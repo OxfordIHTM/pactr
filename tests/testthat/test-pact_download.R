@@ -160,7 +160,7 @@ test_that("[integration] pact_download_website pulls the real CSV once", {
 test_that("[integration] pact_download_figshare pulls a real file once", {
   skip_on_cran()
   skip_if_offline()
-  skip_if(Sys.getenv("PACTR_INTEGRATION_TESTS") == "")
+  skip_if(Sys.getenv("PACTR_INTEGRATION_TESTS") == FALSE)
   skip_if(Sys.getenv("FIGSHARE_TOKEN") == "")
 
   client <- pact_client_set()

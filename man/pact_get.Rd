@@ -3,11 +3,14 @@
 \name{pact_get_group_id}
 \alias{pact_get_group_id}
 \alias{pact_get_filename}
+\alias{pact_get_url}
 \title{Get outputs/assets identifiers}
 \usage{
-pact_get_group_id(pact_client)
+pact_get_group_id(pact_client, id)
 
 pact_get_filename(pact_client, id)
+
+pact_get_url(pact_client, id)
 }
 \arguments{
 \item{pact_client}{An interface client to the Pandemic PACT Figshare
