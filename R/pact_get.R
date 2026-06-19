@@ -21,11 +21,9 @@
 #' @export
 #'
 
-pact_get_group_id <- function(pact_client) {
+pact_get_group_id <- function(pact_client, id) {
   pact_figshare_list(pact_client = pact_client) |>
-    dplyr::pull(.data$group_id) |>
-    unique() |>
-    unlist()
+    (\(x) x[x$id == id, ]$group_id)()
 }
 
 #'
@@ -37,3 +35,15 @@ pact_get_filename <- function(pact_client, id) {
   pact_figshare_list(pact_client = pact_client) |>
     (\(x) x[x$id == id, ]$name)()
 }
+
+
+#'
+#' @rdname pact_get
+#' @export
+#' 
+
+pact_get_url <- function(pact_client, id) {
+  pact_figshare_list(pact_client = pact_client) |>
+    (\(x) x[x$id == id, ]$download_url)()
+}
+

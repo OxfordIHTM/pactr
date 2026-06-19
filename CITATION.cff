@@ -8,7 +8,7 @@ message: 'To cite package "pactr" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'pactr: An Interface to the Pandemic PACT Database'
-version: 0.0.0.9007
+version: 0.0.0.9009
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.pactr
@@ -33,7 +33,7 @@ preferred-citation:
   authors:
   - name: Ernest Guevarra
   year: '2026'
-  notes: R package version 0.0.9007
+  notes: R package version 0.0.9009
   url: https://oxford-ihtm.io/pactr/
 repository: https://oxfordihtm.r-universe.dev/
 repository-code: https://github.com/OxfordIHTM/pactr
