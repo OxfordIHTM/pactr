@@ -5,9 +5,11 @@ Get outputs/assets identifiers
 ## Usage
 
 ``` r
-pact_get_group_id(pact_client)
+pact_get_group_id(pact_client, id)
 
 pact_get_filename(pact_client, id)
+
+pact_get_url(pact_client, id)
 ```
 
 ## Arguments

@@ -15,14 +15,15 @@
 
 - [`pact_get_group_id()`](https://oxford-ihtm.io/pactr/reference/pact_get.md)
   [`pact_get_filename()`](https://oxford-ihtm.io/pactr/reference/pact_get.md)
+  [`pact_get_url()`](https://oxford-ihtm.io/pactr/reference/pact_get.md)
   : Get outputs/assets identifiers
 
 ## Read
 
-- [`pact_read_figshare()`](https://oxford-ihtm.io/pactr/reference/pact_read_figshare.md)
+- [`pact_data_read_figshare()`](https://oxford-ihtm.io/pactr/reference/pact_read_figshare.md)
   [`pact_read_figshare_dictionary()`](https://oxford-ihtm.io/pactr/reference/pact_read_figshare.md)
-  [`pact_read_figshare_download()`](https://oxford-ihtm.io/pactr/reference/pact_read_figshare.md)
-  : Read datasets from the Pandemic PACT Figshare repository
+  : Read Pandemic PACT tracker dataset from the Pandemic PACT Figshare
+  repository
 - [`pact_read_website()`](https://oxford-ihtm.io/pactr/reference/pact_read_website.md)
   : Read datasets from the Pandemic PACT website
 

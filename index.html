@@ -35,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="index.html">pactr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9008</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9009</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -130,25 +130,24 @@
 </h3>
 <p>To list available outputs/assets from the Pandemic PACT Figshare repository, issue the following command:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">pact_list</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_figshare_list.html">pact_figshare_list</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>The output is a <code>data.frame</code> containing metadata regarding contents of the Figshare Pandemic PACT group. The information within the metadata are those provided by <a href="https://docs.figshare.com/" class="external-link">Figshare’s application programming interface (API)</a> and are either set by the Pandemic PACT data team or by Figshare. The data.frame would look as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 10 × 20</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt;    project_id      id title doi   handle url   published_date thumb defined_type</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt;         &lt;int&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;        &lt;int&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt;  1     189177  2.69e7 Pand… 10.2… ""     http… 2026-06-15T15… ""               3</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt;  2     189177  3.26e7 Pand… 10.2… ""     http… 2026-06-05T12… ""               3</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt;  3     189177  3.01e7 Ebol… 10.2… ""     http… 2026-06-02T08… "htt…            6</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt;  4         NA  3.23e7 Hant… 10.2… ""     http… 2026-05-13T08… "htt…            6</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;  5     267506  3.13e7 RRNA… 10.2… ""     http… 2026-03-05T15… "htt…            3</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt;  6         NA  3.14e7 Pand… 10.2… ""     http… 2026-02-23T14… ""               3</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt;  7     189177  2.54e7 Dire… 10.2… ""     http… 2026-02-12T00… "htt…            3</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt;  8     189177  2.54e7 PACT… 10.2… ""     http… 2026-02-12T00… "htt…            1</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt;  9     189177  3.11e7 &lt;b&gt;M… 10.2… ""     http… 2026-01-20T13… ""               3</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; 10         NA  3.09e7 Marb… 10.2… ""     http… 2025-12-22T13… "htt…            6</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 11 more variables: defined_type_name &lt;chr&gt;, group_id &lt;int&gt;,</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; #   url_private_api &lt;chr&gt;, url_public_api &lt;chr&gt;, url_private_html &lt;chr&gt;,</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; #   url_public_html &lt;chr&gt;, timeline &lt;df[,2]&gt;, resource_title &lt;chr&gt;,</span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; #   resource_doi &lt;chr&gt;, created_date &lt;chr&gt;, modified_date &lt;chr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 133 × 12</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt;    deposit_id       id name          size is_link_only download_url supplied_md5</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt;         &lt;int&gt;    &lt;int&gt; &lt;chr&gt;        &lt;int&gt; &lt;lgl&gt;        &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt;  1   26937448 49007725 PandemicPA… 4.74e4 FALSE        https://ndo… 2cca47b50c0…</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt;  2   26937448 49007743 Mpox - Map… 1.15e4 FALSE        https://ndo… 99c03bed91c…</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt;  3   26937448 49007755 research-c… 6.86e3 FALSE        https://ndo… b3d92f5954d…</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt;  4   26937448 49506642 PandemicPA… 4.88e4 FALSE        https://ndo… a6b309ee2c8…</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;  5   26937448 49550799 PandemicPA… 7.07e7 FALSE        https://ndo… a139502ed97…</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt;  6   26937448 51875285 PandemicPA… 5.08e4 FALSE        https://ndo… 7d7b44270ca…</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt;  7   26937448 52153913 PandemicPA… 5.27e4 FALSE        https://ndo… 30f52675091…</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt;  8   26937448 52661744 PandemicPA… 6.92e4 FALSE        https://ndo… f90b7282611…</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt;  9   26937448 53222348 PandemicPA… 6.97e4 FALSE        https://ndo… 78cde9c0779…</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; 10   26937448 54135791 Covid_Gran… 1.61e4 FALSE        https://ndo… 8db01bd6c13…</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; # ℹ 123 more rows</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 5 more variables: computed_md5 &lt;chr&gt;, mimetype &lt;chr&gt;, group_id &lt;int&gt;,</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; #   project_id &lt;int&gt;, title &lt;chr&gt;</span></span></code></pre></div>
 <p>This function is useful in getting an overview of what is currently available in the Pandemic PACT Figshare repository.</p>
 </div>
 <div class="section level3">
@@ -169,7 +168,7 @@
 </h3>
 <p>To read the Pandemic PACT tracker dataset into R, issue the following command:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a data.frame with 4637 records and 860 fields.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4,637 × 860</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
@@ -193,7 +192,7 @@
 <span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt; #   Study.Subject..choice.Disease.Vectors. &lt;chr&gt;, …</span></span></code></pre></div>
 <p>This function reads the <em>labelled</em> tracker dataset by default. If the raw dataset is required, then issue the following command:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a data.frame with 4638 records and 860 fields.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4,638 × 860</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt;    pactid grant_number grant_title_original                      grant_title_eng</span></span>
@@ -220,7 +219,7 @@
 <h3 id="process-the-pandemic-pact-tracker-dataset">Process the Pandemic PACT tracker dataset<a class="anchor" aria-label="anchor" href="#process-the-pandemic-pact-tracker-dataset"></a>
 </h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co">#&gt; # A tibble: 4,637 × 37</span></span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original                      Grant.Title.Eng</span></span>
@@ -256,7 +255,7 @@
 <code class="sourceCode R"><span><span class="co">## Save the dataset from website to a temporary directory ----</span></span>
 <span><span class="fu"><a href="reference/pact_download.html">pact_download_website</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>which will return the path to the downloaded dataset:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/Rtmp8Vz0gA/pandemic-pact-grants.csv"</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#&gt; [1] "/tmp/RtmpqWKUwZ/pandemic-pact-grants.csv"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="read-the-pandemic-pact-tracker-dataset-from-the-website">Read the Pandemic PACT tracker dataset from the website<a class="anchor" aria-label="anchor" href="#read-the-pandemic-pact-tracker-dataset-from-the-website"></a>
@@ -326,7 +325,7 @@
 <span><span class="co">#&gt; To cite pactr in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Ernest Guevarra (2026). _pactr: An Interface to the Pandemic PACT</span></span>
-<span><span class="co">#&gt;   Repository_. R package version 0.0.9007,</span></span>
+<span><span class="co">#&gt;   Repository_. R package version 0.0.9009,</span></span>
 <span><span class="co">#&gt;   &lt;https://oxford-ihtm.io/pactr/&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
@@ -335,7 +334,7 @@
 <span><span class="co">#&gt;     title = {pactr: An Interface to the Pandemic PACT Repository},</span></span>
 <span><span class="co">#&gt;     author = {{Ernest Guevarra}},</span></span>
 <span><span class="co">#&gt;     year = {2026},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.0.9007},</span></span>
+<span><span class="co">#&gt;     note = {R package version 0.0.9009},</span></span>
 <span><span class="co">#&gt;     url = {https://oxford-ihtm.io/pactr/},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>To cite the Pandemic PACT Tracker dataset, please use the suggested citation provided by a call to the <code><a href="reference/pact_cite.html">pact_cite()</a></code> function as follows:</p>

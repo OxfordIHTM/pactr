@@ -1,6 +1,6 @@
 # Changelog
 
-## pactr v0.0.0.9008 (development version)
+## pactr v0.0.0.9009 (development version)
 
 This is a pre-release, development version. In this release:
 
@@ -39,6 +39,10 @@ This is a pre-release, development version. In this release:
   [`pact_figshare_list()`](https://oxford-ihtm.io/pactr/reference/pact_figshare_list.md)
   has additional functionality to retrieve and return all available
   outputs/assets from the Figshare repository of Pandemic PACT.
+
+- [`pact_data_read_figshare()`](https://oxford-ihtm.io/pactr/reference/pact_read_figshare.md)
+  function for reading data from the Pandemic PACT Figshare repository
+  has replaced the older `pact_read_figshare()` function.
 
 - package tests have been refactored so as to limit API calls and
   network calls through use of mock tests whenever possible.

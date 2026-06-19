@@ -32,7 +32,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pactr</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9008</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9009</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -244,19 +244,19 @@ directory.</p>
 <p>To read the Pandemic PACT tracker dataset into R, issue the following
 command:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a <code>data.frame</code> of the available Pandemic
 PACT funding tracker dataset that has been labelled.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span></span></code></pre></div>
 <p>This function reads the <em>labelled</em> tracker dataset by default.
 If the raw dataset is required, then issue the following command:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a <code>data.frame</code> of the available raw Pandemic
 PACT funding tracker dataset.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span>, tracker_type <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   pactid grant_number grant_title_original grant_title_eng award_amount_converted</span></span>
 <span><span class="co">#&gt; 1 SDS001      unknown         Dummy record    Dummy record                1234567</span></span>
 <span><span class="co">#&gt;                                      abstract laysummary oda_funding_used grant_type</span></span>
@@ -663,12 +663,12 @@ PACT funding tracker dataset.</p>
 <p>To process the Pandemic PACT tracker dataset downloaded from
 Figshare, use the following commands:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>which outputs a <code>data.frame</code> of the processed Pandemic
 PACT funding tracker dataset:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pact_read_figshare.html">pact_read_figshare</a></span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="fu">pact_read_figshare</span><span class="op">(</span><span class="va">pact_client</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/pact_process_figshare.html">pact_process_figshare</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4,637 × 37</span></span>
 <span><span class="co">#&gt;    PactID Grant.Number Grant.Title.Original             Grant.Title.Eng Award.Amount.Converted</span></span>

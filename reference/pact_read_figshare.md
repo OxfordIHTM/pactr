@@ -1,15 +1,14 @@
-# Read datasets from the Pandemic PACT Figshare repository
+# Read Pandemic PACT tracker dataset from the Pandemic PACT Figshare repository
 
-Read datasets from the Pandemic PACT Figshare repository
+Read Pandemic PACT tracker dataset from the Pandemic PACT Figshare
+repository
 
 ## Usage
 
 ``` r
-pact_read_figshare(pact_client, tracker_type = c("labelled", "raw"))
+pact_data_read_figshare(pact_client, latest = TRUE, version = NULL)
 
 pact_read_figshare_dictionary(pact_client)
-
-pact_read_figshare_download(path_to_download, filename)
 ```
 
 ## Arguments
@@ -20,18 +19,21 @@ pact_read_figshare_download(path_to_download, filename)
   usually set/created through a call to
   [`pact_client_set()`](https://oxford-ihtm.io/pactr/reference/pact_client.md).
 
-- tracker_type:
+- latest:
 
-  Either "labelled" or "raw". Default is "labelled".
+  Logical. If `TRUE` (default), the latest version of the Pandemic PACT
+  dataset is read.
 
-- path_to_download:
+- version:
 
-  Path to downloaded private Figshare collection zip file.
-
-- filename:
-
-  Filename of Pandemic PACT asset or dataset to read from downloaded
-  private Figshare collection zip file.
+  A character string specifying the version of the Pandemic PACT dataset
+  to read. This should be in the format "YYYY-MM-DD". If `latest` is set
+  to `TRUE`, this argument is ignored. If `version` is specified, it
+  must match one of the available versions in the Pandemic PACT Figshare
+  repository. If it does not match, a warning will be issued and the
+  latest version will be read instead. If `version` is not specified and
+  `latest` is set to `FALSE`, a warning will be issued and the latest
+  version will be read instead.
 
 ## Value
 
